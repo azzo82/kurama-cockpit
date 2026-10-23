@@ -1060,24 +1060,227 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
     }
 
-    @media (max-width: 720px) {
+    .mobile-only-sync {
+      display: none;
+    }
+
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    /* Tablet & Mobile App Experience (<= 1024px) — Laptop (> 1024px) remains 100% untouched! */
+    @media (max-width: 1024px) {
       body {
         padding: 12px;
+        padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
       }
-      header {
-        padding: 16px;
-      }
-      .brand-title h1 {
-        font-size: 1.28rem;
-      }
-      .courses-grid {
-        grid-template-columns: 1fr;
-      }
-      .week-grid {
-        grid-template-columns: 1fr;
-      }
+
       .desktop-only-btn {
         display: none !important;
+      }
+
+      header {
+        padding: 11px 14px;
+        margin-bottom: 14px;
+        gap: 10px;
+        border-radius: 12px;
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .tha-badge {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        border-radius: 9px;
+        white-space: nowrap;
+      }
+
+      .brand-title {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .brand-title h1 {
+        font-size: 1.12rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .brand-title p {
+        display: none;
+      }
+
+      .mobile-only-sync {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 10px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        border-radius: 99px;
+        background: rgba(56, 189, 248, 0.14);
+        border: 1px solid rgba(56, 189, 248, 0.45);
+        color: var(--accent);
+        white-space: nowrap;
+      }
+
+      .header-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+
+      .header-stats .kurama-launch-group {
+        display: none;
+      }
+
+      .stat-pill {
+        min-width: 0;
+        padding: 6px 4px;
+        border-radius: 9px;
+      }
+
+      .stat-pill .label {
+        font-size: 0.58rem;
+        letter-spacing: 0.2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .stat-pill .value {
+        font-size: 0.86rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .mobile-bottom-nav {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9000;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(249, 115, 22, 0.4);
+        padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px)) 6px;
+        box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+      }
+
+      .mobile-nav-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        background: transparent;
+        border: none;
+        color: #cbd5e1;
+        padding: 5px 2px;
+        border-radius: 8px;
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+
+      .mobile-nav-btn .nav-ico {
+        font-size: 1.12rem;
+        line-height: 1.1;
+      }
+
+      .mobile-nav-btn.highlight-tab {
+        color: var(--primary);
+      }
+    }
+
+    /* Smartphone Compact Polish (<= 680px) */
+    @media (max-width: 680px) {
+      body {
+        padding: 9px;
+        padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+      }
+
+      .dashboard-grid, .dual-grid {
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .card {
+        padding: 14px;
+        border-radius: 12px;
+      }
+
+      .card-header {
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+        gap: 8px;
+      }
+
+      .card-header h2 {
+        font-size: 1.02rem;
+      }
+
+      .courses-grid, .week-grid, .slides-grid {
+        grid-template-columns: 1fr;
+      }
+
+      select, input[type="text"] {
+        font-size: 16px !important;
+        max-width: 100%;
+      }
+
+      .add-todo-row select,
+      .add-todo-row input,
+      .add-todo-row button {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+
+      .timer-box {
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      #timerCourseSelect {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .trainer-controls select {
+        flex: 1 1 100%;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .trainer-controls button {
+        flex: 1;
+        padding: 8px 8px;
+        font-size: 0.78rem;
+      }
+
+      .q-tutor-section {
+        padding: 12px;
+      }
+
+      .q-tutor-input-row input,
+      .q-tutor-input-row button {
+        width: 100%;
+        flex: 1 1 100%;
       }
     }
   </style>
@@ -1092,6 +1295,7 @@
           <h1 id="greetingHeader">Hallo <span>Ahmad</span>! 👋</h1>
           <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
         </div>
+        <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
       </div>
       <div class="header-stats">
         <div class="kurama-launch-group">
@@ -1130,7 +1334,7 @@
     <!-- Row 1: Daily Self-Updating To-Do (30/60/90 Min) + Mini-Kurama Chat & Klausur-Trainer -->
     <div class="dashboard-grid">
       <!-- Left: Self-Updating Daily To-Do List + 30/60/90 Min Timer -->
-      <div class="card">
+      <div class="card" id="secToday">
         <div class="card-header">
           <h2>📅 Deine Tages-To-Do-Liste (30 / 60 / 90 Min. Blöcke)</h2>
           <div class="date-nav">
@@ -1162,7 +1366,7 @@
         </div>
 
         <!-- Integrated 30 / 60 / 90 Min Study Timer -->
-        <div class="timer-box">
+        <div class="timer-box" id="secTimer">
           <div style="flex:1;">
             <div style="font-weight:700; font-size:0.94rem;">⏱️ Lernblock-Timer (30 / 60 / 90 Min.)</div>
             <div style="font-size:0.8rem; color:var(--text-muted);">Wähle deinen Kurs & die Blocklänge – zählt direkt für deinen Wochenbericht:</div>
@@ -1203,7 +1407,7 @@
           <h2>🎓 Klausur-Fragenblock & 🦊 Aufgabentutor</h2>
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
             <button class="btn-primary" onclick="jumpToAufgabentutor()" style="padding:5px 10px; font-size:0.78rem;">🦊 Zum Aufgabentutor</button>
-            <button onclick="openKuramaTrainerSelected()" style="padding:5px 10px; font-size:0.78rem; border-color:var(--accent); color:var(--accent);" title="Öffnet den großen KI-Kurama direkt im Klausur-Trainer für dieses Modul">🚀 Großer KI-Trainer</button>
+            <button class="desktop-only-btn" onclick="openKuramaTrainerSelected()" style="padding:5px 10px; font-size:0.78rem; border-color:var(--accent); color:var(--accent);" title="Öffnet den großen KI-Kurama direkt im Klausur-Trainer für dieses Modul">🚀 Großer KI-Trainer</button>
           </div>
         </div>
 
@@ -1260,7 +1464,7 @@
         <div style="margin-top:18px; padding-top:16px; border-top:1px solid var(--border);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
             <strong style="font-size:0.95rem;">💬 Allgemeiner Mini-Kurama Chat (Wochenbericht & Tagesplan)</strong>
-            <button onclick="openKurama('start')" style="padding:4px 10px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);">🚀 Großes Kurama-Fenster</button>
+            <button class="desktop-only-btn" onclick="openKurama('start')" style="padding:4px 10px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);">🚀 Großes Kurama-Fenster</button>
           </div>
           <div class="chat-container">
             <div class="chat-messages" id="chatMessages"></div>
@@ -1283,7 +1487,7 @@
     </div>
 
     <!-- Row 2: Weekly Performance Report + Weekly Moodle Lecture Slides Tracker -->
-    <div class="dual-grid">
+    <div class="dual-grid" id="secReport">
       <!-- Left: Weekly Retrospective & Progress Report -->
       <div class="card">
         <div class="card-header">
@@ -1351,7 +1555,7 @@
     </div>
 
     <!-- Row 4: All 9 Courses & SPO 2025 Workload Details -->
-    <div class="card">
+    <div class="card" id="secCourses">
       <div class="card-header">
         <h2>📚 Deine 9 Prüfungsmodule (50 ECTS) — THA Modulhandbuch (SPO 2025) & Themen-Checkliste</h2>
         <span style="font-size:0.82rem; color:var(--text-muted);">Klicke auf einzelne Themen-Chips, um sie als gelernt abzuhaken – Tagesplan, Wochenplan & Wochenbericht passen sich sofort an!</span>
@@ -1359,6 +1563,30 @@
       <div class="courses-grid" id="coursesGrid"></div>
     </div>
   </div>
+
+  <!-- Mobile & Tablet Fixed Bottom App Bar (Hidden on Laptop!) -->
+  <nav class="mobile-bottom-nav" aria-label="Schnellnavigation">
+    <button class="mobile-nav-btn" onclick="scrollToSection('secToday')">
+      <span class="nav-ico">📅</span>
+      <span>Heute</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secTimer')">
+      <span class="nav-ico">⏱️</span>
+      <span>Timer</span>
+    </button>
+    <button class="mobile-nav-btn highlight-tab" onclick="jumpToAufgabentutor()">
+      <span class="nav-ico">🎓</span>
+      <span>Tutor</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secReport')">
+      <span class="nav-ico">📊</span>
+      <span>Bericht</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secCourses')">
+      <span class="nav-ico">📚</span>
+      <span>Module</span>
+    </button>
+  </nav>
 
   <!-- Multi-Device 24/7 Cloud + Home-WiFi Sync Modal -->
   <div class="sync-modal-backdrop" id="syncModalBackdrop" onclick="if(event.target===this) closeSyncModal()">
@@ -1908,12 +2136,21 @@
 
     function updateSyncHeaderBadge(statusText, isConnected) {
       const btn = document.getElementById('syncHeaderBtn');
+      const mobBtn = document.getElementById('mobileSyncBtn');
       const banner = document.getElementById('syncModalStatusBanner');
       if (btn) {
         btn.textContent = isConnected ? '🟢 Sync aktiv' : '📱 Handy & Tablet';
         if (isConnected) {
           btn.style.borderColor = 'rgba(34, 197, 94, 0.55)';
           btn.style.color = '#86efac';
+        }
+      }
+      if (mobBtn) {
+        mobBtn.textContent = isConnected ? '🟢 Sync' : '📱 Sync';
+        if (isConnected) {
+          mobBtn.style.borderColor = 'rgba(34, 197, 94, 0.55)';
+          mobBtn.style.color = '#86efac';
+          mobBtn.style.background = 'rgba(34, 197, 94, 0.14)';
         }
       }
       if (banner) {
@@ -2115,7 +2352,8 @@
       document.getElementById('greetingHeader').innerHTML = `${timeGreeting}, <span>Ahmad</span>! 🦊`;
       const vw = getCurrentVorlesungswoche();
       const kw = getISOWeekNumber(new Date());
-      document.getElementById('currentVWStat').textContent = `VW ${vw} (KW ${kw})`;
+      const isCompact = window.innerWidth <= 1024;
+      document.getElementById('currentVWStat').textContent = isCompact ? `VW ${vw}` : `VW ${vw} (KW ${kw})`;
     }
 
     // Dynamic Schedule Generator (with 30 / 60 / 90 Min blocks)
@@ -2703,7 +2941,7 @@
             <a href="${c.moodleUrl}" target="_blank">🔗 Zum THA Moodle-Kurs</a>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
               <button onclick="selectTrainerCourse('${c.id}')" style="padding:4px 9px; font-size:0.76rem;">🎯 Probeaufgabe</button>
-              <button onclick="openKurama('trainer/${c.id}')" style="padding:4px 9px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);" title="Startet Kurama direkt mit einer neuen KI-Klausuraufgabe zu ${c.short}">🦊 KI-Trainer</button>
+              <button class="desktop-only-btn" onclick="openKurama('trainer/${c.id}')" style="padding:4px 9px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);" title="Startet Kurama direkt mit einer neuen KI-Klausuraufgabe zu ${c.short}">🦊 KI-Trainer</button>
             </div>
           </div>
         `;
@@ -3096,12 +3334,25 @@
       updateTimerDisplay();
     }
 
+    function scrollToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     function updateCountdown() {
       const examStart = new Date('2027-01-18T08:00:00');
       const now = new Date();
       const diffDays = Math.max(0, Math.ceil((examStart - now) / 86400000));
-      document.getElementById('countdownDays').textContent = `${diffDays} Tage (ab 18.01.)`;
+      const isCompact = window.innerWidth <= 1024;
+      document.getElementById('countdownDays').textContent = isCompact ? `${diffDays} Tage` : `${diffDays} Tage (ab 18.01.)`;
     }
+
+    window.addEventListener('resize', () => {
+      updateGreeting();
+      updateCountdown();
+    });
 
     function init() {
       const selects = ['newTodoCourse', 'timerCourseSelect', 'trainerCourseSelect'];

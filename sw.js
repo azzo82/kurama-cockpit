@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kurama-cockpit-v1';
+const CACHE_NAME = 'kurama-cockpit-v2';
 const ASSETS = [
   './',
   './index.html',
