@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+kurama_progress.json
+sync_config.json
+launch_kurama.ps1
+kurama_bridge.pyw
+*.lnk
+pair_qr.png

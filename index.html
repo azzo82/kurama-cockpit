@@ -1,0 +1,3188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Kurama" />
+  <title>Hallo Ahmad! 🦊 Kurama — THA Lernplan & Klausur-Cockpit</title>
+  <link rel="icon" type="image/x-icon" href="kurama.ico" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #26354d;
+      --bg-muted: #0b1120;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --accent: #38bdf8;
+      --success: #22c55e;
+      --warning: #eab308;
+      --danger: #ef4444;
+      --border: #334155;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 45%, #090d16 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 22px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      border-radius: var(--radius);
+      padding: 22px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .tha-badge {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: white;
+      font-weight: 800;
+      font-size: 1.25rem;
+      padding: 14px 18px;
+      border-radius: 14px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 18px rgba(249, 115, 22, 0.45);
+      text-align: center;
+    }
+
+    .brand-title h1 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .brand-title h1 span {
+      color: var(--primary);
+    }
+
+    .brand-title p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 2px;
+    }
+
+    .header-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .stat-pill {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      padding: 10px 15px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 125px;
+    }
+
+    .stat-pill .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-pill .value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-pill.highlight .value {
+      color: var(--primary);
+    }
+
+    .stat-pill.success .value {
+      color: var(--success);
+    }
+
+    .kurama-launch-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-kurama-launch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 11px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.42);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-kurama-launch:hover {
+      background: linear-gradient(135deg, #fb923c, #f97316);
+      border-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(249, 115, 22, 0.6);
+    }
+
+    .btn-kurama-launch .kbd-hint {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.45);
+      padding: 2px 6px;
+      border-radius: 5px;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-kurama-resume {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.84rem;
+      padding: 11px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-kurama-resume:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Main Grids */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 1120px) {
+      .dashboard-grid, .dual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-header h2 {
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .date-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-muted);
+      color: var(--text);
+      padding: 8px 13px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+    }
+
+    button.btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    button.btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    button.btn-accent {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    button.active-dur {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .today-banner {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .today-banner .date-str {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.04rem;
+    }
+
+    .today-banner .focus-str {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* To-Do List */
+    .todo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 15px;
+      transition: all 0.15s ease;
+    }
+
+    .todo-item:hover {
+      border-color: #475569;
+    }
+
+    .todo-item.done {
+      opacity: 0.65;
+      background: rgba(34, 197, 94, 0.07);
+      border-color: rgba(34, 197, 94, 0.35);
+    }
+
+    .todo-item.done .todo-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .todo-checkbox {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      accent-color: var(--success);
+      cursor: pointer;
+    }
+
+    .todo-content {
+      flex: 1;
+    }
+
+    .todo-title {
+      font-weight: 600;
+      font-size: 0.94rem;
+      margin-bottom: 4px;
+    }
+
+    .todo-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .course-tag {
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.74rem;
+    }
+
+    .dur-select {
+      background: #1e293b;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .add-todo-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .add-todo-row input, .add-todo-row select {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+    }
+
+    .add-todo-row input {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    /* 30 / 60 / 90 Min Focus Timer */
+    .timer-box {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(56, 189, 248, 0.1));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .timer-display {
+      font-size: 2rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: var(--primary);
+      min-width: 95px;
+      text-align: center;
+    }
+
+    .dur-buttons {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    /* Visual Study Timeline ("Zeitstrahl") */
+    .timeline-box {
+      margin-top: 16px;
+      padding: 15px 16px;
+      background: var(--bg-muted);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 12px;
+    }
+
+    .timeline-bar-track {
+      display: flex;
+      width: 100%;
+      height: 12px;
+      background: #1e293b;
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 8px 0 12px 0;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-feed {
+      position: relative;
+      padding-left: 18px;
+      border-left: 2px solid rgba(249, 115, 22, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 195px;
+      overflow-y: auto;
+    }
+
+    .timeline-entry {
+      position: relative;
+      background: rgba(30, 41, 59, 0.72);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.81rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #0f172a;
+    }
+
+    /* Mini-Kurama Chat */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 230px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-bubble {
+      max-width: 88%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      white-space: pre-line;
+    }
+
+    .chat-bubble.kurama {
+      align-self: flex-start;
+      background: rgba(249, 115, 22, 0.14);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      color: var(--text);
+    }
+
+    .chat-bubble.user {
+      align-self: flex-end;
+      background: rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--text);
+    }
+
+    .chat-quick-chips {
+      display: flex;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border-top: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .chat-chip {
+      font-size: 0.74rem;
+      padding: 4px 9px;
+      border-radius: 99px;
+      background: #1e293b;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .chat-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px;
+      background: #090d16;
+      border-top: 1px solid var(--border);
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+
+    /* Weekly Report Box */
+    .report-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .report-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .report-box {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.86rem;
+    }
+
+    .report-box.good {
+      border-left: 4px solid var(--success);
+    }
+
+    .report-box.work {
+      border-left: 4px solid var(--warning);
+    }
+
+    .report-box h4 {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    /* Moodle Slides Tracker */
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 12px;
+    }
+
+    .slide-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.83rem;
+    }
+
+    .vw-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .vw-pill {
+      font-size: 0.72rem;
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: #1e293b;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .vw-pill.current-vw {
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .vw-pill.done-vw {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: var(--success);
+      color: #86efac;
+    }
+
+    /* Practice Problem Generator */
+    .trainer-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .trainer-controls select {
+      flex: 1;
+      min-width: 200px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+
+    .question-box {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .question-text {
+      font-size: 0.93rem;
+      margin-bottom: 12px;
+      white-space: pre-line;
+    }
+
+    .solution-box {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 10px;
+      display: none;
+      white-space: pre-line;
+      font-size: 0.86rem;
+    }
+
+    .solution-box.visible {
+      display: block;
+    }
+
+    /* Integrated Question Block Tutor ("Aufgabentutor") */
+    .q-tutor-section {
+      margin-top: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.16), rgba(30, 41, 59, 0.95));
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      box-shadow: 0 6px 22px rgba(249, 115, 22, 0.22);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+    .q-tutor-section.pulse-focus {
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.45), 0 10px 28px rgba(249, 115, 22, 0.45);
+    }
+
+    .q-tutor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .q-tutor-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .q-tutor-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .q-tutor-sub {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .q-tutor-status {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 99px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .q-tutor-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .q-tutor-messages {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 270px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      padding: 12px;
+      background: rgba(9, 13, 22, 0.82);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      border-radius: 10px;
+    }
+
+    .q-tutor-messages.has-msgs {
+      display: flex;
+    }
+
+    .q-tutor-bubble {
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .q-tutor-bubble.user {
+      align-self: flex-end;
+      max-width: 88%;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: var(--text);
+    }
+
+    .q-tutor-bubble.kurama {
+      align-self: flex-start;
+      max-width: 96%;
+      background: rgba(249, 115, 22, 0.16);
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      color: var(--text);
+    }
+
+    .q-tutor-input-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .q-tutor-input-row input {
+      flex: 1;
+      min-width: 220px;
+      background: #0f172a;
+      border: 2px solid rgba(249, 115, 22, 0.65);
+      color: #fff;
+      padding: 11px 14px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .q-tutor-input-row input::placeholder {
+      color: #94a3b8;
+    }
+
+    .q-tutor-input-row input:focus {
+      outline: none;
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.35);
+    }
+
+    /* Weekly Grid */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1000px) {
+      .week-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .day-col {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .day-col:hover {
+      border-color: var(--accent);
+    }
+
+    .day-col.active-day {
+      border-color: var(--primary);
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    .day-col h4 {
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .day-col.active-day h4 {
+      color: var(--primary);
+    }
+
+    /* Courses Grid */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .course-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .course-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .course-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .course-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .course-prof {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .spo-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    .badge.ects {
+      color: var(--primary);
+      border-color: rgba(249, 115, 22, 0.4);
+      font-weight: 700;
+    }
+
+    .progress-wrap {
+      margin-top: 4px;
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 9px;
+      background: #1e293b;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
+    .topic-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .topic-pill {
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #1e293b;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .topic-pill.completed {
+      background: rgba(34, 197, 94, 0.18);
+      border-color: var(--success);
+      color: #86efac;
+    }
+
+    .course-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.8rem;
+    }
+
+    .course-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .course-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Multi-Device Sync Modal & Mobile/Tablet Responsive Adjustments */
+    .sync-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 13, 22, 0.82);
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .sync-modal-backdrop.open {
+      display: flex;
+    }
+
+    .sync-modal {
+      background: var(--bg-card);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 22px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 12px;
+      }
+      header {
+        padding: 16px;
+      }
+      .brand-title h1 {
+        font-size: 1.28rem;
+      }
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
+      .week-grid {
+        grid-template-columns: 1fr;
+      }
+      .desktop-only-btn {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Top Header with Personal Greeting "Hallo Ahmad" -->
+    <header>
+      <div class="brand">
+        <div class="tha-badge" onclick="openKurama('start')" style="cursor:pointer;" title="Klicken, um Kurama sofort zu starten (oder Strg+Alt+K drücken)">🦊 KURAMA</div>
+        <div class="brand-title">
+          <h1 id="greetingHeader">Hallo <span>Ahmad</span>! 👋</h1>
+          <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="kurama-launch-group">
+          <button class="btn-kurama-launch desktop-only-btn" onclick="openKurama('start')" title="Öffnet Kurama sofort per 1-Klick (oder überall mit Strg+Alt+K)">
+            🦊 Kurama starten <span class="kbd-hint">Strg+Alt+K</span>
+          </button>
+          <button class="btn-kurama-resume" onclick="jumpToAufgabentutor()" title="Springt sofort direkt zum Aufgabentutor im Fragenblock">
+            🎓 Aufgabentutor
+          </button>
+          <button class="btn-kurama-resume" id="syncHeaderBtn" onclick="openSyncModal()" title="Handy, Tablet & PC live verbinden (24/7 Cloud + Heim-WLAN)">
+            📱 Handy & Tablet
+          </button>
+          <button class="btn-kurama-resume desktop-only-btn" onclick="openKurama('continue')" title="Öffnet Kurama und setzt direkt dein letztes Gespräch fort">
+            💬 Letzter Chat
+          </button>
+        </div>
+        <div class="stat-pill highlight">
+          <div class="label">Vorlesungswoche</div>
+          <div class="value" id="currentVWStat">VW 4 (KW 43)</div>
+        </div>
+        <div class="stat-pill">
+          <div class="label">Wochen-Lernzeit</div>
+          <div class="value" id="weeklyHoursStat">0.0 h</div>
+        </div>
+        <div class="stat-pill">
+          <div class="label">Klausur-Countdown</div>
+          <div class="value" id="countdownDays">-- Tage</div>
+        </div>
+        <div class="stat-pill success">
+          <div class="label">Heute erledigt</div>
+          <div class="value" id="todayProgressStat">0 / 0</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Row 1: Daily Self-Updating To-Do (30/60/90 Min) + Mini-Kurama Chat & Klausur-Trainer -->
+    <div class="dashboard-grid">
+      <!-- Left: Self-Updating Daily To-Do List + 30/60/90 Min Timer -->
+      <div class="card">
+        <div class="card-header">
+          <h2>📅 Deine Tages-To-Do-Liste (30 / 60 / 90 Min. Blöcke)</h2>
+          <div class="date-nav">
+            <button onclick="changeDay(-1)">◀ Gestern</button>
+            <button class="btn-accent" onclick="goToday()">Heute</button>
+            <button onclick="changeDay(1)">Morgen ▶</button>
+          </div>
+        </div>
+
+        <div class="today-banner">
+          <div>
+            <div class="date-str" id="currentDateLabel">Donnerstag, 22. Oktober 2026</div>
+            <div class="focus-str" id="dailyFocusLabel">Tages-Fokus wird geladen...</div>
+          </div>
+          <button onclick="regenerateDayTodos()" title="Passt die heutigen Aufgaben neu an deine offenen Themen an">🔄 Neu anpassen</button>
+        </div>
+
+        <div class="todo-list" id="todoListContainer"></div>
+
+        <div class="add-todo-row">
+          <select id="newTodoCourse"></select>
+          <select id="newTodoDuration">
+            <option value="30">30 Min.</option>
+            <option value="60" selected>60 Min.</option>
+            <option value="90">90 Min.</option>
+          </select>
+          <input type="text" id="newTodoText" placeholder="Eigenes To-Do für Ahmad hinzufügen..." onkeydown="if(event.key==='Enter') addCustomTodo()" />
+          <button class="btn-primary" onclick="addCustomTodo()">+ Hinzufügen</button>
+        </div>
+
+        <!-- Integrated 30 / 60 / 90 Min Study Timer -->
+        <div class="timer-box">
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:0.94rem;">⏱️ Lernblock-Timer (30 / 60 / 90 Min.)</div>
+            <div style="font-size:0.8rem; color:var(--text-muted);">Wähle deinen Kurs & die Blocklänge – zählt direkt für deinen Wochenbericht:</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:8px;">
+              <select id="timerCourseSelect" style="background:var(--bg-muted); color:var(--text); border:1px solid var(--border); padding:6px 10px; border-radius:6px;"></select>
+              <div class="dur-buttons" style="margin-top:0;">
+                <button id="durBtn30" onclick="setTimerMinutes(30)">30 Min</button>
+                <button id="durBtn60" class="active-dur" onclick="setTimerMinutes(60)">60 Min</button>
+                <button id="durBtn90" onclick="setTimerMinutes(90)">90 Min</button>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <div class="timer-display" id="timerDisplay">60:00</div>
+            <button class="btn-primary" id="timerBtn" onclick="toggleTimer()">▶ Start</button>
+            <button class="btn-accent" onclick="bookCurrentTimerBlockNow()" title="Schreibt den gewählten Block (z.B. 30 Min. Prog) sofort auf dem Zeitstrahl & allen Balken gut">✅ Direkt buchen</button>
+            <button onclick="resetTimer()" title="Timer zurücksetzen">↺</button>
+          </div>
+        </div>
+
+        <!-- Visual Study Timeline ("Zeitstrahl") -->
+        <div class="timeline-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <strong style="font-size:0.92rem; color:var(--accent);">🕒 Dein Lern-Zeitstrahl (Automatisch gespeichert)</strong>
+            <span id="timelineTotalLabel" style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">Gesamt: 0.0 h</span>
+          </div>
+          <div style="font-size:0.76rem; color:var(--text-muted); margin-top:2px;">
+            Jeder Timer-Block, jedes abgehakte To-Do und jede gelöste Aufgabe landet sofort farbig auf deinem Zeitstrahl:
+          </div>
+          <div class="timeline-bar-track" id="timelineSegmentedBar" title="Farbiger Zeitstrahl deiner gelernten Stunden pro Modul"></div>
+          <div class="timeline-feed" id="timelineFeed"></div>
+        </div>
+      </div>
+
+      <!-- Right: Klausur-Fragenblock + Aufgabentutor (TOP) + Mini-Kurama Chat -->
+      <div class="card">
+        <div class="card-header">
+          <h2>🎓 Klausur-Fragenblock & 🦊 Aufgabentutor</h2>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn-primary" onclick="jumpToAufgabentutor()" style="padding:5px 10px; font-size:0.78rem;">🦊 Zum Aufgabentutor</button>
+            <button onclick="openKuramaTrainerSelected()" style="padding:5px 10px; font-size:0.78rem; border-color:var(--accent); color:var(--accent);" title="Öffnet den großen KI-Kurama direkt im Klausur-Trainer für dieses Modul">🚀 Großer KI-Trainer</button>
+          </div>
+        </div>
+
+        <!-- Klausur-Fragenblock + Aufgabentutor directly at eye level -->
+        <div>
+          <div class="trainer-controls">
+            <select id="trainerCourseSelect" onchange="loadRandomQuestion()"></select>
+            <button class="btn-primary" onclick="loadRandomQuestion()">🎲 Neue Aufgabe</button>
+            <button class="btn-accent" onclick="toggleSolution()">💡 Musterlösung</button>
+            <button onclick="markQuestionMastered()">✅ Gelöst (+20m)</button>
+          </div>
+
+          <div class="question-box" id="questionBlockCard" style="margin-bottom:0;">
+            <div class="question-header">
+              <span id="qCourseName">Modul</span>
+              <span id="qMeta">Klausuraufgabe</span>
+            </div>
+            <div class="question-text" id="qText"></div>
+            <div class="solution-box" id="qSolution"></div>
+
+            <!-- PROMINENT AUFGABENTUTOR -->
+            <div class="q-tutor-section" id="aufgabenTutorBox">
+              <div class="q-tutor-header">
+                <div class="q-tutor-title">
+                  <span class="q-tutor-badge">🎓 Aufgabentutor</span>
+                  <span>🦊 Du verstehst hier etwas nicht? Frag mich!</span>
+                </div>
+                <span class="q-tutor-status" id="qTutorStatus" onclick="wakeAndCheckBridge()" title="Klicken, um Live-KI-Verbindung zu prüfen oder zu starten">⚡ Aufgabentutor bereit</span>
+              </div>
+              <div class="q-tutor-sub">
+                Klicke auf eine Schnellhilfe oder tippe unten deine genaue Frage zur aktuellen Aufgabe ein:
+              </div>
+              <div class="q-tutor-chips">
+                <span class="chat-chip" onclick="askQuestionTutorPreset('hint')">💡 Erstmal nur ein Tipp</span>
+                <span class="chat-chip" onclick="askQuestionTutorPreset('steps')">🪜 Schritt für Schritt erklären</span>
+                <span class="chat-chip" onclick="askQuestionTutorPreset('why')">📐 Regel / Formel dahinter</span>
+                <span class="chat-chip" onclick="askQuestionTutorPreset('trap')">⚠️ Typische Klausurfalle</span>
+              </div>
+              <div class="q-tutor-messages" id="qTutorMessages"></div>
+              <div class="q-tutor-input-row">
+                <input
+                  type="text"
+                  id="qTutorInput"
+                  placeholder="Frage an den Aufgabentutor (z.B. 'Warum 6/12?', 'Erkläre Teil b)', 'Warum HAVING?')..."
+                  onkeydown="if(event.key==='Enter') submitQuestionTutor()"
+                />
+                <button class="btn-primary" id="qTutorSendBtn" onclick="submitQuestionTutor()" style="padding:11px 16px; font-size:0.9rem;">🦊 Aufgabentutor fragen ➤</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini-Kurama Chat Below Aufgabentutor -->
+        <div style="margin-top:18px; padding-top:16px; border-top:1px solid var(--border);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+            <strong style="font-size:0.95rem;">💬 Allgemeiner Mini-Kurama Chat (Wochenbericht & Tagesplan)</strong>
+            <button onclick="openKurama('start')" style="padding:4px 10px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);">🚀 Großes Kurama-Fenster</button>
+          </div>
+          <div class="chat-container">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-quick-chips">
+              <span class="chat-chip" onclick="sendQuickChat('Wie sieht mein Wochenbericht aus?')">📊 Wochenbericht</span>
+              <span class="chat-chip" onclick="sendQuickChat('Was steht heute an?')">📅 Heutiger Plan</span>
+              <span class="chat-chip" onclick="sendQuickChat('Frag mich in Programmierung ab!')">💻 ProWi-Aufgabe</span>
+              <span class="chat-chip" onclick="sendQuickChat('Frag mich in Datenbanksysteme ab!')">🗄️ SQL/DBS-Aufgabe</span>
+              <span class="chat-chip" onclick="sendQuickChat('Frag mich in BuB oder KLR ab!')">📈 BWL-Aufgabe</span>
+              <span class="chat-chip" onclick="sendQuickChat('Welche Folien stehen diese Woche an?')">📥 Moodle-Folien</span>
+              <span class="chat-chip" onclick="sendQuickChat('Motiviere mich, Kurama!')">🔥 Motivation</span>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="chatInput" placeholder="Allgemeine Frage an Kurama (z.B. 'Wochenbericht', 'Heutiger Plan')..." onkeydown="if(event.key==='Enter') handleChatSubmit()" />
+              <button class="btn-primary" onclick="handleChatSubmit()">Senden ➤</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Weekly Performance Report + Weekly Moodle Lecture Slides Tracker -->
+    <div class="dual-grid">
+      <!-- Left: Weekly Retrospective & Progress Report -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 id="weeklyReportTitle">📊 Wöchentlicher Kurama-Bericht (Rückblick & Analyse)</h2>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Zeigt dir automatisch, was du geschafft hast, was stark lief und wo noch Arbeit wartet</span>
+          </div>
+          <div class="date-nav">
+            <button id="repBtnPrev" onclick="setReportWeekOffset(-1)">◀ Letzte Woche</button>
+            <button id="repBtnCurr" class="btn-accent" onclick="setReportWeekOffset(0)">Diese Woche</button>
+          </div>
+        </div>
+
+        <div class="report-grid">
+          <div class="report-box good">
+            <h4 style="color:var(--success);">✅ Das hast du stark gemacht (Erfolge):</h4>
+            <div id="reportStrengths">Lade Auswertung...</div>
+          </div>
+          <div class="report-box work">
+            <h4 style="color:var(--warning);">🎯 Hier müssen wir noch ran (Fokus-Empfehlung):</h4>
+            <div id="reportWeaknesses">Lade Auswertung...</div>
+          </div>
+        </div>
+
+        <div style="background:var(--bg-muted); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+          <div style="font-size:0.82rem; font-weight:700; margin-bottom:8px; color:var(--accent);">⏱️ Geleistete Lernzeit & erledigte Blöcke pro Kurs in dieser Woche:</div>
+          <div id="reportCourseBreakdown" style="display:flex; flex-direction:column; gap:6px; font-size:0.8rem;"></div>
+        </div>
+      </div>
+
+      <!-- Right: Weekly Moodle Lecture Slides Tracker (VW 1 - VW 14) -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 id="moodleSlidesHeader">📥 Moodle Vorlesungsfolien — Wochen-Tracker</h2>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Aktualisiert sich jede Vorlesungswoche (VW 1 bis VW 14) – hake ab, sobald du die neuen Wochenfolien aus Moodle geladen & durchgearbeitet hast!</span>
+          </div>
+          <div class="date-nav">
+            <button onclick="changeSelectedVW(-1)">◀ Vorherige VW</button>
+            <button class="btn-accent" onclick="resetSelectedVW()">Aktuelle VW</button>
+            <button onclick="changeSelectedVW(1)">Nächste VW ▶</button>
+          </div>
+        </div>
+
+        <div class="slides-grid" id="moodleSlidesGrid"></div>
+      </div>
+    </div>
+
+    <!-- Row 3: Dynamic Weekly Plan (Self-Updating per Calendar Week & Progress) -->
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="card-header">
+        <div>
+          <h2 id="weekHeaderTitle">🗓️ Dynamischer Wochenplan — Kalenderwoche</h2>
+          <span style="font-size:0.82rem; color:var(--text-muted);">
+            Aktualisiert sich jede Kalenderwoche automatisch, gewichtet <strong>Programmierung in der WI (10 ECTS)</strong> doppelt (90-Min.-Blöcke) und priorisiert Fächer mit offenen Themen!
+          </span>
+        </div>
+        <div class="date-nav">
+          <button onclick="changeDay(-7)">◀ Vorherige Woche</button>
+          <button class="btn-accent" onclick="goToday()">Aktuelle Woche</button>
+          <button onclick="changeDay(7)">Nächste Woche ▶</button>
+        </div>
+      </div>
+      <div class="week-grid" id="weekGrid"></div>
+    </div>
+
+    <!-- Row 4: All 9 Courses & SPO 2025 Workload Details -->
+    <div class="card">
+      <div class="card-header">
+        <h2>📚 Deine 9 Prüfungsmodule (50 ECTS) — THA Modulhandbuch (SPO 2025) & Themen-Checkliste</h2>
+        <span style="font-size:0.82rem; color:var(--text-muted);">Klicke auf einzelne Themen-Chips, um sie als gelernt abzuhaken – Tagesplan, Wochenplan & Wochenbericht passen sich sofort an!</span>
+      </div>
+      <div class="courses-grid" id="coursesGrid"></div>
+    </div>
+  </div>
+
+  <!-- Multi-Device 24/7 Cloud + Home-WiFi Sync Modal -->
+  <div class="sync-modal-backdrop" id="syncModalBackdrop" onclick="if(event.target===this) closeSyncModal()">
+    <div class="sync-modal">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="font-size:1.22rem;">📱 Handy, Tablet & PC live verbinden</h2>
+        <button onclick="closeSyncModal()" style="padding:5px 10px;">✕</button>
+      </div>
+
+      <div id="syncModalStatusBanner" style="padding:11px 14px; border-radius:10px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.35); font-size:0.85rem; margin-bottom:14px;">
+        ☁️ Prüfe Cloud-Sync-Verbindung...
+      </div>
+
+      <div id="syncPairSection" style="display:none; text-align:center; background:var(--bg-muted); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:14px;">
+        <div style="font-weight:700; font-size:0.95rem; margin-bottom:6px; color:var(--primary);">
+          ⚡ 1-Scan Einrichtung für dein Handy & Tablet:
+        </div>
+        <div style="font-size:0.81rem; color:var(--text-muted); margin-bottom:12px;">
+          Scanne diesen QR-Code einmal mit deiner Handy- oder Tablet-Kamera (oder kopiere den Link) – danach sind alle Geräte <strong>24/7 überall (auch in der THA & unterwegs)</strong> automatisch verbunden!
+        </div>
+        <div id="syncQrWrap" style="display:none; justify-content:center; margin-bottom:12px;">
+          <img id="syncQrImg" alt="Kurama Sync QR-Code" style="width:210px; height:210px; border-radius:12px; background:#fff; padding:10px;" />
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn-primary" onclick="copyPairingLink()">📋 Koppel-Link kopieren (WhatsApp / Mail)</button>
+          <button class="btn-accent" onclick="forceSyncNow()">🔄 Jetzt synchronisieren</button>
+        </div>
+      </div>
+
+      <div id="homeLanSection" style="display:none; background:var(--bg-muted); border:1px solid var(--border); border-radius:12px; padding:13px 15px; margin-bottom:14px; font-size:0.83rem;">
+        <strong style="color:var(--success);">🏠 Heim-WLAN Direktzugriff (inkl. Live-KI Aufgabentutor):</strong>
+        <div id="homeLanUrls" style="margin-top:5px; color:var(--accent); font-weight:700;"></div>
+      </div>
+
+      <div style="background:var(--bg-muted); border:1px solid var(--border); border-radius:12px; padding:13px 15px; font-size:0.82rem; line-height:1.55;">
+        <strong style="color:#fff;">📲 So holst du dir das 🦊 Kurama-App-Icon auf den Home-Bildschirm:</strong>
+        <div style="margin-top:6px; color:#cbd5e1;">
+          • <strong>iPhone / iPad (Safari):</strong> Link öffnen → unten/oben auf <strong>Teilen (⬆️)</strong> → <strong>„Zum Home-Bildschirm“</strong>.<br />
+          • <strong>Android Handy / Tablet (Chrome):</strong> Link öffnen → oben rechts <strong>⋮ Menü</strong> → <strong>„App installieren“ / „Zum Startbildschirm“</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Official Course Data (THA Wirtschaftsinformatik B.Sc. - SPO 2025)
+    const COURSES = [
+      {
+        id: 'prowi',
+        name: 'Programmierung in der Wirtschaftsinformatik',
+        short: 'ProWi (10 ECTS)',
+        prof: 'Prof. Strohmeier',
+        sem: '2. Sem (SPO 25)',
+        ects: 10,
+        sws: 8,
+        workloadTotal: 300,
+        workloadPresence: 120,
+        workloadSelf: 180,
+        targetStudyHours: 60,
+        defaultBlockMin: 90,
+        examType: 'Klausur / Prakt. Prüfung (90–120 Min.)',
+        color: '#a855f7',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10480',
+        localPath: 'A:\\Prog 2 & B:\\sheet00-10',
+        topics: [
+          'Klassen, Objekte, Konstruktoren & Kapselung',
+          'Vererbung, Polymorphie & Abstrakte Klassen',
+          'Interfaces, Comparable/Comparator & Verträge',
+          'Collections Framework (List, Set, Map) & Iteration',
+          'Generics & Typsicherheit',
+          'Exceptions (Checked/Unchecked) & Fehlerbehandlung',
+          'Unit-Testing (JUnit 5, Assertions, Testfälle)',
+          'Datei-I/O, Streams & Klausur-Algorithmen'
+        ]
+      },
+      {
+        id: 'dbs',
+        name: 'Datenbanksysteme',
+        short: 'DBS',
+        prof: 'Prof. Kolonko',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 42,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#10b981',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10780',
+        localPath: 'A:\\Datenbanken1 & B:\\sql',
+        topics: [
+          'ER-Modellierung & Kardinalitäten (Min-Max/Chen)',
+          'Überführung ER-Modell -> Relationenmodell',
+          'Relationenalgebra (Selektion, Projektion, Joins)',
+          'Funktionale Abhängigkeiten & Normalisierung (1NF–BCNF)',
+          'SQL DDL & komplexe SELECT-Joins',
+          'SQL GROUP BY, HAVING, Subqueries & Views',
+          'Transaktionen (ACID), Sperren & Isolation Levels'
+        ]
+      },
+      {
+        id: 'bub',
+        name: 'Buchführung und Bilanzierung',
+        short: 'BuB',
+        prof: 'Prof. Übelhör',
+        sem: '2. Sem (SPO 25)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 40,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#f97316',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10350',
+        localPath: 'A:\\BWL_BuB_Vorlesung_Skript.pdf',
+        topics: [
+          'GoB & Inventur/Bilanzaufbau',
+          'Bestands- & Erfolgskonten (Soll an Haben)',
+          'Umsatzsteuer, Vorsteuer & Warenverkehr',
+          'Planmäßige & außerplanmäßige Abschreibungen',
+          'Rechnungsabgrenzung (ARAP / PRAP)',
+          'Rückstellungen & HGB-Bewertung',
+          'GuV & Jahresabschluss'
+        ]
+      },
+      {
+        id: 'klr',
+        name: 'Kosten- und Leistungsrechnung & Controlling',
+        short: 'KLR & Ctrl',
+        prof: 'Prof. Übelhör',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 42,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#f43f5e',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10960',
+        localPath: 'Moodle KLR & Controlling',
+        topics: [
+          'Abgrenzungsrechnung (Aufwand/Ertrag vs. Kosten/Leistung)',
+          'Kostenartenrechnung (kalk. Abschreibung, kalk. Zinsen)',
+          'Kostenstellenrechnung (BAB & innerbetriebl. Leistungsverrechnung)',
+          'Kostenträgerstückrechnung (Zuschlagskalkulation, Äquivalenzziffern)',
+          'Ein- & mehrstufige Deckungsbeitragsrechnung',
+          'Break-Even-Analyse & optimales Produktionsprogramm',
+          'Operatives & Strategisches Controlling'
+        ]
+      },
+      {
+        id: 'se',
+        name: 'Software-Engineering (WI3)',
+        short: 'SE-WI3',
+        prof: 'Prof. Metzner',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 40,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#6366f1',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10924',
+        localPath: 'Moodle SE-WS2627',
+        topics: [
+          'Vorgehensmodelle (Wasserfall, V-Modell, Scrum/Kanban)',
+          'Requirements Engineering (Use Cases, User Stories, Kano)',
+          'UML Klassendiagramm (Assoziation, Aggregation, Komposition)',
+          'UML Sequenz-, Aktivitäts- & Zustandsdiagramm',
+          'Software-Architektur & Design Patterns (Observer, Factory, Strategy)',
+          'Softwarequalität, Reviews & Teststufen (Unit, Integration, System)'
+        ]
+      },
+      {
+        id: 'dia',
+        name: 'Daten- und Informationsanalyse',
+        short: 'DIA',
+        prof: 'Prof. Predeschly / Prof. Kolonko',
+        sem: '2. Sem (SPO 25)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 36,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#38bdf8',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=10744',
+        localPath: 'Moodle DIAWS26 / DIA-WI',
+        topics: [
+          'Datenqualität & Data Preparation',
+          'Explorative Datenanalyse & Kennzahlen',
+          'Data Warehouse Architektur & ETL-Prozess',
+          'OLAP (Star-/Snowflake-Schema, Roll-Up, Drill-Down)',
+          'Data Mining (Clustering, Klassifikation, Warenkorb)',
+          'BI-Dashboards & Entscheidungsunterstützung'
+        ]
+      },
+      {
+        id: 'itmr',
+        name: 'IT-Management und Recht',
+        short: 'ITMR',
+        prof: 'Prof. Häckel',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 36,
+        defaultBlockMin: 60,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#ec4899',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=11003',
+        localPath: 'Moodle ITMR WiSe26/27',
+        topics: [
+          'IT-Strategie & Business-IT-Alignment',
+          'IT-Governance (COBIT) & IT-Compliance',
+          'IT-Service-Management (ITIL: Incident vs. Problem)',
+          'IT-Wirtschaftlichkeit, TCO & Risikomanagement',
+          'IT-Vertragsrecht BGB (Kauf-, Werk-, Dienstvertrag)',
+          'Software-Urheberrecht & Datenschutz (DSGVO)'
+        ]
+      },
+      {
+        id: 'impis',
+        name: 'Implementierung von IS',
+        short: 'IMPIS',
+        prof: 'Prof. Lauterbach',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 35,
+        defaultBlockMin: 30,
+        examType: 'Schriftl.Prüfung / Fallstudie (90 Min.)',
+        color: '#eab308',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=11051',
+        localPath: 'B:\\betriebliche Informationsysteme',
+        topics: [
+          'Architektur betrieblicher IS (ERP-Schichten)',
+          'Standardsoftware vs. Individualsoftware',
+          'Customizing vs. Modifikation vs. Enhancement',
+          'Stammdaten & End-to-End Prozesse (O2C, P2P)',
+          'Einführungsstrategien (Big Bang vs. Phased Rollout)',
+          'Change Management & ERP-Projektrisiken'
+        ]
+      },
+      {
+        id: 'pem',
+        name: 'Produktentwicklung & Marketing',
+        short: 'PEM',
+        prof: 'Prof. Mayer',
+        sem: '3. Sem (WiSe 26/27)',
+        ects: 5,
+        sws: 4,
+        workloadTotal: 150,
+        workloadPresence: 60,
+        workloadSelf: 90,
+        targetStudyHours: 32,
+        defaultBlockMin: 30,
+        examType: 'Schriftl.Prüfung (90 Min.)',
+        color: '#14b8a6',
+        moodleUrl: 'https://moodle.hs-augsburg.de/course/view.php?id=11223',
+        localPath: 'Moodle PEM26',
+        topics: [
+          'Innovationsprozess (Stage-Gate & Design Thinking)',
+          'Agile Produktentwicklung (MVP, Build-Measure-Learn)',
+          'Marktforschung & Kundenbedürfnisanalyse',
+          'Segmentierung, Targeting & Positionierung (STP)',
+          'Marketing-Mix (4P: Product, Price, Place, Promotion)',
+          'Business Model Canvas & Value Proposition Design'
+        ]
+      }
+    ];
+
+    const QUESTION_BANK = {
+      bub: [
+        {
+          meta: 'Klausuraufgabe • 12 Punkte • 30 Min. Block',
+          q: 'Ein Unternehmen kauft am 01.07.2026 eine Serveranlage für 60.000 € netto (zzgl. 19 % USt) auf Ziel (Nutzungsdauer: 5 Jahre).\na) Buchungssatz beim Kauf?\nb) Lineare Abschreibung & Buchungssatz zum 31.12.2026?\nc) Restbuchwert am 31.12.2026?',
+          a: 'a) TAM (BGA) 60.000 € + Vorsteuer 11.400 € an Verbindlichkeiten a.LL 71.400 €\nb) Jahres-AfA = 12.000 €, zeitanteilig 6/12 = 6.000 €. Buchung: Abschreibungen auf Sachanlagen 6.000 € an TAM 6.000 €\nc) Restbuchwert = 54.000 €',
+          hint: '💡 Tipp ohne Lösung:\n• Beim Einkauf buchen wir immer den Nettobetrag auf das Anlagekonto + Vorsteuer (19 %) im Soll. „Auf Ziel“ heißt: noch nicht bezahlt (Verbindlichkeiten a.LL).\n• Achte bei b) genau auf das Kaufdatum (01.07.) – wie viele Monate wird der Server in 2026 genutzt?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Kauf am 01.07.):\n   • Netto-Anschaffungskosten = 60.000 € -> aktives Bestandskonto TAM/BGA nimmt im SOLL zu.\n   • Vorsteuer = 19 % von 60.000 € = 11.400 € -> Forderung ans Finanzamt, ebenfalls im SOLL.\n   • „Auf Ziel“ = Rechnung offen -> Verbindlichkeiten a.LL (Passivkonto) nimmt im HABEN um Brutto 71.400 € zu.\n2) Teil b (Abschreibung am 31.12.):\n   • Volle Jahres-AfA = 60.000 € / 5 Jahre = 12.000 € pro Jahr.\n   • Kauf war am 01.07. -> Nutzung von Juli bis Dezember = genau 6 Monate -> 12.000 € × (6/12) = 6.000 €.\n   • Aufwandskonto „Abschreibungen“ im SOLL an Anlagekonto „TAM“ im HABEN.\n3) Teil c (Restbuchwert):\n   • Anschaffungskosten (60.000 € netto!) minus Abschreibung (6.000 €) = 54.000 €.',
+          why: '📐 Grundregeln dahinter:\n• Vorsteuer ist für Unternehmen ein durchlaufender Posten – deshalb wird NUR vom Nettobetrag (60.000 €) abgeschrieben, niemals vom Bruttobetrag!\n• Pro-rata-temporis-Regel (§ 253 Abs. 3 HGB): Im Anschaffungsjahr wird monatsgenau ab dem Anschaffungsmonat abgeschrieben (Juli mitgezählt = 6/12).',
+          trap: '⚠️ Typische Klausurfallen (Prof. Übelhör):\n1. Vom Bruttobetrag (71.400 €) statt vom Nettobetrag (60.000 €) abschreiben.\n2. Zeitanteilige Kürzung (6/12) vergessen und volle 12.000 € buchen.\n3. Umsatzsteuer statt Vorsteuer beim Einkauf schreiben!'
+        },
+        {
+          meta: 'Klausuraufgabe • 10 Punkte • Rechnungsabgrenzung',
+          q: 'Am 01.10.2026 überweist die THA GmbH Büromiete für 6 Monate im Voraus (Okt 26 – März 27) in Höhe von 18.000 €.\na) Welcher Abgrenzungsposten liegt vor?\nb) Buchungssätze am 01.10. und 31.12.2026?',
+          a: 'a) Aktiver Rechnungsabgrenzungsposten (ARAP, § 250 Abs. 1 HGB): Ausgabe vor dem Stichtag, Aufwand nach dem Stichtag.\nb) 01.10.: Mietaufwand 18.000 € an Bank 18.000 €\n   31.12.: ARAP 9.000 € an Mietaufwand 9.000 € (für Jan–März 2027).',
+          hint: '💡 Tipp ohne Lösung:\n• Prüfe zwei Dinge: Fließt Geld heraus (Ausgabe) oder herein (Einnahme)? Und welcher Teil der 6 Monate gehört wirtschaftlich erst ins neue Jahr 2027?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Monatsmiete berechnen: 18.000 € / 6 Monate = 3.000 € pro Monat.\n2) Zeitraum aufteilen:\n   • Okt, Nov, Dez 2026 = 3 Monate (9.000 €) gehören ins alte Jahr 2026.\n   • Jan, Feb, März 2027 = 3 Monate (9.000 €) gehören wirtschaftlich ins neue Jahr 2027!\n3) Am 01.10. buchen wir zunächst die volle Zahlung: Mietaufwand 18.000 € an Bank 18.000 €.\n4) Am 31.12. korrigieren wir den zu hohen Aufwand für 2027 heraus: ARAP 9.000 € (Soll) an Mietaufwand 9.000 € (Haben). Damit bleiben für 2026 exakt 9.000 € Aufwand übrig!',
+          why: '📐 Grundregel (§ 250 HGB Periodenabgrenzung):\n• ARAP (Aktiv): Wir zahlen JETZT, bekommen die Gegenleistung im NEUEN Jahr (wie ein Guthaben an vorausbezahlter Miete -> Aktivseite).\n• PRAP (Passiv): Kunde zahlt uns JETZT, wir schulden die Leistung im NEUEN Jahr.',
+          trap: '⚠️ Typische Klausurfalle:\nDen falschen Betrag abgrenzen! Abgegrenzt wird am 31.12. immer nur der Anteil des NEUEN Jahres (Jan–März = 3 Monate = 9.000 €), nicht die vollen 18.000 €!'
+        }
+      ],
+      dia: [
+        {
+          meta: 'Klausuraufgabe • 15 Punkte • OLAP & DWH',
+          q: 'Ein Online-Shop analysiert Verkäufe (Umsatz, Menge) nach Zeit, Produkt und Filiale.\na) Entwerfen Sie ein Star-Schema.\nb) Erklären Sie Roll-Up, Drill-Down, Slice und Dice.',
+          a: 'a) Fakt_Verkauf (Datum_ID, Produkt_ID, Filiale_ID, Umsatz, Menge) + Dim_Zeit, Dim_Produkt, Dim_Filiale.\nb) Roll-Up = Verdichten (Stadt -> Land), Drill-Down = Detaillieren (Jahr -> Monat), Slice = 1 Dimension fixieren, Dice = Teilwürfel über mehrere Dimensionen.',
+          hint: '💡 Tipp ohne Lösung:\n• Überlege bei a): Was sind messbare Zahlen/Kennzahlen (= Fakten in der Mitte) und was sind Auswertungs-Perspektiven „nach ...“ (= Dimensionen außen herum)?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Star-Schema):\n   • In die Mitte kommt die Faktentabelle `Fakt_Verkauf`: Sie enthält die Fremdschlüssel zu allen Dimensionen (`Datum_ID`, `Produkt_ID`, `Filiale_ID`) + die numerischen Kennzahlen (`Umsatz`, `Menge`).\n   • Sternförmig darum liegen die 3 Dimensionstabellen: `Dim_Zeit` (Tag, Monat, Quartal, Jahr), `Dim_Produkt` (Name, Kategorie, Marke), `Dim_Filiale` (Stadt, Bundesland, Land).\n2) Teil b (OLAP-Operationen am Datenwürfel):\n   • Roll-Up: Hochaggregieren auf gröbere Ebene (z.B. Filiale Augsburg -> Bayern -> Deutschland).\n   • Drill-Down: Gegenteil – tiefer hineinzoomen (z.B. Jahr 2026 -> Quartal 4 -> Oktober).\n   • Slice: Eine Scheibe abschneiden (= genau 1 Dimension festlegen, z.B. nur Jahr = 2026).\n   • Dice: Kleineren Teilwürfel ausschneiden (= mehrere Dimensionen gleichzeitig filtern).',
+          why: '📐 Warum Star-Schema statt 3NF?\nIm Data Warehouse wollen wir extrem schnelle Lese-Abfragen (OLAP) über Millionen Zeilen. Weniger Joins (denormalisierte Dimensionen) machen Abfragen deutlich schneller als ein tief verschachteltes Snowflake-/3NF-Schema.',
+          trap: '⚠️ Typische Klausurfalle:\nKennzahlen (Umsatz, Menge) versehentlich in eine Dimensionstabelle schreiben oder Slice (1 Dimension fixiert -> 2D-Scheibe) mit Dice (mehrere Filter -> kleinerer 3D-Würfel) verwechseln!'
+        }
+      ],
+      prowi: [
+        {
+          meta: 'Klausuraufgabe (10 ECTS) • 20 Punkte',
+          q: 'Gegeben: Interface `Zahlbar` mit `double berechneBetrag()`.\na) Implementieren Sie die Klasse `Rechnung` (`rechnungsNr`, `nettoBetrag`, `mwstSatz`) inkl. `IllegalArgumentException` bei `nettoBetrag < 0`.\nb) Statische Methode `gesamtUmsatz(List<Zahlbar> posten)`.',
+          a: 'public class Rechnung implements Zahlbar {\n  private String nr; private double netto, mwst;\n  public Rechnung(String nr, double netto, double mwst) {\n    if (netto < 0) throw new IllegalArgumentException();\n    this.nr = nr; this.netto = netto; this.mwst = mwst;\n  }\n  public double berechneBetrag() { return netto * (1 + mwst); }\n  public static double gesamtUmsatz(List<Zahlbar> list) {\n    double s = 0; for (Zahlbar z : list) s += z.berechneBetrag(); return s;\n  }\n}',
+          hint: '💡 Tipp ohne Lösung:\n• Mit welchem Java-Schlüsselwort bindet eine Klasse ein Interface ein (`extends` oder `implements`)?\n• Vergiss im Konstruktor nicht `throw new IllegalArgumentException(...)` BEVOR du die Attribute zuweist!',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Klassenkopf: `public class Rechnung implements Zahlbar` (Interfaces werden mit `implements` eingebunden).\n2) Kapselung: Alle 3 Attribute `private` deklarieren.\n3) Konstruktor-Validierung: `if (nettoBetrag < 0) { throw new IllegalArgumentException("Netto darf nicht negativ sein"); }`.\n4) Interface-Methode überschreiben: `public double berechneBetrag()` gibt Brutto zurück, also `nettoBetrag * (1.0 + mwstSatz)` (bei `0.19` als Satz).\n5) Statische Methode in b): `public static double gesamtUmsatz(List<Zahlbar> posten)` iteriert per For-Each (`for (Zahlbar z : posten)`) polymorph über jedes Element und summiert `z.berechneBetrag()`.',
+          why: '📐 Prinzip dahinter (Polymorphie):\nWeil `gesamtUmsatz` gegen das Interface `List<Zahlbar>` programmiert ist (und nicht gegen `List<Rechnung>`), funktioniert die Methode später auch für `Abo`, `Gutschein` oder `Ticket`, solange sie `Zahlbar` implementieren!',
+          trap: '⚠️ Typische Klausurfallen (Prof. Strohmeier):\n1. `extends Zahlbar` statt `implements Zahlbar` schreiben.\n2. `new` vor `IllegalArgumentException()` vergessen (`throw IllegalArgumentException` kompiliert nicht!).\n3. Interface-Methode nicht `public` machen (in Interfaces sind Methoden implizit `public`).'
+        }
+      ],
+      dbs: [
+        {
+          meta: 'Klausuraufgabe • 15 Punkte • SQL & 2NF/3NF',
+          q: 'Tabellen: `Kunde(KundenID, Name, Stadt)` und `Bestellung(BestellID, KundenID, Betrag)`.\na) SQL: Alle Kunden aus Augsburg mit Anzahl Bestellungen und Summe Betrag > 500 €, absteigend sortiert.\nb) Wann ist eine Relation in 2NF bzw. 3NF?',
+          a: 'a) SELECT k.Name, COUNT(b.BestellID), SUM(b.Betrag) AS Summe\n   FROM Kunde k JOIN Bestellung b ON k.KundenID = b.KundenID\n   WHERE k.Stadt = \'Augsburg\'\n   GROUP BY k.KundenID, k.Name\n   HAVING SUM(b.Betrag) > 500 ORDER BY Summe DESC;\nb) 2NF: 1NF + jedes Nichtschlüsselattribut voll funktional vom gesamten PK abhängig.\n   3NF: 2NF + keine transitiven Abhängigkeiten zwischen Nichtschlüsselattributen.',
+          hint: '💡 Tipp ohne Lösung:\n• In SQL gibt es zwei Filter: `WHERE` filtert einzelne Zeilen VOR der Gruppierung, ein anderes Schlüsselwort filtert aggregierte Gruppen (`SUM(...) > 500`) NACH `GROUP BY`. Welches?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Tabellen verknüpfen: `FROM Kunde k JOIN Bestellung b ON k.KundenID = b.KundenID`.\n2) Einzelzeilen vorab filtern: `WHERE k.Stadt = \'Augsburg\'` (Stadt ist kein Aggregat -> gehört in `WHERE`).\n3) Gruppieren: `GROUP BY k.KundenID, k.Name` (gut: `KundenID` mitgruppieren, falls zwei Kunden gleich heißen!).\n4) Gruppen filtern: `HAVING SUM(b.Betrag) > 500` (Aggregatfunktionen wie `SUM`/`COUNT` dürfen NIE im `WHERE` stehen!).\n5) Sortieren: `ORDER BY Summe DESC` (`DESC` = absteigend, groß nach klein).',
+          why: '📐 SQL-Ausführungsreihenfolge im Kopf behalten:\n`FROM / JOIN` -> `WHERE` -> `GROUP BY` -> `HAVING` -> `SELECT` -> `ORDER BY`.\nDarum kennt `WHERE` noch kein `SUM(...)`, `HAVING` aber schon!',
+          trap: '⚠️ Typische Klausurfallen (Prof. Kolonko):\n1. `WHERE SUM(b.Betrag) > 500` schreiben -> sofortiger SQL-Syntaxfehler! Immer `HAVING` für Aggregate nutzen.\n2. Nur `GROUP BY k.Name` ohne `k.KundenID` (zwei „Müller“ würden zusammengerechnet!).'
+        }
+      ],
+      impis: [
+        {
+          meta: 'Klausuraufgabe • 12 Punkte • ERP & Rollout',
+          q: 'a) Unterschied zwischen Customizing, Erweiterung (Add-on) und Modifikation bei ERP-Systemen?\nb) Big Bang vs. Phased Rollout: Vor- und Nachteile?',
+          a: 'a) Customizing = Einstellung ohne Codeänderung (releasefähig); Modifikation = Änderung am Hersteller-Quellcode.\nb) Big Bang = schnell, keine temporären Schnittstellen, aber hohes Go-Live-Risiko. Phased = risikoärmer, aber temporäre Schnittstellen nötig.',
+          hint: '💡 Tipp ohne Lösung:\n• Denke bei a) daran, was beim nächsten großen SAP-Update (Releasewechsel) passiert: Welche Anpassung bleibt erhalten und welche wird überschrieben?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (ERP-Anpassungsstufen von harmlos bis kritisch):\n   • Customizing: Reine Parametrisierung/Konfiguration im vorgesehenen Rahmen des Herstellers (z.B. Buchungskreise, Steuersätze einstellen) -> kein Code geändert, voll update-/releasefähig!\n   • Erweiterung (Enhancement / Add-on): Eigener Zusatzcode an offiziellen Schnittstellen/User-Exits des Herstellers -> meist gut updatefähig.\n   • Modifikation: Direkter Eingriff in den Original-Quellcode des ERP-Herstellers -> extrem teuer bei Updates, da Änderungen überschrieben werden!\n2) Teil b (Einführungsstrategien):\n   • Big Bang: Alle Standorte/Module schalten an EINEM Stichtag um (+ keine Altsystem-Schnittstellen nötig, + kürzere Projektdauer; – extremes Ausfallrisiko bei Fehlern).\n   • Phased Rollout (Schrittweise): Modul für Modul oder Werk für Werk (+ geringeres Risiko, Lerneffekte; – lange Parallelphase & teure temporäre Schnittstellen).',
+          why: '📐 Merksatz für die Praxis & Klausur:\n„So viel Standard/Customizing wie möglich, so wenig Modifikation wie nötig“ – wegen der langfristigen Wartungskosten (Total Cost of Ownership).',
+          trap: '⚠️ Typische Klausurfalle:\nCustomizing mit „kleiner Programmierung“ verwechseln! Beim Customizing wird KEIN Quellcode programmiert, sondern nur konfiguriert.'
+        }
+      ],
+      itmr: [
+        {
+          meta: 'Klausuraufgabe • 14 Punkte • ITIL & IT-Recht',
+          q: 'a) Unterschied zwischen Incident Management und Problem Management (ITIL)?\nb) Individualsoftware zum Festpreis vs. IT-Beratung nach Stundensatz: Welche BGB-Vertragstypen?',
+          a: 'a) Incident = schnelle Wiederherstellung des Betriebs (Workaround); Problem = Ursachenforschung (Root Cause) zur dauerhaften Behebung.\nb) Festpreis-Software = Werkvertrag (§ 631 BGB, Erfolg + Abnahme geschuldet); Beratung = Dienstvertrag (§ 611 BGB, nur Bemühen geschuldet).',
+          hint: '💡 Tipp ohne Lösung:\n• Feuerwehr vs. Detektiv: Wer löscht sofort das Feuer (damit weitergearbeitet werden kann) und wer sucht danach die Brandursache?\n• BGB: Schuldet der Auftragnehmer ein fertiges Ergebnis oder nur seine Arbeitszeit?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (ITIL Service Operation):\n   • Incident Management: Ziel ist maximale Geschwindigkeit – den normalen IT-Service für den Nutzer so schnell wie möglich wiederherstellen (gerne auch per Workaround, z.B. Server-Neustart).\n   • Problem Management: Sucht die zugrundeliegende Ursache (Root Cause Analysis) von einem oder mehreren Incidents, um sie dauerhaft abzustellen (Known Error Database).\n2) Teil b (BGB-Vertragsrecht):\n   • Individualsoftware zum Festpreis = Werkvertrag (§ 631 BGB): Ein konkreter Erfolg (funktionierende Software gemäß Pflichtenheft) ist geschuldet. Rechtsfolge: Abnahmepflicht (§ 640 BGB) + gesetzliche Mängelgewährleistung!\n   • IT-Beratung nach Stundensatz = Dienstvertrag (§ 611 BGB): Geschuldet ist fachkundiges Tätigwerden/Bemühen, kein konkreter Erfolg und keine Abnahme.',
+          why: '📐 Warum ist die Unterscheidung Werk- vs. Dienstvertrag in der Klausur so wichtig?\nNur beim Werkvertrag gibt es die förmliche **Abnahme** – erst mit der Abnahme wird die Vergütung fällig und die Verjährungsfrist für Mängel beginnt!',
+          trap: '⚠️ Typische Klausurfalle:\nSchreiben, dass ein „Problem“ einfach ein „besonders schwerer Incident“ sei – falsch! Ein Problem ist in ITIL immer die **unbekannte Ursache** hinter einem oder mehreren Incidents.'
+        }
+      ],
+      klr: [
+        {
+          meta: 'Klausuraufgabe • 16 Punkte • Break-Even & DB',
+          q: 'Verkaufspreis p = 250 €, variable Stückkosten kv = 150 €, Fixkosten Kf = 80.000 €.\na) Stückdeckungsbeitrag db und DB-Quote?\nb) Break-Even-Menge?\nc) Menge für Zielgewinn 25.000 €?',
+          a: 'a) db = 250 - 150 = 100 € / Stück (DB-Quote = 40 %)\nb) x_BEP = 80.000 / 100 = 800 Stück\nc) x_Ziel = (80.000 + 25.000) / 100 = 1.050 Stück',
+          hint: '💡 Tipp ohne Lösung:\n• Wie viel Euro bleiben von EINEM verkauften Stück (250 €) übrig, nachdem seine variablen Kosten (150 €) bezahlt sind? Genau dieser Betrag hilft Stück für Stück, den 80.000 € Fixkosten-Berg abzutragen!',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Stückdeckungsbeitrag & Quote):\n   • `db = p - kv = 250 € - 150 € = 100 € pro Stück`.\n   • `DB-Quote = db / p = 100 € / 250 € = 0,40 = 40 %` (von jedem Euro Umsatz bleiben 40 Cent zur Fixkostendeckung).\n2) Teil b (Break-Even-Menge -> Gewinn = 0 €):\n   • Wie viele Stücke à 100 € db brauchen wir für 80.000 € Fixkosten?\n   • `x_BEP = Kf / db = 80.000 € / 100 € = 800 Stück`.\n3) Teil c (Zielgewinn G = 25.000 €):\n   • Jetzt müssen die Stück-DBs sowohl die Fixkosten (80.000 €) ALS AUCH den Wunschgewinn (25.000 €) erwirtschaften:\n   • `x_Ziel = (Kf + G) / db = (80.000 + 25.000) / 100 = 105.000 / 100 = 1.050 Stück`.',
+          why: '📐 Grundgleichung des Gewinns:\n`Gewinn G = db × x - Kf`.\nSetzt du `G = 0`, folgt sofort `x_BEP = Kf / db`. Setzt du `G = 25.000`, folgt `x = (Kf + 25.000) / db`!',
+          trap: '⚠️ Typische Klausurfallen:\n1. Bei der DB-Quote durch `kv` (150 €) statt durch den Verkaufspreis `p` (250 €) teilen.\n2. Falls das Ergebnis Kommastellen hat (z.B. 800,3 Stück), im Antwortsatz bei ganzen Produkten immer auf die nächste ganze Zahl **aufrunden** (801 Stück), da bei 800 Stück noch Verlust bestünde!'
+        }
+      ],
+      pem: [
+        {
+          meta: 'Klausuraufgabe • 12 Punkte • MVP & Pricing',
+          q: 'a) Was ist ein Minimum Viable Product (MVP) im Build-Measure-Learn-Zyklus?\nb) Skimming-Pricing vs. Penetrations-Pricing?',
+          a: 'a) Minimal funktionsfähiges Produkt für frühes echtes Kundenfeedback bei minimalem Aufwand.\nb) Skimming = hoher Startpreis, später senken; Penetration = niedriger Kampfpreis für schnellen Marktanteil.',
+          hint: '💡 Tipp ohne Lösung:\n• Denke bei b) an Apple beim neuen iPhone (teuer zum Start) vs. einen neuen Streaming-Dienst mit 1,99 € Kampfpreis zum Marktstart!',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (MVP im Lean Startup):\n   • Ein MVP besitzt gerade genug Kernfunktionen, um für erste echte Nutzer (Early Adopters) nutzbar zu sein.\n   • Ziel im Zyklus **Build -> Measure -> Learn**: Nicht monatelang am Markt vorbeientwickeln, sondern mit minimalem Aufwand echte Nutzungsdaten messen und daraus lernen (Pivot oder Persevere).\n2) Teil b (Preisstrategien für Neuprodukte):\n   • **Skimming (Abschöpfungsstrategie):** Hoher Einführungspreis für zahlungsbereite Innovatoren -> Preis wird später schrittweise gesenkt (typisch bei Tech/Patenten).\n   • **Penetration (Durchdringungsstrategie):** Sehr niedriger Startpreis -> schneller Aufbau von Marktanteilen & Netzwerkeffekten, schreckt Nachahmer ab.',
+          why: '📐 Wann wählt man welche Strategie?\n• Skimming braucht ein starkes Alleinstellungsmerkmal/Innovationsvorsprung.\n• Penetration lohnt sich besonders bei digitalen Produkten/Plattformen mit Skaleneffekten (hohe Nutzerzahl = hoher Wert).',
+          trap: '⚠️ Typische Klausurfalle:\nEin MVP ist KEIN halbkaputter Prototyp ohne Nutzen („Minimum“ allein reicht nicht – es muss auch **Viable**, also überlebens-/nutzungsfähig für den Kunden sein!).'
+        }
+      ],
+      se: [
+        {
+          meta: 'Klausuraufgabe • 15 Punkte • UML & Design Patterns',
+          q: 'a) Unterschied zwischen Assoziation, Aggregation und Komposition in UML?\nb) Welches Problem löst das Observer-Pattern?',
+          a: 'a) Aggregation (leere Raute) = Teil-Ganzes ohne Existenzabhängigkeit; Komposition (gefüllte Raute) = mit Existenzabhängigkeit.\nb) Observer benachrichtigt abhängige Objekte automatisch bei Zustandsänderungen ohne enge Kopplung.',
+          hint: '💡 Tipp ohne Lösung:\n• Stell dir bei a) vor: „Auto – Reifen“ vs. „Haus – Raum“. Wenn du das Ganze löschst – existiert das Einzelteil weiter oder stirbt es automatisch mit?',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (UML-Beziehungen am Ganzen gezeichnet):\n   • **Assoziation (einfache Linie):** Allgemeine „kennt / nutzt“-Beziehung auf Augenhöhe (z.B. `Kunde` — `Bestellung`).\n   • **Aggregation (leere Raute ◇ am Ganzen):** „Teil-von“-Beziehung OHNE Existenzabhängigkeit (z.B. `Vorlesung` ◇— `Student`: Wird die Vorlesung gelöscht, existiert der Student weiter).\n   • **Komposition (ausgefüllte Raute ◆ am Ganzen):** Starke „Teil-von“-Beziehung MIT Existenzabhängigkeit + jedes Teil gehört zu max. 1 Ganzen (Multiplizität `1` oder `0..1` beim Ganzen, z.B. `Rechnung` ◆— `Rechnungsposition`).\n2) Teil b (Observer / Beobachter-Muster):\n   • Ein Objekt (`Subject`, z.B. Wetterstation/Aktienkurs) ändert seinen Zustand und mehrere Anzeigen (`Observer`) müssen aktualisiert werden, ohne dass das `Subject` die konkreten Klassen der Anzeigen hartcodiert kennen muss.',
+          why: '📐 Eselsbrücke für die Raute in der Klausur:\nDie Raute klebt in UML **immer auf der Seite des Ganzen** (nicht beim Einzelteil!). Gefüllte schwarze Raute ◆ = „Tod-gebunden“ (stirbt das Ganze, sterben die Teile mit).',
+          trap: '⚠️ Typische Klausurfalle (Prof. Metzner):\nDie Raute ans falsche Ende der Linie zeichnen! Bei `Gebäude ◆——— Raum` muss die Raute zwingend direkt am `Gebäude` sitzen.'
+        }
+      ]
+    };
+
+    const STORAGE_KEY = 'tha_lernplan_state_v3';
+    let state = loadState();
+    let selectedDate = getTodayISO();
+    let reportWeekOffset = 0; // 0 = current week, -1 = last week
+    let selectedVW = getCurrentVorlesungswoche();
+    let currentTimerDurationMin = 60;
+    let timerSeconds = 60 * 60;
+    let timerInterval = null;
+
+    function getTodayISO() {
+      return formatDateISO(new Date());
+    }
+
+    function formatDateISO(d) {
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    function getISOWeekNumber(d) {
+      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      const dayNum = date.getUTCDay() || 7;
+      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+      return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+    }
+
+    // Calculate THA WiSe 2026/27 Lecture Week (Vorlesungswoche 1 starts Oct 1, 2026 -> Oct 22 is VW 4)
+    function getCurrentVorlesungswoche(refDateStr) {
+      const semesterStart = new Date('2026-10-01T08:00:00');
+      const now = refDateStr ? new Date(refDateStr + 'T12:00:00') : new Date();
+      const diffWeeks = Math.floor((now - semesterStart) / (7 * 86400000)) + 1;
+      return Math.max(1, Math.min(15, diffWeeks));
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('tha_lernplan_state_v2') || localStorage.getItem('tha_lernplan_state_v1');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          parsed.weeklyLogs = parsed.weeklyLogs || {}; // { '2026-W43': { 'prowi': 90, 'dbs': 60 } }
+          parsed.moodleSlides = parsed.moodleSlides || {}; // { 'dbs:VW4': true }
+          parsed.slideNotes = parsed.slideNotes || {}; // { 'dbs:VW4': 'ER-Modellierung' }
+          parsed.timeline = parsed.timeline || []; // Chronological study timeline entries
+          return parsed;
+        }
+      } catch (e) {}
+      return {
+        completedTopics: {},
+        studiedMinutes: {},
+        dailyTodos: {},
+        weeklyLogs: {},
+        moodleSlides: {},
+        slideNotes: {},
+        timeline: []
+      };
+    }
+
+    const CLOUD_SYNC_KEY = 'tha_kurama_cloud_sync_v1';
+    let cloudSyncCfg = loadCloudSyncConfig();
+    let cloudPushTimer = null;
+    let isPullingCloud = false;
+    let hasUnsyncedChanges = false;
+
+    function loadCloudSyncConfig() {
+      try {
+        // 1. Check URL fragment #pair=<base64url> for 1-scan mobile/tablet pairing
+        if (window.location.hash && window.location.hash.startsWith('#pair=')) {
+          const b64 = window.location.hash.slice(6).replace(/-/g, '+').replace(/_/g, '/');
+          const decoded = JSON.parse(atob(b64));
+          if (decoded && decoded.gistId && decoded.token) {
+            localStorage.setItem(CLOUD_SYNC_KEY, JSON.stringify(decoded));
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+            setTimeout(() => {
+              alert('🎉 Stark, Ahmad! Dein Gerät ist jetzt 24/7 live mit deinem Kurama-Cockpit verbunden!');
+            }, 300);
+            return decoded;
+          }
+        }
+        const saved = localStorage.getItem(CLOUD_SYNC_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch (e) {}
+      return null;
+    }
+
+    function saveState(skipCloudPush = false) {
+      if (!skipCloudPush) {
+        state.updatedAt = Date.now();
+        hasUnsyncedChanges = true;
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if (typeof kuramaBridgeOnline !== 'undefined' && kuramaBridgeOnline) {
+        fetch(KURAMA_BRIDGE_URL + '/save-state', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ state })
+        }).catch(() => {});
+      }
+      if (!skipCloudPush && cloudSyncCfg && cloudSyncCfg.gistId && cloudSyncCfg.token) {
+        clearTimeout(cloudPushTimer);
+        cloudPushTimer = setTimeout(() => pushStateToCloud(), 650);
+      }
+    }
+
+    function refreshAllViews() {
+      renderDailyPlan();
+      renderWeeklyReport();
+      renderMoodleSlidesTracker();
+      renderWeekGrid();
+      renderCourses();
+      renderTimeline();
+    }
+
+    function mergeTwoStates(localS, remoteS) {
+      const merged = JSON.parse(JSON.stringify(remoteS));
+      merged.completedTopics = { ...(remoteS.completedTopics || {}), ...(localS.completedTopics || {}) };
+      merged.moodleSlides = { ...(remoteS.moodleSlides || {}), ...(localS.moodleSlides || {}) };
+      merged.slideNotes = { ...(remoteS.slideNotes || {}), ...(localS.slideNotes || {}) };
+      merged.dailyTodos = { ...(remoteS.dailyTodos || {}), ...(localS.dailyTodos || {}) };
+
+      // Merge timeline entries uniquely by ID, sorted newest-first
+      const map = new Map();
+      [...(localS.timeline || []), ...(remoteS.timeline || [])].forEach(item => {
+        if (item && item.id) map.set(item.id, item);
+      });
+      merged.timeline = Array.from(map.values())
+        .sort((a, b) => new Date(b.ts) - new Date(a.ts))
+        .slice(0, 120);
+
+      // Keep max minutes per course/week when offline changes happened concurrently
+      merged.studiedMinutes = { ...(remoteS.studiedMinutes || {}) };
+      Object.entries(localS.studiedMinutes || {}).forEach(([cid, m]) => {
+        merged.studiedMinutes[cid] = Math.max(merged.studiedMinutes[cid] || 0, m || 0);
+      });
+
+      merged.weeklyLogs = { ...(remoteS.weeklyLogs || {}) };
+      Object.entries(localS.weeklyLogs || {}).forEach(([wk, obj]) => {
+        merged.weeklyLogs[wk] = { ...(merged.weeklyLogs[wk] || {}) };
+        Object.entries(obj || {}).forEach(([cid, m]) => {
+          merged.weeklyLogs[wk][cid] = Math.max(merged.weeklyLogs[wk][cid] || 0, m || 0);
+        });
+      });
+
+      merged.updatedAt = Date.now();
+      return merged;
+    }
+
+    function updateSyncHeaderBadge(statusText, isConnected) {
+      const btn = document.getElementById('syncHeaderBtn');
+      const banner = document.getElementById('syncModalStatusBanner');
+      if (btn) {
+        btn.textContent = isConnected ? '🟢 Sync aktiv' : '📱 Handy & Tablet';
+        if (isConnected) {
+          btn.style.borderColor = 'rgba(34, 197, 94, 0.55)';
+          btn.style.color = '#86efac';
+        }
+      }
+      if (banner) {
+        banner.innerHTML = statusText;
+      }
+    }
+
+    async function pullStateFromCloud(forceApply = false) {
+      if (!cloudSyncCfg || !cloudSyncCfg.gistId || !cloudSyncCfg.token || isPullingCloud) return false;
+      isPullingCloud = true;
+      try {
+        const res = await fetch(`https://api.github.com/gists/${cloudSyncCfg.gistId}?t=${Date.now()}`, {
+          headers: {
+            'Authorization': `Bearer ${cloudSyncCfg.token}`,
+            'Accept': 'application/vnd.github+json'
+          },
+          cache: 'no-store'
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const gist = await res.json();
+        const fileObj = gist.files && gist.files['kurama_cockpit_sync.json'];
+        if (fileObj && fileObj.content) {
+          const remoteState = JSON.parse(fileObj.content);
+          const remoteTs = remoteState.updatedAt || 0;
+          const localTs = state.updatedAt || 0;
+
+          if (remoteTs > localTs) {
+            state = hasUnsyncedChanges ? mergeTwoStates(state, remoteState) : remoteState;
+            state.timeline = state.timeline || [];
+            saveState(true);
+            refreshAllViews();
+            if (hasUnsyncedChanges) {
+              hasUnsyncedChanges = false;
+              await pushStateToCloud();
+            }
+          } else if (localTs > remoteTs && (hasUnsyncedChanges || forceApply)) {
+            await pushStateToCloud();
+          }
+        }
+        const nowTime = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        updateSyncHeaderBadge(`🟢 <strong>24/7 Cloud-Sync aktiv!</strong> PC, Handy & Tablet sind live verbunden (Stand: ${nowTime} Uhr).`, true);
+        isPullingCloud = false;
+        return true;
+      } catch (e) {
+        updateSyncHeaderBadge(`⚠️ Cloud momentan offline – Änderungen werden lokal gespeichert und später automatisch synchronisiert.`, false);
+        isPullingCloud = false;
+        return false;
+      }
+    }
+
+    async function pushStateToCloud() {
+      if (!cloudSyncCfg || !cloudSyncCfg.gistId || !cloudSyncCfg.token) return false;
+      try {
+        state.updatedAt = state.updatedAt || Date.now();
+        const res = await fetch(`https://api.github.com/gists/${cloudSyncCfg.gistId}`, {
+          method: 'PATCH',
+          headers: {
+            'Authorization': `Bearer ${cloudSyncCfg.token}`,
+            'Accept': 'application/vnd.github+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            files: {
+              'kurama_cockpit_sync.json': {
+                content: JSON.stringify(state)
+              }
+            }
+          })
+        });
+        if (res.ok) {
+          hasUnsyncedChanges = false;
+          const nowTime = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          updateSyncHeaderBadge(`🟢 <strong>Gespeichert & synchronisiert!</strong> Alle Geräte auf Stand ${nowTime} Uhr.`, true);
+          return true;
+        }
+      } catch (e) {}
+      return false;
+    }
+
+    function getPairingUrl() {
+      if (!cloudSyncCfg || !cloudSyncCfg.gistId || !cloudSyncCfg.token) return '';
+      const baseAppUrl = cloudSyncCfg.appUrl || 'https://azzo82.github.io/kurama-cockpit/';
+      const payload = JSON.stringify({
+        gistId: cloudSyncCfg.gistId,
+        token: cloudSyncCfg.token,
+        appUrl: baseAppUrl
+      });
+      const b64 = btoa(payload).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      return `${baseAppUrl}#pair=${b64}`;
+    }
+
+    function openSyncModal() {
+      const backdrop = document.getElementById('syncModalBackdrop');
+      const pairSec = document.getElementById('syncPairSection');
+      const qrWrap = document.getElementById('syncQrWrap');
+      const qrImg = document.getElementById('syncQrImg');
+      backdrop.classList.add('open');
+
+      if (cloudSyncCfg && cloudSyncCfg.gistId && cloudSyncCfg.token) {
+        pairSec.style.display = 'block';
+        if (cloudSyncCfg.qrDataUrl) {
+          qrImg.src = cloudSyncCfg.qrDataUrl;
+          qrWrap.style.display = 'flex';
+        }
+        pullStateFromCloud();
+      } else {
+        updateSyncHeaderBadge('⏳ Verbinde mit deinem lokalen PC-Server für die Kopplung...', false);
+        ensureKuramaBridgeReady().then(() => discoverSyncFromBridge());
+      }
+    }
+
+    function closeSyncModal() {
+      document.getElementById('syncModalBackdrop').classList.remove('open');
+    }
+
+    function copyPairingLink() {
+      const url = getPairingUrl();
+      if (!url) return;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('✅ Koppel-Link kopiert! Schick ihn dir z.B. per WhatsApp oder Mail aufs Handy & Tablet und öffne ihn einmal.');
+      });
+    }
+
+    async function forceSyncNow() {
+      await pullStateFromCloud(true);
+    }
+
+    async function discoverSyncFromBridge() {
+      try {
+        const res = await fetch(KURAMA_BRIDGE_URL + '/sync-info');
+        const data = await res.json();
+        if (data && data.ok) {
+          if (data.lanIps && data.lanIps.length > 0) {
+            const lanSec = document.getElementById('homeLanSection');
+            const lanUrls = document.getElementById('homeLanUrls');
+            lanSec.style.display = 'block';
+            lanUrls.innerHTML = data.lanIps.map(ip => `http://${ip}:${data.port}`).join('<br/>');
+          }
+          if (data.syncConfig && data.syncConfig.gistId && data.syncConfig.token) {
+            cloudSyncCfg = data.syncConfig;
+            localStorage.setItem(CLOUD_SYNC_KEY, JSON.stringify(cloudSyncCfg));
+            document.getElementById('syncPairSection').style.display = 'block';
+            if (cloudSyncCfg.qrDataUrl) {
+              document.getElementById('syncQrImg').src = cloudSyncCfg.qrDataUrl;
+              document.getElementById('syncQrWrap').style.display = 'flex';
+            }
+            await pullStateFromCloud(true);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function logWeeklyStudyTime(dateISO, courseId, minutesDelta, reasonLabel) {
+      const d = new Date(dateISO + 'T12:00:00');
+      const wkKey = `${d.getFullYear()}-W${getISOWeekNumber(d)}`;
+      if (!state.weeklyLogs[wkKey]) state.weeklyLogs[wkKey] = {};
+      state.weeklyLogs[wkKey][courseId] = Math.max(0, (state.weeklyLogs[wkKey][courseId] || 0) + minutesDelta);
+      state.studiedMinutes[courseId] = Math.max(0, (state.studiedMinutes[courseId] || 0) + minutesDelta);
+
+      state.timeline = state.timeline || [];
+      if (minutesDelta > 0) {
+        state.timeline.unshift({
+          id: Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          ts: new Date().toISOString(),
+          dateISO,
+          courseId,
+          minutes: minutesDelta,
+          label: reasonLabel || 'Lernblock abgeschlossen'
+        });
+        if (state.timeline.length > 120) state.timeline.length = 120;
+      } else if (minutesDelta < 0) {
+        const absMin = Math.abs(minutesDelta);
+        const matchIdx = state.timeline.findIndex(e => e.courseId === courseId && e.minutes === absMin);
+        if (matchIdx !== -1) state.timeline.splice(matchIdx, 1);
+      }
+
+      saveState();
+      if (typeof renderTimeline === 'function') renderTimeline();
+    }
+
+    function getCourseProgressPct(c) {
+      let completedCount = 0;
+      c.topics.forEach((_, idx) => {
+        if (state.completedTopics[`${c.id}:${idx}`]) completedCount++;
+      });
+      const topicPct = Math.round((completedCount / c.topics.length) * 100);
+      const hourPct = Math.min(100, Math.round(((state.studiedMinutes[c.id] || 0) / 60 / c.targetStudyHours) * 100));
+      return Math.min(100, Math.round(topicPct * 0.65 + hourPct * 0.35));
+    }
+
+    // Dynamic Greeting for Ahmad
+    function updateGreeting() {
+      const hr = new Date().getHours();
+      let timeGreeting = 'Hallo';
+      if (hr < 11) timeGreeting = 'Guten Morgen';
+      else if (hr < 18) timeGreeting = 'Hallo';
+      else timeGreeting = 'Guten Abend';
+
+      document.getElementById('greetingHeader').innerHTML = `${timeGreeting}, <span>Ahmad</span>! 🦊`;
+      const vw = getCurrentVorlesungswoche();
+      const kw = getISOWeekNumber(new Date());
+      document.getElementById('currentVWStat').textContent = `VW ${vw} (KW ${kw})`;
+    }
+
+    // Dynamic Schedule Generator (with 30 / 60 / 90 Min blocks)
+    function getDynamicScheduleForDate(dateISO) {
+      const d = new Date(dateISO + 'T12:00:00');
+      const dow = d.getDay();
+      const weekNum = getISOWeekNumber(d);
+      const vw = getCurrentVorlesungswoche(dateISO);
+
+      const baseTemplates = {
+        1: ['prowi', 'dbs'],
+        2: ['bub', 'klr'],
+        3: ['prowi', 'dia'],
+        4: ['se', 'itmr', 'dbs'],
+        5: ['impis', 'bub', 'klr'],
+        6: ['prowi', 'se', 'pem'],
+        0: ['dia', 'itmr', 'impis', 'pem']
+      };
+
+      let planned = [...baseTemplates[dow]];
+
+      if (weekNum % 2 === 1 && planned.length >= 2) {
+        const sortedByNeed = [...COURSES]
+          .sort((a, b) => (getCourseProgressPct(a) - (a.ects === 10 ? 15 : 0)) - (getCourseProgressPct(b) - (b.ects === 10 ? 15 : 0)))
+          .map(c => c.id);
+        for (const candidate of sortedByNeed) {
+          if (!planned.includes(candidate)) {
+            planned[planned.length - 1] = candidate;
+            break;
+          }
+        }
+      }
+
+      const details = planned.map((cid, slotIdx) => {
+        const course = COURSES.find(c => c.id === cid);
+        const uncompleted = course.topics
+          .map((t, idx) => ({ t, idx }))
+          .filter(x => !state.completedTopics[`${cid}:${x.idx}`]);
+
+        let chosenTopic;
+        if (uncompleted.length > 0) {
+          chosenTopic = uncompleted[(weekNum + dow + slotIdx) % uncompleted.length].t;
+        } else {
+          chosenTopic = course.topics[(weekNum + dow) % course.topics.length] + ' (Klausur-Wiederholung)';
+        }
+        return { course, topic: chosenTopic, vw };
+      });
+
+      const modes = {
+        1: '90-Min. Coding-Fokus (10 ECTS) & Datenbanken',
+        2: 'Prof. Übelhör Rechnungswesen-Tag (BuB + KLR)',
+        3: '90-Min. Coding-Fokus & Datenanalyse',
+        4: 'Software-Engineering, IT-Recht & SQL',
+        5: 'ERP-Praxis & BWL-Rechnungstraining',
+        6: 'Klausur-Simulation (90 Min. ProWi + SE + PEM)',
+        0: 'Wochen-Review, Moodle-Folien-Check & Konzepte'
+      };
+
+      return { dow, weekNum, vw, mode: modes[dow], courses: planned, details };
+    }
+
+    function ensureDailyTodos(dateISO, forceRegenerate = false) {
+      if (!forceRegenerate && state.dailyTodos[dateISO] && state.dailyTodos[dateISO].length > 0) {
+        return state.dailyTodos[dateISO];
+      }
+      const sched = getDynamicScheduleForDate(dateISO);
+      const todos = [];
+
+      sched.details.forEach(({ course, topic, vw }) => {
+        const is10Ects = course.ects === 10;
+        const mainDur = is10Ects ? 90 : 60;
+        todos.push({
+          id: `${dateISO}-${course.id}-1`,
+          courseId: course.id,
+          title: `${course.name}: Moodle-Folien (VW ${vw}) & Thema „${topic}“ durcharbeiten`,
+          type: is10Ects ? '10-ECTS Intensiv-Block (90 Min.)' : 'Vorlesung & Skript-Block (60 Min.)',
+          durationMin: mainDur,
+          done: false
+        });
+
+        todos.push({
+          id: `${dateISO}-${course.id}-2`,
+          courseId: course.id,
+          title: `${course.short}: Klausur-/Probeaufgaben zu „${topic}“ lösen`,
+          type: 'Praxis- & Übungs-Block (30 Min.)',
+          durationMin: 30,
+          done: false
+        });
+      });
+
+      state.dailyTodos[dateISO] = todos;
+      saveState();
+      return todos;
+    }
+
+    function renderDailyPlan() {
+      const d = new Date(selectedDate + 'T12:00:00');
+      const sched = getDynamicScheduleForDate(selectedDate);
+
+      const dateFormatted = d.toLocaleDateString('de-DE', {
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      const isToday = selectedDate === getTodayISO();
+      document.getElementById('currentDateLabel').textContent =
+        (isToday ? '🟢 HEUTE — ' : '📆 ') + `${dateFormatted} (KW ${sched.weekNum} • Vorlesungswoche ${sched.vw})`;
+
+      const focusCourses = sched.details.map(x => `${x.course.short}`).join('  •  ');
+      document.getElementById('dailyFocusLabel').textContent =
+        `${sched.mode}: ${focusCourses}`;
+
+      const todos = ensureDailyTodos(selectedDate);
+      const container = document.getElementById('todoListContainer');
+      container.innerHTML = '';
+
+      let doneCount = 0;
+      todos.forEach((item, index) => {
+        if (item.done) doneCount++;
+        const course = COURSES.find(c => c.id === item.courseId) || COURSES[0];
+        const durMin = item.durationMin || 60;
+
+        const row = document.createElement('div');
+        row.className = 'todo-item' + (item.done ? ' done' : '');
+        row.innerHTML = `
+          <input type="checkbox" class="todo-checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo('${selectedDate}', ${index})" />
+          <div class="todo-content">
+            <div class="todo-title">${item.title}</div>
+            <div class="todo-meta">
+              <span class="course-tag" style="background:${course.color}22; color:${course.color}; border:1px solid ${course.color}55;">
+                ${course.short} (${course.prof})
+              </span>
+              <span>📌 ${item.type}</span>
+              <select class="dur-select" onchange="changeTodoDuration('${selectedDate}', ${index}, this.value)">
+                <option value="30" ${durMin === 30 ? 'selected' : ''}>⏱️ 30 Min.</option>
+                <option value="60" ${durMin === 60 ? 'selected' : ''}>⏱️ 60 Min.</option>
+                <option value="90" ${durMin === 90 ? 'selected' : ''}>⏱️ 90 Min.</option>
+              </select>
+            </div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      document.getElementById('todayProgressStat').textContent = `${doneCount} / ${todos.length}`;
+    }
+
+    function changeTodoDuration(dateISO, index, newMin) {
+      const todos = state.dailyTodos[dateISO];
+      if (!todos || !todos[index]) return;
+      const oldMin = todos[index].durationMin || 60;
+      const parsedNew = parseInt(newMin, 10);
+      if (todos[index].done) {
+        logWeeklyStudyTime(dateISO, todos[index].courseId, parsedNew - oldMin);
+      }
+      todos[index].durationMin = parsedNew;
+      saveState();
+      renderWeeklyReport();
+      renderCourses();
+    }
+
+    function toggleTodo(dateISO, index) {
+      const todos = state.dailyTodos[dateISO];
+      if (!todos || !todos[index]) return;
+      todos[index].done = !todos[index].done;
+
+      const cid = todos[index].courseId;
+      const dur = todos[index].durationMin || 60;
+      const delta = todos[index].done ? dur : -dur;
+      logWeeklyStudyTime(dateISO, cid, delta, `To-Do erledigt: ${todos[index].title}`);
+
+      renderDailyPlan();
+      renderWeeklyReport();
+      renderWeekGrid();
+      renderCourses();
+    }
+
+    function addCustomTodo() {
+      const cid = document.getElementById('newTodoCourse').value;
+      const durMin = parseInt(document.getElementById('newTodoDuration').value, 10) || 60;
+      const input = document.getElementById('newTodoText');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const todos = ensureDailyTodos(selectedDate);
+      todos.push({
+        id: `${selectedDate}-custom-${Date.now()}`,
+        courseId: cid,
+        title: text,
+        type: `Eigenes Lernziel (${durMin} Min.)`,
+        durationMin: durMin,
+        done: false
+      });
+      input.value = '';
+      saveState();
+      renderDailyPlan();
+      renderWeeklyReport();
+    }
+
+    function regenerateDayTodos() {
+      ensureDailyTodos(selectedDate, true);
+      renderDailyPlan();
+      renderWeekGrid();
+    }
+
+    function changeDay(offset) {
+      const d = new Date(selectedDate + 'T12:00:00');
+      d.setDate(d.getDate() + offset);
+      selectedDate = formatDateISO(d);
+      renderDailyPlan();
+      renderWeekGrid();
+      renderWeeklyReport();
+    }
+
+    function selectSpecificDate(dateISO) {
+      selectedDate = dateISO;
+      renderDailyPlan();
+      renderWeekGrid();
+    }
+
+    function goToday() {
+      selectedDate = getTodayISO();
+      renderDailyPlan();
+      renderWeekGrid();
+      renderWeeklyReport();
+    }
+
+    // Weekly Report Feature (What Ahmad did last/this week, what went well, where to focus next)
+    function setReportWeekOffset(offset) {
+      reportWeekOffset = offset;
+      document.getElementById('repBtnPrev').className = offset === -1 ? 'btn-accent' : '';
+      document.getElementById('repBtnCurr').className = offset === 0 ? 'btn-accent' : '';
+      renderWeeklyReport();
+    }
+
+    function renderWeeklyReport() {
+      const base = new Date();
+      base.setDate(base.getDate() + reportWeekOffset * 7);
+      const wkNum = getISOWeekNumber(base);
+      const yr = base.getFullYear();
+      const wkKey = `${yr}-W${wkNum}`;
+
+      document.getElementById('weeklyReportTitle').textContent =
+        `📊 Wöchentlicher Kurama-Bericht — KW ${wkNum} (${reportWeekOffset === 0 ? 'Aktuelle Woche' : 'Letzte Woche'})`;
+
+      const weekData = state.weeklyLogs[wkKey] || {};
+      let totalMin = 0;
+      const perCourse = COURSES.map(c => {
+        const min = weekData[c.id] || 0;
+        totalMin += min;
+        return { course: c, min, pct: getCourseProgressPct(c) };
+      });
+
+      // Update header weekly hours stat for current week
+      const currWkKey = `${new Date().getFullYear()}-W${getISOWeekNumber(new Date())}`;
+      const currWeekData = state.weeklyLogs[currWkKey] || {};
+      const currTotalMin = Object.values(currWeekData).reduce((a, b) => a + b, 0);
+      document.getElementById('weeklyHoursStat').textContent = `${(currTotalMin / 60).toFixed(1)} h`;
+
+      // Strengths
+      const activeCourses = perCourse.filter(x => x.min > 0).sort((a, b) => b.min - a.min);
+      const strengthsEl = document.getElementById('reportStrengths');
+      if (activeCourses.length === 0) {
+        strengthsEl.innerHTML = `<p style="color:var(--text-muted);">In KW ${wkNum} wurden noch keine Lernblöcke (30/60/90 Min.) abgehakt. Sobald du heute dein erstes To-Do abhakst oder den Timer nutzt, lobt Kurama hier deine stärksten Fächer!</p>`;
+      } else {
+        const topList = activeCourses.slice(0, 3).map(x => `<li><strong>${x.course.name}</strong>: ${x.min} Min. (${(x.min/60).toFixed(1)} h) trainiert – starker Einsatz!</li>`).join('');
+        strengthsEl.innerHTML = `
+          <div style="margin-bottom:6px;">🔥 <strong>Gesamtleistung in KW ${wkNum}:</strong> ${totalMin} Min. (${(totalMin/60).toFixed(1)} Stunden) fokussiertes Studium!</div>
+          <ul style="margin-left:18px;">${topList}</ul>
+        `;
+      }
+
+      // Weaknesses / Needs Attention
+      const neglected = perCourse
+        .filter(x => x.min < 45)
+        .sort((a, b) => (a.pct - (a.course.ects === 10 ? 15 : 0)) - (b.pct - (b.course.ects === 10 ? 15 : 0)));
+      const weakEl = document.getElementById('reportWeaknesses');
+      if (neglected.length === 0) {
+        weakEl.innerHTML = `<p style="color:var(--success);">Wahnsinn, Ahmad! Du hast in KW ${wkNum} jedes einzelne deiner 9 Fächer abgedeckt. Weiter so!</p>`;
+      } else {
+        const needList = neglected.slice(0, 3).map(x => {
+          const vwKey = `${x.course.id}:VW${selectedVW}`;
+          const slideHint = !state.moodleSlides[vwKey] ? ` (+ Moodle-Folien VW ${selectedVW} noch offen)` : '';
+          return `<li><strong>${x.course.name} (${x.course.ects} ECTS)</strong>: Erst ${x.min} Min. diese Woche • Gesamtstand ${x.pct}%${slideHint}</li>`;
+        }).join('');
+        weakEl.innerHTML = `
+          <div style="margin-bottom:6px;">⚡ <strong>Kuramas Empfehlung für deine nächsten Blöcke:</strong></div>
+          <ul style="margin-left:18px;">${needList}</ul>
+        `;
+      }
+
+      // Breakdown bars
+      const breakdownEl = document.getElementById('reportCourseBreakdown');
+      const targetWeeklyMinPer5Ects = 120; // 2h per 5 ECTS, 4h for 10 ECTS
+      breakdownEl.innerHTML = perCourse.map(({ course, min }) => {
+        const goalMin = course.ects === 10 ? 240 : targetWeeklyMinPer5Ects;
+        const wPct = Math.min(100, Math.round((min / goalMin) * 100));
+        return `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="width:135px; font-weight:600; color:${course.color}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${course.short}</span>
+            <div style="flex:1; height:7px; background:#1e293b; border-radius:99px; overflow:hidden;">
+              <div style="width:${wPct}%; height:100%; background:${course.color};"></div>
+            </div>
+            <span style="width:95px; text-align:right; color:var(--text-muted);">${min} / ${goalMin}m</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Weekly Moodle Lecture Slides Tracker (VW 1 to VW 14)
+    function changeSelectedVW(delta) {
+      selectedVW = Math.max(1, Math.min(14, selectedVW + delta));
+      renderMoodleSlidesTracker();
+    }
+
+    function resetSelectedVW() {
+      selectedVW = getCurrentVorlesungswoche();
+      renderMoodleSlidesTracker();
+    }
+
+    function toggleMoodleSlide(courseId, vw) {
+      const key = `${courseId}:VW${vw}`;
+      state.moodleSlides[key] = !state.moodleSlides[key];
+      const delta = state.moodleSlides[key] ? 30 : -30;
+      logWeeklyStudyTime(getTodayISO(), courseId, delta, `Moodle-Folien VW ${vw} durchgearbeitet`);
+      saveState();
+      renderMoodleSlidesTracker();
+      renderWeeklyReport();
+      renderCourses();
+    }
+
+    function renderMoodleSlidesTracker() {
+      const currVW = getCurrentVorlesungswoche();
+      document.getElementById('moodleSlidesHeader').textContent =
+        `📥 Moodle Vorlesungsfolien — Vorlesungswoche ${selectedVW} ${selectedVW === currVW ? '(Aktuelle Woche)' : ''}`;
+
+      const grid = document.getElementById('moodleSlidesGrid');
+      grid.innerHTML = COURSES.map(c => {
+        const activeKey = `${c.id}:VW${selectedVW}`;
+        const isDone = !!state.moodleSlides[activeKey];
+        const autoTopic = c.topics[(selectedVW - 1) % c.topics.length];
+
+        // Mini pills VW 1 .. VW 8
+        let pills = '';
+        for (let w = 1; w <= 8; w++) {
+          const wDone = !!state.moodleSlides[`${c.id}:VW${w}`];
+          const wCurr = w === selectedVW;
+          pills += `<span class="vw-pill ${wDone ? 'done-vw' : ''} ${wCurr ? 'current-vw' : ''}" onclick="toggleMoodleSlide('${c.id}', ${w})" title="Vorlesungswoche ${w}: Klicken zum Abhaken">${wDone ? '✓ ' : ''}VW${w}</span>`;
+        }
+
+        return `
+          <div class="slide-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="color:${c.color};">${c.short}</strong>
+              <a href="${c.moodleUrl}" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.76rem; font-weight:600;">🔗 Moodle öffnen</a>
+            </div>
+            <div style="font-size:0.78rem; color:var(--text-muted); margin-top:3px;">
+              Folien VW ${selectedVW}: <em>${autoTopic}</em>
+            </div>
+            <div style="margin-top:6px;">
+              <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:0.8rem;">
+                <input type="checkbox" ${isDone ? 'checked' : ''} onchange="toggleMoodleSlide('${c.id}', ${selectedVW})" style="accent-color:var(--success);" />
+                <span>Folien für <strong>VW ${selectedVW}</strong> geladen & gelernt</span>
+              </label>
+            </div>
+            <div class="vw-pills">${pills}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Mini-Kurama Chat Assistant directly inside the Website
+    const KURAMA_KNOWLEDGE = {
+      '3nf': '🦊 **Normalisierung (1NF bis 3NF/BCNF) für Datenbanksysteme:**\n• **1NF:** Alle Attribute sind atomar (keine Listen/Wiederholgruppen in einer Zelle).\n• **2NF:** 1NF + jedes Nichtschlüsselattribut hängt *voll funktional* vom gesamten Primärschlüssel ab (keine Teilschlüssel-Abhängigkeit bei zusammengesetztem PK!).\n• **3NF:** 2NF + kein Nichtschlüsselattribut hängt *transitiv* (über ein anderes Nichtschlüsselattribut) vom Schlüssel ab.\nMerksatz: *"Vom Schlüssel, vom ganzen Schlüssel und von nichts anderem als dem Schlüssel!"*',
+      'arap': '🦊 **Rechnungsabgrenzung (BuB bei Prof. Übelhör):**\n• **ARAP (Aktiver RAP, § 250 Abs. 1 HGB):** *Ausgabe* VOR dem 31.12., aber *Aufwand* NACH dem 31.12. (z.B. wir zahlen Miete im Oktober für Jan–März im Voraus).\n• **PRAP (Passiver RAP, § 250 Abs. 2 HGB):** *Einnahme* VOR dem 31.12., aber *Ertrag* NACH dem 31.12. (z.B. Kunde zahlt Lizenzgebühr im Voraus).',
+      'observer': '🦊 **Observer-Pattern (Software-Engineering WI3):**\nEin `Subject` verwaltet eine Liste von `Observer`-Objekten (`attach`, `detach`, `notify`). Sobald sich der Zustand des Subjects ändert, ruft es automatisch `update()` auf allen registrierten Observern auf. Vorteil: Lose Kopplung!',
+      'werkvertrag': '🦊 **IT-Vertragsrecht (IT-Management & Recht bei Prof. Häckel):**\n• **Werkvertrag (§ 631 BGB):** Konkreter **Erfolg** geschuldet (z.B. schlüsselfertige Individualsoftware) -> Pflicht zur **Abnahme (§ 640 BGB)** + Mängelgewährleistung.\n• **Dienstvertrag (§ 611 BGB):** Nur das **Tätigwerden / Bemühen** geschuldet (z.B. agiler IT-Berater auf Stundenbasis) -> keine Abnahme.',
+      'breakeven': '🦊 **Break-Even-Point (KLR & Controlling bei Prof. Übelhör):**\n• **Stückdeckungsbeitrag:** `db = p - kv` (Verkaufspreis minus variable Stückkosten)\n• **Break-Even-Menge:** `x_BEP = Fixkosten (Kf) / db`\nAb dieser Stückzahl ist der Gewinn genau 0 €, jedes weitere Stück bringt `db` als Gewinn!'
+    };
+
+    function addChatMessage(sender, text) {
+      const box = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = 'chat-bubble ' + sender;
+      div.textContent = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function sendQuickChat(text) {
+      document.getElementById('chatInput').value = text;
+      handleChatSubmit();
+    }
+
+    function handleChatSubmit() {
+      const input = document.getElementById('chatInput');
+      const raw = input.value.trim();
+      if (!raw) return;
+      input.value = '';
+      addChatMessage('user', raw);
+
+      const q = raw.toLowerCase();
+      let reply = '';
+
+      if (q.includes('wochenbericht') || q.includes('bericht') || q.includes('woche')) {
+        const currWkKey = `${new Date().getFullYear()}-W${getISOWeekNumber(new Date())}`;
+        const currWeekData = state.weeklyLogs[currWkKey] || {};
+        const currTotalMin = Object.values(currWeekData).reduce((a, b) => a + b, 0);
+        const lowest = [...COURSES].sort((a, b) => getCourseProgressPct(a) - getCourseProgressPct(b))[0];
+        reply = `🦊 Hallo Ahmad! Hier ist dein Kurz-Bericht für diese Woche:\n• Bisher gelernte Fokuszeit: ${currTotalMin} Min. (${(currTotalMin/60).toFixed(1)} h)\n• Dein wichtigster Fokus-Kandidat aktuell: ${lowest.name} (${getCourseProgressPct(lowest)}% Gesamtfortschritt).\n• Tipp: Starte links gleich einen 60- oder 90-Minuten-Block für ${lowest.short}!`;
+      } else if (q.includes('heute') || q.includes('plan')) {
+        const todos = ensureDailyTodos(selectedDate);
+        const open = todos.filter(t => !t.done);
+        reply = open.length === 0
+          ? `🎉 Mega, Ahmad! Du hast heute schon ALLE ${todos.length} geplanten Lernblöcke erledigt!`
+          : `🦊 Heute stehen noch ${open.length} Lernblöcke an:\n` + open.map(t => `• [${t.durationMin || 60} Min] ${t.title}`).join('\n');
+      } else if (q.includes('folien') || q.includes('moodle')) {
+        const vw = getCurrentVorlesungswoche();
+        const openSlides = COURSES.filter(c => !state.moodleSlides[`${c.id}:VW${vw}`]);
+        reply = `📥 Wir sind aktuell in Vorlesungswoche ${vw} (VW ${vw}).\nDir fehlen für VW ${vw} noch die Folien in ${openSlides.length} Kursen (z.B. ${openSlides.slice(0, 3).map(c => c.short).join(', ')}). Du kannst sie direkt unten rechts im Moodle-Folien-Tracker anklicken!`;
+      } else if (q.includes('motivier') || q.includes('schaff')) {
+        reply = `🔥 Ahmad, vergiss eins nicht: Du hast den 10-ECTS-Brocken (Programmierung) in Moodle schon auf 100 % gebracht und Datenanalyse auf 80 %. Wir teilen uns die 88 Tage sauber in 30/60/90-Minuten-Blöcke auf – und ich bleibe nicht nur bis zur 9. Prüfung, sondern für immer an deiner Seite! 🦊💪`;
+      } else if (q.includes('programmierung') || q.includes('prowi')) {
+        selectTrainerCourse('prowi');
+        reply = `💻 Ich habe dir direkt unten im Klausur-Trainer eine 10-ECTS-Aufgabe für Programmierung in der WI (Prof. Strohmeier) geladen! Versuch sie zu lösen und klicke dann auf "💡 Lösung".`;
+      } else if (q.includes('datenbank') || q.includes('dbs') || q.includes('sql')) {
+        selectTrainerCourse('dbs');
+        reply = `🗄️ Deine SQL- & Normalisierungs-Aufgabe für Datenbanksysteme (Prof. Kolonko) steht direkt unter dem Chat bereit!`;
+      } else if (q.includes('bub') || q.includes('buchführung') || q.includes('klr')) {
+        selectTrainerCourse(q.includes('klr') ? 'klr' : 'bub');
+        reply = `📈 Ich habe dir eine Rechnungswesen-Klausuraufgabe (Prof. Übelhör) unten in den Trainer geladen!`;
+      } else if (q.includes('3nf') || q.includes('normalform')) {
+        reply = KURAMA_KNOWLEDGE['3nf'];
+      } else if (q.includes('arap') || q.includes('prap') || q.includes('abgrenzung')) {
+        reply = KURAMA_KNOWLEDGE['arap'];
+      } else if (q.includes('observer') || q.includes('uml')) {
+        reply = KURAMA_KNOWLEDGE['observer'];
+      } else if (q.includes('werkvertrag') || q.includes('dienstvertrag') || q.includes('recht')) {
+        reply = KURAMA_KNOWLEDGE['werkvertrag'];
+      } else if (q.includes('break') || q.includes('deckungsbeitrag')) {
+        reply = KURAMA_KNOWLEDGE['breakeven'];
+      } else {
+        askMiniChatLiveOrFallback(raw);
+        return;
+      }
+
+      setTimeout(() => addChatMessage('kurama', reply), 180);
+    }
+
+    async function askMiniChatLiveOrFallback(raw) {
+      const box = document.getElementById('chatMessages');
+      const thinkingDiv = document.createElement('div');
+      thinkingDiv.className = 'chat-bubble kurama';
+      thinkingDiv.textContent = '🦊 Kurama denkt kurz nach...';
+      box.appendChild(thinkingDiv);
+      box.scrollTop = box.scrollHeight;
+
+      try {
+        const online = await ensureKuramaBridgeReady();
+        if (online) {
+          const res = await fetch(KURAMA_BRIDGE_URL + '/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mode: 'mini_chat', userQuestion: raw })
+          });
+          const data = await res.json();
+          if (data && data.ok && data.answer) {
+            thinkingDiv.textContent = data.answer;
+            box.scrollTop = box.scrollHeight;
+            return;
+          }
+        }
+      } catch (e) {}
+
+      thinkingDiv.textContent =
+        `🦊 Zu „${raw}“: Klicke einfach oben auf „🦊 Kurama starten“ (oder drücke Strg+Alt+K) bzw. auf „⚡ Tutor bereit“ unten im Fragenblock, um die Live-KI zu aktivieren!`;
+      box.scrollTop = box.scrollHeight;
+    }
+
+    // Dynamic Weekly Plan Grid
+    function renderWeekGrid() {
+      const grid = document.getElementById('weekGrid');
+      grid.innerHTML = '';
+
+      const refDate = new Date(selectedDate + 'T12:00:00');
+      const weekNum = getISOWeekNumber(refDate);
+      const dayOfWeek = refDate.getDay() || 7;
+      const monday = new Date(refDate);
+      monday.setDate(refDate.getDate() - dayOfWeek + 1);
+
+      const sunday = new Date(monday);
+      sunday.setDate(monday.getDate() + 6);
+
+      const fmtShort = d => d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+      document.getElementById('weekHeaderTitle').textContent =
+        `🗓️ Dynamischer Wochenplan — KW ${weekNum} (${fmtShort(monday)} – ${fmtShort(sunday)}.${sunday.getFullYear()})`;
+
+      const dayNames = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+
+      for (let i = 0; i < 7; i++) {
+        const cur = new Date(monday);
+        cur.setDate(monday.getDate() + i);
+        const curISO = formatDateISO(cur);
+        const isSelected = curISO === selectedDate;
+        const isToday = curISO === getTodayISO();
+        const sched = getDynamicScheduleForDate(curISO);
+
+        const col = document.createElement('div');
+        col.className = 'day-col' + (isSelected ? ' active-day' : '');
+        col.onclick = () => selectSpecificDate(curISO);
+
+        const itemsHtml = sched.details
+          .map(({ course, topic }) => `
+            <div style="margin-bottom:6px; padding:5px 7px; border-radius:6px; background:${course.color}18; border-left:3px solid ${course.color};">
+              <div style="font-weight:700; color:${course.color};">${course.short} (${course.defaultBlockMin}m)</div>
+              <div style="font-size:0.72rem; color:var(--text);">${topic}</div>
+            </div>
+          `)
+          .join('');
+
+        col.innerHTML = `
+          <h4>${dayNames[i]} (${fmtShort(cur)}) ${isToday ? '🟢' : ''}</h4>
+          <div style="font-size:0.71rem; color:var(--text-muted); margin-bottom:8px;">${sched.mode}</div>
+          ${itemsHtml}
+        `;
+        grid.appendChild(col);
+      }
+    }
+
+    function renderCourses() {
+      const grid = document.getElementById('coursesGrid');
+      grid.innerHTML = '';
+
+      COURSES.forEach(c => {
+        let completedCount = 0;
+        const topicHtml = c.topics
+          .map((t, idx) => {
+            const isDone = !!state.completedTopics[`${c.id}:${idx}`];
+            if (isDone) completedCount++;
+            return `<span class="topic-pill ${isDone ? 'completed' : ''}" onclick="toggleTopic('${c.id}', ${idx})">${isDone ? '✓ ' : ''}${t}</span>`;
+          })
+          .join('');
+
+        const studiedHrs = ((state.studiedMinutes[c.id] || 0) / 60).toFixed(1);
+        const combinedPct = getCourseProgressPct(c);
+
+        const card = document.createElement('div');
+        card.className = 'course-card';
+        card.innerHTML = `
+          <div>
+            <div class="course-top">
+              <div>
+                <div class="course-title" style="color:${c.color};">${c.name}</div>
+                <div class="course-prof">${c.prof} • ${c.sem}</div>
+              </div>
+              <span class="badge ects">${c.ects} ECTS</span>
+            </div>
+
+            <div class="spo-badges" style="margin-top:10px;">
+              <span class="badge">SPO 2025: ${c.workloadTotal}h Gesamt</span>
+              <span class="badge">${c.sws} SWS (${c.workloadPresence}h Präsenz)</span>
+              <span class="badge">${c.workloadSelf}h Eigenstudium</span>
+              <span class="badge">⏱️ Standard-Block: ${c.defaultBlockMin} Min.</span>
+            </div>
+
+            <div class="progress-wrap" style="margin-top:12px;">
+              <div class="progress-labels">
+                <span>Klausur-Fortschritt (${completedCount}/${c.topics.length} Themen • ${studiedHrs}/${c.targetStudyHours}h Fokuszeit)</span>
+                <strong>${combinedPct}%</strong>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:${combinedPct}%;"></div>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">Prüfungsthemen (anklicken zum Abhaken):</div>
+              <div class="topic-pills">${topicHtml}</div>
+            </div>
+          </div>
+
+          <div class="course-links">
+            <a href="${c.moodleUrl}" target="_blank">🔗 Zum THA Moodle-Kurs</a>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button onclick="selectTrainerCourse('${c.id}')" style="padding:4px 9px; font-size:0.76rem;">🎯 Probeaufgabe</button>
+              <button onclick="openKurama('trainer/${c.id}')" style="padding:4px 9px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);" title="Startet Kurama direkt mit einer neuen KI-Klausuraufgabe zu ${c.short}">🦊 KI-Trainer</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openKurama(actionPath) {
+      const link = document.createElement('a');
+      link.href = 'kurama://' + (actionPath || 'start');
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => link.remove(), 200);
+    }
+
+    function openKuramaTrainerSelected() {
+      const cid = document.getElementById('trainerCourseSelect').value || 'prowi';
+      openKurama('trainer/' + cid);
+    }
+
+    function toggleTopic(courseId, topicIdx) {
+      const key = `${courseId}:${topicIdx}`;
+      state.completedTopics[key] = !state.completedTopics[key];
+      saveState();
+      ensureDailyTodos(selectedDate, true);
+      renderCourses();
+      renderDailyPlan();
+      renderWeekGrid();
+      renderWeeklyReport();
+    }
+
+    const KURAMA_BRIDGE_URL = (window.location.port === '18765') ? window.location.origin : 'http://127.0.0.1:18765';
+    let currentQuestionIndex = 0;
+    let currentQuestionItem = null;
+    let currentQuestionCourse = null;
+    let qTutorHistory = [];
+    let kuramaBridgeOnline = false;
+
+    async function checkKuramaBridge() {
+      const badge = document.getElementById('qTutorStatus');
+      try {
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 1200);
+        const res = await fetch(KURAMA_BRIDGE_URL + '/health', { signal: ctrl.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+          kuramaBridgeOnline = true;
+          if (badge) {
+            badge.textContent = '🟢 Aufgabentutor Live-KI';
+            badge.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+            badge.style.color = '#86efac';
+            badge.style.background = 'rgba(34, 197, 94, 0.14)';
+          }
+          return true;
+        }
+      } catch (e) {}
+      kuramaBridgeOnline = false;
+      if (badge) {
+        badge.textContent = '⚡ Aufgabentutor bereit (Klick für Live-KI)';
+        badge.style.borderColor = 'rgba(56, 189, 248, 0.35)';
+        badge.style.color = 'var(--accent)';
+        badge.style.background = 'rgba(56, 189, 248, 0.12)';
+      }
+      return false;
+    }
+
+    async function ensureKuramaBridgeReady() {
+      if (await checkKuramaBridge()) return true;
+      // Silently wake local background bridge via registered kurama://bridge protocol
+      openKurama('bridge');
+      for (let i = 0; i < 4; i++) {
+        await new Promise(r => setTimeout(r, 700));
+        if (await checkKuramaBridge()) return true;
+      }
+      return false;
+    }
+
+    async function wakeAndCheckBridge() {
+      const badge = document.getElementById('qTutorStatus');
+      if (badge) badge.textContent = '⏳ Verbinde Aufgabentutor...';
+      await ensureKuramaBridgeReady();
+    }
+
+    function jumpToAufgabentutor() {
+      const tutorBox = document.getElementById('aufgabenTutorBox');
+      const tutorInput = document.getElementById('qTutorInput');
+      if (tutorBox) {
+        tutorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        tutorBox.classList.add('pulse-focus');
+        setTimeout(() => tutorBox.classList.remove('pulse-focus'), 1600);
+      }
+      if (tutorInput) {
+        setTimeout(() => tutorInput.focus(), 350);
+      }
+    }
+
+    function selectTrainerCourse(courseId) {
+      document.getElementById('trainerCourseSelect').value = courseId;
+      loadRandomQuestion();
+      const qCard = document.getElementById('questionBlockCard');
+      if (qCard) {
+        qCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function loadRandomQuestion() {
+      const cid = document.getElementById('trainerCourseSelect').value;
+      const course = COURSES.find(c => c.id === cid) || COURSES[0];
+      const list = QUESTION_BANK[cid] || QUESTION_BANK.bub;
+      currentQuestionIndex = (currentQuestionIndex + 1) % list.length;
+      const item = list[currentQuestionIndex];
+
+      currentQuestionCourse = course;
+      currentQuestionItem = item;
+      qTutorHistory = [];
+
+      document.getElementById('qCourseName').textContent = `${course.name} (${course.ects} ECTS)`;
+      document.getElementById('qMeta').textContent = item.meta;
+      document.getElementById('qText').textContent = item.q;
+      const sol = document.getElementById('qSolution');
+      sol.textContent = '💡 Musterlösung:\n' + item.a;
+      sol.classList.remove('visible');
+
+      const msgBox = document.getElementById('qTutorMessages');
+      if (msgBox) {
+        msgBox.innerHTML = '';
+        msgBox.classList.remove('has-msgs');
+      }
+    }
+
+    function addQuestionTutorBubble(role, text) {
+      const msgBox = document.getElementById('qTutorMessages');
+      msgBox.classList.add('has-msgs');
+      const div = document.createElement('div');
+      div.className = 'q-tutor-bubble ' + role;
+      div.textContent = text;
+      msgBox.appendChild(div);
+      msgBox.scrollTop = msgBox.scrollHeight;
+      return div;
+    }
+
+    function askQuestionTutorPreset(kind) {
+      if (!currentQuestionItem) return;
+      const labels = {
+        hint: 'Gib mir erstmal nur einen Tipp (ohne die Lösung zu verraten)!',
+        steps: 'Kannst du mir diese Aufgabe Schritt für Schritt erklären?',
+        why: 'Welche Regel oder Formel steckt hinter dieser Aufgabe?',
+        trap: 'Worauf muss ich in der Klausur hier besonders aufpassen?'
+      };
+      const userLabel = labels[kind] || 'Erkläre mir diese Aufgabe!';
+      addQuestionTutorBubble('user', userLabel);
+
+      const answer = currentQuestionItem[kind] || buildOfflineTutorAnswer(currentQuestionCourse, currentQuestionItem, userLabel);
+      addQuestionTutorBubble('kurama', '🦊 ' + answer);
+      qTutorHistory.push({ role: 'user', text: userLabel }, { role: 'kurama', text: answer });
+    }
+
+    function buildOfflineTutorAnswer(course, item, rawQuestion) {
+      const q = (rawQuestion || '').toLowerCase();
+      if (q.includes('tipp') || q.includes('hinweis') || q.includes('ansatz')) {
+        return item.hint || ('Denke zuerst an die Kerndefinition aus ' + course.short + ' und zerlege die Teilaufgaben einzeln.');
+      }
+      if (q.includes('falle') || q.includes('fehler') || q.includes('aufpassen') || q.includes('achtung')) {
+        return item.trap || 'Achte besonders auf saubere Fachbegriffe und vollständige Rechenwege für Teilpunkte!';
+      }
+      if (q.includes('warum') || q.includes('wieso') || q.includes('formel') || q.includes('regel')) {
+        return (item.why ? item.why + '\n\n' : '') + (item.steps || ('Lösung im Überblick:\n' + item.a));
+      }
+      if (q.includes('teil a') || q.includes('aufgabe a') || /\ba\)/.test(q)) {
+        return 'Zu Teil a) dieser Aufgabe:\n' + (item.steps || item.a) + (item.why ? '\n\n' + item.why : '');
+      }
+      if (q.includes('teil b') || q.includes('aufgabe b') || /\bb\)/.test(q)) {
+        return 'Zu Teil b) dieser Aufgabe:\n' + (item.steps || item.a) + (item.why ? '\n\n' + item.why : '');
+      }
+      if (q.includes('teil c') || q.includes('aufgabe c') || /\bc\)/.test(q)) {
+        return 'Zu Teil c) dieser Aufgabe:\n' + (item.steps || item.a);
+      }
+      return (
+        'Hier ist die komplette Aufschlüsselung zu deiner Frage („' + rawQuestion + '“):\n\n' +
+        (item.steps || ('Musterlösung:\n' + item.a)) +
+        (item.why ? '\n\n' + item.why : '') +
+        (item.trap ? '\n\n' + item.trap : '')
+      );
+    }
+
+    async function submitQuestionTutor() {
+      const input = document.getElementById('qTutorInput');
+      const btn = document.getElementById('qTutorSendBtn');
+      const raw = (input.value || '').trim();
+      if (!raw || !currentQuestionItem) return;
+
+      input.value = '';
+      addQuestionTutorBubble('user', raw);
+      const thinkingBubble = addQuestionTutorBubble('kurama', '🦊 Kurama schaut sich deine Frage zur Aufgabe an...');
+      btn.disabled = true;
+
+      try {
+        const online = kuramaBridgeOnline || (await ensureKuramaBridgeReady());
+        if (online) {
+          const res = await fetch(KURAMA_BRIDGE_URL + '/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mode: 'question_tutor',
+              course: `${currentQuestionCourse.name} (${currentQuestionCourse.prof}, ${currentQuestionCourse.ects} ECTS)`,
+              meta: currentQuestionItem.meta,
+              question: currentQuestionItem.q,
+              solution: currentQuestionItem.a,
+              userQuestion: raw,
+              history: qTutorHistory
+            })
+          });
+          const data = await res.json();
+          if (data && data.ok && data.answer) {
+            thinkingBubble.textContent = data.answer;
+            qTutorHistory.push({ role: 'user', text: raw }, { role: 'kurama', text: data.answer });
+            document.getElementById('qTutorMessages').scrollTop = document.getElementById('qTutorMessages').scrollHeight;
+            btn.disabled = false;
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // Seamless offline fallback so Ahmad ALWAYS gets an immediate helpful explanation
+      const fallback = '🦊 ' + buildOfflineTutorAnswer(currentQuestionCourse, currentQuestionItem, raw);
+      thinkingBubble.textContent = fallback;
+      qTutorHistory.push({ role: 'user', text: raw }, { role: 'kurama', text: fallback });
+      document.getElementById('qTutorMessages').scrollTop = document.getElementById('qTutorMessages').scrollHeight;
+      btn.disabled = false;
+    }
+
+    function toggleSolution() {
+      document.getElementById('qSolution').classList.toggle('visible');
+    }
+
+    function markQuestionMastered() {
+      const cid = document.getElementById('trainerCourseSelect').value;
+      logWeeklyStudyTime(getTodayISO(), cid, 20, 'Klausur-Probeaufgabe gemeistert');
+      renderCourses();
+      renderWeeklyReport();
+      loadRandomQuestion();
+    }
+
+    function bookCurrentTimerBlockNow() {
+      const cid = document.getElementById('timerCourseSelect').value;
+      const course = COURSES.find(c => c.id === cid) || COURSES[0];
+      const elapsedSec = currentTimerDurationMin * 60 - timerSeconds;
+      const minsToBook = elapsedSec >= 60 ? Math.max(1, Math.round(elapsedSec / 60)) : currentTimerDurationMin;
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      timerSeconds = currentTimerDurationMin * 60;
+      document.getElementById('timerBtn').textContent = '▶ Start';
+      updateTimerDisplay();
+
+      logWeeklyStudyTime(getTodayISO(), cid, minsToBook, `Fokus-Lernblock (${minsToBook} Min. ${course.short})`);
+      renderCourses();
+      renderWeeklyReport();
+    }
+
+    function undoTimelineEntry(entryId) {
+      state.timeline = state.timeline || [];
+      const idx = state.timeline.findIndex(e => e.id === entryId);
+      if (idx === -1) return;
+      const entry = state.timeline[idx];
+      state.timeline.splice(idx, 1);
+
+      const d = new Date((entry.dateISO || getTodayISO()) + 'T12:00:00');
+      const wkKey = `${d.getFullYear()}-W${getISOWeekNumber(d)}`;
+      if (state.weeklyLogs[wkKey]) {
+        state.weeklyLogs[wkKey][entry.courseId] = Math.max(0, (state.weeklyLogs[wkKey][entry.courseId] || 0) - entry.minutes);
+      }
+      state.studiedMinutes[entry.courseId] = Math.max(0, (state.studiedMinutes[entry.courseId] || 0) - entry.minutes);
+
+      saveState();
+      renderTimeline();
+      renderWeeklyReport();
+      renderCourses();
+    }
+
+    function renderTimeline() {
+      const feed = document.getElementById('timelineFeed');
+      const segBar = document.getElementById('timelineSegmentedBar');
+      const totalLbl = document.getElementById('timelineTotalLabel');
+      if (!feed || !segBar || !totalLbl) return;
+
+      const totalMinutesAll = COURSES.reduce((acc, c) => acc + (state.studiedMinutes[c.id] || 0), 0);
+      const totalTargetHours = COURSES.reduce((acc, c) => acc + c.targetStudyHours, 0);
+      totalLbl.textContent = `Gesamt: ${(totalMinutesAll / 60).toFixed(1)} h / ${totalTargetHours} h Ziel`;
+
+      // Multi-color segmented progress bar across all 9 courses
+      if (totalMinutesAll === 0) {
+        segBar.innerHTML = `<div style="width:100%; height:100%; background:#1e293b;"></div>`;
+      } else {
+        segBar.innerHTML = COURSES.map(c => {
+          const cMin = state.studiedMinutes[c.id] || 0;
+          if (cMin <= 0) return '';
+          const widthPct = Math.max(0.4, (cMin / (totalTargetHours * 60)) * 100);
+          return `<div style="width:${widthPct}%; height:100%; background:${c.color};" title="${c.short}: ${(cMin / 60).toFixed(1)} h (${cMin} Min.)"></div>`;
+        }).join('');
+      }
+
+      const items = state.timeline || [];
+      if (items.length === 0) {
+        feed.innerHTML = `
+          <div style="font-size:0.8rem; color:var(--text-muted); padding:4px 0;">
+            Noch kein Eintrag heute – starte oben z.B. <strong>30 Min. Programmierung</strong> (oder klicke auf <strong>✅ Direkt buchen</strong>), dann erscheint dein Fortschritt sofort hier mit Uhrzeit!
+          </div>`;
+        return;
+      }
+
+      feed.innerHTML = items.slice(0, 25).map(entry => {
+        const course = COURSES.find(c => c.id === entry.courseId) || COURSES[0];
+        const dt = new Date(entry.ts);
+        const timeStr = dt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + ' • ' +
+          dt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+        return `
+          <div class="timeline-entry">
+            <span class="timeline-dot" style="background:${course.color};"></span>
+            <div style="flex:1;">
+              <div>
+                <strong style="color:${course.color};">+${entry.minutes} Min. ${course.short}</strong>
+                <span style="color:var(--text-muted); font-size:0.74rem; margin-left:6px;">🕒 ${timeStr}</span>
+              </div>
+              <div style="font-size:0.77rem; color:#cbd5e1;">${entry.label}</div>
+            </div>
+            <button onclick="undoTimelineEntry('${entry.id}')" style="padding:2px 7px; font-size:0.72rem;" title="Diesen Eintrag rückgängig machen">↩</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 30 / 60 / 90 Min Timer Logic
+    function setTimerMinutes(mins) {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        document.getElementById('timerBtn').textContent = '▶ Start';
+      }
+      currentTimerDurationMin = mins;
+      timerSeconds = mins * 60;
+      [30, 60, 90].forEach(m => {
+        document.getElementById('durBtn' + m).className = (m === mins) ? 'active-dur' : '';
+      });
+      updateTimerDisplay();
+    }
+
+    function updateTimerDisplay() {
+      const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+      const s = String(timerSeconds % 60).padStart(2, '0');
+      document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('timerBtn');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.textContent = '▶ Weiter';
+      } else {
+        btn.textContent = '⏸ Pause';
+        timerInterval = setInterval(() => {
+          if (timerSeconds > 0) {
+            timerSeconds--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            btn.textContent = '▶ Start';
+            const cid = document.getElementById('timerCourseSelect').value;
+            const course = COURSES.find(c => c.id === cid) || COURSES[0];
+            logWeeklyStudyTime(getTodayISO(), cid, currentTimerDurationMin, `Timer abgeschlossen (${currentTimerDurationMin} Min. ${course.short})`);
+            renderCourses();
+            renderWeeklyReport();
+            timerSeconds = currentTimerDurationMin * 60;
+            updateTimerDisplay();
+            alert(`🎉 Stark, Ahmad! Dein ${currentTimerDurationMin}-Minuten-Lernblock wurde abgeschlossen und auf deinem Zeitstrahl & Wochenbericht gespeichert!`);
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = null;
+      timerSeconds = currentTimerDurationMin * 60;
+      document.getElementById('timerBtn').textContent = '▶ Start';
+      updateTimerDisplay();
+    }
+
+    function updateCountdown() {
+      const examStart = new Date('2027-01-18T08:00:00');
+      const now = new Date();
+      const diffDays = Math.max(0, Math.ceil((examStart - now) / 86400000));
+      document.getElementById('countdownDays').textContent = `${diffDays} Tage (ab 18.01.)`;
+    }
+
+    function init() {
+      const selects = ['newTodoCourse', 'timerCourseSelect', 'trainerCourseSelect'];
+      selects.forEach(sid => {
+        const el = document.getElementById(sid);
+        el.innerHTML = COURSES.map(c => `<option value="${c.id}">${c.name} (${c.ects} ECTS • ${c.prof})</option>`).join('');
+      });
+
+      updateGreeting();
+      updateCountdown();
+      renderDailyPlan();
+      renderWeeklyReport();
+      renderMoodleSlidesTracker();
+      renderWeekGrid();
+      renderCourses();
+      renderTimeline();
+      loadRandomQuestion();
+
+      if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.protocol === 'http:')) {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      }
+
+      if (cloudSyncCfg && cloudSyncCfg.gistId && cloudSyncCfg.token) {
+        pullStateFromCloud(true);
+      }
+
+      window.addEventListener('focus', () => pullStateFromCloud());
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') pullStateFromCloud();
+      });
+      setInterval(() => {
+        if (document.visibilityState === 'visible') pullStateFromCloud();
+      }, 20000);
+
+      checkKuramaBridge().then(async online => {
+        if (online) {
+          await discoverSyncFromBridge();
+          // If localStorage was ever cleared, restore from disk backup; otherwise mirror current state to disk
+          const hasAnyProgress = Object.keys(state.studiedMinutes || {}).length > 0 || Object.keys(state.completedTopics || {}).length > 0;
+          if (!hasAnyProgress) {
+            try {
+              const res = await fetch(KURAMA_BRIDGE_URL + '/load-state');
+              const data = await res.json();
+              if (data && data.ok && data.state) {
+                state = data.state;
+                state.timeline = state.timeline || [];
+                saveState(true);
+                refreshAllViews();
+                return;
+              }
+            } catch (e) {}
+          }
+          saveState(true);
+        }
+      });
+
+      addChatMessage(
+        'kurama',
+        '🦊 Hallo Ahmad! Ich bin jetzt fest hier in deinem Cockpit integriert – und bleibe für immer an deiner Seite!\n\nDu kannst mich hier jederzeit nach deinem Wochenbericht, deinen heutigen Aufgaben, den aktuellen Moodle-Folien (VW ' +
+          getCurrentVorlesungswoche() +
+          ') oder schnellen Prüfungsfragen fragen!'
+      );
+
+      let lastKnownToday = getTodayISO();
+      setInterval(() => {
+        const nowISO = getTodayISO();
+        updateGreeting();
+        updateCountdown();
+        if (nowISO !== lastKnownToday) {
+          lastKnownToday = nowISO;
+          selectedDate = nowISO;
+          selectedVW = getCurrentVorlesungswoche();
+          renderDailyPlan();
+          renderWeeklyReport();
+          renderMoodleSlidesTracker();
+          renderWeekGrid();
+        }
+      }, 60000);
+    }
+
+    init();
+  </script>
+</body>
+</html>
