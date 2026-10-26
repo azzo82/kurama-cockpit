@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kurama-cockpit-v2';
+const CACHE_NAME = 'kurama-cockpit-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -20,6 +20,24 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const targetSection = (event.notification.data && event.notification.data.section) || 'secSummaries';
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      for (const client of clientList) {
+        if ('focus' in client) {
+          client.postMessage({ type: 'KURAMA_NAVIGATE', section: targetSection });
+          return client.focus();
+        }
+      }
+      if (self.clients.openWindow) {
+        return self.clients.openWindow('./index.html#' + targetSection);
+      }
+    })
   );
 });
 

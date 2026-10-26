@@ -1168,7 +1168,7 @@
 
       .mobile-bottom-nav {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         position: fixed;
         bottom: 0;
         left: 0;
@@ -1177,7 +1177,7 @@
         background: rgba(15, 23, 42, 0.95);
         backdrop-filter: blur(12px);
         border-top: 1px solid rgba(249, 115, 22, 0.4);
-        padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px)) 6px;
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px)) 4px;
         box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
       }
 
@@ -1283,6 +1283,328 @@
         flex: 1 1 100%;
       }
     }
+
+    /* Direct Moodle Links & Interactive Course Badges */
+    .moodle-direct-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: transform 0.14s ease, filter 0.14s ease, opacity 0.14s ease;
+    }
+
+    .moodle-direct-link:hover {
+      filter: brightness(1.18);
+      text-decoration: underline;
+    }
+
+    a.course-tag {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: transform 0.14s ease, filter 0.14s ease;
+    }
+
+    a.course-tag:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.18);
+    }
+
+    .course-top-clickable {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      margin: -8px -10px 0 -10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .course-top-clickable:hover {
+      background: rgba(56, 189, 248, 0.09);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .auto-book-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      color: #86efac;
+    }
+
+    .auto-book-pill.running {
+      background: rgba(249, 115, 22, 0.2);
+      border-color: var(--primary);
+      color: #fed7aa;
+      animation: pulseSoft 1.8s infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.35); }
+      50% { box-shadow: 0 0 0 5px rgba(249, 115, 22, 0); }
+    }
+
+    /* Calendar Slot (THA Stundenplan) */
+    .cal-live-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(249, 115, 22, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 11px 14px;
+      margin-bottom: 14px;
+      font-size: 0.84rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cal-week-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    @media (max-width: 1200px) {
+      .cal-week-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .cal-week-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cal-day-col {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 185px;
+    }
+
+    .cal-day-col.is-today-cal {
+      border-color: var(--primary);
+      background: rgba(249, 115, 22, 0.06);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.25);
+    }
+
+    .cal-day-col.is-selected-cal {
+      border-color: var(--accent);
+    }
+
+    .cal-day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      cursor: pointer;
+    }
+
+    .cal-day-name {
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: var(--accent);
+    }
+
+    .cal-day-col.is-today-cal .cal-day-name {
+      color: var(--primary);
+    }
+
+    .cal-event-card {
+      border-radius: 9px;
+      padding: 8px 9px;
+      background: rgba(30, 41, 59, 0.88);
+      border: 1px solid var(--border);
+      border-left-width: 4px;
+      font-size: 0.77rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.14s ease, border-color 0.14s ease;
+    }
+
+    .cal-event-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .cal-event-card.live-now {
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.55);
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .cal-time-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.71rem;
+      color: #cbd5e1;
+      font-weight: 700;
+    }
+
+    .cal-room-badge {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 5px;
+      font-size: 0.68rem;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    /* Daily Lecture Summaries Slot */
+    .summaries-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 540px;
+      overflow-y: auto;
+      padding-right: 2px;
+    }
+
+    .summary-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: border-color 0.15s ease;
+    }
+
+    .summary-card.ready-unread {
+      border-color: rgba(249, 115, 22, 0.65);
+      box-shadow: 0 4px 18px rgba(249, 115, 22, 0.14);
+    }
+
+    .summary-card.summary-done {
+      border-color: rgba(34, 197, 94, 0.45);
+      background: rgba(34, 197, 94, 0.05);
+    }
+
+    .summary-status-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .summary-status-badge.ready {
+      background: rgba(249, 115, 22, 0.2);
+      border: 1px solid var(--primary);
+      color: #fdba74;
+    }
+
+    .summary-status-badge.read {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid var(--success);
+      color: #86efac;
+    }
+
+    .summary-status-badge.pending {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--accent);
+    }
+
+    .summary-points {
+      margin: 8px 0 8px 18px;
+      font-size: 0.83rem;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-exam-tip {
+      background: rgba(234, 179, 8, 0.1);
+      border-left: 3px solid var(--warning);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 0.79rem;
+      color: #fef08a;
+      margin-top: 6px;
+    }
+
+    .summary-notes-drawer {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .summary-notes-drawer.open {
+      display: block;
+    }
+
+    .summary-notes-drawer textarea {
+      width: 100%;
+      min-height: 74px;
+      background: #0f172a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      resize: vertical;
+      margin-bottom: 8px;
+    }
+
+    /* Kurama Notification Toast Banner */
+    .kurama-toast-stack {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 9600;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 390px;
+      width: calc(100% - 36px);
+      pointer-events: none;
+    }
+
+    .kurama-toast {
+      pointer-events: auto;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.98));
+      border: 2px solid var(--primary);
+      border-radius: 14px;
+      padding: 13px 15px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      cursor: pointer;
+      animation: slideInToast 0.28s ease-out;
+    }
+
+    @keyframes slideInToast {
+      from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -1295,12 +1617,21 @@
           <h1 id="greetingHeader">Hallo <span>Ahmad</span>! 👋</h1>
           <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
         </div>
-        <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <button class="mobile-only-sync" id="mobileNotifBtn" onclick="scrollToSection('secSummaries')" title="Heutige Vorlesungs-Zusammenfassung">🔔 <span id="mobileNotifCount">0</span></button>
+          <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
+        </div>
       </div>
       <div class="header-stats">
         <div class="kurama-launch-group">
           <button class="btn-kurama-launch desktop-only-btn" onclick="openKurama('start')" title="Öffnet Kurama sofort per 1-Klick (oder überall mit Strg+Alt+K)">
             🦊 Kurama starten <span class="kbd-hint">Strg+Alt+K</span>
+          </button>
+          <button class="btn-kurama-resume" onclick="scrollToSection('secCalendar')" title="Springt direkt zu deinem THA Vorlesungs-Kalender">
+            🗓️ Kalender
+          </button>
+          <button class="btn-kurama-resume" id="notifHeaderBtn" onclick="scrollToSection('secSummaries')" title="Springt zu den täglichen Vorlesungs-Zusammenfassungen">
+            🔔 Vorlesung heute
           </button>
           <button class="btn-kurama-resume" onclick="jumpToAufgabentutor()" title="Springt sofort direkt zum Aufgabentutor im Fragenblock">
             🎓 Aufgabentutor
@@ -1333,10 +1664,10 @@
 
     <!-- Row 1: Daily Self-Updating To-Do (30/60/90 Min) + Mini-Kurama Chat & Klausur-Trainer -->
     <div class="dashboard-grid">
-      <!-- Left: Self-Updating Daily To-Do List + 30/60/90 Min Timer -->
+      <!-- Left: Self-Updating Daily To-Do List + 30/60/90 Min Auto-Booking Timer -->
       <div class="card" id="secToday">
         <div class="card-header">
-          <h2>📅 Deine Tages-To-Do-Liste (30 / 60 / 90 Min. Blöcke)</h2>
+          <h2>📅 Deine Tages-To-Do-Liste (Abgestimmt auf deinen Stundenplan)</h2>
           <div class="date-nav">
             <button onclick="changeDay(-1)">◀ Gestern</button>
             <button class="btn-accent" onclick="goToday()">Heute</button>
@@ -1346,10 +1677,10 @@
 
         <div class="today-banner">
           <div>
-            <div class="date-str" id="currentDateLabel">Donnerstag, 22. Oktober 2026</div>
+            <div class="date-str" id="currentDateLabel">Montag, 26. Oktober 2026</div>
             <div class="focus-str" id="dailyFocusLabel">Tages-Fokus wird geladen...</div>
           </div>
-          <button onclick="regenerateDayTodos()" title="Passt die heutigen Aufgaben neu an deine offenen Themen an">🔄 Neu anpassen</button>
+          <button onclick="regenerateDayTodos()" title="Passt die heutigen Aufgaben neu an deinen Stundenplan & offene Themen an">🔄 Neu anpassen</button>
         </div>
 
         <div class="todo-list" id="todoListContainer"></div>
@@ -1365,13 +1696,19 @@
           <button class="btn-primary" onclick="addCustomTodo()">+ Hinzufügen</button>
         </div>
 
-        <!-- Integrated 30 / 60 / 90 Min Study Timer -->
+        <!-- Integrated 30 / 60 / 90 Min AUTO-BOOKING Study Timer (PC & Tablet Live-Synced) -->
         <div class="timer-box" id="secTimer">
           <div style="flex:1;">
-            <div style="font-weight:700; font-size:0.94rem;">⏱️ Lernblock-Timer (30 / 60 / 90 Min.)</div>
-            <div style="font-size:0.8rem; color:var(--text-muted);">Wähle deinen Kurs & die Blocklänge – zählt direkt für deinen Wochenbericht:</div>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span style="font-weight:700; font-size:0.94rem;">⏱️ Fokus-Timer (30 / 60 / 90 Min.)</span>
+              <span class="auto-book-pill" id="timerAutoBookBadge">🟢 Auto-Buchung aktiv (PC & Tablet)</span>
+            </div>
+            <div style="font-size:0.79rem; color:var(--text-muted); margin-top:3px;" id="timerSubStatus">
+              Kein „Buchen“-Klick nötig: Jede gelernte Minute wird live & automatisch gutgeschrieben (auch bei gesperrtem Tablet-Display!).
+            </div>
             <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:8px;">
-              <select id="timerCourseSelect" style="background:var(--bg-muted); color:var(--text); border:1px solid var(--border); padding:6px 10px; border-radius:6px;"></select>
+              <select id="timerCourseSelect" onchange="onTimerCourseChanged()" style="background:var(--bg-muted); color:var(--text); border:1px solid var(--border); padding:6px 10px; border-radius:6px;"></select>
+              <button class="btn-accent" onclick="openSelectedMoodle('timerCourseSelect')" style="padding:6px 10px; font-size:0.78rem;" title="Öffnet den gewählten Kurs sofort direkt in THA Moodle">🔗 Moodle ↗</button>
               <div class="dur-buttons" style="margin-top:0;">
                 <button id="durBtn30" onclick="setTimerMinutes(30)">30 Min</button>
                 <button id="durBtn60" class="active-dur" onclick="setTimerMinutes(60)">60 Min</button>
@@ -1382,19 +1719,18 @@
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
             <div class="timer-display" id="timerDisplay">60:00</div>
             <button class="btn-primary" id="timerBtn" onclick="toggleTimer()">▶ Start</button>
-            <button class="btn-accent" onclick="bookCurrentTimerBlockNow()" title="Schreibt den gewählten Block (z.B. 30 Min. Prog) sofort auf dem Zeitstrahl & allen Balken gut">✅ Direkt buchen</button>
-            <button onclick="resetTimer()" title="Timer zurücksetzen">↺</button>
+            <button id="timerStopBtn" onclick="finishAndResetTimer()" title="Beendet den aktuellen Lauf (rundet angefangene Minuten fair ab) & setzt zurück">⏹ Fertig / Neu</button>
           </div>
         </div>
 
         <!-- Visual Study Timeline ("Zeitstrahl") -->
         <div class="timeline-box">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-            <strong style="font-size:0.92rem; color:var(--accent);">🕒 Dein Lern-Zeitstrahl (Automatisch gespeichert)</strong>
+            <strong style="font-size:0.92rem; color:var(--accent);">🕒 Dein Lern-Zeitstrahl (Automatisch & live synchronisiert)</strong>
             <span id="timelineTotalLabel" style="font-size:0.78rem; color:var(--text-muted); font-weight:700;">Gesamt: 0.0 h</span>
           </div>
           <div style="font-size:0.76rem; color:var(--text-muted); margin-top:2px;">
-            Jeder Timer-Block, jedes abgehakte To-Do und jede gelöste Aufgabe landet sofort farbig auf deinem Zeitstrahl:
+            Timer-Minuten, abgehakte To-Dos, gelesene Vorlesungs-Zusammenfassungen & Aufgaben landen automatisch hier (Klick auf Kurs = Moodle ↗):
           </div>
           <div class="timeline-bar-track" id="timelineSegmentedBar" title="Farbiger Zeitstrahl deiner gelernten Stunden pro Modul"></div>
           <div class="timeline-feed" id="timelineFeed"></div>
@@ -1406,6 +1742,7 @@
         <div class="card-header">
           <h2>🎓 Klausur-Fragenblock & 🦊 Aufgabentutor</h2>
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn-accent" onclick="openSelectedMoodle('trainerCourseSelect')" style="padding:5px 10px; font-size:0.78rem;" title="Direkt zum Moodle-Kurs dieses Moduls">🔗 Moodle ↗</button>
             <button class="btn-primary" onclick="jumpToAufgabentutor()" style="padding:5px 10px; font-size:0.78rem;">🦊 Zum Aufgabentutor</button>
             <button class="desktop-only-btn" onclick="openKuramaTrainerSelected()" style="padding:5px 10px; font-size:0.78rem; border-color:var(--accent); color:var(--accent);" title="Öffnet den großen KI-Kurama direkt im Klausur-Trainer für dieses Modul">🚀 Großer KI-Trainer</button>
           </div>
@@ -1422,7 +1759,7 @@
 
           <div class="question-box" id="questionBlockCard" style="margin-bottom:0;">
             <div class="question-header">
-              <span id="qCourseName">Modul</span>
+              <a id="qCourseName" href="#" target="_blank" rel="noopener" class="moodle-direct-link" title="Klicken, um diesen Kurs direkt in THA Moodle zu öffnen">Modul ↗</a>
               <span id="qMeta">Klausuraufgabe</span>
             </div>
             <div class="question-text" id="qText"></div>
@@ -1469,20 +1806,82 @@
           <div class="chat-container">
             <div class="chat-messages" id="chatMessages"></div>
             <div class="chat-quick-chips">
+              <span class="chat-chip" onclick="sendQuickChat('Welche Vorlesung habe ich heute?')">🗓️ Heutige Vorlesung</span>
               <span class="chat-chip" onclick="sendQuickChat('Wie sieht mein Wochenbericht aus?')">📊 Wochenbericht</span>
               <span class="chat-chip" onclick="sendQuickChat('Was steht heute an?')">📅 Heutiger Plan</span>
               <span class="chat-chip" onclick="sendQuickChat('Frag mich in Programmierung ab!')">💻 ProWi-Aufgabe</span>
               <span class="chat-chip" onclick="sendQuickChat('Frag mich in Datenbanksysteme ab!')">🗄️ SQL/DBS-Aufgabe</span>
               <span class="chat-chip" onclick="sendQuickChat('Frag mich in BuB oder KLR ab!')">📈 BWL-Aufgabe</span>
-              <span class="chat-chip" onclick="sendQuickChat('Welche Folien stehen diese Woche an?')">📥 Moodle-Folien</span>
               <span class="chat-chip" onclick="sendQuickChat('Motiviere mich, Kurama!')">🔥 Motivation</span>
             </div>
             <div class="chat-input-row">
-              <input type="text" id="chatInput" placeholder="Allgemeine Frage an Kurama (z.B. 'Wochenbericht', 'Heutiger Plan')..." onkeydown="if(event.key==='Enter') handleChatSubmit()" />
+              <input type="text" id="chatInput" placeholder="Allgemeine Frage an Kurama (z.B. 'Heutige Vorlesung', 'Wochenbericht')..." onkeydown="if(event.key==='Enter') handleChatSubmit()" />
               <button class="btn-primary" onclick="handleChatSubmit()">Senden ➤</button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- NEW Row 1.5: Kalender (THA Vorlesungstermine) + Tägliche Vorlesungs-Zusammenfassungen mit Benachrichtigung -->
+    <div class="dual-grid" id="secCalendarRow">
+      <!-- Left: Kalender Slot (THA Stundenplan Mo-Fr + Eigene Termine) -->
+      <div class="card" id="secCalendar">
+        <div class="card-header">
+          <div>
+            <h2 id="calendarHeaderTitle">🗓️ Kalender — Deine THA Vorlesungstermine</h2>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Dein echter Stundenplan (Mo–Fr) mit Hörsälen – <strong>Klick auf jeden Kurs öffnet sofort THA Moodle ↗</strong></span>
+          </div>
+          <div class="date-nav">
+            <button onclick="changeDay(-7)">◀ Woche</button>
+            <button class="btn-accent" onclick="goToday()">Heute</button>
+            <button onclick="changeDay(7)">Woche ▶</button>
+          </div>
+        </div>
+
+        <div class="cal-live-banner" id="calendarLiveBanner">
+          <span>🏫 Lade deinen aktuellen Vorlesungs-Status...</span>
+        </div>
+
+        <div class="cal-week-grid" id="calendarWeekGrid"></div>
+
+        <!-- Optional Custom Calendar Appointments (Synced PC + Tablet) -->
+        <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border);">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:6px;">📌 Eigene Termine / Klausuren / Abgaben eintragen (PC & Tablet synchron):</div>
+          <div id="customCalEventsList" style="display:flex; flex-direction:column; gap:6px; margin-bottom:8px;"></div>
+          <div class="add-todo-row" style="margin-top:4px;">
+            <input type="date" id="newCalDate" style="background:var(--bg-muted); border:1px solid var(--border); color:var(--text); padding:8px 10px; border-radius:8px; font-size:0.82rem; max-width:145px;" />
+            <input type="text" id="newCalTime" placeholder="Uhrzeit (z.B. 10:00)" style="max-width:130px; min-width:105px;" />
+            <select id="newCalCourse"></select>
+            <input type="text" id="newCalNote" placeholder="Termin / Raum (z.B. Tutorium, Abgabe, Klausur)..." onkeydown="if(event.key==='Enter') addCustomCalEvent()" />
+            <button class="btn-primary" onclick="addCustomCalEvent()">+ Termin</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tägliche Vorlesungs-Zusammenfassungen (Tag für Tag + Push-Benachrichtigungen) -->
+      <div class="card" id="secSummaries">
+        <div class="card-header">
+          <div>
+            <h2 id="summariesHeaderTitle">📝 Vorlesungs-Zusammenfassung (Tag für Tag)</h2>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Jeden Tag passend zu deinen heutigen Vorlesungen – inkl. automatischer Benachrichtigung nach Vorlesungsende!</span>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+            <button id="notifPermBtn" class="btn-accent" onclick="enableOrTestNotifications()" title="Aktiviert System-/Tablet-Benachrichtigungen oder sendet einen Test">🔔 Benachrichtigung aktivieren</button>
+            <button onclick="changeDay(-1)" title="Vorheriger Tag">◀</button>
+            <button class="btn-accent" onclick="goToday()">Heute</button>
+            <button onclick="changeDay(1)" title="Nächster Tag">▶</button>
+          </div>
+        </div>
+
+        <div class="today-banner" id="summaryDayBanner" style="margin-bottom:12px;">
+          <div>
+            <div class="date-str" id="summaryDateLabel">Heutige Vorlesungen</div>
+            <div class="focus-str" id="summaryStatusSub">Prüfe bereitliegende Zusammenfassungen...</div>
+          </div>
+        </div>
+
+        <div class="summaries-list" id="dailySummariesContainer"></div>
       </div>
     </div>
 
@@ -1513,7 +1912,7 @@
         </div>
 
         <div style="background:var(--bg-muted); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
-          <div style="font-size:0.82rem; font-weight:700; margin-bottom:8px; color:var(--accent);">⏱️ Geleistete Lernzeit & erledigte Blöcke pro Kurs in dieser Woche:</div>
+          <div style="font-size:0.82rem; font-weight:700; margin-bottom:8px; color:var(--accent);">⏱️ Geleistete Lernzeit & erledigte Blöcke pro Kurs (Klick auf Kurs = Moodle ↗):</div>
           <div id="reportCourseBreakdown" style="display:flex; flex-direction:column; gap:6px; font-size:0.8rem;"></div>
         </div>
       </div>
@@ -1523,7 +1922,7 @@
         <div class="card-header">
           <div>
             <h2 id="moodleSlidesHeader">📥 Moodle Vorlesungsfolien — Wochen-Tracker</h2>
-            <span style="font-size:0.8rem; color:var(--text-muted);">Aktualisiert sich jede Vorlesungswoche (VW 1 bis VW 14) – hake ab, sobald du die neuen Wochenfolien aus Moodle geladen & durchgearbeitet hast!</span>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Aktualisiert sich jede Vorlesungswoche (VW 1 bis VW 14) – Klick auf den Kursnamen öffnet direkt THA Moodle!</span>
           </div>
           <div class="date-nav">
             <button onclick="changeSelectedVW(-1)">◀ Vorherige VW</button>
@@ -1536,13 +1935,13 @@
       </div>
     </div>
 
-    <!-- Row 3: Dynamic Weekly Plan (Self-Updating per Calendar Week & Progress) -->
-    <div class="card" style="margin-bottom: 24px;">
+    <!-- Row 3: Dynamic Weekly Plan (Tailored to Ahmad's Real THA Timetable!) -->
+    <div class="card" id="secWeekPlan" style="margin-bottom: 24px;">
       <div class="card-header">
         <div>
-          <h2 id="weekHeaderTitle">🗓️ Dynamischer Wochenplan — Kalenderwoche</h2>
+          <h2 id="weekHeaderTitle">🗓️ Dein angepasster Wochen-Lernplan — Kalenderwoche</h2>
           <span style="font-size:0.82rem; color:var(--text-muted);">
-            Aktualisiert sich jede Kalenderwoche automatisch, gewichtet <strong>Programmierung in der WI (10 ECTS)</strong> doppelt (90-Min.-Blöcke) und priorisiert Fächer mit offenen Themen!
+            Maßgeschneidert auf deinen echten THA-Stundenplan: Nutzt deinen freien <strong>Montagnachmittag (ab 11:15)</strong> & <strong>Donnerstagvormittag (bis 14:00)</strong> für <strong>ProWi (10 ECTS) & BuB</strong> und entlastet deinen langen <strong>Mittwoch (08:00–18:50)</strong>!
           </span>
         </div>
         <div class="date-nav">
@@ -1557,12 +1956,15 @@
     <!-- Row 4: All 9 Courses & SPO 2025 Workload Details -->
     <div class="card" id="secCourses">
       <div class="card-header">
-        <h2>📚 Deine 9 Prüfungsmodule (50 ECTS) — THA Modulhandbuch (SPO 2025) & Themen-Checkliste</h2>
-        <span style="font-size:0.82rem; color:var(--text-muted);">Klicke auf einzelne Themen-Chips, um sie als gelernt abzuhaken – Tagesplan, Wochenplan & Wochenbericht passen sich sofort an!</span>
+        <h2>📚 Deine 9 Prüfungsmodule (50 ECTS) — Klick auf den Kurs öffnet direkt THA Moodle ↗</h2>
+        <span style="font-size:0.82rem; color:var(--text-muted);">Klicke oben auf einen Kursnamen für THA Moodle oder auf einzelne Themen-Chips zum Abhaken – PC & Tablet synchronisieren live!</span>
       </div>
       <div class="courses-grid" id="coursesGrid"></div>
     </div>
   </div>
+
+  <!-- Floating Notification Toast Stack -->
+  <div class="kurama-toast-stack" id="kuramaToastStack"></div>
 
   <!-- Mobile & Tablet Fixed Bottom App Bar (Hidden on Laptop!) -->
   <nav class="mobile-bottom-nav" aria-label="Schnellnavigation">
@@ -1574,13 +1976,17 @@
       <span class="nav-ico">⏱️</span>
       <span>Timer</span>
     </button>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secCalendar')">
+      <span class="nav-ico">🗓️</span>
+      <span>Kalender</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secSummaries')">
+      <span class="nav-ico">📝</span>
+      <span>Vorlesung</span>
+    </button>
     <button class="mobile-nav-btn highlight-tab" onclick="jumpToAufgabentutor()">
       <span class="nav-ico">🎓</span>
       <span>Tutor</span>
-    </button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('secReport')">
-      <span class="nav-ico">📊</span>
-      <span>Bericht</span>
     </button>
     <button class="mobile-nav-btn" onclick="scrollToSection('secCourses')">
       <span class="nav-ico">📚</span>
@@ -1986,14 +2392,540 @@
       ]
     };
 
+    // 2. Official THA WiSe 26/27 Lecture Timetable (from Ahmad's Stundenplan)
+    const LECTURE_SCHEDULE = [
+      {
+        id: 'mon-impis',
+        dow: 1,
+        start: '08:00',
+        end: '11:15',
+        courseId: 'impis',
+        subFocus: 'impis',
+        title: 'Implementierung betrieblicher IS',
+        kind: 'Vorlesung & Übung',
+        room: 'M1.02'
+      },
+      {
+        id: 'tue-itm',
+        dow: 2,
+        start: '08:45',
+        end: '11:15',
+        courseId: 'itmr',
+        subFocus: 'itm',
+        title: 'IT-Management (Vorlesung)',
+        kind: 'Vorlesung',
+        room: 'M1.02'
+      },
+      {
+        id: 'tue-klr',
+        dow: 2,
+        start: '11:45',
+        end: '15:30',
+        courseId: 'klr',
+        subFocus: 'klr',
+        title: 'Kosten- und Leistungsrechnung & Controlling',
+        kind: 'Vorlesung & Übung',
+        room: 'M1.02'
+      },
+      {
+        id: 'wed-pem',
+        dow: 3,
+        start: '08:00',
+        end: '09:30',
+        courseId: 'pem',
+        subFocus: 'pem-vl1',
+        title: 'Produktentwicklung und Marketing',
+        kind: 'Vorlesung',
+        room: 'M1.02'
+      },
+      {
+        id: 'wed-dbs-vl',
+        dow: 3,
+        start: '09:45',
+        end: '13:15',
+        courseId: 'dbs',
+        subFocus: 'dbs-vl',
+        title: 'Datenbanksysteme (Vorlesung)',
+        kind: 'Vorlesung',
+        room: 'M1.02'
+      },
+      {
+        id: 'wed-dbs-ue',
+        dow: 3,
+        start: '14:00',
+        end: '18:50',
+        courseId: 'dbs',
+        subFocus: 'dbs-ue',
+        title: 'Datenbanksysteme (Übung)',
+        kind: 'Übung / Praktikum',
+        room: 'M2.03'
+      },
+      {
+        id: 'thu-pem',
+        dow: 4,
+        start: '14:00',
+        end: '17:10',
+        courseId: 'pem',
+        subFocus: 'pem-vl2',
+        title: 'Produktentwicklung und Marketing',
+        kind: 'Vorlesung & Fallstudie',
+        room: 'M1.02'
+      },
+      {
+        id: 'fri-recht',
+        dow: 5,
+        start: '09:45',
+        end: '11:15',
+        courseId: 'itmr',
+        subFocus: 'recht',
+        title: 'IT-Recht / WI3 und WI5 (Vorlesung)',
+        kind: 'Vorlesung',
+        room: 'Hörsaal WI'
+      },
+      {
+        id: 'fri-se-1',
+        dow: 5,
+        start: '11:45',
+        end: '14:00',
+        courseId: 'se',
+        subFocus: 'se-vl',
+        title: 'Software-Engineering (Vorlesung)',
+        kind: 'Vorlesung',
+        room: 'M1.01'
+      },
+      {
+        id: 'fri-se-2',
+        dow: 5,
+        start: '14:45',
+        end: '17:10',
+        courseId: 'se',
+        subFocus: 'se-ue',
+        title: 'Software-Engineering (Vertiefung / Übung)',
+        kind: 'Vorlesung & Übung',
+        room: 'W3.02'
+      }
+    ];
+
+    // 3. Day-by-Day Lecture Summary Knowledge Base (Curriculum-aligned across Vorlesungswochen)
+    const LECTURE_SUMMARIES_BANK = {
+      impis: [
+        {
+          topic: 'Grundlagen & Architektur betrieblicher Informationssysteme (ERP)',
+          core: 'Betriebliche Informationssysteme integrieren alle Geschäftsprozesse über eine zentrale Datenbank (Single Source of Truth) statt isolierter Datensilos.',
+          points: [
+            '3-Schichten-Architektur: Präsentationsschicht (GUI/Fiori), Applikationsschicht (Geschäftslogik) & Datenbankschicht (z.B. HANA).',
+            'Horizontale Integration (entlang der Wertschöpfungskette) vs. Vertikale Integration (Operativ -> Taktisch -> Strategisch/BI).',
+            'Vorteile integrierter ERP-Systeme: Keine redundante Datenhaltung, Echtzeit-Transparenz über Lager, Finanzen und Vertrieb.'
+          ],
+          examTip: 'Prof. Lauterbach fragt gerne nach dem Unterschied zwischen Funktionsorientierung (Abteilungssilos) und Prozessorientierung (End-to-End)!'
+        },
+        {
+          topic: 'Standardsoftware vs. Individualsoftware & Make-or-Buy',
+          core: 'Unternehmen wägen ab zwischen gekaufter Standardsoftware (z.B. SAP S/4HANA) mit Best-Practice-Prozessen und maßgeschneiderter Individualentwicklung.',
+          points: [
+            'Standardsoftware: Schnelle Einführung, geringere Entwicklungskosten, bewährte Branchenprozesse – aber Anpassungsdruck für die Organisation.',
+            'Individualsoftware: 100 % Passgenauigkeit & Wettbewerbsdifferenzierung bei Kernprozessen – aber hohes Projektrisiko & hohe Wartungskosten.',
+            'Total Cost of Ownership (TCO): Lizenz-/Cloud-Gebühren + Implementierung + Schulung + laufender Betrieb & Releasewechsel.'
+          ],
+          examTip: 'Merksatz: Unterstützungsprozesse (Buchhaltung, HR) -> Standardsoftware; echte Alleinstellungs-Kernprozesse -> gezielte Individualisierung.'
+        },
+        {
+          topic: 'ERP-Anpassungsarten: Customizing, Enhancement & Modifikation',
+          core: 'Wie weit darf man ein ERP-System technisch verändern, ohne zukünftige Hersteller-Updates (Releasefähigkeit) zu gefährden?',
+          points: [
+            'Customizing: Reine Parametrisierung/Tabelleneinstellung ohne Codeänderung (z.B. Buchungskreis, Steuerschlüssel) -> 100 % releasefähig!',
+            'Erweiterung (Enhancement / Add-on / BAdI): Eigener Code an offiziell vorgesehenen Schnittstellen des Herstellers -> weitgehend updatefähig.',
+            'Modifikation: Direkter Eingriff in den Original-Quellcode des ERP-Herstellers -> Verlust der Updatefähigkeit, extrem teuer bei Upgrades!'
+          ],
+          examTip: 'Klassische 12-Punkte-Klausurfrage: Niemals Customizing als „kleine Programmierung“ bezeichnen – beim Customizing wird KEIN Code geschrieben!'
+        },
+        {
+          topic: 'Stammdatenmanagement & End-to-End Prozess Order-to-Cash (O2C)',
+          core: 'Saubere Stammdaten (Kunden-, Material-, Konditionsstamm) sind das Fundament für den durchgängigen Auftragsabwicklungsprozess vom Angebot bis zum Zahlungseingang.',
+          points: [
+            'Stammdaten (langfristig konstant: Debitor, Material) vs. Bewegungsdaten (transaktional: Kundenauftrag, Lieferschein, Rechnung).',
+            'O2C-Ablauf: Kundenanfrage -> Angebot -> Kundenauftrag -> Verfügbarkeitsprüfung -> Warenausgang (Lagerbuchung!) -> Faktura -> Zahlung.',
+            'Integrationspunkt zum Rechnungswesen (FI): Erst beim Warenausgang & bei der Fakturierung entstehen automatisch Hauptbuchbelege!'
+          ],
+          examTip: 'Achte genau darauf, bei welchem O2C-Schritt ein Buchhaltungsbeleg entsteht: Kundenauftrag = noch KEIN FI-Beleg; Warenausgang & Faktura = JA!'
+        },
+        {
+          topic: 'Beschaffungsprozess Procure-to-Pay (P2P) & 3-Wege-Abgleich',
+          core: 'Der Beschaffungsprozess verbindet Einkauf (MM), Lager und Kreditorenbuchhaltung (FI) nahtlos bis zur Begleichung der Lieferantenrechnung.',
+          points: [
+            'P2P-Kette: Bedarfsmeldung (BANF) -> Bestellung -> Wareneingang -> Rechnungsprüfung -> Zahlungsausgang.',
+            'Drei-Wege-Abgleich (Three-Way-Match): Abgleich von Bestellmenge/-preis, Wareneingangsmenge und Lieferantenrechnung vor Freigabe.',
+            'WE/RE-Verrechnungskonto: Überbrückt zeitliche Abweichungen zwischen physischer Warenlieferung und Rechnungseingang.'
+          ],
+          examTip: 'Der 3-Wege-Abgleich (Bestellung ↔ Wareneingang ↔ Rechnung) ist ein absoluter Lieblingsbegriff in ERP-Klausuren!'
+        },
+        {
+          topic: 'ERP-Einführungsstrategien (Big Bang vs. Phased Rollout) & Change Management',
+          core: 'Die Go-Live-Strategie und die Akzeptanz der Mitarbeitenden entscheiden maßgeblich über Erfolg oder Scheitern großer ERP-Transformationen.',
+          points: [
+            'Big Bang: Stichtagsumstellung aller Module/Standorte (+ keine temporären Schnittstellen, kürzer; – maximales Betriebsausfallrisiko).',
+            'Phased Rollout (Schrittweise nach Modulen oder Standorten): + Geringeres Risiko, Lerneffekte aus Pilotwerk; – teure Zwischenschnittstellen.',
+            'Change Management: Key-User-Konzept, frühzeitige Kommunikation, rollenbasierte Schulungen gegen Widerstand in den Fachabteilungen.'
+          ],
+          examTip: 'Nenne bei Phased Rollout in der Klausur immer „temporäre Schnittstellen zum Altsystem“ als zentralen Kostentreiber!'
+        }
+      ],
+      itm: [
+        {
+          topic: 'IT-Strategie & Business-IT-Alignment (Strategic Alignment Model)',
+          core: 'Die IT ist kein reiner Kostenfaktor mehr, sondern strategischer Enabler – IT-Strategie und Unternehmensstrategie müssen synchron ausgerichtet sein.',
+          points: [
+            'Strategic Alignment Model (Henderson/Venkatraman): Zusammenspiel von Business Strategy, IT Strategy, Org. Infrastructure & IT Infrastructure.',
+            'Rolle des CIO: Wandel vom reinen „Technik-Verwalter“ (Keep the lights on) zum digitalen Mitgestalter neuer Geschäftsmodelle.',
+            'Demand Management (Fachbereichsanforderungen bündeln) vs. Supply Management (effiziente IT-Bereitstellung).'
+          ],
+          examTip: 'Bei Prof. Häckel immer beide Richtungen erklären: Business treibt IT (Alignment) UND IT ermöglicht neue Business-Modelle (Enabling)!'
+        },
+        {
+          topic: 'IT-Governance (COBIT) vs. IT-Management',
+          core: 'IT-Governance gibt den Ordnungsrahmen, Entscheidungsrechte und Kontrollen vor, während das IT-Management das operative Tagesgeschäft steuert.',
+          points: [
+            'Governance („Was wird von wem entschieden & überwacht?“) vs. Management („Wie setzen wir die Entscheidungen operativ um?“).',
+            'COBIT-Grundprinzipien: Wertbeitrag generieren, Risiken optimieren und Ressourcen wirtschaftlich einsetzen.',
+            'RACI-Matrix zur klaren Rollenverteilung: Responsible (Durchführend), Accountable (Rechenschaftspflichtig – nur 1 Person!), Consulted, Informed.'
+          ],
+          examTip: 'Wichtige RACI-Klausurfalle: Pro Aufgabe darf es immer GENAU EIN „A“ (Accountable / Endverantwortlicher) geben!'
+        },
+        {
+          topic: 'IT-Service-Management nach ITIL (Incident, Problem & Change)',
+          core: 'ITIL strukturiert die IT als kundenorientierten Service-Provider mit klaren SLAs und sauberen Prozessen für Störungen und Änderungen.',
+          points: [
+            'Incident Management: Schnellstmögliche Wiederherstellung des normalen Servicebetriebs (inkl. Workaround) zur Minimierung des Business-Impacts.',
+            'Problem Management: Ursachenanalyse (Root Cause Analysis) wiederkehrender/schwerer Incidents + Pflege der Known Error Database (KEDB).',
+            'Service Level Agreement (SLA): Verbindliche Vereinbarung über Verfügbarkeit (z.B. 99,9 %), Reaktions- und Lösungszeiten.'
+          ],
+          examTip: 'Niemals Incident und Problem nach „Schweregrad“ trennen: Incident = Symptom schnell beheben; Problem = unbekannte Ursache dauerhaft lösen!'
+        },
+        {
+          topic: 'IT-Wirtschaftlichkeit (TCO, ROI, Kapitalwert) & IT-Risikomanagement',
+          core: 'IT-Investitionen und Cloud-Entscheidungen (CapEx vs. OpEx) werden finanzwirtschaftlich und risikoorientiert bewertet.',
+          points: [
+            'CapEx (Investitionsausgaben für eigene Server, Abschreibung) vs. OpEx (laufende Betriebsausgaben im Cloud-Abo / SaaS).',
+            'IT-Risikobewertung: Risiko = Eintrittswahrscheinlichkeit × Schadenshöhe (Maßnahmen: Vermeiden, Vermindern, Überwälzen/Versichern, Akzeptieren).',
+            'Informationssicherheits-Schutzziele (CIA-Triade): Vertraulichkeit (Confidentiality), Integrität (Integrity), Verfügbarkeit (Availability).'
+          ],
+          examTip: 'Merke dir für Cloud-Aufgaben sofort das Paar „On-Premise = hohes CapEx“ vs. „Cloud/SaaS = flexibles OpEx“!'
+        }
+      ],
+      klr: [
+        {
+          topic: 'Grundbegriffe des Rechnungswesens & Abgrenzungsrechnung',
+          core: 'Die KLR (internes Rechnungswesen) betrachtet nur den betriebszweckbezogenen Werteverzehr (Kosten) und trennt neutrale Aufwendungen sauber ab.',
+          points: [
+            'Auszahlung / Ausgabe / Aufwand (Finanzbuchhaltung, HGB) vs. Kosten (KLR, frei von gesetzlichen Bilanzierungszwängen).',
+            'Neutraler Aufwand: Betriebsfremd (Spende), periodenfremd (Steuernachzahlung Vorjahr) oder außerordentlich (Brandschaden) -> KEINE Kosten!',
+            'Kalkulatorische Kosten: Anderskosten (z.B. kalk. Abschreibung auf Wiederbeschaffungswert) & Zusatzkosten (kalk. Unternehmerlohn, kalk. Eigenkapitalzinsen).'
+          ],
+          examTip: 'Prof. Übelhör liebt Abgrenzungs-Tabellen: Zusatzkosten haben gar keinen Aufwand in der GuV (Aufwand = 0), Anderskosten haben einen anderen Wert als in der GuV!'
+        },
+        {
+          topic: 'Kostenartenrechnung: Kalkulatorische Abschreibungen & Kalkulatorische Zinsen',
+          core: 'Erfassung und Bewertung aller Kostenarten (Material-, Personal-, Dienstleistungs- und kalkulatorische Kosten) zur Substanzerhaltung.',
+          points: [
+            'Kalkulatorische AfA = Wiederbeschaffungswert (WBW) / tatsächliche Nutzungsdauer (im Gegensatz zur bilanziellen AfA vom Anschaffungswert!).',
+            'Kalkulatorische Zinsen = Betriebsnotwendiges Kapital × Kalkulationszinssatz (Durchschnittswertmethode bei abnutzbarem Anlagevermögen: halber AHK!).',
+            'Abzugskapital (zinslos zur Verfügung stehend, z.B. Lieferantenkredite / Kundenanzahlungen) wird vom betriebsnotwendigen Vermögen abgezogen!'
+          ],
+          examTip: 'Achtung beim betriebsnotwendigen Kapital: Nicht betriebsnotwendige Grundstücke/Finanzanlagen vorher herausrechnen + Abzugskapital abziehen!'
+        },
+        {
+          topic: 'Kostenstellenrechnung: Betriebsabrechnungsbogen (BAB) & IBLV',
+          core: 'Gemeinkosten (die nicht direkt einem Produkt zuordenbar sind) werden nach dem Verursachungsprinzip über Kostenstellen verteilt.',
+          points: [
+            'Einzelkosten (direkt auf Kostenträger: Fertigungsmaterial, Fertigungslöhne) vs. Gemeinkosten (über Schlüssel in den BAB: Miete, Gehälter).',
+            'Innerbetriebliche Leistungsverrechnung (IBLV): Umlage der Vorkostenstellen (Kantine, Reparatur) auf Endkostenstellen (Anbau-, Stufenleiter-, Gleichungsverfahren).',
+            'Gemeinkostenzuschlagssätze = Endkostenstellen-Gemeinkosten / jeweilige Zuschlagsbasis (z.B. MGK / FM, FGK / FL, VwGK & VtGK / Herstellkosten).'
+          ],
+          examTip: 'Beim Stufenleiterverfahren dürfen einmal abgerechnete Vorkostenstellen KEINE Kosten mehr von nachfolgenden Stellen empfangen!'
+        },
+        {
+          topic: 'Kostenträgerstückrechnung (Zuschlagskalkulation & Äquivalenzziffern)',
+          core: 'Wie viel kostet eine einzelne Produkteinheit in der Herstellung (Herstellkosten) und bis zum Verkauf (Selbstkosten)?',
+          points: [
+            'Schema Differenzierende Zuschlagskalkulation: FM + MGK = Materialkosten; FL + FGK + SEK_Fert = Fertigungskosten -> Summe = Herstellkosten (HK).',
+            'HK + VwGK + VtGK + SEK_Vertrieb = Selbstkosten + Gewinnzuschlag = Barverkaufspreis + Skonto + Rabatt = Listenverkaufspreis (netto).',
+            'Äquivalenzziffernkalkulation: Für Sortenfertigung (gleicher Grundstoff, z.B. 0,33l / 0,5l / 1,0l Flaschen mit Gewichtungsziffern).'
+          ],
+          examTip: 'Skonto (vom Zielverkaufspreis) und Kundenrabatt (vom Listenverkaufspreis) werden bei der Vorwärtskalkulation IMMER „im Hundert“ (z.B. / 0,98) gerechnet!'
+        },
+        {
+          topic: 'Deckungsbeitragsrechnung, Break-Even-Analyse & Engpassplanung',
+          core: 'Teilkostenrechnung trennt strikt variable und fixe Kosten – unverzichtbar für kurzfristige Preisuntergrenzen und Produktionsentscheidungen.',
+          points: [
+            'Stückdeckungsbeitrag: db = p - kv; Kurzfristige Preisuntergrenze (kPUG) = kv; Break-Even-Menge: x_BEP = Kf / db.',
+            'Mehrstufige Fixkostendeckungsrechnung: Fixkosten schrittweise abziehen (Produktfix -> Produktgruppenfix -> Bereichsfix -> Unternehmensfix).',
+            'Optimales Produktionsprogramm bei 1 Engpass: Rangfolge NICHT nach absolutem db, sondern nach relativem DB (= db / Engpassbeanspruchung pro Stück)!'
+          ],
+          examTip: 'Sobald in der Aufgabe eine kapazitätsbeschränkte Maschine vorkommt: Zuerst prüfen, ob überhaupt ein Engpass vorliegt, dann nach relativem DB sortieren!'
+        }
+      ],
+      'pem-vl1': [
+        {
+          topic: 'Innovationsmanagement: Stage-Gate-Prozess & Design Thinking',
+          core: 'Wie aus einer vagen Idee systematisch ein erfolgreiches Produkt entsteht – klassisch phasenorientiert vs. nutzerzentriert-iterativ.',
+          points: [
+            'Stage-Gate (Cooper): Wechsel aus Arbeitsphasen (Stages) und harten Go/Kill-Entscheidungspunkten (Gates) zur Risikominimierung.',
+            'Design Thinking: 6 iterative Phasen – Verstehen, Beobachten, Standpunkt definieren (POV), Ideen finden, Prototypen bauen, Testen.',
+            'Technology Push (Technologie sucht Markt) vs. Market Pull (Kundenproblem zieht Lösung).'
+          ],
+          examTip: 'Prof. Mayer legt Wert auf das Zusammenspiel aus Wünschbarkeit (Mensch), Machbarkeit (Technik) und Wirtschaftlichkeit (Business) im Design Thinking!'
+        },
+        {
+          topic: 'Agile Produktentwicklung: Lean Startup, MVP & Build-Measure-Learn',
+          core: 'Statt jahrelang im Geheimen am Kunden vorbeizuentwickeln, werden Kernhypothesen mit einem Minimum Viable Product (MVP) früh validiert.',
+          points: [
+            'MVP (Minimum Viable Product): Kleinste funktionsfähige Version, die echten Kundennutzen stiftet und messbares Lernen ermöglicht.',
+            'Build – Measure – Learn Zyklus: Hypothese aufstellen -> MVP bauen -> echte Nutzungsmetriken messen -> Pivot (Kurswechsel) oder Persevere.',
+            'Validated Learning statt Vanity Metrics (Eitelkeitskennzahlen wie reine Seitenaufrufe ohne Conversion).'
+          ],
+          examTip: 'Ein MVP ist KEIN halbfertiges Produkt mit kaputten Funktionen, sondern schlank im Umfang, aber nutzbar und wertstiftend („Viable“)!'
+        },
+        {
+          topic: 'Marktforschung & Kundenbedürfnisanalyse (Kano-Modell & Personas)',
+          core: 'Primär- und Sekundärforschung liefern die Datenbasis über Zielkunden, Zahlungsbereitschaft und Produktanforderungen.',
+          points: [
+            'Primärforschung (Feldforschung: Befragung, Beobachtung, A/B-Experiment) vs. Sekundärforschung (Auswertung vorhandener Studien/Daten).',
+            'Kano-Modell: Basismerkmale (selbstverständlich), Leistungsmerkmale (je mehr desto besser) & Begeisterungsmerkmale (unerwarteter Wow-Effekt).',
+            'Gewöhnungseffekt im Kano-Modell: Heutige Begeisterungsmerkmale sinken über die Zeit zu Leistungs- und schließlich Basismerkmalen ab!'
+          ],
+          examTip: 'Zeichne in Gedanken immer die Kano-Kurven: Basismerkmale verhindern im besten Fall nur Unzufriedenheit, schaffen aber allein keine Begeisterung!'
+        }
+      ],
+      'pem-vl2': [
+        {
+          topic: 'Strategisches Marketing: STP-Ansatz (Segmentierung, Targeting, Positionierung)',
+          core: 'Kein Produkt ist für „alle“ – Märkte werden sauber aufgeteilt, attraktive Segmente ausgewählt und das eigene Angebot klar im Kopf des Kunden positioniert.',
+          points: [
+            'Segmentierungskriterien: Demografisch, geografisch, psychografisch (Lebensstil/Werte) und verhaltensorientiert (Nutzungsintensität, Preisempfindlichkeit).',
+            'Targeting: Auswahl der Zielsegmente (undifferenziert/Massenmarkt, differenziert, konzentriert/Nische).',
+            'Positionierung & USP (Unique Selling Proposition): Klarer, vom Kunden wahrgenommener und verteidigbarer Wettbewerbsvorteil.'
+          ],
+          examTip: 'Segmentierungs-Anforderung für die Klausur: Segmente müssen intern möglichst homogen, untereinander aber möglichst heterogen und messbar sein!'
+        },
+        {
+          topic: 'Operativer Marketing-Mix (4P): Produkt- & Preispolitik',
+          core: 'Ausgestaltung des konkreten Leistungsangebots und Festlegung der optimalen Preisstrategie über den Produktlebenszyklus.',
+          points: [
+            'Produktlebenszyklus: Einführung -> Wachstum -> Reife -> Sättigung -> Degeneration (passend zur BCG-Portfolio-Matrix: Question Marks, Stars, Cash Cows, Poor Dogs).',
+            'Skimming-Strategie (Abschöpfung): Hoher Startpreis für Innovatoren, später schrittweise Senkung (typisch bei Technologie/Patenten).',
+            'Penetrations-Strategie (Durchdringung): Niedriger Kampfpreis zum Marktstart für schnellen Marktanteilsgewinn & Netzwerkeffekte.'
+          ],
+          examTip: 'Verknüpfe in Fallstudien immer Skimming vs. Penetration mit Preiselastizität und Skaleneffekten digitaler Plattformen!'
+        },
+        {
+          topic: 'Distributions-, Kommunikationspolitik & Business Model Canvas',
+          core: 'Wie das Produkt zum Kunden gelangt (Place), bekannt gemacht wird (Promotion) und sich zu einem tragfähigen Geschäftsmodell fügt.',
+          points: [
+            'Direkter Vertrieb (eigener Online-Shop/Außendienst -> volle Kundenkontrolle & Marge) vs. Indirekter Vertrieb (Einzel-/Großhandel -> hohe Reichweite).',
+            'AIDA-Formel der Kommunikation: Attention -> Interest -> Desire -> Action (Customer Journey & Conversion Funnel).',
+            'Business Model Canvas (Osterwalder): 9 Bausteine rund um die Value Proposition (Kundensegmente, Kanäle, Beziehungen, Einnahmequellen, Ressourcen, Partner, Kosten).'
+          ],
+          examTip: 'Value Proposition Canvas: Prüft den „Problem-Solution-Fit“ zwischen Customer Pains/Gains und den Pain Relievers/Gain Creators deines Produkts!'
+        }
+      ],
+      'dbs-vl': [
+        {
+          topic: 'DBMS-Architektur, Datenunabhängigkeit & ER-Modellierung',
+          core: 'Datenbanksysteme trennen physische Speicherung von logischer Struktur (ANSI-SPARC 3-Ebenen-Architektur) und starten mit dem konzeptionellen ER-Entwurf.',
+          points: [
+            '3-Ebenen-Modell: Externe Ebene (Views/Benutzersichten), Konzeptionelle Ebene (logisches Gesamtschema), Interne Ebene (physische Dateien/Indizes).',
+            'ER-Grundelemente: Entitätstypen (Rechteck), Beziehungstypen (Raute), Attribute (Oval, Primärschlüssel unterstrichen), Schwache Entitäten (Doppelrechteck).',
+            'Kardinalitäten sicher lesen: 1:1, 1:n, n:m sowie der kritische Unterschied zwischen Chen-Notation und (min,max)-Notation!'
+          ],
+          examTip: 'Prof. Kolonkos Klassiker: Bei (min,max) stehen die Zahlen auf der Seite des Teilnehmers („Wie oft nimmt 1 Student teil?“ -> umgedreht zu Chen)!'
+        },
+        {
+          topic: 'Überführung ER -> Relationenmodell & Relationenalgebra',
+          core: 'Übersetzung des ER-Diagramms in saubere Relationenschemata mit Primär-/Fremdschlüsseln sowie formale Abfrageoperatoren der Relationenalgebra.',
+          points: [
+            '1:n-Beziehung: Der Primärschlüssel der „1“-Seite wandert als Fremdschlüssel (FK) in die Relation der „n“-Seite (keine eigene Tabelle nötig!).',
+            'n:m-Beziehung: Wird IMMER zu einer eigenen Verknüpfungstabelle mit zusammengesetztem PK aus beiden Fremdschlüsseln!',
+            'Relationenalgebra: Selektion σ (Zeilen filtern), Projektion π (Spalten wählen, Duplikate fallen weg!), Natürlicher Join ⋈, Umbenennung ρ, Differenz −.'
+          ],
+          examTip: 'Vergiss in der Relationenalgebra nie: Relationen sind Mengen – Projektion π eliminiert automatisch doppelte Tupel!'
+        },
+        {
+          topic: 'Funktionale Abhängigkeiten (FD), Schlüsselkandidaten & Normalisierung (1NF–BCNF)',
+          core: 'Vermeidung von Einfüge-, Änderungs- und Löschanomalien durch verlustfreie und abhängigkeitserhaltende Zerlegung von Relationen.',
+          points: [
+            'Attributhülle X+ berechnen, um Superschlüssel und minimale Schlüsselkandidaten exakt zu bestimmen.',
+            '1NF: Atomare Attribute. 2NF: 1NF + jedes Nichtschlüsselattribut voll funktional vom GESAMTEN Schlüsselkandidaten abhängig.',
+            '3NF: 2NF + keine transitive Abhängigkeit (X -> Y -> Z) von Nichtschlüsselattributen. BCNF: Für jede nichttriviale FD X -> Y ist X Superschlüssel.'
+          ],
+          examTip: 'Besteht der Primärschlüssel nur aus EINEM einzigen Attribut und ist die Tabelle in 1NF, dann ist sie automatisch bereits in 2NF!'
+        },
+        {
+          topic: 'Transaktionsverwaltung (ACID), Concurrency Control & Recovery',
+          core: 'Mehrbenutzerbetrieb ohne Datenkorruption durch Transaktionen, Sperrprotokolle und Write-Ahead-Logging.',
+          points: [
+            'ACID: Atomicity (ganz oder gar nicht), Consistency (konsistenter Zustand), Isolation (ungestörte Nebenläufigkeit), Durability (dauerhaft nach COMMIT).',
+            'Fehlerphänomene ohne Isolation: Lost Update, Dirty Read (Lesen nicht committeter Daten), Non-Repeatable Read, Phantom Read.',
+            'Strenges 2-Phasen-Sperrprotokoll (Strict 2PL): Shared Locks (S) & Exclusive Locks (X) werden bis zum COMMIT gehalten -> verhindert Kaskadierendes Abbrechen.'
+          ],
+          examTip: 'Lerne die 4 SQL Isolation Levels auswendig: READ UNCOMMITTED -> READ COMMITTED -> REPEATABLE READ -> SERIALIZABLE!'
+        }
+      ],
+      'dbs-ue': [
+        {
+          topic: 'SQL DDL & Datenmanipulation (`CREATE TABLE`, Constraints & Referentielle Integrität)',
+          core: 'Praktisches Anlegen der Datenbankstruktur (wie in `DemoDB`) inklusive Schlüsselbedingungen, Datentypen und Löschweitergabe.',
+          points: [
+            '`PRIMARY KEY`, `UNIQUE`, `NOT NULL`, `CHECK (preis >= 0)` und `FOREIGN KEY (...) REFERENCES ...`.',
+            'Referentielle Aktionen bei `ON DELETE` / `ON UPDATE`: `CASCADE` (mitlöschen), `SET NULL`, `RESTRICT` / `NO ACTION` (Ablehnung bei Verweisen).',
+            'Reihenfolge beim Anlegen & Löschen: Erst Elterntabellen anlegen, dann Kindtabellen (`DROP TABLE` genau umgekehrt!).'
+          ],
+          examTip: 'Schreibe im Praktikum & in der Klausur bei zusammengesetzten Primärschlüsseln immer eine Tabellen-Constraint-Zeile `PRIMARY KEY (SpalteA, SpalteB)`!'
+        },
+        {
+          topic: 'SQL-Abfragen: Joins (`INNER`, `LEFT OUTER`), `GROUP BY` & `HAVING`',
+          core: 'Verknüpfung mehrerer Tabellen und korrekte Aggregation von Geschäftsdaten in SQL.',
+          points: [
+            '`INNER JOIN` liefert nur Treffer auf beiden Seiten; `LEFT OUTER JOIN` behält auch Datensätze links ohne Partner (z.B. Kunden mit 0 Bestellungen -> `COUNT(b.id) = 0`!).',
+            'Goldene SQL-Regel: Alle Spalten im `SELECT`, die NICHT in einer Aggregatfunktion (`SUM`, `COUNT`, `AVG`, `MIN`, `MAX`) stehen, müssen ins `GROUP BY`!',
+            '`WHERE` filtert Einzelzeilen VOR der Gruppierung; `HAVING` filtert fertige Gruppen NACH `GROUP BY`.'
+          ],
+          examTip: 'Wenn nach „allen Kunden inklusive denen OHNE Bestellung“ gefragt ist: Zwingend `LEFT JOIN` + `COUNT(b.BestellID)` (niemals `COUNT(*)`, sonst zählt die NULL-Zeile als 1)!'
+        },
+        {
+          topic: 'SQL Subqueries (`IN`, `EXISTS`, `ALL`), `VIEW`s & Index-Praxis',
+          core: 'Verschachtelte Unterabfragen für komplexe Fragestellungen („Wer verdient mehr als der Abteilungsdurchschnitt?“) und virtuelle Sichten.',
+          points: [
+            'Unkorrelierte Subquery (wird nur 1× innen ausgewertet) vs. Korrelierte Subquery (bezieht sich auf äußere Zeile, z.B. mit `EXISTS` / `NOT EXISTS`).',
+            'Division in SQL („Kunden, die ALLE Produkte einer Kategorie gekauft haben“): Doppelte Negation mit `NOT EXISTS (... NOT EXISTS ...)` oder `COUNT(DISTINCT ...)`.',
+            '`CREATE VIEW`: Speichert nur die Abfragedefinition (keine Datenkopie), vereinfacht komplexe Zugriffe und schützt sensible Spalten.'
+          ],
+          examTip: 'Achtung bei `NOT IN (SELECT ...)`: Enthält die Unterabfrage auch nur einen einzigen `NULL`-Wert, liefert `NOT IN` gar keine Zeilen zurück -> lieber `NOT EXISTS` nutzen!'
+        }
+      ],
+      recht: [
+        {
+          topic: 'Grundlagen BGB, Willenserklärungen, Vertragsschluss & AGB im IT-Geschäft',
+          core: 'Wie Verträge im digitalen Geschäftsverkehr (z.B. Online-Shop, SaaS-Bestellung) wirksam zustande kommen und wann AGB gelten.',
+          points: [
+            'Trennungs- und Abstraktionsprinzip: Verpflichtungsgeschäft (z.B. Kaufvertrag § 433 BGB) strikt getrennt vom Verfügungsgeschäft (Übereignung § 929 BGB).',
+            'Vertragsschluss: Zwei übereinstimmende Willenserklärungen – Angebot (§ 145 BGB) & Annahme (§ 147 BGB); Webseite im Shop ist nur *invitatio ad offerendum*!',
+            'AGB-Einbeziehung (§ 305 BGB): Hinweis + Möglichkeit der Kenntnisnahme + Einverständnis; überraschende/unangemessene Klauseln (§ 307 BGB) sind unwirksam.'
+          ],
+          examTip: 'Ein Preis auf einer Website ist rechtlich noch KEIN verbindliches Angebot, sondern erst die Aufforderung an den Kunden, ein Angebot abzugeben!'
+        },
+        {
+          topic: 'IT-Vertragstypen im BGB: Kauf-, Werk-, Dienst- & Mietvertrag (Cloud/SaaS)',
+          core: 'Die rechtliche Einordnung eines IT-Projekts entscheidet über Abnahmepflicht, Vergütungsanspruch und Mängelhaftung.',
+          points: [
+            'Standardsoftware auf Dauer = Kaufvertrag (§ 433 / § 453 BGB); Zeitlich befristete Cloud/SaaS-Nutzung = Mietvertrag (§ 535 BGB, Instandhaltungspflicht des Anbieters!).',
+            'Individualsoftware / Customizing mit Erfolgsversprechen = Werkvertrag (§ 631 BGB) -> Abnahme (§ 640 BGB) + Nacherfüllungspflicht!',
+            'Agile Beratung / Unterstützung nach Zeitaufwand = Dienstvertrag (§ 611 BGB) -> nur fachgerechtes Bemühen geschuldet, keine Abnahme.'
+          ],
+          examTip: 'Prüfe im Sachverhalt immer zuerst: Schuldet der IT-Dienstleister ein fertiges Ergebnis (= Werkvertrag) oder nur seine Arbeitszeit (= Dienstvertrag)?'
+        },
+        {
+          topic: 'Software-Urheberrecht (§§ 69a ff. UrhG), Lizenzen & Datenschutz (DSGVO)',
+          core: 'Schutz von Quellcode als geistiges Eigentum sowie rechtmäßige Verarbeitung personenbezogener Daten nach der DSGVO.',
+          points: [
+            'Urheberrechtsschutz (§ 69a UrhG): Schützt den konkreten Programmcode (Ausdrucksform), nicht aber abstrakte Ideen oder Algorithmen; Arbeitnehmer-Software gehört wirtschaftlich dem Arbeitgeber (§ 69b UrhG).',
+            'DSGVO-Verbot mit Erlaubnisvorbehalt (Art. 6 DSGVO): Verarbeitung personenbezogener Daten ist verboten, außer es greift eine Rechtsgrundlage (Einwilligung, Vertragserfüllung, berechtigtes Interesse).',
+            'Grundsätze Art. 5 DSGVO: Zweckbindung, Datenminimierung, Speicherbegrenzung, Integrität & Vertraulichkeit (TOMs nach Art. 32 DSGVO), Auftragsverarbeitung (AVV, Art. 28).'
+          ],
+          examTip: 'Zitiere in DSGVO-Fällen immer sauber: 1. Personenbezogenes Datum? 2. Verarbeitung? 3. Rechtsgrundlage nach Art. 6 Abs. 1 DSGVO vorhanden?'
+        }
+      ],
+      'se-vl': [
+        {
+          topic: 'Vorgehensmodelle: Wasserfall, V-Modell & Agile Entwicklung (Scrum)',
+          core: 'Systematische Steuerung von Softwareprojekten zwischen plangetriebener Vorhersagbarkeit und agiler Anpassungsfähigkeit.',
+          points: [
+            'Plangetrieben (Wasserfall, V-Modell): Klare Phasen & jedem Entwurfsschritt links steht im V-Modell rechts eine passende Teststufe gegenüber.',
+            'Scrum-Framework: 3 Rollen (Product Owner, Scrum Master, Developers), 5 Events (Sprint, Planning, Daily, Review, Retrospektive), 3 Artefakte (Product Backlog, Sprint Backlog, Increment).',
+            'Wann agil vs. klassisch? Hohe Anforderungsunsicherheit -> Agil (Scrum); fest regulierte/sicherheitskritische Systeme -> V-Modell.'
+          ],
+          examTip: 'Verwechsle niemals Sprint Review (Fachliches Feedback zum Produkt-Inkrement) mit Sprint Retrospektive (Verbesserung der Team-Zusammenarbeit)!'
+        },
+        {
+          topic: 'Requirements Engineering & UML Use-Case-Diagramme',
+          core: 'Erhebung, Dokumentation und Modellierung funktionaler und nichtfunktionaler Anforderungen aus Nutzersicht.',
+          points: [
+            'Funktionale Anforderungen („Was soll das System tun?“) vs. Nichtfunktionale Qualitätsanforderungen („Wie gut? Performanz, Sicherheit, Usability“).',
+            'User Stories im agilen Backlog: „Als <Rolle> möchte ich <Funktion>, um <Nutzen>“ + messbare Akzeptanzkriterien (INVEST-Regel).',
+            'UML Use-Case-Diagramm: Akteure außerhalb der Systemgrenze, `<<include>>` (wird IMMER zwingend mitausgeführt, Pfeil zum eingebundenen UC) vs. `<<extend>>` (optional unter Bedingung, Pfeil ZUM Basis-UC!).'
+          ],
+          examTip: 'Pfeilrichtungs-Falle bei Prof. Metzner: `A --<<include>>--> B` (Pfeil zu B), aber `Zusatz --<<extend>>--> Basis` (Pfeil zeigt zurück auf den Basis-Use-Case)!'
+        },
+        {
+          topic: 'Objektorientierte Analyse & Design: UML Klassendiagramm',
+          core: 'Statische Strukturmodellierung von Klassen, Sichtbarkeiten, Multiplizitäten und Objektbeziehungen.',
+          points: [
+            'Sichtbarkeiten in UML: `+` public, `-` private, `#` protected, `~` package; abstrakte Klassen/Methoden *kursiv*, statische Member <u>unterstrichen</u>.',
+            'Aggregation (leere Raute ◇ am Ganzen): Lose „Teil-von“-Beziehung ohne Existenzabhängigkeit (Teil überlebt ohne das Ganze).',
+            'Komposition (gefüllte Raute ◆ am Ganzen): Starke Existenzabhängigkeit + Multiplizität am Ganzen maximal `1` (`1` oder `0..1`).'
+          ],
+          examTip: 'Prüfe bei jedem gezeichneten Klassendiagramm: Sitzt die Raute wirklich auf der Seite des Ganzen und stehen alle Multiplizitäten (`0..*`, `1`) an den Linienenden?'
+        }
+      ],
+      'se-ue': [
+        {
+          topic: 'Dynamische UML-Diagramme: Sequenz-, Aktivitäts- & Zustandsdiagramm',
+          core: 'Modellierung zeitlicher Nachrichtenflüsse zwischen Objekten, paralleler Workflows und Objekt-Lebenszyklen.',
+          points: [
+            'Sequenzdiagramm: Lebenslinien, Aktivierungsbalken, synchrone Nachricht (gefüllte Pfeilspitze) vs. Antwortnachricht (gestrichelter Pfeil), Fragmente `alt`, `opt`, `loop`.',
+            'Aktivitätsdiagramm: Kontrollfluss mit Entscheidung/Zusammenführung (Raute `[Bedingung]`) und Parallelisierung/Synchronisation (dicker Balken Fork/Join).',
+            'Zustandsdiagramm: Übergänge im Format `Ereignis [Wächterbedingung] / Aktion` sowie `entry /`, `do /` und `exit /` Aktivitäten.'
+          ],
+          examTip: 'Im Aktivitätsdiagramm verzweigt eine Raute auf ODER-Pfade (`[x > 0]` vs. `[else]`), während ein schwarzer Balken echte parallele UND-Pfade startet!'
+        },
+        {
+          topic: 'Software-Architektur, SOLID-Prinzipien & GoF Design Patterns',
+          core: 'Wiederverwendbare Entwurfsmuster für wartbaren, erweiterbaren und lose gekoppelten Code.',
+          points: [
+            'Hohe Kohäsion (eine Klasse hat genau eine klare Aufgabe) & Lose Kopplung (geringe Abhängigkeiten durch Programmierung gegen Interfaces).',
+            'Observer-Pattern (Verhaltensmuster): `Subject` benachrichtigt beliebig viele `Observer` automatisch bei Zustandsänderungen.',
+            'Strategy-Pattern (Austauschbare Algorithmen zur Laufzeit, z.B. Versandkosten-/Rabattberechnung) & Factory-Method / Singleton (Erzeugungsmuster).'
+          ],
+          examTip: 'Erkenne Strategy vs. Observer sofort am Zweck: Strategy = „EIN Algorithmus austauschbar wählen“; Observer = „VIELE Abonnenten über Änderung informieren“!'
+        },
+        {
+          topic: 'Softwarequalität, Reviews & Systematisches Testen (Unit bis Abnahmetest)',
+          core: 'Fehler frühzeitig finden durch statische Prüfungen und automatisierte dynamische Tests über alle Teststufen.',
+          points: [
+            'Teststufen: Komponententest/Unit-Test (JUnit) -> Integrationstest (Zusammenspiel/Schnittstellen) -> Systemtest -> Abnahmetest (Kunde).',
+            'Black-Box-Test (ohne Codekenntnis: Äquivalenzklassenbildung & Grenzwertanalyse!) vs. White-Box-Test (Anweisungs- C0 & Zweigüberdeckung C1).',
+            'AAA-Muster im Unit-Test: Arrange (Testdaten aufbauen) -> Act (Methode aufrufen) -> Assert (Ergebnis prüfen).'
+          ],
+          examTip: 'Bei Grenzwertanalyse immer direkt AM Rand und knapp DANEBEN testen (z.B. bei `1..100` die Werte `0, 1, 100, 101`)!'
+        }
+      ]
+    };
+
     const STORAGE_KEY = 'tha_lernplan_state_v3';
+    const DEVICE_NOTIFIED_KEY = 'tha_kurama_notified_v1';
+    const CURRENT_SCHEDULE_VERSION = 2;
     let state = loadState();
     let selectedDate = getTodayISO();
     let reportWeekOffset = 0; // 0 = current week, -1 = last week
     let selectedVW = getCurrentVorlesungswoche();
     let currentTimerDurationMin = 60;
-    let timerSeconds = 60 * 60;
     let timerInterval = null;
+
+    function getCourseMoodleUrl(courseOrId) {
+      const c = typeof courseOrId === 'string'
+        ? (COURSES.find(x => x.id === courseOrId) || COURSES[0])
+        : (courseOrId || COURSES[0]);
+      if (state && state.customMoodleUrls && state.customMoodleUrls[c.id]) {
+        return state.customMoodleUrls[c.id];
+      }
+      return c.moodleUrl;
+    }
+
+    function openSelectedMoodle(selectId) {
+      const sel = document.getElementById(selectId);
+      const cid = sel ? sel.value : 'prowi';
+      const url = getCourseMoodleUrl(cid);
+      window.open(url, '_blank', 'noopener');
+    }
 
     function getTodayISO() {
       return formatDateISO(new Date());
@@ -2014,7 +2946,7 @@
       return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
     }
 
-    // Calculate THA WiSe 2026/27 Lecture Week (Vorlesungswoche 1 starts Oct 1, 2026 -> Oct 22 is VW 4)
+    // Calculate THA WiSe 2026/27 Lecture Week (Vorlesungswoche 1 starts Oct 1, 2026 -> Oct 26 is VW 4)
     function getCurrentVorlesungswoche(refDateStr) {
       const semesterStart = new Date('2026-10-01T08:00:00');
       const now = refDateStr ? new Date(refDateStr + 'T12:00:00') : new Date();
@@ -2022,27 +2954,47 @@
       return Math.max(1, Math.min(15, diffWeeks));
     }
 
+    function ensureStateShape(obj) {
+      const s = obj || {};
+      s.completedTopics = s.completedTopics || {};
+      s.studiedMinutes = s.studiedMinutes || {};
+      s.dailyTodos = s.dailyTodos || {};
+      s.weeklyLogs = s.weeklyLogs || {};
+      s.moodleSlides = s.moodleSlides || {};
+      s.slideNotes = s.slideNotes || {};
+      s.timeline = s.timeline || [];
+      s.readSummaries = s.readSummaries || {};
+      s.customSummaries = s.customSummaries || {};
+      s.customCalEvents = s.customCalEvents || [];
+      s.customMoodleUrls = s.customMoodleUrls || {};
+      s.activeTimer = s.activeTimer || null;
+      s.timerClearedAt = s.timerClearedAt || 0;
+      s.scheduleVersion = s.scheduleVersion || 0;
+      return s;
+    }
+
+    function migrateScheduleIfNeeded() {
+      if ((state.scheduleVersion || 0) < CURRENT_SCHEDULE_VERSION) {
+        // Refresh any days where NO todo was checked off yet so Ahmad gets the new Stundenplan-aligned todos immediately!
+        Object.keys(state.dailyTodos || {}).forEach(dateKey => {
+          const list = state.dailyTodos[dateKey];
+          if (Array.isArray(list) && list.every(t => !t.done && !String(t.id || '').includes('-custom-'))) {
+            delete state.dailyTodos[dateKey];
+          }
+        });
+        state.scheduleVersion = CURRENT_SCHEDULE_VERSION;
+        saveState();
+      }
+    }
+
     function loadState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('tha_lernplan_state_v2') || localStorage.getItem('tha_lernplan_state_v1');
         if (raw) {
-          const parsed = JSON.parse(raw);
-          parsed.weeklyLogs = parsed.weeklyLogs || {}; // { '2026-W43': { 'prowi': 90, 'dbs': 60 } }
-          parsed.moodleSlides = parsed.moodleSlides || {}; // { 'dbs:VW4': true }
-          parsed.slideNotes = parsed.slideNotes || {}; // { 'dbs:VW4': 'ER-Modellierung' }
-          parsed.timeline = parsed.timeline || []; // Chronological study timeline entries
-          return parsed;
+          return ensureStateShape(JSON.parse(raw));
         }
       } catch (e) {}
-      return {
-        completedTopics: {},
-        studiedMinutes: {},
-        dailyTodos: {},
-        weeklyLogs: {},
-        moodleSlides: {},
-        slideNotes: {},
-        timeline: []
-      };
+      return ensureStateShape({});
     }
 
     const CLOUD_SYNC_KEY = 'tha_kurama_cloud_sync_v1';
@@ -2061,8 +3013,8 @@
             localStorage.setItem(CLOUD_SYNC_KEY, JSON.stringify(decoded));
             history.replaceState(null, '', window.location.pathname + window.location.search);
             setTimeout(() => {
-              alert('🎉 Stark, Ahmad! Dein Gerät ist jetzt 24/7 live mit deinem Kurama-Cockpit verbunden!');
-            }, 300);
+              showKuramaToast('🎉 Gerät verbunden!', 'Dein Tablet/Handy ist jetzt 24/7 live mit deinem Kurama-Cockpit verbunden!', 'secToday');
+            }, 350);
             return decoded;
           }
         }
@@ -2087,48 +3039,90 @@
       }
       if (!skipCloudPush && cloudSyncCfg && cloudSyncCfg.gistId && cloudSyncCfg.token) {
         clearTimeout(cloudPushTimer);
-        cloudPushTimer = setTimeout(() => pushStateToCloud(), 650);
+        cloudPushTimer = setTimeout(() => pushStateToCloud(), 550);
       }
     }
 
     function refreshAllViews() {
+      syncTimerUIFromState();
       renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
       renderWeeklyReport();
       renderMoodleSlidesTracker();
       renderWeekGrid();
       renderCourses();
       renderTimeline();
+      checkAndNotifyReadySummaries(false);
     }
 
     function mergeTwoStates(localS, remoteS) {
+      localS = ensureStateShape(localS);
+      remoteS = ensureStateShape(remoteS);
       const merged = JSON.parse(JSON.stringify(remoteS));
-      merged.completedTopics = { ...(remoteS.completedTopics || {}), ...(localS.completedTopics || {}) };
-      merged.moodleSlides = { ...(remoteS.moodleSlides || {}), ...(localS.moodleSlides || {}) };
-      merged.slideNotes = { ...(remoteS.slideNotes || {}), ...(localS.slideNotes || {}) };
-      merged.dailyTodos = { ...(remoteS.dailyTodos || {}), ...(localS.dailyTodos || {}) };
+      ensureStateShape(merged);
 
-      // Merge timeline entries uniquely by ID, sorted newest-first
+      merged.completedTopics = { ...remoteS.completedTopics, ...localS.completedTopics };
+      merged.moodleSlides = { ...remoteS.moodleSlides, ...localS.moodleSlides };
+      merged.slideNotes = { ...remoteS.slideNotes, ...localS.slideNotes };
+      merged.dailyTodos = { ...remoteS.dailyTodos, ...localS.dailyTodos };
+      merged.readSummaries = { ...remoteS.readSummaries, ...localS.readSummaries };
+      merged.customSummaries = { ...remoteS.customSummaries, ...localS.customSummaries };
+      merged.customMoodleUrls = { ...remoteS.customMoodleUrls, ...localS.customMoodleUrls };
+      merged.scheduleVersion = Math.max(localS.scheduleVersion || 0, remoteS.scheduleVersion || 0);
+
+      // Merge custom calendar events uniquely by ID
+      const calMap = new Map();
+      [...(remoteS.customCalEvents || []), ...(localS.customCalEvents || [])].forEach(ev => {
+        if (ev && ev.id) calMap.set(ev.id, ev);
+      });
+      merged.customCalEvents = Array.from(calMap.values()).sort((a, b) => (a.dateISO + (a.time || '')).localeCompare(b.dateISO + (b.time || '')));
+
+      // Merge timeline entries uniquely by ID (keep higher minutes for live-growing timer sessions!)
       const map = new Map();
-      [...(localS.timeline || []), ...(remoteS.timeline || [])].forEach(item => {
-        if (item && item.id) map.set(item.id, item);
+      [...(remoteS.timeline || []), ...(localS.timeline || [])].forEach(item => {
+        if (!item || !item.id) return;
+        const prev = map.get(item.id);
+        if (!prev || (item.minutes || 0) >= (prev.minutes || 0)) {
+          map.set(item.id, item);
+        }
       });
       merged.timeline = Array.from(map.values())
         .sort((a, b) => new Date(b.ts) - new Date(a.ts))
         .slice(0, 120);
 
       // Keep max minutes per course/week when offline changes happened concurrently
-      merged.studiedMinutes = { ...(remoteS.studiedMinutes || {}) };
-      Object.entries(localS.studiedMinutes || {}).forEach(([cid, m]) => {
+      merged.studiedMinutes = { ...remoteS.studiedMinutes };
+      Object.entries(localS.studiedMinutes).forEach(([cid, m]) => {
         merged.studiedMinutes[cid] = Math.max(merged.studiedMinutes[cid] || 0, m || 0);
       });
 
-      merged.weeklyLogs = { ...(remoteS.weeklyLogs || {}) };
-      Object.entries(localS.weeklyLogs || {}).forEach(([wk, obj]) => {
+      merged.weeklyLogs = { ...remoteS.weeklyLogs };
+      Object.entries(localS.weeklyLogs).forEach(([wk, obj]) => {
         merged.weeklyLogs[wk] = { ...(merged.weeklyLogs[wk] || {}) };
         Object.entries(obj || {}).forEach(([cid, m]) => {
           merged.weeklyLogs[wk][cid] = Math.max(merged.weeklyLogs[wk][cid] || 0, m || 0);
         });
       });
+
+      // Merge live activeTimer across PC & Tablet cleanly
+      const maxClearedAt = Math.max(localS.timerClearedAt || 0, remoteS.timerClearedAt || 0);
+      merged.timerClearedAt = maxClearedAt;
+      const lt = localS.activeTimer;
+      const rt = remoteS.activeTimer;
+      let chosenTimer = null;
+      if (lt && rt) {
+        chosenTimer = (lt.timerUpdatedAt || 0) >= (rt.timerUpdatedAt || 0) ? { ...lt } : { ...rt };
+        if (lt.sessionId === rt.sessionId) {
+          chosenTimer.bookedMin = Math.max(lt.bookedMin || 0, rt.bookedMin || 0);
+        }
+      } else {
+        chosenTimer = lt || rt || null;
+      }
+      if (chosenTimer && (chosenTimer.timerUpdatedAt || 0) < maxClearedAt) {
+        chosenTimer = null;
+      }
+      merged.activeTimer = chosenTimer;
 
       merged.updatedAt = Date.now();
       return merged;
@@ -2173,13 +3167,14 @@
         const gist = await res.json();
         const fileObj = gist.files && gist.files['kurama_cockpit_sync.json'];
         if (fileObj && fileObj.content) {
-          const remoteState = JSON.parse(fileObj.content);
+          const remoteState = ensureStateShape(JSON.parse(fileObj.content));
           const remoteTs = remoteState.updatedAt || 0;
           const localTs = state.updatedAt || 0;
 
           if (remoteTs > localTs) {
             state = hasUnsyncedChanges ? mergeTwoStates(state, remoteState) : remoteState;
-            state.timeline = state.timeline || [];
+            ensureStateShape(state);
+            migrateScheduleIfNeeded();
             saveState(true);
             refreshAllViews();
             if (hasUnsyncedChanges) {
@@ -2356,42 +3351,89 @@
       document.getElementById('currentVWStat').textContent = isCompact ? `VW ${vw}` : `VW ${vw} (KW ${kw})`;
     }
 
-    // Dynamic Schedule Generator (with 30 / 60 / 90 Min blocks)
+    // Dynamic Schedule Generator — Tailored 100% to Ahmad's Real THA WiSe 26/27 Timetable!
     function getDynamicScheduleForDate(dateISO) {
       const d = new Date(dateISO + 'T12:00:00');
       const dow = d.getDay();
       const weekNum = getISOWeekNumber(d);
       const vw = getCurrentVorlesungswoche(dateISO);
 
-      const baseTemplates = {
-        1: ['prowi', 'dbs'],
-        2: ['bub', 'klr'],
-        3: ['prowi', 'dia'],
-        4: ['se', 'itmr', 'dbs'],
-        5: ['impis', 'bub', 'klr'],
-        6: ['prowi', 'se', 'pem'],
-        0: ['dia', 'itmr', 'impis', 'pem']
+      // Pick weakest course dynamically for Sunday's flexible booster slot
+      const weakestCourse = [...COURSES]
+        .filter(c => c.id !== 'dia' && c.id !== 'bub')
+        .sort((a, b) => (getCourseProgressPct(a) - (a.ects === 10 ? 12 : 0)) - (getCourseProgressPct(b) - (b.ects === 10 ? 12 : 0)))[0] || COURSES[4];
+
+      // Exact plan per weekday aligned with free windows in Ahmad's Stundenplan:
+      const timetableAlignedPlan = {
+        1: {
+          campusInfo: '🏫 Uni 08:00–11:15 (IMPIS M1.02) • 🌟 Frei ab 11:15!',
+          mode: 'Freier Montagnachmittag: IMPIS-Review + 90m ProWi (10 ECTS) + BuB',
+          slots: [
+            { cid: 'impis', dur: 30, taskKind: 'lecture_recap', label: 'Vorlesungs-Nachbereitung (30 Min.)' },
+            { cid: 'prowi', dur: 90, taskKind: 'deep_work', label: '10-ECTS Intensiv-Block (90 Min. ab 13:00)' },
+            { cid: 'bub', dur: 60, taskKind: 'self_study', label: '2.-Sem. Eigenstudium & Buchungssätze (60 Min.)' }
+          ]
+        },
+        2: {
+          campusInfo: '🏫 Uni 08:45–15:30 (IT-Mgmt & KLR M1.02) • Frei ab 15:30',
+          mode: 'Nachmittags-Fokus ab 16:00: Heutige VL sichern + DIA Eigenstudium',
+          slots: [
+            { cid: 'itmr', dur: 30, taskKind: 'lecture_recap', label: 'Heutige IT-Management VL Zusammenfassung (30 Min.)' },
+            { cid: 'klr', dur: 30, taskKind: 'lecture_recap', label: 'Heutige KLR-Vorlesung & Übung nachrechnen (30 Min.)' },
+            { cid: 'dia', dur: 60, taskKind: 'self_study', label: '2.-Sem. Eigenstudium Datenanalyse (60 Min.)' }
+          ]
+        },
+        3: {
+          campusInfo: '🔥 Langer Uni-Tag 08:00–18:50 (PEM + DBS VL & Übung M2.03)',
+          mode: 'Schon-Modus nach 18:50 Uhr: Nur leichtes Zusammenfassungs-Review!',
+          slots: [
+            { cid: 'dbs', dur: 30, taskKind: 'lecture_recap', label: 'Leichtes Abend-Review: DBS-Zusammenfassung & SQL sichern (30 Min.)' },
+            { cid: 'pem', dur: 30, taskKind: 'lecture_recap', label: 'Kurz-Check: Heutige PEM-Vorlesung Zusammenfassung (30 Min.)' }
+          ]
+        },
+        4: {
+          campusInfo: '🌟 Vormittag FREI bis 14:00! • 🏫 Uni 14:00–17:10 (PEM M1.02)',
+          mode: 'Gold-Vormittag (09:30–12:30): 90m ProWi + 60m BuB • Abends 30m PEM',
+          slots: [
+            { cid: 'prowi', dur: 90, taskKind: 'deep_work', label: 'Vormittags-Fokus vor der Uni: 10-ECTS Coding (90 Min.)' },
+            { cid: 'bub', dur: 60, taskKind: 'self_study', label: 'Vormittags-Block: BuB Klausurtraining (60 Min.)' },
+            { cid: 'pem', dur: 30, taskKind: 'lecture_recap', label: 'Nach 17:10: Heutige PEM-Zusammenfassung lesen (30 Min.)' }
+          ]
+        },
+        5: {
+          campusInfo: '🏫 Uni 09:45–17:10 (IT-Recht + 2× SE in M1.01 / W3.02)',
+          mode: 'Kompakter Freitags-Abschluss: Heutige IT-Recht & SE Vorlesungen sichern',
+          slots: [
+            { cid: 'itmr', dur: 30, taskKind: 'lecture_recap', label: 'Heutige IT-Recht VL Zusammenfassung & BGB/DSGVO (30 Min.)' },
+            { cid: 'se', dur: 60, taskKind: 'lecture_recap', label: 'Heutige Software-Engineering VL & Übung nachbereiten (60 Min.)' }
+          ]
+        },
+        6: {
+          campusInfo: '🏡 Vorlesungsfrei — Samstag Klausur- & Praxis-Tag',
+          mode: 'Wochenend-Power (3,5 h): 90m ProWi + 60m SQL/DBS + 60m KLR-Rechnen',
+          slots: [
+            { cid: 'prowi', dur: 90, taskKind: 'exam_drill', label: '10-ECTS Klausur- & Programmier-Simulation (90 Min.)' },
+            { cid: 'dbs', dur: 60, taskKind: 'exam_drill', label: 'SQL-Abfragen & Normalisierungs-Training (60 Min.)' },
+            { cid: 'klr', dur: 60, taskKind: 'exam_drill', label: 'KLR Rechenaufgaben: BAB, Kalkulation & DB (60 Min.)' }
+          ]
+        },
+        0: {
+          campusInfo: '🏡 Vorlesungsfrei — Sonntag 2.-Sem.-Module & Wochen-Finish',
+          mode: `Sonntags-Runde (3,0 h): DIA + BuB + Fokus-Booster (${weakestCourse.short})`,
+          slots: [
+            { cid: 'dia', dur: 60, taskKind: 'exam_drill', label: 'DIA Klausurtraining: DWH, OLAP & Data Mining (60 Min.)' },
+            { cid: 'bub', dur: 60, taskKind: 'exam_drill', label: 'BuB HGB-Bewertung & Jahresabschluss-Training (60 Min.)' },
+            { cid: weakestCourse.id, dur: 60, taskKind: 'booster', label: `Wochen-Booster für ${weakestCourse.short} (60 Min.)` }
+          ]
+        }
       };
 
-      let planned = [...baseTemplates[dow]];
-
-      if (weekNum % 2 === 1 && planned.length >= 2) {
-        const sortedByNeed = [...COURSES]
-          .sort((a, b) => (getCourseProgressPct(a) - (a.ects === 10 ? 15 : 0)) - (getCourseProgressPct(b) - (b.ects === 10 ? 15 : 0)))
-          .map(c => c.id);
-        for (const candidate of sortedByNeed) {
-          if (!planned.includes(candidate)) {
-            planned[planned.length - 1] = candidate;
-            break;
-          }
-        }
-      }
-
-      const details = planned.map((cid, slotIdx) => {
-        const course = COURSES.find(c => c.id === cid);
+      const dayCfg = timetableAlignedPlan[dow];
+      const details = dayCfg.slots.map((slot, slotIdx) => {
+        const course = COURSES.find(c => c.id === slot.cid) || COURSES[0];
         const uncompleted = course.topics
           .map((t, idx) => ({ t, idx }))
-          .filter(x => !state.completedTopics[`${cid}:${x.idx}`]);
+          .filter(x => !state.completedTopics[`${slot.cid}:${x.idx}`]);
 
         let chosenTopic;
         if (uncompleted.length > 0) {
@@ -2399,20 +3441,25 @@
         } else {
           chosenTopic = course.topics[(weekNum + dow) % course.topics.length] + ' (Klausur-Wiederholung)';
         }
-        return { course, topic: chosenTopic, vw };
+        return {
+          course,
+          topic: chosenTopic,
+          vw,
+          durationMin: slot.dur,
+          taskKind: slot.taskKind,
+          slotLabel: slot.label
+        };
       });
 
-      const modes = {
-        1: '90-Min. Coding-Fokus (10 ECTS) & Datenbanken',
-        2: 'Prof. Übelhör Rechnungswesen-Tag (BuB + KLR)',
-        3: '90-Min. Coding-Fokus & Datenanalyse',
-        4: 'Software-Engineering, IT-Recht & SQL',
-        5: 'ERP-Praxis & BWL-Rechnungstraining',
-        6: 'Klausur-Simulation (90 Min. ProWi + SE + PEM)',
-        0: 'Wochen-Review, Moodle-Folien-Check & Konzepte'
+      return {
+        dow,
+        weekNum,
+        vw,
+        campusInfo: dayCfg.campusInfo,
+        mode: dayCfg.mode,
+        courses: dayCfg.slots.map(s => s.cid),
+        details
       };
-
-      return { dow, weekNum, vw, mode: modes[dow], courses: planned, details };
     }
 
     function ensureDailyTodos(dateISO, forceRegenerate = false) {
@@ -2422,24 +3469,24 @@
       const sched = getDynamicScheduleForDate(dateISO);
       const todos = [];
 
-      sched.details.forEach(({ course, topic, vw }) => {
-        const is10Ects = course.ects === 10;
-        const mainDur = is10Ects ? 90 : 60;
-        todos.push({
-          id: `${dateISO}-${course.id}-1`,
-          courseId: course.id,
-          title: `${course.name}: Moodle-Folien (VW ${vw}) & Thema „${topic}“ durcharbeiten`,
-          type: is10Ects ? '10-ECTS Intensiv-Block (90 Min.)' : 'Vorlesung & Skript-Block (60 Min.)',
-          durationMin: mainDur,
-          done: false
-        });
+      sched.details.forEach(({ course, topic, vw, durationMin, taskKind, slotLabel }, idx) => {
+        let titleText = '';
+        if (taskKind === 'lecture_recap') {
+          titleText = `${course.name}: Heutige Vorlesungs-Zusammenfassung (VW ${vw}) lesen & „${topic}“ sichern`;
+        } else if (taskKind === 'deep_work') {
+          titleText = `${course.name}: 10-ECTS Fokusblock zu „${topic}“ + Code-Übung schreiben`;
+        } else if (taskKind === 'exam_drill') {
+          titleText = `${course.name}: Altklausur-/Probeaufgaben zu „${topic}“ rechnen`;
+        } else {
+          titleText = `${course.name}: Skript/Moodle (VW ${vw}) & Aufgaben zu „${topic}“ durcharbeiten`;
+        }
 
         todos.push({
-          id: `${dateISO}-${course.id}-2`,
+          id: `${dateISO}-${course.id}-${idx + 1}`,
           courseId: course.id,
-          title: `${course.short}: Klausur-/Probeaufgaben zu „${topic}“ lösen`,
-          type: 'Praxis- & Übungs-Block (30 Min.)',
-          durationMin: 30,
+          title: titleText,
+          type: slotLabel,
+          durationMin: durationMin || course.defaultBlockMin || 60,
           done: false
         });
       });
@@ -2464,9 +3511,8 @@
       document.getElementById('currentDateLabel').textContent =
         (isToday ? '🟢 HEUTE — ' : '📆 ') + `${dateFormatted} (KW ${sched.weekNum} • Vorlesungswoche ${sched.vw})`;
 
-      const focusCourses = sched.details.map(x => `${x.course.short}`).join('  •  ');
       document.getElementById('dailyFocusLabel').textContent =
-        `${sched.mode}: ${focusCourses}`;
+        `${sched.campusInfo}  —  ${sched.mode}`;
 
       const todos = ensureDailyTodos(selectedDate);
       const container = document.getElementById('todoListContainer');
@@ -2477,6 +3523,7 @@
         if (item.done) doneCount++;
         const course = COURSES.find(c => c.id === item.courseId) || COURSES[0];
         const durMin = item.durationMin || 60;
+        const mUrl = getCourseMoodleUrl(course);
 
         const row = document.createElement('div');
         row.className = 'todo-item' + (item.done ? ' done' : '');
@@ -2485,9 +3532,9 @@
           <div class="todo-content">
             <div class="todo-title">${item.title}</div>
             <div class="todo-meta">
-              <span class="course-tag" style="background:${course.color}22; color:${course.color}; border:1px solid ${course.color}55;">
-                ${course.short} (${course.prof})
-              </span>
+              <a class="course-tag" href="${mUrl}" target="_blank" rel="noopener" title="Direkt zum THA Moodle-Kurs ${course.name} öffnen" style="background:${course.color}22; color:${course.color}; border:1px solid ${course.color}55;">
+                ${course.short} (${course.prof}) ↗
+              </a>
               <span>📌 ${item.type}</span>
               <select class="dur-select" onchange="changeTodoDuration('${selectedDate}', ${index}, this.value)">
                 <option value="30" ${durMin === 30 ? 'selected' : ''}>⏱️ 30 Min.</option>
@@ -2566,6 +3613,8 @@
       d.setDate(d.getDate() + offset);
       selectedDate = formatDateISO(d);
       renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
       renderWeekGrid();
       renderWeeklyReport();
     }
@@ -2573,12 +3622,16 @@
     function selectSpecificDate(dateISO) {
       selectedDate = dateISO;
       renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
       renderWeekGrid();
     }
 
     function goToday() {
       selectedDate = getTodayISO();
       renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
       renderWeekGrid();
       renderWeeklyReport();
     }
@@ -2619,9 +3672,9 @@
       const activeCourses = perCourse.filter(x => x.min > 0).sort((a, b) => b.min - a.min);
       const strengthsEl = document.getElementById('reportStrengths');
       if (activeCourses.length === 0) {
-        strengthsEl.innerHTML = `<p style="color:var(--text-muted);">In KW ${wkNum} wurden noch keine Lernblöcke (30/60/90 Min.) abgehakt. Sobald du heute dein erstes To-Do abhakst oder den Timer nutzt, lobt Kurama hier deine stärksten Fächer!</p>`;
+        strengthsEl.innerHTML = `<p style="color:var(--text-muted);">In KW ${wkNum} wurden noch keine Lernblöcke verbucht. Starte einfach den Fokus-Timer (bucht automatisch!) oder hake ein To-Do ab!</p>`;
       } else {
-        const topList = activeCourses.slice(0, 3).map(x => `<li><strong>${x.course.name}</strong>: ${x.min} Min. (${(x.min/60).toFixed(1)} h) trainiert – starker Einsatz!</li>`).join('');
+        const topList = activeCourses.slice(0, 3).map(x => `<li><a href="${getCourseMoodleUrl(x.course)}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:700; color:${x.course.color};">${x.course.name} ↗</a>: ${x.min} Min. (${(x.min/60).toFixed(1)} h) trainiert – starker Einsatz!</li>`).join('');
         strengthsEl.innerHTML = `
           <div style="margin-bottom:6px;">🔥 <strong>Gesamtleistung in KW ${wkNum}:</strong> ${totalMin} Min. (${(totalMin/60).toFixed(1)} Stunden) fokussiertes Studium!</div>
           <ul style="margin-left:18px;">${topList}</ul>
@@ -2639,7 +3692,7 @@
         const needList = neglected.slice(0, 3).map(x => {
           const vwKey = `${x.course.id}:VW${selectedVW}`;
           const slideHint = !state.moodleSlides[vwKey] ? ` (+ Moodle-Folien VW ${selectedVW} noch offen)` : '';
-          return `<li><strong>${x.course.name} (${x.course.ects} ECTS)</strong>: Erst ${x.min} Min. diese Woche • Gesamtstand ${x.pct}%${slideHint}</li>`;
+          return `<li><a href="${getCourseMoodleUrl(x.course)}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:700; color:${x.course.color};">${x.course.name} (${x.course.ects} ECTS) ↗</a>: Erst ${x.min} Min. diese Woche • Gesamtstand ${x.pct}%${slideHint}</li>`;
         }).join('');
         weakEl.innerHTML = `
           <div style="margin-bottom:6px;">⚡ <strong>Kuramas Empfehlung für deine nächsten Blöcke:</strong></div>
@@ -2647,7 +3700,7 @@
         `;
       }
 
-      // Breakdown bars
+      // Breakdown bars (clickable course name -> Moodle!)
       const breakdownEl = document.getElementById('reportCourseBreakdown');
       const targetWeeklyMinPer5Ects = 120; // 2h per 5 ECTS, 4h for 10 ECTS
       breakdownEl.innerHTML = perCourse.map(({ course, min }) => {
@@ -2655,7 +3708,7 @@
         const wPct = Math.min(100, Math.round((min / goalMin) * 100));
         return `
           <div style="display:flex; align-items:center; gap:10px;">
-            <span style="width:135px; font-weight:600; color:${course.color}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${course.short}</span>
+            <a href="${getCourseMoodleUrl(course)}" target="_blank" rel="noopener" class="moodle-direct-link" title="Direkt in THA Moodle öffnen" style="width:145px; font-weight:700; color:${course.color}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${course.short} ↗</a>
             <div style="flex:1; height:7px; background:#1e293b; border-radius:99px; overflow:hidden;">
               <div style="width:${wPct}%; height:100%; background:${course.color};"></div>
             </div>
@@ -2697,6 +3750,7 @@
         const activeKey = `${c.id}:VW${selectedVW}`;
         const isDone = !!state.moodleSlides[activeKey];
         const autoTopic = c.topics[(selectedVW - 1) % c.topics.length];
+        const mUrl = getCourseMoodleUrl(c);
 
         // Mini pills VW 1 .. VW 8
         let pills = '';
@@ -2709,8 +3763,8 @@
         return `
           <div class="slide-card">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <strong style="color:${c.color};">${c.short}</strong>
-              <a href="${c.moodleUrl}" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.76rem; font-weight:600;">🔗 Moodle öffnen</a>
+              <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:800; color:${c.color};" title="Klicken für direkte Weiterleitung zu THA Moodle">${c.short} — ${c.prof} ↗</a>
+              <a href="${mUrl}" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none; font-size:0.75rem; font-weight:700;">🔗 Moodle</a>
             </div>
             <div style="font-size:0.78rem; color:var(--text-muted); margin-top:3px;">
               Folien VW ${selectedVW}: <em>${autoTopic}</em>
@@ -2760,33 +3814,43 @@
       const q = raw.toLowerCase();
       let reply = '';
 
-      if (q.includes('wochenbericht') || q.includes('bericht') || q.includes('woche')) {
+      if (q.includes('vorlesung') || q.includes('stundenplan') || q.includes('kalender') || q.includes('zusammenfassung')) {
+        const d = new Date(selectedDate + 'T12:00:00');
+        const todaysLectures = LECTURE_SCHEDULE.filter(l => l.dow === d.getDay());
+        if (todaysLectures.length === 0) {
+          reply = `🦊 Am ausgewählten Tag hast du vorlesungsfrei! Perfekt für deine freien Fokus-Blöcke (ProWi 10 ECTS, BuB & DIA). Unten rechts im Zusammenfassungs-Slot findest du das komplette Wochen-Kompendium!`;
+        } else {
+          reply = `🦊 Deine Vorlesungen laut THA-Stundenplan:\n` +
+            todaysLectures.map(l => `• ${l.start}–${l.end} Uhr (${l.room}): ${l.title}`).join('\n') +
+            `\n\n📝 Deine Tages-Zusammenfassung dazu liegt direkt darunter im Slot „Vorlesungs-Zusammenfassung“ bereit!`;
+        }
+      } else if (q.includes('wochenbericht') || q.includes('bericht') || q.includes('woche')) {
         const currWkKey = `${new Date().getFullYear()}-W${getISOWeekNumber(new Date())}`;
         const currWeekData = state.weeklyLogs[currWkKey] || {};
         const currTotalMin = Object.values(currWeekData).reduce((a, b) => a + b, 0);
         const lowest = [...COURSES].sort((a, b) => getCourseProgressPct(a) - getCourseProgressPct(b))[0];
-        reply = `🦊 Hallo Ahmad! Hier ist dein Kurz-Bericht für diese Woche:\n• Bisher gelernte Fokuszeit: ${currTotalMin} Min. (${(currTotalMin/60).toFixed(1)} h)\n• Dein wichtigster Fokus-Kandidat aktuell: ${lowest.name} (${getCourseProgressPct(lowest)}% Gesamtfortschritt).\n• Tipp: Starte links gleich einen 60- oder 90-Minuten-Block für ${lowest.short}!`;
+        reply = `🦊 Hallo Ahmad! Hier ist dein Kurz-Bericht für diese Woche:\n• Automatisch verbuchte Fokuszeit: ${currTotalMin} Min. (${(currTotalMin/60).toFixed(1)} h)\n• Dein wichtigster Fokus-Kandidat aktuell: ${lowest.name} (${getCourseProgressPct(lowest)}% Gesamtfortschritt).\n• Tipp: Starte links den Fokus-Timer für ${lowest.short} – er bucht jede Minute vollautomatisch!`;
       } else if (q.includes('heute') || q.includes('plan')) {
         const todos = ensureDailyTodos(selectedDate);
         const open = todos.filter(t => !t.done);
         reply = open.length === 0
           ? `🎉 Mega, Ahmad! Du hast heute schon ALLE ${todos.length} geplanten Lernblöcke erledigt!`
-          : `🦊 Heute stehen noch ${open.length} Lernblöcke an:\n` + open.map(t => `• [${t.durationMin || 60} Min] ${t.title}`).join('\n');
+          : `🦊 Dein auf deinen Stundenplan abgestimmter Tagesplan (${open.length} offen):\n` + open.map(t => `• [${t.durationMin || 60} Min] ${t.title}`).join('\n');
       } else if (q.includes('folien') || q.includes('moodle')) {
         const vw = getCurrentVorlesungswoche();
         const openSlides = COURSES.filter(c => !state.moodleSlides[`${c.id}:VW${vw}`]);
-        reply = `📥 Wir sind aktuell in Vorlesungswoche ${vw} (VW ${vw}).\nDir fehlen für VW ${vw} noch die Folien in ${openSlides.length} Kursen (z.B. ${openSlides.slice(0, 3).map(c => c.short).join(', ')}). Du kannst sie direkt unten rechts im Moodle-Folien-Tracker anklicken!`;
+        reply = `📥 Wir sind aktuell in Vorlesungswoche ${vw} (VW ${vw}).\nDir fehlen für VW ${vw} noch die Folien in ${openSlides.length} Kursen (z.B. ${openSlides.slice(0, 3).map(c => c.short).join(', ')}). Klicke einfach auf einen Kursnamen, um direkt in Moodle zu landen!`;
       } else if (q.includes('motivier') || q.includes('schaff')) {
-        reply = `🔥 Ahmad, vergiss eins nicht: Du hast den 10-ECTS-Brocken (Programmierung) in Moodle schon auf 100 % gebracht und Datenanalyse auf 80 %. Wir teilen uns die 88 Tage sauber in 30/60/90-Minuten-Blöcke auf – und ich bleibe nicht nur bis zur 9. Prüfung, sondern für immer an deiner Seite! 🦊💪`;
+        reply = `🔥 Ahmad, dein Wochenplan passt jetzt 1:1 zu deinem echten THA-Stundenplan – dein langer Mittwoch (bis 18:50) ist geschützt, und Montag/Donnerstag nutzen wir clever für ProWi & BuB. Wir ziehen alle 9 Prüfungen gemeinsam durch! 🦊💪`;
       } else if (q.includes('programmierung') || q.includes('prowi')) {
         selectTrainerCourse('prowi');
-        reply = `💻 Ich habe dir direkt unten im Klausur-Trainer eine 10-ECTS-Aufgabe für Programmierung in der WI (Prof. Strohmeier) geladen! Versuch sie zu lösen und klicke dann auf "💡 Lösung".`;
+        reply = `💻 Ich habe dir direkt oben im Klausur-Trainer eine 10-ECTS-Aufgabe für Programmierung in der WI (Prof. Strohmeier) geladen!`;
       } else if (q.includes('datenbank') || q.includes('dbs') || q.includes('sql')) {
         selectTrainerCourse('dbs');
-        reply = `🗄️ Deine SQL- & Normalisierungs-Aufgabe für Datenbanksysteme (Prof. Kolonko) steht direkt unter dem Chat bereit!`;
+        reply = `🗄️ Deine SQL- & Normalisierungs-Aufgabe für Datenbanksysteme (Prof. Kolonko) steht direkt im Fragenblock bereit!`;
       } else if (q.includes('bub') || q.includes('buchführung') || q.includes('klr')) {
         selectTrainerCourse(q.includes('klr') ? 'klr' : 'bub');
-        reply = `📈 Ich habe dir eine Rechnungswesen-Klausuraufgabe (Prof. Übelhör) unten in den Trainer geladen!`;
+        reply = `📈 Ich habe dir eine Rechnungswesen-Klausuraufgabe (Prof. Übelhör) oben in den Trainer geladen!`;
       } else if (q.includes('3nf') || q.includes('normalform')) {
         reply = KURAMA_KNOWLEDGE['3nf'];
       } else if (q.includes('arap') || q.includes('prap') || q.includes('abgrenzung')) {
@@ -2831,11 +3895,11 @@
       } catch (e) {}
 
       thinkingDiv.textContent =
-        `🦊 Zu „${raw}“: Klicke einfach oben auf „🦊 Kurama starten“ (oder drücke Strg+Alt+K) bzw. auf „⚡ Tutor bereit“ unten im Fragenblock, um die Live-KI zu aktivieren!`;
+        `🦊 Zu „${raw}“: Klicke einfach oben auf „🦊 Kurama starten“ (oder drücke Strg+Alt+K) bzw. auf „⚡ Tutor bereit“ im Fragenblock, um die Live-KI zu aktivieren!`;
       box.scrollTop = box.scrollHeight;
     }
 
-    // Dynamic Weekly Plan Grid
+    // Dynamic Weekly Plan Grid (Aligned with Ahmad's Real Timetable + Direct Moodle Links)
     function renderWeekGrid() {
       const grid = document.getElementById('weekGrid');
       grid.innerHTML = '';
@@ -2851,7 +3915,7 @@
 
       const fmtShort = d => d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
       document.getElementById('weekHeaderTitle').textContent =
-        `🗓️ Dynamischer Wochenplan — KW ${weekNum} (${fmtShort(monday)} – ${fmtShort(sunday)}.${sunday.getFullYear()})`;
+        `🗓️ Dein angepasster Wochen-Lernplan — KW ${weekNum} (${fmtShort(monday)} – ${fmtShort(sunday)}.${sunday.getFullYear()})`;
 
       const dayNames = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
 
@@ -2868,17 +3932,23 @@
         col.onclick = () => selectSpecificDate(curISO);
 
         const itemsHtml = sched.details
-          .map(({ course, topic }) => `
-            <div style="margin-bottom:6px; padding:5px 7px; border-radius:6px; background:${course.color}18; border-left:3px solid ${course.color};">
-              <div style="font-weight:700; color:${course.color};">${course.short} (${course.defaultBlockMin}m)</div>
-              <div style="font-size:0.72rem; color:var(--text);">${topic}</div>
-            </div>
-          `)
+          .map(({ course, topic, durationMin }) => {
+            const mUrl = getCourseMoodleUrl(course);
+            return `
+              <div style="margin-bottom:6px; padding:5px 7px; border-radius:6px; background:${course.color}18; border-left:3px solid ${course.color};">
+                <a href="${mUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="moodle-direct-link" title="Direkt zum Moodle-Kurs ${course.name} öffnen" style="font-weight:700; color:${course.color};">
+                  ${course.short} (${durationMin}m) ↗
+                </a>
+                <div style="font-size:0.71rem; color:var(--text); margin-top:1px;">${topic}</div>
+              </div>
+            `;
+          })
           .join('');
 
         col.innerHTML = `
           <h4>${dayNames[i]} (${fmtShort(cur)}) ${isToday ? '🟢' : ''}</h4>
-          <div style="font-size:0.71rem; color:var(--text-muted); margin-bottom:8px;">${sched.mode}</div>
+          <div style="font-size:0.68rem; font-weight:700; color:var(--accent); margin-bottom:4px;">${sched.campusInfo}</div>
+          <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:8px;">${sched.mode}</div>
           ${itemsHtml}
         `;
         grid.appendChild(col);
@@ -2891,6 +3961,7 @@
 
       COURSES.forEach(c => {
         let completedCount = 0;
+        const mUrl = getCourseMoodleUrl(c);
         const topicHtml = c.topics
           .map((t, idx) => {
             const isDone = !!state.completedTopics[`${c.id}:${idx}`];
@@ -2906,13 +3977,16 @@
         card.className = 'course-card';
         card.innerHTML = `
           <div>
-            <div class="course-top">
+            <a class="course-top-clickable" href="${mUrl}" target="_blank" rel="noopener" title="Klicken, um ${c.name} sofort direkt in THA Moodle zu öffnen!">
               <div>
-                <div class="course-title" style="color:${c.color};">${c.name}</div>
-                <div class="course-prof">${c.prof} • ${c.sem}</div>
+                <div class="course-title" style="color:${c.color}; display:flex; align-items:center; gap:6px;">
+                  <span>${c.name}</span>
+                  <span style="font-size:0.8rem; color:var(--accent);">↗</span>
+                </div>
+                <div class="course-prof">${c.prof} • ${c.sem} • <span style="color:var(--accent); font-weight:600;">Klick öffnet Moodle</span></div>
               </div>
               <span class="badge ects">${c.ects} ECTS</span>
-            </div>
+            </a>
 
             <div class="spo-badges" style="margin-top:10px;">
               <span class="badge">SPO 2025: ${c.workloadTotal}h Gesamt</span>
@@ -2938,7 +4012,7 @@
           </div>
 
           <div class="course-links">
-            <a href="${c.moodleUrl}" target="_blank">🔗 Zum THA Moodle-Kurs</a>
+            <a href="${mUrl}" target="_blank" rel="noopener">🎓 Direkt in THA Moodle öffnen ↗</a>
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
               <button onclick="selectTrainerCourse('${c.id}')" style="padding:4px 9px; font-size:0.76rem;">🎯 Probeaufgabe</button>
               <button class="desktop-only-btn" onclick="openKurama('trainer/${c.id}')" style="padding:4px 9px; font-size:0.76rem; border-color:var(--primary); color:var(--primary);" title="Startet Kurama direkt mit einer neuen KI-Klausuraufgabe zu ${c.short}">🦊 KI-Trainer</button>
@@ -3059,7 +4133,11 @@
       currentQuestionItem = item;
       qTutorHistory = [];
 
-      document.getElementById('qCourseName').textContent = `${course.name} (${course.ects} ECTS)`;
+      const qNameEl = document.getElementById('qCourseName');
+      qNameEl.textContent = `${course.name} (${course.ects} ECTS) ↗`;
+      qNameEl.href = getCourseMoodleUrl(course);
+      qNameEl.style.color = course.color;
+
       document.getElementById('qMeta').textContent = item.meta;
       document.getElementById('qText').textContent = item.q;
       const sol = document.getElementById('qSolution');
@@ -3186,30 +4264,676 @@
       loadRandomQuestion();
     }
 
-    function bookCurrentTimerBlockNow() {
-      const cid = document.getElementById('timerCourseSelect').value;
-      const course = COURSES.find(c => c.id === cid) || COURSES[0];
-      const elapsedSec = currentTimerDurationMin * 60 - timerSeconds;
-      const minsToBook = elapsedSec >= 60 ? Math.max(1, Math.round(elapsedSec / 60)) : currentTimerDurationMin;
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-      }
-      timerSeconds = currentTimerDurationMin * 60;
-      document.getElementById('timerBtn').textContent = '▶ Start';
-      updateTimerDisplay();
-
-      logWeeklyStudyTime(getTodayISO(), cid, minsToBook, `Fokus-Lernblock (${minsToBook} Min. ${course.short})`);
-      renderCourses();
-      renderWeeklyReport();
+    // =========================================================================
+    // NOTIFICATION & TOAST ENGINE (PC + Tablet + PWA Service Worker)
+    // =========================================================================
+    function playKuramaChime() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const now = ctx.currentTime;
+        [587.33, 880].forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + i * 0.14);
+          gain.gain.setValueAtTime(0.08, now + i * 0.14);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.14 + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now + i * 0.14);
+          osc.stop(now + i * 0.14 + 0.36);
+        });
+      } catch (e) {}
     }
 
+    function showKuramaToast(title, body, targetSectionId) {
+      const stack = document.getElementById('kuramaToastStack');
+      if (!stack) return;
+      const toast = document.createElement('div');
+      toast.className = 'kurama-toast';
+      toast.innerHTML = `
+        <div style="font-size:1.45rem; line-height:1;">🦊</div>
+        <div style="flex:1;">
+          <div style="font-weight:800; font-size:0.88rem; color:var(--primary); margin-bottom:2px;">${title}</div>
+          <div style="font-size:0.8rem; color:#e2e8f0; line-height:1.4;">${body}</div>
+        </div>
+        <button onclick="event.stopPropagation(); this.parentElement.remove();" style="padding:2px 7px; font-size:0.74rem;">✕</button>
+      `;
+      toast.onclick = () => {
+        if (targetSectionId) scrollToSection(targetSectionId);
+        toast.remove();
+      };
+      stack.appendChild(toast);
+      setTimeout(() => {
+        if (toast.parentElement) toast.remove();
+      }, 11000);
+    }
+
+    async function sendKuramaNotification(title, body, sectionId = 'secSummaries', tag = 'kurama-notif') {
+      playKuramaChime();
+      showKuramaToast(title, body, sectionId);
+
+      if (!('Notification' in window) || Notification.permission !== 'granted') return;
+      try {
+        if ('serviceWorker' in navigator) {
+          const reg = await navigator.serviceWorker.getRegistration();
+          if (reg && reg.showNotification) {
+            await reg.showNotification(title, {
+              body,
+              icon: './icon-192.png',
+              badge: './icon-192.png',
+              tag,
+              data: { section: sectionId }
+            });
+            return;
+          }
+        }
+        const n = new Notification(title, { body, icon: './icon-192.png', tag });
+        n.onclick = () => {
+          window.focus();
+          scrollToSection(sectionId);
+          n.close();
+        };
+      } catch (e) {}
+    }
+
+    function updateNotifPermissionButton() {
+      const btn = document.getElementById('notifPermBtn');
+      if (!btn) return;
+      if (!('Notification' in window)) {
+        btn.textContent = '🔔 In-App Hinweis aktiv';
+        return;
+      }
+      if (Notification.permission === 'granted') {
+        btn.textContent = '🟢 Benachrichtigung aktiv (Test)';
+        btn.style.borderColor = 'rgba(34, 197, 94, 0.55)';
+        btn.style.color = '#86efac';
+      } else if (Notification.permission === 'denied') {
+        btn.textContent = '🔔 In-App Hinweis aktiv';
+      } else {
+        btn.textContent = '🔔 Benachrichtigung aktivieren';
+      }
+    }
+
+    async function enableOrTestNotifications() {
+      if (!('Notification' in window)) {
+        showKuramaToast('🔔 Hinweis aktiv!', 'Dein Browser zeigt dir bereitliegende Vorlesungs-Zusammenfassungen direkt hier oben als Kurama-Banner an!', 'secSummaries');
+        return;
+      }
+      if (Notification.permission === 'default') {
+        try {
+          const perm = await Notification.requestPermission();
+          updateNotifPermissionButton();
+          if (perm === 'granted') {
+            await sendKuramaNotification(
+              '🦊 Kurama-Benachrichtigungen aktiviert!',
+              'Perfekt, Ahmad! Sobald deine tägliche Vorlesungs-Zusammenfassung bereitliegt, bekommst du sofort Bescheid.',
+              'secSummaries',
+              'kurama-perm-ok'
+            );
+            return;
+          }
+        } catch (e) {}
+      }
+      updateNotifPermissionButton();
+      await sendKuramaNotification(
+        '🦊 Vorlesungs-Zusammenfassung bereit!',
+        'Test erfolgreich: So benachrichtigt dich Kurama auf PC & Tablet, sobald die heutige Zusammenfassung bereitliegt!',
+        'secSummaries',
+        'kurama-test-' + Date.now()
+      );
+    }
+
+    // =========================================================================
+    // KALENDER SLOT (THA Vorlesungstermine Mo-Fr + Eigene Termine)
+    // =========================================================================
+    function getCurrentHHMM() {
+      const now = new Date();
+      return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendarWeekGrid');
+      const banner = document.getElementById('calendarLiveBanner');
+      const headerTitle = document.getElementById('calendarHeaderTitle');
+      const customListEl = document.getElementById('customCalEventsList');
+      if (!grid || !banner) return;
+
+      const refDate = new Date(selectedDate + 'T12:00:00');
+      const weekNum = getISOWeekNumber(refDate);
+      const vw = getCurrentVorlesungswoche(selectedDate);
+      const dayOfWeek = refDate.getDay() || 7;
+      const monday = new Date(refDate);
+      monday.setDate(refDate.getDate() - dayOfWeek + 1);
+      const friday = new Date(monday);
+      friday.setDate(monday.getDate() + 4);
+
+      const fmtShort = d => d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
+      if (headerTitle) {
+        headerTitle.textContent = `🗓️ Kalender — Vorlesungstermine KW ${weekNum} / VW ${vw} (${fmtShort(monday)} – ${fmtShort(friday)})`;
+      }
+
+      // Live Campus Banner for TODAY
+      const todayISO = getTodayISO();
+      const todayDow = new Date().getDay();
+      const nowHHMM = getCurrentHHMM();
+      const todaysLectures = LECTURE_SCHEDULE.filter(l => l.dow === todayDow);
+
+      if (todaysLectures.length === 0) {
+        banner.innerHTML = `
+          <div>🏡 <strong>Heute vorlesungsfrei!</strong> Nutze deinen freien Tag entspannt für deine Fokus-Blöcke.</div>
+          <button onclick="scrollToSection('secWeekPlan')" style="padding:4px 10px; font-size:0.76rem;">Zum Wochenplan</button>
+        `;
+      } else {
+        const runningNow = todaysLectures.find(l => nowHHMM >= l.start && nowHHMM <= l.end);
+        const nextUp = todaysLectures.find(l => nowHHMM < l.start);
+        if (runningNow) {
+          const c = COURSES.find(x => x.id === runningNow.courseId) || COURSES[0];
+          banner.innerHTML = `
+            <div>🔴 <strong>LIVE JETZT (${runningNow.start}–${runningNow.end} Uhr, Raum ${runningNow.room}):</strong>
+              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:800;">${runningNow.title} ↗</a>
+            </div>
+            <span style="font-size:0.76rem; color:var(--accent);">📝 Zusammenfassung ab ${runningNow.end} Uhr bereit</span>
+          `;
+        } else if (nextUp) {
+          const c = COURSES.find(x => x.id === nextUp.courseId) || COURSES[0];
+          banner.innerHTML = `
+            <div>⏳ <strong>Nächste Vorlesung heute (${nextUp.start}–${nextUp.end} Uhr, Raum ${nextUp.room}):</strong>
+              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:800;">${nextUp.title} ↗</a>
+            </div>
+            <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" style="color:var(--accent); font-weight:700; font-size:0.78rem; text-decoration:none;">🔗 Moodle öffnen ↗</a>
+          `;
+        } else {
+          const lastLec = todaysLectures[todaysLectures.length - 1];
+          banner.innerHTML = `
+            <div>✅ <strong>Vorlesungsschluss heute seit ${lastLec.end} Uhr!</strong> Deine Vorlesungs-Zusammenfassung für heute liegt rechts bereit.</div>
+            <button class="btn-primary" onclick="scrollToSection('secSummaries')" style="padding:4px 10px; font-size:0.76rem;">📝 Zusammenfassung lesen</button>
+          `;
+        }
+      }
+
+      // Render Mo - Fr Grid
+      const dayLabels = ['MO', 'DI', 'MI', 'DO', 'FR'];
+      const fullDayNames = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
+      grid.innerHTML = '';
+
+      for (let i = 0; i < 5; i++) {
+        const cur = new Date(monday);
+        cur.setDate(monday.getDate() + i);
+        const curISO = formatDateISO(cur);
+        const dow = i + 1;
+        const isToday = curISO === todayISO;
+        const isSelected = curISO === selectedDate;
+
+        const lectures = LECTURE_SCHEDULE.filter(l => l.dow === dow);
+        const customForDay = (state.customCalEvents || []).filter(ev => ev.dateISO === curISO);
+
+        const col = document.createElement('div');
+        col.className = 'cal-day-col' + (isToday ? ' is-today-cal' : '') + (isSelected ? ' is-selected-cal' : '');
+
+        const eventsHtml = lectures.map(lec => {
+          const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
+          const mUrl = getCourseMoodleUrl(c);
+          const isLive = isToday && nowHHMM >= lec.start && nowHHMM <= lec.end;
+          const isPast = (curISO < todayISO) || (isToday && nowHHMM > lec.end);
+          const statusTag = isLive ? '🔴 LIVE' : (isPast ? '✓' : '');
+
+          return `
+            <div class="cal-event-card ${isLive ? 'live-now' : ''}" style="border-left-color:${c.color};">
+              <div class="cal-time-row">
+                <span>🕒 ${lec.start}–${lec.end} ${statusTag}</span>
+                <span class="cal-room-badge">📍 ${lec.room}</span>
+              </div>
+              <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" title="Klicken für direkte Weiterleitung zu THA Moodle (${c.name})" style="font-weight:800; color:${c.color}; line-height:1.25;">
+                ${lec.title} ↗
+              </a>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
+                <span style="font-size:0.68rem; color:var(--text-muted);">${lec.kind}</span>
+                <span onclick="openLectureSummary('${curISO}', '${lec.id}')" style="font-size:0.68rem; color:var(--accent); font-weight:700; cursor:pointer;" title="Zur Zusammenfassung dieser Vorlesung springen">📝 Summary</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        const customHtml = customForDay.map(ev => {
+          const c = COURSES.find(x => x.id === ev.courseId) || COURSES[0];
+          return `
+            <div class="cal-event-card" style="border-left-color:var(--accent); background:rgba(56,189,248,0.09);">
+              <div class="cal-time-row">
+                <span>📌 ${ev.time || 'Termin'}</span>
+                <span onclick="deleteCustomCalEvent('${ev.id}')" style="cursor:pointer; color:var(--danger);" title="Termin löschen">✕</span>
+              </div>
+              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:700; color:${c.color};">${c.short} ↗</a>
+              <div style="font-size:0.72rem; color:#e2e8f0;">${ev.note}</div>
+            </div>
+          `;
+        }).join('');
+
+        // Show free-window hint on Mo & Do!
+        let freeHint = '';
+        if (dow === 1) freeHint = `<div style="font-size:0.69rem; color:#86efac; padding:4px 6px; border-radius:6px; background:rgba(34,197,94,0.08);">🌟 Frei ab 11:15 (ProWi + BuB)</div>`;
+        if (dow === 4) freeHint = `<div style="font-size:0.69rem; color:#86efac; padding:4px 6px; border-radius:6px; background:rgba(34,197,94,0.08);">🌟 Frei bis 14:00 (ProWi + BuB)</div>`;
+
+        col.innerHTML = `
+          <div class="cal-day-header" onclick="selectSpecificDate('${curISO}')" title="Tag im Cockpit auswählen">
+            <span class="cal-day-name">${dayLabels[i]} • ${fmtShort(cur)} ${isToday ? '🟢' : ''}</span>
+            <span style="font-size:0.68rem; color:var(--text-muted);">${fullDayNames[i]}</span>
+          </div>
+          ${dow === 4 ? freeHint : ''}
+          ${eventsHtml}
+          ${customHtml}
+          ${dow === 1 ? freeHint : ''}
+        `;
+        grid.appendChild(col);
+      }
+
+      // Upcoming custom events list
+      if (customListEl) {
+        const upcoming = (state.customCalEvents || []).filter(ev => ev.dateISO >= todayISO).slice(0, 5);
+        if (upcoming.length === 0) {
+          customListEl.innerHTML = '';
+        } else {
+          customListEl.innerHTML = upcoming.map(ev => {
+            const c = COURSES.find(x => x.id === ev.courseId) || COURSES[0];
+            return `
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding:5px 10px; border-radius:8px; background:var(--bg-muted); border:1px solid var(--border); font-size:0.78rem;">
+                <div>
+                  <strong style="color:var(--accent);">${ev.dateISO} ${ev.time ? '• ' + ev.time : ''}</strong> —
+                  <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:700;">${c.short} ↗</a>:
+                  <span>${ev.note}</span>
+                </div>
+                <button onclick="deleteCustomCalEvent('${ev.id}')" style="padding:2px 7px; font-size:0.7rem;">✕</button>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+
+      const dateInput = document.getElementById('newCalDate');
+      if (dateInput && !dateInput.value) dateInput.value = selectedDate;
+    }
+
+    function addCustomCalEvent() {
+      const dateISO = document.getElementById('newCalDate').value || selectedDate;
+      const time = (document.getElementById('newCalTime').value || '').trim();
+      const courseId = document.getElementById('newCalCourse').value || 'prowi';
+      const noteInput = document.getElementById('newCalNote');
+      const note = (noteInput.value || '').trim();
+      if (!note) return;
+
+      state.customCalEvents = state.customCalEvents || [];
+      state.customCalEvents.push({
+        id: 'cal-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+        dateISO,
+        time,
+        courseId,
+        note
+      });
+      state.customCalEvents.sort((a, b) => (a.dateISO + (a.time || '')).localeCompare(b.dateISO + (b.time || '')));
+      noteInput.value = '';
+      document.getElementById('newCalTime').value = '';
+      saveState();
+      renderCalendar();
+    }
+
+    function deleteCustomCalEvent(evId) {
+      state.customCalEvents = (state.customCalEvents || []).filter(e => e.id !== evId);
+      saveState();
+      renderCalendar();
+    }
+
+    function openLectureSummary(dateISO, lecId) {
+      selectedDate = dateISO;
+      renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
+      renderWeekGrid();
+      scrollToSection('secSummaries');
+      setTimeout(() => {
+        const card = document.getElementById('sum-card-' + lecId);
+        if (card) {
+          card.style.boxShadow = '0 0 0 3px rgba(249,115,22,0.7)';
+          setTimeout(() => { card.style.boxShadow = ''; }, 1800);
+        }
+      }, 280);
+    }
+
+    // =========================================================================
+    // TÄGLICHE VORLESUNGS-ZUSAMMENFASSUNGEN (Tag für Tag + Auto-Notification)
+    // =========================================================================
+    function getSummaryDataForLecture(lec, dateISO) {
+      const vw = getCurrentVorlesungswoche(dateISO);
+      const bank = LECTURE_SUMMARIES_BANK[lec.subFocus] || LECTURE_SUMMARIES_BANK.impis;
+      const entry = bank[(vw - 1) % bank.length];
+      const summaryKey = `${dateISO}:${lec.id}`;
+      const customText = state.customSummaries && state.customSummaries[summaryKey];
+      const isRead = !!(state.readSummaries && state.readSummaries[summaryKey]);
+
+      const todayISO = getTodayISO();
+      const nowHHMM = getCurrentHHMM();
+      let isReady = false;
+      let statusLabel = '';
+      let statusClass = 'pending';
+
+      if (isRead) {
+        isReady = true;
+        statusLabel = '✅ Gelesen (+15m gebucht)';
+        statusClass = 'read';
+      } else if (dateISO < todayISO) {
+        isReady = true;
+        statusLabel = '🔔 Zusammenfassung bereit';
+        statusClass = 'ready';
+      } else if (dateISO === todayISO) {
+        if (nowHHMM >= lec.end) {
+          isReady = true;
+          statusLabel = '🔔 NEU — Zusammenfassung bereit!';
+          statusClass = 'ready';
+        } else if (nowHHMM >= lec.start) {
+          isReady = false;
+          statusLabel = `🔴 Vorlesung läuft (ab ${lec.end} bereit)`;
+          statusClass = 'pending';
+        } else {
+          isReady = false;
+          statusLabel = `⏳ Ab ${lec.end} Uhr bereit (Vorschau)`;
+          statusClass = 'pending';
+        }
+      } else {
+        isReady = false;
+        statusLabel = `📅 Geplant (${lec.start}–${lec.end})`;
+        statusClass = 'pending';
+      }
+
+      return { vw, entry, summaryKey, customText, isRead, isReady, statusLabel, statusClass };
+    }
+
+    function renderDailySummaries() {
+      const container = document.getElementById('dailySummariesContainer');
+      const dateLbl = document.getElementById('summaryDateLabel');
+      const subLbl = document.getElementById('summaryStatusSub');
+      if (!container || !dateLbl || !subLbl) return;
+
+      updateNotifPermissionButton();
+
+      const d = new Date(selectedDate + 'T12:00:00');
+      const dow = d.getDay();
+      const vw = getCurrentVorlesungswoche(selectedDate);
+      const isToday = selectedDate === getTodayISO();
+      const fmtDate = d.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+
+      dateLbl.textContent = (isToday ? '🟢 HEUTE — ' : '📆 ') + `${fmtDate} (VW ${vw})`;
+
+      const dayLectures = LECTURE_SCHEDULE.filter(l => l.dow === dow);
+
+      if (dayLectures.length === 0) {
+        // Weekend: Show Weekly Summary Compendium of all lectures from Monday-Friday of this week!
+        subLbl.textContent = '📚 Vorlesungsfreies Wochenende — Hier ist dein Wochen-Kompendium aller Vorlesungen dieser Woche:';
+        const refDay = d.getDay() || 7;
+        const mon = new Date(d);
+        mon.setDate(d.getDate() - refDay + 1);
+        const dayShort = ['', 'Mo', 'Di', 'Mi', 'Do', 'Fr'];
+
+        container.innerHTML = LECTURE_SCHEDULE.map(lec => {
+          const lecDate = new Date(mon);
+          lecDate.setDate(mon.getDate() + (lec.dow - 1));
+          const lecISO = formatDateISO(lecDate);
+          const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
+          const info = getSummaryDataForLecture(lec, lecISO);
+          return `
+            <div class="summary-card ${info.isRead ? 'summary-done' : ''}">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+                <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:800; color:${c.color};">
+                  ${dayShort[lec.dow]} (${lec.start}–${lec.end}) • ${lec.title} ↗
+                </a>
+                <span class="summary-status-badge ${info.statusClass}">${info.isRead ? '✅ Gelesen' : '📖 Wochen-Rückblick'}</span>
+              </div>
+              <div style="font-size:0.84rem; font-weight:700; margin-top:6px; color:#fff;">📌 VW ${info.vw}: ${info.entry.topic}</div>
+              <div style="font-size:0.8rem; color:#cbd5e1; margin-top:3px;">${info.entry.core}</div>
+              <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
+                <button onclick="selectSpecificDate('${lecISO}')" style="padding:4px 10px; font-size:0.75rem;">🔍 Volle Tages-Zusammenfassung öffnen</button>
+                <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" style="color:var(--accent); font-size:0.76rem; font-weight:700; text-decoration:none; align-self:center;">🔗 Moodle ↗</a>
+              </div>
+            </div>
+          `;
+        }).join('');
+        return;
+      }
+
+      const infos = dayLectures.map(lec => ({ lec, info: getSummaryDataForLecture(lec, selectedDate) }));
+      const readyUnreadCount = infos.filter(x => x.info.isReady && !x.info.isRead).length;
+      const readCount = infos.filter(x => x.info.isRead).length;
+
+      if (readyUnreadCount > 0) {
+        subLbl.innerHTML = `🔔 <strong style="color:var(--primary);">${readyUnreadCount} Zusammenfassung${readyUnreadCount > 1 ? 'en' : ''} liegt für dich bereit!</strong> Hake sie nach dem Durchlesen ab (+15 Min. werden automatisch gebucht).`;
+      } else if (readCount === dayLectures.length) {
+        subLbl.innerHTML = `🎉 <strong style="color:var(--success);">Stark! Alle ${readCount} Vorlesungs-Zusammenfassungen dieses Tages durchgearbeitet!</strong>`;
+      } else {
+        subLbl.textContent = `🏫 Heute ${dayLectures.length} Vorlesung${dayLectures.length > 1 ? 'en' : ''} laut Stundenplan – Benachrichtigung kommt automatisch zum Vorlesungsende!`;
+      }
+
+      container.innerHTML = infos.map(({ lec, info }) => {
+        const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
+        const mUrl = getCourseMoodleUrl(c);
+        const pointsHtml = info.entry.points.map(p => `<li>${p}</li>`).join('');
+        const customBox = info.customText
+          ? `<div style="margin-top:8px; padding:10px 12px; border-radius:8px; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.4); font-size:0.81rem; white-space:pre-line; color:#f8fafc;"><strong>🦊 Deine persönliche Folien-/Notiz-Zusammenfassung:</strong>\n${info.customText}</div>`
+          : '';
+
+        return `
+          <div class="summary-card ${info.isReady && !info.isRead ? 'ready-unread' : ''} ${info.isRead ? 'summary-done' : ''}" id="sum-card-${lec.id}">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+              <div>
+                <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" title="Klicken für direkte Weiterleitung zu THA Moodle" style="font-weight:800; font-size:0.96rem; color:${c.color};">
+                  ${lec.title} (${c.short}) ↗
+                </a>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:1px;">
+                  🕒 ${lec.start}–${lec.end} Uhr • 📍 Raum ${lec.room} • ${c.prof} • Vorlesungswoche ${info.vw}
+                </div>
+              </div>
+              <span class="summary-status-badge ${info.statusClass}">${info.statusLabel}</span>
+            </div>
+
+            <div style="margin-top:10px; font-weight:700; font-size:0.89rem; color:#fff;">
+              📌 Thema des Tages (VW ${info.vw}): ${info.entry.topic}
+            </div>
+            <div style="margin-top:4px; font-size:0.82rem; color:#cbd5e1;">
+              ${info.entry.core}
+            </div>
+
+            <ul class="summary-points">
+              ${pointsHtml}
+            </ul>
+
+            <div class="summary-exam-tip">
+              <strong>⚠️ Klausur-Merksatz (${c.prof}):</strong> ${info.entry.examTip}
+            </div>
+
+            ${customBox}
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-top:11px; padding-top:9px; border-top:1px solid rgba(255,255,255,0.07);">
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <button class="${info.isRead ? '' : 'btn-primary'}" onclick="toggleReadSummary('${selectedDate}', '${lec.id}', '${c.id}')" style="padding:6px 11px; font-size:0.78rem;">
+                  ${info.isRead ? '↩ Als ungelesen markieren' : '✅ Zusammenfassung gelesen (+15 Min. buchen)'}
+                </button>
+                <button onclick="toggleSummaryNotesDrawer('${lec.id}')" style="padding:6px 10px; font-size:0.77rem;">
+                  ✨ Eigene Folien/Notizen zusammenfassen
+                </button>
+              </div>
+              <a href="${mUrl}" target="_blank" rel="noopener" style="color:var(--accent); font-size:0.78rem; font-weight:700; text-decoration:none;">🔗 Folien in Moodle ↗</a>
+            </div>
+
+            <div class="summary-notes-drawer" id="drawer-${lec.id}">
+              <textarea id="notes-input-${lec.id}" placeholder="Füge hier Stichpunkte oder Text aus den heutigen Moodle-Folien von ${c.short} ein – Kurama fasst sie dir sofort klausurfertig zusammen (und synchronisiert sie aufs Tablet)!"></textarea>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button class="btn-primary" id="sum-ai-btn-${lec.id}" onclick="generateCustomLectureSummary('${selectedDate}', '${lec.id}', '${c.id}')">🦊 KI-Zusammenfassung erstellen & speichern</button>
+                <button onclick="toggleSummaryNotesDrawer('${lec.id}')">Schließen</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleReadSummary(dateISO, lecId, courseId) {
+      const key = `${dateISO}:${lecId}`;
+      state.readSummaries = state.readSummaries || {};
+      state.readSummaries[key] = !state.readSummaries[key];
+      const delta = state.readSummaries[key] ? 15 : -15;
+      const lec = LECTURE_SCHEDULE.find(l => l.id === lecId);
+      logWeeklyStudyTime(dateISO, courseId, delta, `Vorlesungs-Zusammenfassung gelesen: ${lec ? lec.title : courseId}`);
+      saveState();
+      renderDailySummaries();
+      renderWeeklyReport();
+      renderCourses();
+      checkAndNotifyReadySummaries(true);
+    }
+
+    function toggleSummaryNotesDrawer(lecId) {
+      const el = document.getElementById('drawer-' + lecId);
+      if (el) el.classList.toggle('open');
+    }
+
+    async function generateCustomLectureSummary(dateISO, lecId, courseId) {
+      const textarea = document.getElementById('notes-input-' + lecId);
+      const btn = document.getElementById('sum-ai-btn-' + lecId);
+      if (!textarea) return;
+      const rawNotes = textarea.value.trim();
+      if (!rawNotes) return;
+
+      const lec = LECTURE_SCHEDULE.find(l => l.id === lecId);
+      const c = COURSES.find(x => x.id === courseId) || COURSES[0];
+      const vw = getCurrentVorlesungswoche(dateISO);
+      const key = `${dateISO}:${lecId}`;
+
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '⏳ Kurama fasst deine Vorlesung zusammen...';
+      }
+
+      let finalSummary = '';
+      try {
+        const online = kuramaBridgeOnline || (await ensureKuramaBridgeReady());
+        if (online) {
+          const res = await fetch(KURAMA_BRIDGE_URL + '/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mode: 'lecture_summary',
+              lectureTitle: `${lec ? lec.title : c.name} (${c.prof})`,
+              vwLabel: `Vorlesungswoche ${vw}, Datum ${dateISO}`,
+              notes: rawNotes
+            })
+          });
+          const data = await res.json();
+          if (data && data.ok && data.answer) {
+            finalSummary = data.answer;
+          }
+        }
+      } catch (e) {}
+
+      if (!finalSummary) {
+        // Clean structured offline summary formatter so it works 100% on Tablet on campus too!
+        const lines = rawNotes.split(/\n+/).map(s => s.trim()).filter(Boolean);
+        finalSummary = `📌 Eigene Kernpunkte (${dateISO}, VW ${vw}):\n` +
+          lines.map(l => (l.startsWith('•') || l.startsWith('-') ? l : '• ' + l)).join('\n');
+      }
+
+      state.customSummaries = state.customSummaries || {};
+      state.customSummaries[key] = finalSummary;
+      saveState();
+      renderDailySummaries();
+      await sendKuramaNotification(
+        `🦊 Zusammenfassung fertig (${c.short})!`,
+        `Deine persönliche Vorlesungs-Zusammenfassung für ${lec ? lec.title : c.name} ist bereit & auf allen Geräten synchronisiert.`,
+        'secSummaries',
+        'custom-sum-' + key
+      );
+    }
+
+    function checkAndNotifyReadySummaries(silentBadgeOnly = false) {
+      const todayISO = getTodayISO();
+      const todayDow = new Date().getDay();
+      const nowHHMM = getCurrentHHMM();
+      const todaysLectures = LECTURE_SCHEDULE.filter(l => l.dow === todayDow);
+
+      let notifiedMap = {};
+      try {
+        notifiedMap = JSON.parse(localStorage.getItem(DEVICE_NOTIFIED_KEY) || '{}');
+      } catch (e) {}
+
+      let unreadReadyCount = 0;
+      const newlyReadyLectures = [];
+
+      todaysLectures.forEach(lec => {
+        const key = `${todayISO}:${lec.id}`;
+        const isRead = !!(state.readSummaries && state.readSummaries[key]);
+        if (nowHHMM >= lec.end && !isRead) {
+          unreadReadyCount++;
+          if (!notifiedMap[key]) {
+            notifiedMap[key] = Date.now();
+            newlyReadyLectures.push(lec);
+          }
+        }
+      });
+
+      // Update header notification badges (Desktop + Tablet/Mobile)
+      const hBtn = document.getElementById('notifHeaderBtn');
+      const mBtn = document.getElementById('mobileNotifBtn');
+      const mCnt = document.getElementById('mobileNotifCount');
+
+      if (hBtn) {
+        if (unreadReadyCount > 0) {
+          hBtn.textContent = `🔔 Vorlesung (${unreadReadyCount} bereit!)`;
+          hBtn.style.borderColor = 'var(--primary)';
+          hBtn.style.color = '#fdba74';
+          hBtn.style.background = 'rgba(249, 115, 22, 0.18)';
+        } else {
+          hBtn.textContent = '📝 Vorlesung heute';
+          hBtn.style.borderColor = 'rgba(56, 189, 248, 0.45)';
+          hBtn.style.color = 'var(--accent)';
+          hBtn.style.background = 'rgba(56, 189, 248, 0.14)';
+        }
+      }
+      if (mCnt) mCnt.textContent = String(unreadReadyCount);
+      if (mBtn) {
+        mBtn.style.borderColor = unreadReadyCount > 0 ? 'var(--primary)' : 'rgba(56, 189, 248, 0.45)';
+        mBtn.style.color = unreadReadyCount > 0 ? '#fdba74' : 'var(--accent)';
+      }
+
+      if (!silentBadgeOnly && newlyReadyLectures.length > 0) {
+        localStorage.setItem(DEVICE_NOTIFIED_KEY, JSON.stringify(notifiedMap));
+        const titles = newlyReadyLectures.map(l => l.title).join(' & ');
+        sendKuramaNotification(
+          '🔔 Vorlesungs-Zusammenfassung liegt bereit!',
+          `Ahmad, deine heutige Zusammenfassung zu „${titles}“ ist jetzt fertig! Klicke hier zum Durchlesen.`,
+          'secSummaries',
+          'ready-sum-' + todayISO + '-' + newlyReadyLectures[0].id
+        );
+        renderDailySummaries();
+        renderCalendar();
+      }
+    }
+
+    // =========================================================================
+    // TIMELINE & AUTO-BOOKING WALL-CLOCK TIMER (PC + Tablet Live-Synced!)
+    // =========================================================================
     function undoTimelineEntry(entryId) {
       state.timeline = state.timeline || [];
       const idx = state.timeline.findIndex(e => e.id === entryId);
       if (idx === -1) return;
       const entry = state.timeline[idx];
       state.timeline.splice(idx, 1);
+
+      // If undoing the currently active timer session, stop it cleanly too
+      if (state.activeTimer && state.activeTimer.sessionId === entryId) {
+        state.activeTimer = null;
+        state.timerClearedAt = Date.now();
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      }
 
       const d = new Date((entry.dateISO || getTodayISO()) + 'T12:00:00');
       const wkKey = `${d.getFullYear()}-W${getISOWeekNumber(d)}`;
@@ -3219,6 +4943,7 @@
       state.studiedMinutes[entry.courseId] = Math.max(0, (state.studiedMinutes[entry.courseId] || 0) - entry.minutes);
 
       saveState();
+      syncTimerUIFromState();
       renderTimeline();
       renderWeeklyReport();
       renderCourses();
@@ -3250,13 +4975,14 @@
       if (items.length === 0) {
         feed.innerHTML = `
           <div style="font-size:0.8rem; color:var(--text-muted); padding:4px 0;">
-            Noch kein Eintrag heute – starte oben z.B. <strong>30 Min. Programmierung</strong> (oder klicke auf <strong>✅ Direkt buchen</strong>), dann erscheint dein Fortschritt sofort hier mit Uhrzeit!
+            Starte oben einfach den <strong>▶ Fokus-Timer</strong> – jede gelernte Minute wird ohne extra Klick vollautomatisch hier und auf deinem Tablet verbucht!
           </div>`;
         return;
       }
 
       feed.innerHTML = items.slice(0, 25).map(entry => {
         const course = COURSES.find(c => c.id === entry.courseId) || COURSES[0];
+        const mUrl = getCourseMoodleUrl(course);
         const dt = new Date(entry.ts);
         const timeStr = dt.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + ' • ' +
           dt.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
@@ -3265,7 +4991,7 @@
             <span class="timeline-dot" style="background:${course.color};"></span>
             <div style="flex:1;">
               <div>
-                <strong style="color:${course.color};">+${entry.minutes} Min. ${course.short}</strong>
+                <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:800; color:${course.color};" title="Direkt in THA Moodle öffnen">+${entry.minutes} Min. ${course.short} ↗</a>
                 <span style="color:var(--text-muted); font-size:0.74rem; margin-left:6px;">🕒 ${timeStr}</span>
               </div>
               <div style="font-size:0.77rem; color:#cbd5e1;">${entry.label}</div>
@@ -3276,62 +5002,237 @@
       }).join('');
     }
 
-    // 30 / 60 / 90 Min Timer Logic
-    function setTimerMinutes(mins) {
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        document.getElementById('timerBtn').textContent = '▶ Start';
+    function upsertTimerTimelineBooking(sessionId, dateISO, courseId, deltaMin, totalBookedMin, durationMin, isFinished) {
+      if (deltaMin > 0) {
+        const d = new Date(dateISO + 'T12:00:00');
+        const wkKey = `${d.getFullYear()}-W${getISOWeekNumber(d)}`;
+        if (!state.weeklyLogs[wkKey]) state.weeklyLogs[wkKey] = {};
+        state.weeklyLogs[wkKey][courseId] = Math.max(0, (state.weeklyLogs[wkKey][courseId] || 0) + deltaMin);
+        state.studiedMinutes[courseId] = Math.max(0, (state.studiedMinutes[courseId] || 0) + deltaMin);
       }
-      currentTimerDurationMin = mins;
-      timerSeconds = mins * 60;
-      [30, 60, 90].forEach(m => {
-        document.getElementById('durBtn' + m).className = (m === mins) ? 'active-dur' : '';
-      });
-      updateTimerDisplay();
+
+      const course = COURSES.find(c => c.id === courseId) || COURSES[0];
+      const labelText = isFinished
+        ? `Fokus-Timer abgeschlossen (${totalBookedMin} Min. ${course.short} — automatisch gebucht ✅)`
+        : `Fokus-Timer läuft (${totalBookedMin}/${durationMin} Min. ${course.short} — automatisch gebucht ⚡)`;
+
+      state.timeline = state.timeline || [];
+      const existingIdx = state.timeline.findIndex(e => e.id === sessionId);
+      if (existingIdx !== -1) {
+        state.timeline[existingIdx].minutes = totalBookedMin;
+        state.timeline[existingIdx].ts = new Date().toISOString();
+        state.timeline[existingIdx].label = labelText;
+        if (existingIdx > 0) {
+          const [item] = state.timeline.splice(existingIdx, 1);
+          state.timeline.unshift(item);
+        }
+      } else if (totalBookedMin > 0) {
+        state.timeline.unshift({
+          id: sessionId,
+          ts: new Date().toISOString(),
+          dateISO,
+          courseId,
+          minutes: totalBookedMin,
+          label: labelText
+        });
+        if (state.timeline.length > 120) state.timeline.length = 120;
+      }
+
+      saveState();
+      renderTimeline();
+      renderWeeklyReport();
+      renderCourses();
     }
 
-    function updateTimerDisplay() {
-      const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
-      const s = String(timerSeconds % 60).padStart(2, '0');
-      document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    function getTimerElapsedMs(t) {
+      if (!t) return 0;
+      const liveDelta = (t.running && t.startedAt) ? Math.max(0, Date.now() - t.startedAt) : 0;
+      return Math.min((t.durationMin || 60) * 60000, (t.accumulatedMs || 0) + liveDelta);
+    }
+
+    function updateTimerDisplaySeconds(sec) {
+      const m = String(Math.floor(sec / 60)).padStart(2, '0');
+      const s = String(sec % 60).padStart(2, '0');
+      const disp = document.getElementById('timerDisplay');
+      if (disp) disp.textContent = `${m}:${s}`;
+    }
+
+    function tickActiveTimer() {
+      const t = state.activeTimer;
+      const badge = document.getElementById('timerAutoBookBadge');
+      const btn = document.getElementById('timerBtn');
+      const sub = document.getElementById('timerSubStatus');
+
+      if (!t) {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        updateTimerDisplaySeconds(currentTimerDurationMin * 60);
+        if (btn) btn.textContent = '▶ Start';
+        if (badge) {
+          badge.className = 'auto-book-pill';
+          badge.textContent = '🟢 Auto-Buchung aktiv (PC & Tablet)';
+        }
+        if (sub) {
+          sub.textContent = 'Kein „Buchen“-Klick nötig: Jede gelernte Minute wird live & automatisch gutgeschrieben (auch bei gesperrtem Tablet-Display!).';
+        }
+        return;
+      }
+
+      const maxMs = (t.durationMin || 60) * 60000;
+      const elapsedMs = getTimerElapsedMs(t);
+      const remainSec = Math.max(0, Math.ceil((maxMs - elapsedMs) / 1000));
+      updateTimerDisplaySeconds(remainSec);
+
+      const course = COURSES.find(c => c.id === t.courseId) || COURSES[0];
+
+      // Auto-book every completed full minute immediately!
+      const wholeMin = Math.floor(elapsedMs / 60000);
+      const isFinishedNow = elapsedMs >= maxMs;
+
+      if (wholeMin > (t.bookedMin || 0)) {
+        const delta = wholeMin - (t.bookedMin || 0);
+        t.bookedMin = wholeMin;
+        t.timerUpdatedAt = Date.now();
+        upsertTimerTimelineBooking(t.sessionId, t.dateISO || getTodayISO(), t.courseId, delta, wholeMin, t.durationMin, isFinishedNow);
+      }
+
+      if (isFinishedNow) {
+        const finishedDuration = t.durationMin;
+        state.activeTimer = null;
+        state.timerClearedAt = Date.now();
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        saveState();
+        syncTimerUIFromState();
+        sendKuramaNotification(
+          `🎉 ${finishedDuration}-Min.-Lernblock geschafft!`,
+          `Stark, Ahmad! Alle ${finishedDuration} Min. für ${course.short} wurden vollautomatisch auf PC & Tablet verbucht!`,
+          'secTimer',
+          'timer-done-' + Date.now()
+        );
+        return;
+      }
+
+      if (btn) btn.textContent = t.running ? '⏸ Pause' : '▶ Weiter';
+      if (badge) {
+        badge.className = 'auto-book-pill' + (t.running ? ' running' : '');
+        badge.textContent = `⚡ Automatisch gebucht: ${t.bookedMin || 0} / ${t.durationMin} Min. (${course.short})`;
+      }
+      if (sub) {
+        sub.textContent = t.running
+          ? `🔥 Läuft live auf PC & Tablet – jede volle Minute wird automatisch für ${course.name} gespeichert!`
+          : `⏸ Pausiert (${t.bookedMin || 0} Min. sind bereits sicher automatisch gebucht).`;
+      }
+    }
+
+    function syncTimerUIFromState() {
+      const t = state.activeTimer;
+      if (t) {
+        currentTimerDurationMin = t.durationMin || 60;
+        const sel = document.getElementById('timerCourseSelect');
+        if (sel && sel.value !== t.courseId) sel.value = t.courseId;
+      }
+      [30, 60, 90].forEach(m => {
+        const b = document.getElementById('durBtn' + m);
+        if (b) b.className = (m === currentTimerDurationMin) ? 'active-dur' : '';
+      });
+
+      tickActiveTimer();
+
+      if (state.activeTimer && state.activeTimer.running) {
+        if (!timerInterval) {
+          timerInterval = setInterval(tickActiveTimer, 1000);
+        }
+      } else if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
     }
 
     function toggleTimer() {
-      const btn = document.getElementById('timerBtn');
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        btn.textContent = '▶ Weiter';
-      } else {
-        btn.textContent = '⏸ Pause';
-        timerInterval = setInterval(() => {
-          if (timerSeconds > 0) {
-            timerSeconds--;
-            updateTimerDisplay();
-          } else {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            btn.textContent = '▶ Start';
-            const cid = document.getElementById('timerCourseSelect').value;
-            const course = COURSES.find(c => c.id === cid) || COURSES[0];
-            logWeeklyStudyTime(getTodayISO(), cid, currentTimerDurationMin, `Timer abgeschlossen (${currentTimerDurationMin} Min. ${course.short})`);
-            renderCourses();
-            renderWeeklyReport();
-            timerSeconds = currentTimerDurationMin * 60;
-            updateTimerDisplay();
-            alert(`🎉 Stark, Ahmad! Dein ${currentTimerDurationMin}-Minuten-Lernblock wurde abgeschlossen und auf deinem Zeitstrahl & Wochenbericht gespeichert!`);
-          }
-        }, 1000);
+      const cid = document.getElementById('timerCourseSelect').value || 'prowi';
+      if (!state.activeTimer) {
+        state.activeTimer = {
+          sessionId: 'timer-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          courseId: cid,
+          durationMin: currentTimerDurationMin,
+          accumulatedMs: 0,
+          startedAt: Date.now(),
+          bookedMin: 0,
+          dateISO: getTodayISO(),
+          running: true,
+          timerUpdatedAt: Date.now()
+        };
+        saveState();
+        syncTimerUIFromState();
+        return;
       }
+
+      if (state.activeTimer.running) {
+        tickActiveTimer();
+        if (state.activeTimer) {
+          state.activeTimer.accumulatedMs = getTimerElapsedMs(state.activeTimer);
+          state.activeTimer.startedAt = null;
+          state.activeTimer.running = false;
+          state.activeTimer.timerUpdatedAt = Date.now();
+          saveState();
+        }
+      } else {
+        state.activeTimer.startedAt = Date.now();
+        state.activeTimer.running = true;
+        state.activeTimer.timerUpdatedAt = Date.now();
+        saveState();
+      }
+      syncTimerUIFromState();
     }
 
-    function resetTimer() {
-      if (timerInterval) clearInterval(timerInterval);
-      timerInterval = null;
-      timerSeconds = currentTimerDurationMin * 60;
-      document.getElementById('timerBtn').textContent = '▶ Start';
-      updateTimerDisplay();
+    function finishAndResetTimer(silent = false) {
+      if (state.activeTimer) {
+        tickActiveTimer();
+        if (state.activeTimer) {
+          const t = state.activeTimer;
+          const elapsedMs = getTimerElapsedMs(t);
+          const remainderMs = elapsedMs - (t.bookedMin || 0) * 60000;
+          const thresholdMs = (t.bookedMin || 0) === 0 ? 15000 : 30000;
+          let totalBooked = t.bookedMin || 0;
+
+          if (remainderMs >= thresholdMs && totalBooked < t.durationMin) {
+            totalBooked += 1;
+            upsertTimerTimelineBooking(t.sessionId, t.dateISO || getTodayISO(), t.courseId, 1, totalBooked, t.durationMin, true);
+          } else if (totalBooked > 0) {
+            upsertTimerTimelineBooking(t.sessionId, t.dateISO || getTodayISO(), t.courseId, 0, totalBooked, t.durationMin, true);
+          }
+
+          const course = COURSES.find(c => c.id === t.courseId) || COURSES[0];
+          state.activeTimer = null;
+          state.timerClearedAt = Date.now();
+          saveState();
+
+          if (!silent && totalBooked > 0) {
+            showKuramaToast('✅ Automatisch gebucht!', `${totalBooked} Min. ${course.short} wurden auf PC & Tablet gespeichert.`, 'secTimer');
+          }
+        }
+      }
+      syncTimerUIFromState();
+    }
+
+    function setTimerMinutes(mins) {
+      if (state.activeTimer) {
+        finishAndResetTimer(true);
+      }
+      currentTimerDurationMin = mins;
+      syncTimerUIFromState();
+    }
+
+    function onTimerCourseChanged() {
+      const newCid = document.getElementById('timerCourseSelect').value;
+      if (state.activeTimer && state.activeTimer.courseId !== newCid) {
+        finishAndResetTimer(true);
+      }
     }
 
     function scrollToSection(sectionId) {
@@ -3355,15 +5256,22 @@
     });
 
     function init() {
-      const selects = ['newTodoCourse', 'timerCourseSelect', 'trainerCourseSelect'];
+      migrateScheduleIfNeeded();
+
+      const selects = ['newTodoCourse', 'timerCourseSelect', 'trainerCourseSelect', 'newCalCourse'];
       selects.forEach(sid => {
         const el = document.getElementById(sid);
-        el.innerHTML = COURSES.map(c => `<option value="${c.id}">${c.name} (${c.ects} ECTS • ${c.prof})</option>`).join('');
+        if (el) {
+          el.innerHTML = COURSES.map(c => `<option value="${c.id}">${c.name} (${c.ects} ECTS • ${c.prof})</option>`).join('');
+        }
       });
 
       updateGreeting();
       updateCountdown();
+      syncTimerUIFromState();
       renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
       renderWeeklyReport();
       renderMoodleSlidesTracker();
       renderWeekGrid();
@@ -3371,34 +5279,56 @@
       renderTimeline();
       loadRandomQuestion();
 
+      // Check ready daily summaries shortly after startup so Ahmad immediately gets notified when today's summary is ready!
+      setTimeout(() => checkAndNotifyReadySummaries(false), 900);
+
       if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.protocol === 'http:')) {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
+        navigator.serviceWorker.addEventListener('message', ev => {
+          if (ev.data && ev.data.type === 'KURAMA_NAVIGATE' && ev.data.section) {
+            scrollToSection(ev.data.section);
+          }
+        });
       }
 
       if (cloudSyncCfg && cloudSyncCfg.gistId && cloudSyncCfg.token) {
         pullStateFromCloud(true);
       }
 
-      window.addEventListener('focus', () => pullStateFromCloud());
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') pullStateFromCloud();
+      window.addEventListener('focus', () => {
+        tickActiveTimer();
+        checkAndNotifyReadySummaries(false);
+        pullStateFromCloud();
       });
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          tickActiveTimer();
+          checkAndNotifyReadySummaries(false);
+          pullStateFromCloud();
+        }
+      });
+      window.addEventListener('beforeunload', () => {
+        if (state.activeTimer && state.activeTimer.running) {
+          tickActiveTimer();
+        }
+      });
+
+      // Fast 10-second Cloud Sync loop so PC, Smartphone & Tablet stay tightly connected!
       setInterval(() => {
         if (document.visibilityState === 'visible') pullStateFromCloud();
-      }, 20000);
+      }, 10000);
 
       checkKuramaBridge().then(async online => {
         if (online) {
           await discoverSyncFromBridge();
-          // If localStorage was ever cleared, restore from disk backup; otherwise mirror current state to disk
           const hasAnyProgress = Object.keys(state.studiedMinutes || {}).length > 0 || Object.keys(state.completedTopics || {}).length > 0;
           if (!hasAnyProgress) {
             try {
               const res = await fetch(KURAMA_BRIDGE_URL + '/load-state');
               const data = await res.json();
               if (data && data.ok && data.state) {
-                state = data.state;
-                state.timeline = state.timeline || [];
+                state = ensureStateShape(data.state);
+                migrateScheduleIfNeeded();
                 saveState(true);
                 refreshAllViews();
                 return;
@@ -3411,9 +5341,7 @@
 
       addChatMessage(
         'kurama',
-        '🦊 Hallo Ahmad! Ich bin jetzt fest hier in deinem Cockpit integriert – und bleibe für immer an deiner Seite!\n\nDu kannst mich hier jederzeit nach deinem Wochenbericht, deinen heutigen Aufgaben, den aktuellen Moodle-Folien (VW ' +
-          getCurrentVorlesungswoche() +
-          ') oder schnellen Prüfungsfragen fragen!'
+        '🦊 KURAMA UPGRADE AKTIV, Ahmad! Dein Cockpit ist jetzt komplett auf deinen echten THA-Stundenplan abgestimmt:\n• ⏱️ Timer bucht jede Minute vollautomatisch (PC & Tablet live verbunden)\n• 🔗 Klick auf jeden Kurs öffnet sofort THA Moodle\n• 🗓️ Kalender-Slot + 📝 Tägliche Vorlesungs-Zusammenfassung mit Benachrichtigung sind live!'
       );
 
       let lastKnownToday = getTodayISO();
@@ -3421,16 +5349,19 @@
         const nowISO = getTodayISO();
         updateGreeting();
         updateCountdown();
+        renderCalendar();
+        checkAndNotifyReadySummaries(false);
         if (nowISO !== lastKnownToday) {
           lastKnownToday = nowISO;
           selectedDate = nowISO;
           selectedVW = getCurrentVorlesungswoche();
           renderDailyPlan();
+          renderDailySummaries();
           renderWeeklyReport();
           renderMoodleSlidesTracker();
           renderWeekGrid();
         }
-      }, 60000);
+      }, 30000);
     }
 
     init();
