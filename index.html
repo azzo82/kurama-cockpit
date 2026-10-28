@@ -1906,6 +1906,318 @@
       from { opacity: 0; transform: translateY(-12px) scale(0.97); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
+
+    /* =========================================================================
+       FOLIEN-SKRIPT-BIBLIOTHEK & READER STYLING (30 THA Vorlesungsskripte)
+       ========================================================================= */
+    .lib-h2 {
+      font-size: 1.25rem;
+      color: #fdba74;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(249, 115, 22, 0.3);
+      line-height: 1.35;
+    }
+    .lib-h3 {
+      font-size: 1.05rem;
+      color: #38bdf8;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .lib-h4 {
+      font-size: 0.95rem;
+      color: #a7f3d0;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+    .lib-p {
+      margin-bottom: 10px;
+      line-height: 1.65;
+      color: #cbd5e1;
+    }
+    .lib-list {
+      padding-left: 22px;
+      margin-bottom: 12px;
+    }
+    .lib-li {
+      margin-bottom: 5px;
+      line-height: 1.55;
+      color: #e2e8f0;
+    }
+    .lib-quote {
+      background: rgba(249, 115, 22, 0.08);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin: 12px 0;
+      color: #fed7aa;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .lib-code {
+      background: #090d16;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-family: Consolas, 'Fira Code', Monaco, monospace;
+      font-size: 0.83rem;
+      color: #38bdf8;
+      line-height: 1.5;
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+    .lib-code code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+    .lib-table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .lib-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .lib-th {
+      background: rgba(30, 41, 59, 0.95);
+      color: #38bdf8;
+      font-weight: 700;
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .lib-td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+    }
+    .lib-qa {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 10px 0;
+    }
+    .lib-qa summary {
+      font-weight: 700;
+      color: #6ee7b7;
+      cursor: pointer;
+      outline: none;
+    }
+    .lib-qa-a {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(16, 185, 129, 0.3);
+      color: #e2e8f0;
+      line-height: 1.55;
+    }
+    .lib-hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
+
+    /* Card styling for 30 Folien Scripts */
+    .folien-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: all 0.18s ease;
+      position: relative;
+    }
+    .folien-card:hover {
+      border-color: rgba(249, 115, 22, 0.55);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    }
+    .folien-card.is-read {
+      border-color: rgba(34, 197, 94, 0.45);
+      background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, var(--bg-muted) 100%);
+    }
+    .folien-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .folien-course-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 7px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .folien-read-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 0.71rem;
+      font-weight: 700;
+    }
+    .folien-read-badge.read {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      color: #86efac;
+    }
+    .folien-read-badge.unread {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      color: #cbd5e1;
+    }
+    .folien-card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+    }
+    .folien-card-sources {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .folien-card-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 0.73rem;
+      color: #94a3b8;
+    }
+    .folien-meta-pill {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .folien-card-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    /* Interactive Tutor Box inside cards */
+    .folien-tutor-details {
+      margin-top: 8px;
+      border: 1px dashed rgba(249, 115, 22, 0.4);
+      border-radius: 9px;
+      background: rgba(15, 23, 42, 0.65);
+      overflow: hidden;
+    }
+    .folien-tutor-details summary {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fdba74;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .folien-tutor-details summary:hover {
+      background: rgba(249, 115, 22, 0.1);
+    }
+    .folien-tutor-body {
+      padding: 10px 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .folien-tutor-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+    .folien-tutor-chip {
+      background: rgba(249, 115, 22, 0.12);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      color: #fdba74;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+    .folien-tutor-chip:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .folien-tutor-input-row {
+      display: flex;
+      gap: 6px;
+    }
+    .folien-tutor-input-row input {
+      flex: 1;
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      color: #fff;
+      padding: 6px 10px;
+      font-size: 0.79rem;
+    }
+    .folien-tutor-input-row button {
+      padding: 6px 12px;
+      font-size: 0.77rem;
+      font-weight: 700;
+    }
+    .folien-tutor-response-box {
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: rgba(30, 41, 59, 0.85);
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      font-size: 0.81rem;
+      line-height: 1.55;
+      color: #f1f5f9;
+      white-space: pre-wrap;
+      display: none;
+    }
+    .folien-tutor-response-box.visible {
+      display: block;
+    }
+
+    /* Modal Tutor Box */
+    .modal-tutor-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+    .modal-tutor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fdba74;
+    }
+
   </style>
 </head>
 <body>
@@ -1919,8 +2231,7 @@
           <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
         </div>
         <div style="display:flex; gap:6px; align-items:center;">
-          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Mein Ordner für gespeicherte Zusammenfassungen">📁 <span id="mobileFolderCount">0</span></button>
-          <button class="mobile-only-sync" id="mobileNotifBtn" onclick="scrollToSection('secSummaries')" title="Heutige Vorlesungs-Zusammenfassung">🔔 <span id="mobileNotifCount">0</span></button>
+          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Folien-Skript-Bibliothek (30 Skripte)">📚 <span id="mobileFolderCount">30</span></button>
           <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
         </div>
       </div>
@@ -1932,11 +2243,8 @@
           <button class="btn-kurama-resume" onclick="scrollToSection('secCalendar')" title="Springt direkt zu deinem THA Vorlesungs-Kalender">
             🗓️ Kalender
           </button>
-          <button class="btn-kurama-resume" id="notifHeaderBtn" onclick="scrollToSection('secSummaries')" title="Springt zu den täglichen Vorlesungs-Zusammenfassungen">
-            🔔 Vorlesung heute
-          </button>
-          <button class="btn-kurama-resume" id="folderHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deinen Website-Ordner mit allen gespeicherten Vorlesungs-Zusammenfassungen">
-            📁 Ordner (0)
+          <button class="btn-kurama-resume" id="folienHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deine 30 THA Vorlesungs-Skripte aus Moodle">
+            📚 Folien-Skripte (<span id="headerFolienCount">0/30</span>)
           </button>
           <button class="btn-kurama-resume" onclick="jumpToAufgabentutor()" title="Springt sofort direkt zum Aufgabentutor im Fragenblock">
             🎓 Aufgabentutor
@@ -2129,9 +2437,8 @@
     </div>
 
     <!-- NEW Row 1.5: Kalender (THA Vorlesungstermine) + Tägliche Vorlesungs-Zusammenfassungen mit Benachrichtigung -->
-    <div class="dual-grid" id="secCalendarRow">
-      <!-- Left: Kalender Slot (THA Stundenplan Mo-Fr + Eigene Termine) -->
-      <div class="card" id="secCalendar">
+    <!-- Row 1.5: Kalender (THA Vorlesungstermine Mo-Fr + Eigene Termine) - Full Width -->
+    <div class="card" id="secCalendar" style="margin-bottom: 24px;">
         <div class="card-header">
           <div>
             <h2 id="calendarHeaderTitle">🗓️ Kalender — Deine THA Vorlesungstermine</h2>
@@ -2164,79 +2471,45 @@
         </div>
       </div>
 
-      <!-- Right: Tägliche Vorlesungs-Zusammenfassungen (Tag für Tag + Push-Benachrichtigungen) -->
-      <div class="card" id="secSummaries">
-        <div class="card-header">
-          <div>
-            <h2 id="summariesHeaderTitle">📝 Ausführliche Vorlesungs-Zusammenfassung (Tag für Tag)</h2>
-            <span style="font-size:0.8rem; color:var(--text-muted);">Langes 5-Teile-Lernskript passend zu deinen heutigen Vorlesungen – inkl. echter Moodle-PDF-Analyse & Ordner-Speicherung!</span>
-          </div>
-          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-            <button onclick="scrollToSection('secSummaryFolder')" style="border-color:var(--primary); color:#fdba74;" title="Springt direkt zu deinem Ordner mit allen gespeicherten Zusammenfassungen">📂 Mein Ordner (<span id="sumHeaderSavedCount">0</span>)</button>
-            <button id="notifPermBtn" class="btn-accent" onclick="enableOrTestNotifications()" title="Aktiviert System-/Tablet-Benachrichtigungen oder sendet einen Test">🔔 Benachrichtigung aktivieren</button>
-            <button onclick="changeDay(-1)" title="Vorheriger Tag">◀</button>
-            <button class="btn-accent" onclick="goToday()">Heute</button>
-            <button onclick="changeDay(1)" title="Nächster Tag">▶</button>
-          </div>
-        </div>
-
-        <!-- Honest, Transparent Source Explanation Box -->
-        <details class="source-origin-explain">
-          <summary>💡 Woher weiß Kurama genau, worum es in deiner heutigen Vorlesung geht? (Hier klicken)</summary>
-          <div style="margin-top:7px; color:#cbd5e1;">
-            <strong>Stufe 1 — Automatisch nach deinem THA-Stundenplan & SPO-2025 Lehrplan (<span style="color:#94a3b8;">📚 Lehrplan-Skript</span>):</strong><br />
-            Aus deinem echten THA-Stundenplan kennt Kurama jede Vorlesung mit Uhrzeit & Hörsaal (z.B. Mo 08:00–11:15 IMPIS, Di IT-Management & KLR usw.) sowie die aktuelle <strong>Vorlesungswoche (VW 1–15)</strong> und legt dir zum Vorlesungsende automatisch das ausführliche 5-Teile-Skript laut THA-Modulhandbuch bereit.<br />
-            <strong style="color:#86efac;">Stufe 2 — 100 % echte heutige Moodle-Folien (<span style="color:#86efac;">✅ Echte Moodle-PDF</span>):</strong><br />
-            Da THA-Moodle passwortgeschützt (Shibboleth-Login) ist, kann keine Website heimlich ohne dich in dein Moodle schauen. Klicke deshalb in der Karte einfach auf <strong>„🔗 Moodle ↗“</strong> → lade die heutige Vorlesungs-PDF herunter → wähle sie direkt über <strong>„📄 Heutige Moodle-PDF hochladen“</strong> (funktioniert auf <strong>Tablet & PC</strong>!) oder am PC über <strong>„🔍 Aus Downloads wählen“</strong> aus. Kurama liest dann <strong>Folie für Folie deine echte heutige PDF</strong> aus und erstellt daraus dein langes Lernskript!
-          </div>
-        </details>
-
-        <div class="today-banner" id="summaryDayBanner" style="margin-bottom:12px;">
-          <div>
-            <div class="date-str" id="summaryDateLabel">Heutige Vorlesungen</div>
-            <div class="focus-str" id="summaryStatusSub">Prüfe bereitliegende Zusammenfassungen...</div>
-          </div>
-        </div>
-
-        <div class="summaries-list" id="dailySummariesContainer"></div>
-      </div>
-    </div>
-
     <!-- NEW Dedicated Website Folder for Saved Read Summaries (PC & Tablet Live-Synced!) -->
+    <!-- Dedicated Folien-Skript-Bibliothek (30 echte Vorlesungsskripte aus deinen Moodle-Folien) -->
     <div class="card" id="secSummaryFolder" style="margin-bottom: 24px; border-color: rgba(249, 115, 22, 0.45);">
       <div class="card-header">
         <div>
-          <h2 id="summaryFolderTitle">📁 Mein Zusammenfassungs-Ordner — Gespeicherte Vorlesungen</h2>
-          <span style="font-size:0.81rem; color:var(--text-muted);">
-            Dein persönliches Lern-Archiv direkt in der Website (auf <strong>PC & Tablet</strong> live synchronisiert): Geordnet in <strong>Kurs-Unterordnern</strong> zum jederzeitigen Nachlesen vor den Klausuren!
+          <h2 id="summaryFolderTitle">📚 Folien-Skript-Bibliothek — Alle 30 THA Vorlesungen (SPO 2025)</h2>
+          <span style="font-size:0.82rem; color:var(--text-muted);">
+            100 % echte Zusammenfassungen direkt aus deinen <strong>60 Moodle-Vorlesungsfolien</strong> (Desktop/Vorlesungsfolien) — Kein Schätz-Update mehr, sondern dein vollständiges THA-Klausurarchiv inklusive interaktivem Kurama-Tutor!
           </span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-          <button class="btn-accent" onclick="exportAllSavedSummariesMarkdown()" title="Lädt alle gespeicherten Zusammenfassungen als gesammeltes Lern-Skript (.md) herunter">⬇️ Gesamten Ordner exportieren (.md)</button>
-          <button onclick="scrollToSection('secSummaries')">📝 Zu heutigen Vorlesungen ▲</button>
+          <button class="btn-accent" onclick="exportAllFolienScriptsMarkdown()" title="Lädt alle 30 Vorlesungs-Zusammenfassungen als gesammeltes Lern-Skript (.md) herunter">⬇️ Alle Skripte als .md exportieren</button>
+          <button onclick="scrollToSection('secCalendar')">🗓️ Zum Kalender ▲</button>
         </div>
       </div>
 
-      <!-- Course Subfolders Bar -->
+      <!-- Overall Reading Progress Banner -->
+      <div id="folienProgressBanner" style="margin-bottom: 14px; background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px;"></div>
+
+      <!-- Course Subfolders / Filter Tabs -->
       <div class="folder-tabs-bar" id="summaryFolderTabs"></div>
 
       <!-- Search & Filter Toolbar -->
-      <div class="folder-toolbar">
+      <div class="folder-toolbar" style="margin-top: 8px;">
         <input
           type="text"
           id="summaryFolderSearch"
-          placeholder="🔍 In deinen gespeicherten Zusammenfassungen suchen (z.B. 'Normalisierung', 'Deckungsbeitrag', 'Werkvertrag', 'VW 4')..."
-          oninput="renderSummaryFolder()"
+          placeholder="🔍 In allen 30 Skripten suchen (z.B. 'GuV', 'Deckungsbeitrag', 'Normalisierung', 'Projektvertrag', '3NF')..."
+          oninput="renderFolienLibrary()"
         />
-        <select id="summaryFolderSourceFilter" onchange="renderSummaryFolder()">
-          <option value="all">📂 Alle Quellen anzeigen</option>
-          <option value="pdf">✅ Nur echte Moodle-PDF-Zusammenfassungen</option>
-          <option value="curriculum">📚 Nur THA Lehrplan-Skripte</option>
+        <select id="folienStatusFilter" onchange="renderFolienLibrary()">
+          <option value="all">📚 Alle Skripte anzeigen (30)</option>
+          <option value="unread">⏳ Nur noch offene Skripte</option>
+          <option value="read">✅ Nur bereits gelesene Skripte</option>
         </select>
         <a id="activeFolderMoodleLink" href="https://moodle.hs-augsburg.de/" target="_blank" rel="noopener" class="btn-accent" style="text-decoration:none; padding:8px 12px; border-radius:9px; font-size:0.81rem; font-weight:700; display:none;">🔗 Kurs in Moodle öffnen ↗</a>
       </div>
 
-      <!-- Saved Summaries Grid -->
+      <!-- Folien Skripte Grid -->
       <div id="summaryFolderGrid" class="saved-archive-grid"></div>
     </div>
 
@@ -2335,9 +2608,9 @@
       <span class="nav-ico">🗓️</span>
       <span>Kalender</span>
     </button>
-    <button class="mobile-nav-btn" onclick="scrollToSection('secSummaries')">
-      <span class="nav-ico">📝</span>
-      <span>Vorlesung</span>
+    <button class="mobile-nav-btn" onclick="scrollToSection('secSummaryFolder')">
+      <span class="nav-ico">📚</span>
+      <span>Folien</span>
     </button>
     <button class="mobile-nav-btn highlight-tab" onclick="jumpToAufgabentutor()">
       <span class="nav-ico">🎓</span>
@@ -2401,16 +2674,19 @@
           <h2 id="readerModalTitle" style="font-size:1.25rem; color:#fff; line-height:1.35;">Vorlesungs-Skript</h2>
           <div id="readerModalMeta" style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;"></div>
         </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <button id="readerModalReadBtn" class="btn-primary" style="padding:6px 12px; font-size:0.8rem; font-weight:700;">✅ Als gelesen markieren (+20 Min.)</button>
           <button id="readerModalDownloadBtn" class="btn-accent" style="padding:6px 11px; font-size:0.8rem;">⬇️ .md speichern</button>
           <button onclick="printCurrentReaderModal()" style="padding:6px 11px; font-size:0.8rem;">🖨️ Drucken / PDF</button>
           <button onclick="closeSummaryReaderModal()" style="padding:6px 11px; font-size:0.85rem;">✕ Schließen</button>
         </div>
       </div>
+      <div id="readerModalTutorContainer"></div>
       <div id="readerModalContent" style="font-size:0.9rem; line-height:1.65; color:#f1f5f9;"></div>
     </div>
   </div>
 
+  <script src="folien_library.js"></script>
   <script>
     // 1. Official Course Data (THA Wirtschaftsinformatik B.Sc. - SPO 2025)
     const COURSES = [
@@ -4196,6 +4472,7 @@ Gegeben:
       s.customSummaries = s.customSummaries || {};
       s.customSummaryMeta = s.customSummaryMeta || {};
       s.savedSummaryArchive = Array.isArray(s.savedSummaryArchive) ? s.savedSummaryArchive : [];
+      s.readFolienScripts = s.readFolienScripts || {};
       s.deletedArchiveIds = s.deletedArchiveIds || {};
       s.customCalEvents = s.customCalEvents || [];
       s.customMoodleUrls = s.customMoodleUrls || {};
@@ -5701,7 +5978,7 @@ Gegeben:
             <div>🔴 <strong>LIVE JETZT (${runningNow.start}–${runningNow.end} Uhr, Raum ${runningNow.room}):</strong>
               <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:800;">${runningNow.title} ↗</a>
             </div>
-            <span style="font-size:0.76rem; color:var(--accent);">📝 Zusammenfassung ab ${runningNow.end} Uhr bereit</span>
+            <span style="font-size:0.76rem; color:var(--accent); cursor:pointer;" onclick="selectFolienTab('${runningNow.courseId}'); scrollToSection('secSummaryFolder');">📚 Folien-Skripte öffnen ▼</span>
           `;
         } else if (nextUp) {
           const c = COURSES.find(x => x.id === nextUp.courseId) || COURSES[0];
@@ -5714,8 +5991,8 @@ Gegeben:
         } else {
           const lastLec = todaysLectures[todaysLectures.length - 1];
           banner.innerHTML = `
-            <div>✅ <strong>Vorlesungsschluss heute seit ${lastLec.end} Uhr!</strong> Deine Vorlesungs-Zusammenfassung für heute liegt rechts bereit.</div>
-            <button class="btn-primary" onclick="scrollToSection('secSummaries')" style="padding:4px 10px; font-size:0.76rem;">📝 Zusammenfassung lesen</button>
+            <div>✅ <strong>Vorlesungsschluss heute seit ${lastLec.end} Uhr!</strong> Alle echten Moodle-Folien-Skripte liegen unten für dich bereit.</div>
+            <button class="btn-primary" onclick="scrollToSection('secSummaryFolder')" style="padding:4px 10px; font-size:0.76rem;">📚 Folien-Skripte öffnen</button>
           `;
         }
       }
@@ -5757,7 +6034,7 @@ Gegeben:
               </a>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
                 <span style="font-size:0.68rem; color:var(--text-muted);">${lec.kind}</span>
-                <span onclick="openLectureSummary('${curISO}', '${lec.id}')" style="font-size:0.68rem; color:var(--accent); font-weight:700; cursor:pointer;" title="Zur Zusammenfassung dieser Vorlesung springen">📝 Summary</span>
+                <span onclick="openLectureSummary('${curISO}', '${lec.id}')" style="font-size:0.68rem; color:var(--accent); font-weight:700; cursor:pointer;" title="Zu den Folien-Skripten dieses Kurses springen">📚 Skripte</span>
               </div>
             </div>
           `;
@@ -5852,18 +6129,15 @@ Gegeben:
 
     function openLectureSummary(dateISO, lecId) {
       selectedDate = dateISO;
+      const lec = LECTURE_SCHEDULE.find(l => l.id === lecId);
+      if (lec && lec.courseId) {
+        activeFolienTab = lec.courseId;
+      }
       renderDailyPlan();
       renderCalendar();
-      renderDailySummaries();
+      renderFolienLibrary();
       renderWeekGrid();
-      scrollToSection('secSummaries');
-      setTimeout(() => {
-        const card = document.getElementById('sum-card-' + lecId);
-        if (card) {
-          card.style.boxShadow = '0 0 0 3px rgba(249,115,22,0.7)';
-          setTimeout(() => { card.style.boxShadow = ''; }, 1800);
-        }
-      }, 280);
+      scrollToSection('secSummaryFolder');
     }
 
     // =========================================================================
@@ -6940,47 +7214,100 @@ Gegeben:
       renderDailySummaries();
     }
 
-    function renderSummaryFolder() {
+    // =========================================================================
+    // FOLIEN-SKRIPT-BIBLIOTHEK (30 ECHTE MOODLE-VORLESUNGEN & INTERAKTIVER TUTOR)
+    // =========================================================================
+    let activeFolienTab = 'all';
+    let currentFolienReaderId = null;
+
+    function selectFolienTab(tabId) {
+      activeFolienTab = tabId;
+      renderFolienLibrary();
+    }
+
+    function renderFolienLibrary() {
       const tabsEl = document.getElementById('summaryFolderTabs');
       const gridEl = document.getElementById('summaryFolderGrid');
+      const bannerEl = document.getElementById('folienProgressBanner');
       const titleEl = document.getElementById('summaryFolderTitle');
       const moodleLinkEl = document.getElementById('activeFolderMoodleLink');
       if (!tabsEl || !gridEl) return;
 
-      updateSummaryFolderHeaderCounts();
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      const totalCount = library.length;
+      state.readFolienScripts = state.readFolienScripts || {};
+      const readKeys = Object.keys(state.readFolienScripts);
+      const readCount = readKeys.length;
+      const pct = totalCount > 0 ? Math.round((readCount / totalCount) * 100) : 0;
+      const totalLoggedMinutes = readCount * 20;
 
-      const allItems = state.savedSummaryArchive || [];
-      if (titleEl) {
-        titleEl.textContent = `📁 Mein Zusammenfassungs-Ordner — Gespeicherte Vorlesungen (${allItems.length})`;
+      // Update Header Badges
+      const hBtn = document.getElementById('folienHeaderBtn');
+      const hCount = document.getElementById('headerFolienCount');
+      const mCount = document.getElementById('mobileFolderCount');
+      if (hBtn) {
+        hBtn.innerHTML = `📚 Folien-Skripte (${readCount}/${totalCount})`;
+      }
+      if (hCount) hCount.textContent = `${readCount}/${totalCount}`;
+      if (mCount) mCount.textContent = `${readCount}/${totalCount}`;
+
+      // Render Progress Banner
+      if (bannerEl) {
+        bannerEl.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+            <div style="font-size:0.86rem; font-weight:700; color:#fff;">
+              🦊 Dein Lern-Fortschritt: <span style="color:var(--primary);">${readCount} von ${totalCount} Skripten</span> vollständig durchgearbeitet (${pct} %)
+            </div>
+            <div style="font-size:0.78rem; color:#94a3b8;">
+              ⏱️ <strong>${(totalLoggedMinutes / 60).toFixed(1)} Std.</strong> (${totalLoggedMinutes} Min.) verbuchte Lernzeit
+            </div>
+          </div>
+          <div style="width:100%; height:8px; background:rgba(255,255,255,0.08); border-radius:99px; overflow:hidden; margin-top:4px;">
+            <div style="height:100%; width:${pct}%; background:linear-gradient(90deg, #f97316 0%, #22c55e 100%); transition:width 0.4s ease; border-radius:99px;"></div>
+          </div>
+        `;
       }
 
-      // Build Subfolder Tabs: Alle + all 9 Courses
+      if (titleEl) {
+        titleEl.textContent = `📚 Folien-Skript-Bibliothek — Alle ${totalCount} THA Vorlesungen (SPO 2025)`;
+      }
+
+      // Counts by course in library
       const countsByCourse = {};
-      allItems.forEach(item => {
+      library.forEach(item => {
         countsByCourse[item.courseId] = (countsByCourse[item.courseId] || 0) + 1;
       });
 
+      // Render Tabs
       const allTabHtml = `
-        <button class="folder-tab-btn ${activeSummaryFolderTab === 'all' ? 'active-folder' : ''}" onclick="selectSummaryFolderTab('all')">
-          <span>${activeSummaryFolderTab === 'all' ? '📂' : '📁'} Alle Vorlesungen</span>
-          <span class="folder-count-pill">${allItems.length}</span>
+        <button class="folder-tab-btn ${activeFolienTab === 'all' ? 'active-folder' : ''}" onclick="selectFolienTab('all')">
+          <span>${activeFolienTab === 'all' ? '📂' : '📁'} Alle Skripte</span>
+          <span class="folder-count-pill">${totalCount}</span>
         </button>
       `;
+
       const courseTabsHtml = COURSES.map(c => {
         const cnt = countsByCourse[c.id] || 0;
-        const isAct = activeSummaryFolderTab === c.id;
+        const isAct = activeFolienTab === c.id;
+        let readInCourse = 0;
+        library.filter(x => x.courseId === c.id).forEach(x => {
+          if (state.readFolienScripts[x.id]) readInCourse++;
+        });
+        const pillText = cnt > 0 ? `${readInCourse}/${cnt}` : '0';
         return `
-          <button class="folder-tab-btn ${isAct ? 'active-folder' : ''}" onclick="selectSummaryFolderTab('${c.id}')" style="${cnt > 0 ? `border-left: 3px solid ${c.color};` : 'opacity:0.78;'}">
+          <button class="folder-tab-btn ${isAct ? 'active-folder' : ''}" onclick="selectFolienTab('${c.id}')" style="${cnt > 0 ? `border-left: 3px solid ${c.color};` : 'opacity:0.55;'}">
             <span>${isAct ? '📂' : '📁'} ${escapeHtml(c.short)}</span>
-            <span class="folder-count-pill">${cnt}</span>
+            <span class="folder-count-pill" style="${readInCourse === cnt && cnt > 0 ? 'color:var(--success); border-color:var(--success);' : ''}">${pillText}</span>
           </button>
         `;
       }).join('');
+
       tabsEl.innerHTML = allTabHtml + courseTabsHtml;
 
+      // Active Course Moodle Link
       if (moodleLinkEl) {
-        if (activeSummaryFolderTab !== 'all') {
-          const selCourse = COURSES.find(c => c.id === activeSummaryFolderTab);
+        if (activeFolienTab !== 'all') {
+          const selCourse = COURSES.find(c => c.id === activeFolienTab);
           if (selCourse) {
             moodleLinkEl.style.display = 'inline-flex';
             moodleLinkEl.href = getCourseMoodleUrl(selCourse);
@@ -6991,27 +7318,26 @@ Gegeben:
         }
       }
 
+      // Filtering
       const searchQ = ((document.getElementById('summaryFolderSearch') && document.getElementById('summaryFolderSearch').value) || '').trim().toLowerCase();
-      const sourceFilter = (document.getElementById('summaryFolderSourceFilter') && document.getElementById('summaryFolderSourceFilter').value) || 'all';
+      const statusFilter = (document.getElementById('folienStatusFilter') && document.getElementById('folienStatusFilter').value) || 'all';
 
-      const filtered = allItems.filter(item => {
-        if (activeSummaryFolderTab !== 'all' && item.courseId !== activeSummaryFolderTab) return false;
-        if (sourceFilter === 'pdf' && item.sourceType !== 'pdf' && item.sourceType !== 'notes') return false;
-        if (sourceFilter === 'curriculum' && item.sourceType !== 'curriculum') return false;
+      const filtered = library.filter(item => {
+        if (activeFolienTab !== 'all' && item.courseId !== activeFolienTab) return false;
+        const isRead = !!state.readFolienScripts[item.id];
+        if (statusFilter === 'unread' && isRead) return false;
+        if (statusFilter === 'read' && !isRead) return false;
         if (searchQ) {
-          const hay = `${item.lectureTitle} ${item.topic} ${item.courseId} ${item.prof} VW ${item.vw} ${item.dateISO} ${item.sourceLabel} ${item.personalNote || ''} ${item.contentPlain || ''}`.toLowerCase();
+          const hay = `${item.title} ${item.sources} ${item.courseId} ${item.file} ${item.md.slice(0, 4000)}`.toLowerCase();
           if (!hay.includes(searchQ)) return false;
         }
         return true;
       });
 
       if (filtered.length === 0) {
-        const emptyHint = allItems.length === 0
-          ? `Dein Zusammenfassungs-Ordner ist noch leer! Klicke oben bei einer heutigen Vorlesung einfach auf <strong>„💾 Gelesen &amp; in Ordner speichern (+15 Min.)“</strong> – dann landet das komplette lange 5-Teile-Skript sauber sortiert hier im Ordner (auf PC &amp; Tablet synchron!).`
-          : `Keine gespeicherten Zusammenfassungen für diesen Unterordner / Suchbegriff gefunden.`;
         gridEl.innerHTML = `
-          <div style="grid-column: 1 / -1; background:var(--bg-muted); border:1px dashed var(--border); border-radius:12px; padding:22px; text-align:center; color:var(--text-muted); font-size:0.86rem;">
-            📂 ${emptyHint}
+          <div style="grid-column: 1 / -1; background:var(--bg-muted); border:1px dashed var(--border); border-radius:12px; padding:28px; text-align:center; color:var(--text-muted); font-size:0.88rem;">
+            🔍 Keine Vorlesungs-Skripte für diesen Filter gefunden.
           </div>
         `;
         return;
@@ -7019,128 +7345,175 @@ Gegeben:
 
       gridEl.innerHTML = filtered.map(item => {
         const c = COURSES.find(x => x.id === item.courseId) || COURSES[0];
-        const mUrl = getCourseMoodleUrl(c);
-        const fmtD = new Date(item.dateISO + 'T12:00:00').toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-        const savedDateStr = new Date(item.savedAt || Date.now()).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
-        const isReal = item.sourceType === 'pdf' || item.sourceType === 'notes';
-
+        const isRead = !!state.readFolienScripts[item.id];
         return `
-          <div class="saved-archive-card" id="arch-card-${item.id}" style="border-top: 3px solid ${c.color};">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px; flex-wrap:wrap;">
-              <div>
-                <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:800; font-size:0.95rem; color:${c.color};" title="Direkt zu ${escapeHtml(c.name)} in THA Moodle">
-                  📁 ${escapeHtml(c.short)} — ${escapeHtml(item.lectureTitle)} ↗
-                </a>
-                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">
-                  📅 Vorlesung vom ${fmtD} (VW ${item.vw}) • ${escapeHtml(item.prof)} • ~${item.wordCount || countWordsApprox(item.contentPlain)} Wörter • Gespeichert: ${savedDateStr}
-                </div>
-              </div>
-              <span class="source-badge ${isReal ? 'real-slides' : 'curriculum'}" style="margin-top:0;">
-                ${isReal ? '✅ ' : '📚 '}${escapeHtml(item.sourceLabel)}
+          <div class="folien-card ${isRead ? 'is-read' : ''}" id="card_${item.id}">
+            <div class="folien-card-top">
+              <span class="folien-course-badge" style="background:${c.color};">
+                ${escapeHtml(c.short)}
+              </span>
+              <span class="folien-read-badge ${isRead ? 'read' : 'unread'}">
+                ${isRead ? '✅ Gelesen (+20 Min.)' : '⏳ Noch offen'}
               </span>
             </div>
 
-            <div style="font-weight:700; font-size:0.88rem; color:#fff;">
-              📌 ${escapeHtml(item.topic)}
+            <div class="folien-card-title">
+              ${escapeHtml(item.title)}
             </div>
 
-            <div style="display:flex; gap:7px; flex-wrap:wrap; align-items:center;">
-              <button class="btn-primary" id="arch-exp-btn-${item.id}" onclick="toggleArchiveCardExpand('${item.id}')" style="padding:6px 11px; font-size:0.77rem;">
-                📖 Aufklappen &amp; komplett lesen
+            <div class="folien-card-sources" title="${escapeHtml(item.sources)}">
+              📌 ${escapeHtml(item.sources)}
+            </div>
+
+            <div class="folien-card-meta">
+              <span class="folien-meta-pill">📄 ${item.pages} Folien</span>
+              <span class="folien-meta-pill">📝 ${item.words} Wörter</span>
+              <span class="folien-meta-pill">⏱️ ca. 20 Min.</span>
+              <span class="folien-meta-pill">👨‍🏫 ${escapeHtml(c.prof)}</span>
+            </div>
+
+            <div class="folien-card-actions">
+              <button class="btn-accent" onclick="openFolienScriptReader('${item.id}')" style="padding:6px 12px; font-size:0.8rem;">
+                📖 Skript lesen
               </button>
-              <button class="btn-accent" onclick="openArchivedSummaryReader('${item.id}')" style="padding:6px 11px; font-size:0.77rem;">
-                🖥️ Großer Lese-Modus
+              <button class="${isRead ? '' : 'btn-primary'}" onclick="toggleFolienScriptRead('${item.id}')" style="padding:6px 12px; font-size:0.8rem;">
+                ${isRead ? '↩ Offen' : '✅ Gelesen (+20 Min.)'}
               </button>
-              <button onclick="downloadSingleSavedSummaryMd('${item.id}')" style="padding:6px 10px; font-size:0.76rem;" title="Als Markdown-Datei (.md) speichern">
+              <button onclick="downloadFolienScriptMd('${item.id}')" style="padding:6px 10px; font-size:0.8rem;" title="Markdown-Datei (.md) herunterladen">
                 ⬇️ .md
               </button>
-              <button onclick="deleteSavedSummaryFromFolder('${item.id}')" style="padding:6px 9px; font-size:0.75rem; color:var(--danger);" title="Aus Ordner entfernen">
-                🗑️
-              </button>
             </div>
 
-            <div class="archive-expanded-body" id="arch-body-${item.id}">
-              ${item.contentHtml}
-              <div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border);">
-                <div style="font-size:0.78rem; font-weight:700; color:var(--accent); margin-bottom:5px;">📝 Deine persönliche Klausur-Notiz zu dieser gespeicherten Vorlesung:</div>
-                <textarea id="arch-note-${item.id}" style="width:100%; min-height:60px; background:#090d16; color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px 10px; font-family:inherit; font-size:0.8rem; margin-bottom:6px;" placeholder="Eigene Merksätze, Hinweise vom Prof aus dem Hörsaal, Klausurtipps...">${escapeHtml(item.personalNote || '')}</textarea>
-                <button class="btn-accent" onclick="saveArchivePersonalNote('${item.id}')" style="padding:5px 11px; font-size:0.76rem;">💾 Notiz im Ordner speichern</button>
+            <!-- Embedded Interactive Kurama Tutor Box -->
+            <details class="folien-tutor-details" id="tutorDetails_${item.id}">
+              <summary>🦊 Frag Kurama zu diesem Skript...</summary>
+              <div class="folien-tutor-body">
+                <div class="folien-tutor-chips">
+                  <span class="folien-tutor-chip" onclick="askFolienPreset('${item.id}', 'core', 'cardTutorResp_${item.id}')">💡 3 Kernaussagen</span>
+                  <span class="folien-tutor-chip" onclick="askFolienPreset('${item.id}', 'trap', 'cardTutorResp_${item.id}')">⚠️ Klausurfalle</span>
+                  <span class="folien-tutor-chip" onclick="askFolienPreset('${item.id}', 'example', 'cardTutorResp_${item.id}')">🧩 Praxis-Beispiel</span>
+                  <span class="folien-tutor-chip" onclick="askFolienPreset('${item.id}', 'calc', 'cardTutorResp_${item.id}')">📐 Formel / Schema</span>
+                </div>
+                <div class="folien-tutor-input-row">
+                  <input type="text" id="cardTutorInput_${item.id}" placeholder="Deine Frage (z.B. 'GuV vs Bilanz', 'Was ist 3NF?')..." onkeydown="if(event.key==='Enter') submitFolienCardQuestion('${item.id}')" />
+                  <button class="btn-primary" onclick="submitFolienCardQuestion('${item.id}')">🦊 Fragen</button>
+                </div>
+                <div class="folien-tutor-response-box" id="cardTutorResp_${item.id}"></div>
               </div>
-            </div>
+            </details>
           </div>
         `;
       }).join('');
     }
 
-    // -------------------------------------------------------------------------
-    // FULL-SCREEN READER MODAL + .MD EXPORT & PRINT/PDF
-    // -------------------------------------------------------------------------
-    function openDailySummaryReader(dateISO, lecId) {
-      const lec = LECTURE_SCHEDULE.find(l => l.id === lecId);
-      if (!lec) return;
-      const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
-      const info = getSummaryDataForLecture(lec, dateISO);
-      const hasCustom = !!info.customText;
-      const html = hasCustom
-        ? formatCustomSummaryHtml(info.customText, info.customMeta)
-        : buildLongCurriculumHtml(lec, c, info.vw, info.entry);
-      const plain = hasCustom
-        ? `# ${lec.title} (${c.short})\nDatum: ${dateISO} (VW ${info.vw})\n\n${info.customText}`
-        : buildLongCurriculumPlain(lec, c, info.vw, info.entry, dateISO);
+    function toggleFolienScriptRead(scriptId) {
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      const script = library.find(x => x.id === scriptId);
+      if (!script) return;
+      const c = COURSES.find(x => x.id === script.courseId) || COURSES[0];
+      state.readFolienScripts = state.readFolienScripts || {};
+
+      if (state.readFolienScripts[scriptId]) {
+        delete state.readFolienScripts[scriptId];
+        logWeeklyStudyTime(getTodayISO(), script.courseId, -20);
+        showKuramaToast('↩ Status zurückgesetzt', `Skript „${script.title}“ wurde als noch offen markiert (-20 Min.).`, 'secSummaryFolder');
+      } else {
+        state.readFolienScripts[scriptId] = {
+          readAt: new Date().toISOString(),
+          minutes: 20
+        };
+        logWeeklyStudyTime(getTodayISO(), script.courseId, 20, `Folien-Skript durchgearbeitet: ${script.title}`);
+        showKuramaToast('🎉 Stark gemacht, Ahmad!', `+20 Min. für ${c.short} verbucht! Weiter so!`, 'secSummaryFolder');
+      }
+
+      saveState();
+      renderFolienLibrary();
+      renderCourses();
+      renderWeeklyReport();
+
+      // Update Reader Modal Read Button if current modal is showing this script
+      if (currentFolienReaderId === scriptId) {
+        updateReaderModalReadButton(scriptId);
+      }
+    }
+
+    function updateReaderModalReadButton(scriptId) {
+      const btn = document.getElementById('readerModalReadBtn');
+      if (!btn) return;
+      const isRead = !!(state.readFolienScripts && state.readFolienScripts[scriptId]);
+      btn.className = isRead ? '' : 'btn-primary';
+      btn.textContent = isRead ? '↩ Als noch offen markieren' : '✅ Als gelesen markieren (+20 Min.)';
+      btn.onclick = () => toggleFolienScriptRead(scriptId);
+    }
+
+    function openFolienScriptReader(scriptId) {
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      const script = library.find(x => x.id === scriptId);
+      if (!script) return;
+      const c = COURSES.find(x => x.id === script.courseId) || COURSES[0];
+      currentFolienReaderId = scriptId;
 
       currentReaderRecord = {
         courseShort: c.short,
         courseColor: c.color,
         moodleUrl: getCourseMoodleUrl(c),
-        title: `${lec.title} — ${info.entry.topic}`,
-        meta: `📅 ${dateISO} • Vorlesungswoche ${info.vw} • ${c.prof} • Raum ${lec.room}`,
-        html,
-        plain,
-        fileSlug: `${dateISO}_VW${info.vw}_${c.id}_${lec.id}.md`
+        title: script.title,
+        meta: `📄 ${script.pages} Folien • 📝 ${script.words} Wörter • ⏱️ ca. 20 Min. • 📌 ${script.sources}`,
+        html: script.html,
+        plain: script.md,
+        fileSlug: `${script.id}.md`
       };
-      showReaderModalCurrent();
-    }
 
-    function openArchivedSummaryReader(archiveId) {
-      const rec = (state.savedSummaryArchive || []).find(a => a.id === archiveId);
-      if (!rec) return;
-      const c = COURSES.find(x => x.id === rec.courseId) || COURSES[0];
-      currentReaderRecord = {
-        courseShort: c.short,
-        courseColor: c.color,
-        moodleUrl: getCourseMoodleUrl(c),
-        title: `${rec.lectureTitle} — ${rec.topic}`,
-        meta: `📅 ${rec.dateISO} • VW ${rec.vw} • ${rec.prof} • ${rec.sourceLabel}`,
-        html: rec.contentHtml + (rec.personalNote ? `<div class="summary-exam-tip" style="margin-top:14px;"><strong>📝 Deine Notiz:</strong> ${formatRichTextSafe(rec.personalNote)}</div>` : ''),
-        plain: rec.contentPlain + (rec.personalNote ? `\n\n## Meine Klausur-Notiz\n${rec.personalNote}` : ''),
-        fileSlug: `${rec.dateISO}_VW${rec.vw}_${rec.courseId}.md`
-      };
-      showReaderModalCurrent();
-    }
-
-    function showReaderModalCurrent() {
-      if (!currentReaderRecord) return;
       const backdrop = document.getElementById('summaryReaderModalBackdrop');
       const tagEl = document.getElementById('readerModalCourseTag');
       const titleEl = document.getElementById('readerModalTitle');
       const metaEl = document.getElementById('readerModalMeta');
       const contentEl = document.getElementById('readerModalContent');
+      const tutorContainer = document.getElementById('readerModalTutorContainer');
       const dlBtn = document.getElementById('readerModalDownloadBtn');
+
       if (!backdrop || !contentEl) return;
 
-      tagEl.innerHTML = `<a href="${currentReaderRecord.moodleUrl}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${currentReaderRecord.courseColor};">🔗 ${escapeHtml(currentReaderRecord.courseShort)} in THA Moodle öffnen ↗</a>`;
+      tagEl.innerHTML = `<a href="${currentReaderRecord.moodleUrl}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${currentReaderRecord.courseColor};">🔗 [${escapeHtml(currentReaderRecord.courseShort)}] ${escapeHtml(c.name)} in THA Moodle ↗</a>`;
       titleEl.textContent = currentReaderRecord.title;
       metaEl.textContent = currentReaderRecord.meta;
+      updateReaderModalReadButton(scriptId);
+
+      // Embedded Interactive Tutor for Reader Modal
+      if (tutorContainer) {
+        tutorContainer.innerHTML = `
+          <div class="modal-tutor-box">
+            <div class="modal-tutor-header">
+              <span>🦊 Frag Kurama während des Lesens zu diesem Skript:</span>
+            </div>
+            <div class="folien-tutor-chips">
+              <span class="folien-tutor-chip" onclick="askFolienPreset('${script.id}', 'core', 'modalTutorResp')">💡 3 Kernaussagen</span>
+              <span class="folien-tutor-chip" onclick="askFolienPreset('${script.id}', 'trap', 'modalTutorResp')">⚠️ Klausurfalle</span>
+              <span class="folien-tutor-chip" onclick="askFolienPreset('${script.id}', 'example', 'modalTutorResp')">🧩 Praxis-Beispiel</span>
+              <span class="folien-tutor-chip" onclick="askFolienPreset('${script.id}', 'calc', 'modalTutorResp')">📐 Formel / Schema</span>
+            </div>
+            <div class="folien-tutor-input-row" style="margin-top:6px;">
+              <input type="text" id="modalTutorInput" placeholder="Tippe deine Frage (z.B. 'Warum diese Buchung?', 'Was ist BCNF?')..." onkeydown="if(event.key==='Enter') submitFolienModalQuestion('${script.id}')" />
+              <button class="btn-primary" onclick="submitFolienModalQuestion('${script.id}')">🦊 Fragen</button>
+            </div>
+            <div class="folien-tutor-response-box" id="modalTutorResp"></div>
+          </div>
+        `;
+      }
+
       contentEl.innerHTML = currentReaderRecord.html;
+
       if (dlBtn) {
         dlBtn.onclick = () => triggerTextDownload(currentReaderRecord.fileSlug, currentReaderRecord.plain);
       }
+
       backdrop.classList.add('open');
     }
 
     function closeSummaryReaderModal() {
       const backdrop = document.getElementById('summaryReaderModalBackdrop');
       if (backdrop) backdrop.classList.remove('open');
+      currentFolienReaderId = null;
     }
 
     function printCurrentReaderModal() {
@@ -7149,14 +7522,17 @@ Gegeben:
       if (!w) return;
       w.document.write(`<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8"><title>${escapeHtml(currentReaderRecord.title)}</title>
         <style>
-          body { font-family: Segoe UI, Arial, sans-serif; padding: 28px; color: #0f172a; line-height: 1.55; max-width: 860px; margin: 0 auto; }
-          h1 { font-size: 1.35rem; margin-bottom: 4px; }
+          body { font-family: Segoe UI, Arial, sans-serif; padding: 28px; color: #0f172a; line-height: 1.6; max-width: 860px; margin: 0 auto; }
+          h1 { font-size: 1.35rem; margin-bottom: 4px; color: #c2410c; }
           .meta { color: #475569; font-size: 0.88rem; margin-bottom: 18px; border-bottom: 2px solid #f97316; padding-bottom: 10px; }
-          .script-section { border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; page-break-inside: avoid; }
-          .script-sec-title { font-weight: 800; color: #c2410c; margin-bottom: 6px; }
-          .script-deep-item { margin-bottom: 8px; padding-left: 10px; border-left: 3px solid #0284c7; }
-          pre { background: #f1f5f9; padding: 10px; border-radius: 6px; white-space: pre-wrap; font-size: 0.82rem; }
-          .script-example-box, .summary-exam-tip { background: #fef9c3; padding: 10px; border-radius: 6px; margin-top: 6px; }
+          .lib-h2 { font-size: 1.2rem; color: #c2410c; margin-top: 18px; border-bottom: 1px solid #fed7aa; padding-bottom: 4px; }
+          .lib-h3 { font-size: 1.05rem; color: #0369a1; margin-top: 14px; }
+          .lib-quote { background: #fff7ed; border-left: 4px solid #f97316; padding: 10px; margin: 10px 0; }
+          pre, .lib-code { background: #f1f5f9; padding: 10px; border-radius: 6px; white-space: pre-wrap; font-size: 0.82rem; }
+          table, .lib-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+          th, td, .lib-th, .lib-td { border: 1px solid #cbd5e1; padding: 6px 10px; text-align: left; }
+          th, .lib-th { background: #f8fafc; font-weight: 700; }
+          .lib-qa { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px; border-radius: 6px; margin: 8px 0; }
           details { margin-top: 6px; }
         </style></head><body>
         <h1>🦊 ${escapeHtml(currentReaderRecord.title)}</h1>
@@ -7168,7 +7544,7 @@ Gegeben:
     }
 
     function triggerTextDownload(filename, textContent) {
-      const safeName = String(filename || 'Kurama_Zusammenfassung.md').replace(/[^a-zA-Z0-9._-]/g, '_');
+      const safeName = String(filename || 'Kurama_Vorlesung.md').replace(/[^a-zA-Z0-9._-]/g, '_');
       const blob = new Blob([textContent], { type: 'text/markdown;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -7180,99 +7556,202 @@ Gegeben:
       setTimeout(() => URL.revokeObjectURL(url), 1500);
     }
 
-    function downloadSingleSavedSummaryMd(archiveId) {
-      const rec = (state.savedSummaryArchive || []).find(a => a.id === archiveId);
-      if (!rec) return;
-      const notePart = rec.personalNote ? `\n\n## Meine persönliche Klausur-Notiz\n${rec.personalNote}\n` : '';
-      triggerTextDownload(`${rec.dateISO}_VW${rec.vw}_${rec.courseId}_Zusammenfassung.md`, rec.contentPlain + notePart);
+    function downloadFolienScriptMd(scriptId) {
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      const script = library.find(x => x.id === scriptId);
+      if (!script) return;
+      triggerTextDownload(`${script.id}.md`, script.md);
     }
 
-    function exportAllSavedSummariesMarkdown() {
-      const items = state.savedSummaryArchive || [];
-      if (items.length === 0) {
-        showKuramaToast('📁 Ordner noch leer', 'Speichere zuerst mindestens eine gelesene Vorlesungs-Zusammenfassung in deinem Ordner!', 'secSummaries');
+    function exportAllFolienScriptsMarkdown() {
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      if (library.length === 0) {
+        showKuramaToast('📁 Noch leer', 'Keine Skripte in der Bibliothek gefunden.', 'secSummaryFolder');
         return;
       }
-      const filteredItems = activeSummaryFolderTab === 'all'
-        ? items
-        : items.filter(x => x.courseId === activeSummaryFolderTab);
-      const listToExport = filteredItems.length > 0 ? filteredItems : items;
-      const header = `# 🦊 Ahmads Gespeicherte THA Vorlesungs-Zusammenfassungen (${listToExport.length} Einheiten)\nExportiert am: ${new Date().toLocaleString('de-DE')}\n\n---\n\n`;
-      const body = listToExport.map(rec => {
-        const noteBlock = rec.personalNote ? `\n\n### 📝 Meine Klausur-Notiz:\n${rec.personalNote}` : '';
-        return `${rec.contentPlain}${noteBlock}\n\n---\n`;
+      const listToExport = activeFolienTab === 'all'
+        ? library
+        : library.filter(x => x.courseId === activeFolienTab);
+
+      const header = `# 🦊 Ahmads THA Vorlesungs-Skripte (${listToExport.length} Vorlesungseinheiten)
+Exportiert am: ${new Date().toLocaleString('de-DE')}
+Basis: 100 % echte Vorlesungsfolien (Desktop/Vorlesungsfolien)
+
+---
+
+`;
+      const body = listToExport.map(s => {
+        return `# ${s.title}
+**Quellen:** ${s.sources}
+
+${s.md}
+
+---
+`;
       }).join('\n');
-      const suffix = activeSummaryFolderTab === 'all' ? 'Alle_Kurse' : activeSummaryFolderTab.toUpperCase();
-      triggerTextDownload(`Kurama_Zusammenfassungs_Ordner_${suffix}.md`, header + body);
+
+      const suffix = activeFolienTab === 'all' ? 'Alle_30_Skripte' : activeFolienTab.toUpperCase();
+      triggerTextDownload(`Kurama_Folien_Bibliothek_${suffix}.md`, header + body);
     }
 
-    function checkAndNotifyReadySummaries(silentBadgeOnly = false) {
-      const todayISO = getTodayISO();
-      const todayDow = new Date().getDay();
-      const nowHHMM = getCurrentHHMM();
-      const todaysLectures = LECTURE_SCHEDULE.filter(l => l.dow === todayDow);
+    // -------------------------------------------------------------------------
+    // INTERAKTIVER KURAMA-TUTOR FÜR FOLIEN-SKRIPTE
+    // -------------------------------------------------------------------------
+    function askFolienPreset(scriptId, presetKind, resultElId) {
+      const labels = {
+        core: 'Fasse die 3 wichtigsten Kernaussagen und Definitionen dieses Skripts prägnant zusammen!',
+        trap: 'Welche typischen Klausurfallen stellt der Professor zu diesem Thema und worauf muss ich achten?',
+        example: 'Gib mir ein anschauliches Praxis-Beispiel (bzw. Rechenbeispiel / SQL-Query / Buchungssatz) zu diesem Skript!',
+        calc: 'Welche Formeln, Buchungsregeln oder Schemata muss ich für die Klausur auswendig beherrschen?'
+      };
+      const q = labels[presetKind] || 'Erkläre dieses Thema!';
+      askFolienTutor(scriptId, q, resultElId);
+    }
 
-      let notifiedMap = {};
+    function submitFolienCardQuestion(scriptId) {
+      const input = document.getElementById('cardTutorInput_' + scriptId);
+      if (!input) return;
+      const q = (input.value || '').trim();
+      if (!q) return;
+      input.value = '';
+      askFolienTutor(scriptId, q, 'cardTutorResp_' + scriptId);
+    }
+
+    function submitFolienModalQuestion(scriptId) {
+      const input = document.getElementById('modalTutorInput');
+      if (!input) return;
+      const q = (input.value || '').trim();
+      if (!q) return;
+      input.value = '';
+      askFolienTutor(scriptId, q, 'modalTutorResp');
+    }
+
+    async function askFolienTutor(scriptId, rawQuestion, resultElId) {
+      const resultEl = document.getElementById(resultElId);
+      if (!resultEl) return;
+      const library = (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY)) ? window.FOLIEN_LIBRARY : [];
+      const script = library.find(x => x.id === scriptId);
+      if (!script) return;
+      const c = COURSES.find(x => x.id === script.courseId) || COURSES[0];
+
+      resultEl.className = 'folien-tutor-response-box visible';
+      resultEl.innerHTML = '🦊 <em>Kurama analysiert die Vorlesungsfolien zu deiner Frage...</em>';
+
+      // 1. Try Live Python Bridge if running
       try {
-        notifiedMap = JSON.parse(localStorage.getItem(DEVICE_NOTIFIED_KEY) || '{}');
+        const online = kuramaBridgeOnline || (await ensureKuramaBridgeReady());
+        if (online) {
+          const res = await fetch(KURAMA_BRIDGE_URL + '/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              mode: 'folien_tutor',
+              course: `${c.name} (${c.short}, ${c.prof})`,
+              scriptTitle: script.title,
+              userQuestion: rawQuestion,
+              scriptExcerpt: script.md.slice(0, 5000)
+            })
+          });
+          const data = await res.json();
+          if (data && data.ok && data.answer) {
+            resultEl.innerHTML = `<strong>🦊 Kurama:</strong>\n\n${escapeHtml(data.answer)}`;
+            return;
+          }
+        }
       } catch (e) {}
 
-      let unreadReadyCount = 0;
-      const newlyReadyLectures = [];
+      // 2. Intelligent Offline Tutor Answer (Always reliable, works 100% offline!)
+      const answer = buildFolienTutorAnswer(script, c, rawQuestion);
+      resultEl.innerHTML = `<strong>🦊 Kurama:</strong>\n\n${formatRichTextSafe(answer)}`;
+    }
 
-      todaysLectures.forEach(lec => {
-        const key = `${todayISO}:${lec.id}`;
-        const isRead = !!(state.readSummaries && state.readSummaries[key]);
-        if (nowHHMM >= lec.end && !isRead) {
-          unreadReadyCount++;
-          if (!notifiedMap[key]) {
-            notifiedMap[key] = Date.now();
-            newlyReadyLectures.push(lec);
-          }
+    function buildFolienTutorAnswer(script, course, rawQuestion) {
+      const q = (rawQuestion || '').toLowerCase();
+      const md = script.md;
+
+      // Extract sections from markdown
+      const lines = md.split('\n');
+      const headings = [];
+      const qas = [];
+      const examTips = [];
+
+      lines.forEach((l, idx) => {
+        if (/^#{2,3}\s+/.test(l)) headings.push(l.replace(/^#{2,3}\s+/, ''));
+        if (/\*\*F\d*:\*\*/.test(l)) {
+          const qText = l.replace(/.*\*\*F\d*:\*\*\s*/, '');
+          const nextL = lines[idx + 1] || '';
+          const aText = nextL.replace(/.*\*\*A:\*\*\s*/, '');
+          qas.push({ q: qText, a: aText });
+        }
+        if (/klausur|falle|achtung|merke|tipp/i.test(l)) {
+          examTips.push(l.trim());
         }
       });
 
-      // Update header notification badges (Desktop + Tablet/Mobile)
-      const hBtn = document.getElementById('notifHeaderBtn');
-      const mBtn = document.getElementById('mobileNotifBtn');
-      const mCnt = document.getElementById('mobileNotifCount');
+      if (q.includes('kernaussage') || q.includes('wichtigst') || q.includes('zusammenfass')) {
+        const sampleHeadings = headings.slice(0, 4).map(h => `• ${h}`).join('\n');
+        return `Hier sind die wichtigsten Kerninhalte zu „${script.title}“ (${course.short}):\n\n` +
+          sampleHeadings +
+          `\n\n💡 Vertiefe besonders die Selbsttest-Aufgaben am Ende des Skripts!`;
+      }
 
-      if (hBtn) {
-        if (unreadReadyCount > 0) {
-          hBtn.textContent = `🔔 Vorlesung (${unreadReadyCount} bereit!)`;
-          hBtn.style.borderColor = 'var(--primary)';
-          hBtn.style.color = '#fdba74';
-          hBtn.style.background = 'rgba(249, 115, 22, 0.18)';
-        } else {
-          hBtn.textContent = '📝 Vorlesung heute';
-          hBtn.style.borderColor = 'rgba(56, 189, 248, 0.45)';
-          hBtn.style.color = 'var(--accent)';
-          hBtn.style.background = 'rgba(56, 189, 248, 0.14)';
+      if (q.includes('falle') || q.includes('prüfung') || q.includes('prof') || q.includes('aufpassen')) {
+        const tipText = examTips.slice(0, 3).map(t => `⚠️ ${t.replace(/^[>\s*-]+/, '')}`).join('\n\n');
+        return `Typische Klausurfallen bei ${course.prof} zu diesem Thema:\n\n` +
+          (tipText || '• Achte auf die genaue Definition der Fachbegriffe und vollständige Rechenwege!') +
+          `\n\n💡 Prof. ${course.prof} legt in der THA-Klausur großen Wert auf korrekte Fachterminologie!`;
+      }
+
+      if (q.includes('beispiel') || q.includes('praxis') || q.includes('rechen')) {
+        // find a table or code or qa
+        if (qas.length > 0) {
+          return `Hier ist eine konkrete Prüfungsaufgabe aus den Folien:\n\n❓ **${qas[0].q}**\n\n✅ **Lösung:** ${qas[0].a}`;
         }
       }
-      if (mCnt) mCnt.textContent = String(unreadReadyCount);
-      if (mBtn) {
-        mBtn.style.borderColor = unreadReadyCount > 0 ? 'var(--primary)' : 'rgba(56, 189, 248, 0.45)';
-        mBtn.style.color = unreadReadyCount > 0 ? '#fdba74' : 'var(--accent)';
+
+      if (q.includes('formel') || q.includes('schema') || q.includes('regel')) {
+        const mathLines = lines.filter(l => /[=+\-*\/]|soll an haben|schema|normalform|select/i.test(l) && l.trim().length > 10).slice(0, 4);
+        if (mathLines.length > 0) {
+          return `Zentrale Rechenregeln & Schemata für dieses Kapitel:\n\n` + mathLines.map(m => `📐 ${m.replace(/^[>\s*-]+/, '')}`).join('\n\n');
+        }
       }
 
-      if (!silentBadgeOnly && newlyReadyLectures.length > 0) {
-        localStorage.setItem(DEVICE_NOTIFIED_KEY, JSON.stringify(notifiedMap));
-        const titles = newlyReadyLectures.map(l => l.title).join(' & ');
-        sendKuramaNotification(
-          '🔔 Ausführliche Vorlesungs-Zusammenfassung bereit!',
-          `Ahmad, dein langes 5-Teile-Lernskript zu „${titles}“ liegt bereit! Nach dem Lesen kannst du es direkt im Ordner speichern.`,
-          'secSummaries',
-          'ready-sum-' + todayISO + '-' + newlyReadyLectures[0].id
-        );
-        renderDailySummaries();
-        renderCalendar();
+      // Keyword matching
+      const words = q.split(/\s+/).filter(w => w.length > 3);
+      let bestSnippet = '';
+      for (const line of lines) {
+        let matches = 0;
+        words.forEach(w => { if (line.toLowerCase().includes(w)) matches++; });
+        if (matches >= 1 && line.length > 30) {
+          bestSnippet += line + '\n';
+          if (bestSnippet.length > 350) break;
+        }
       }
+
+      if (bestSnippet) {
+        return `Zu deiner Frage zu „${rawQuestion}“ direkt aus den Folien:\n\n${bestSnippet.trim()}\n\n🦊 Lies dir für den kompletten Zusammenhang das entsprechende Kapitel im Skript durch!`;
+      }
+
+      return `Ahmad, zu deiner Frage („${rawQuestion}“): In den THA-Folien von ${course.prof} zu „${script.title}“ wird dieses Thema detailliert behandelt. Klicke oben auf „📖 Skript lesen“, um die gesamte Herleitung mit Tabellen und Beispielen zu sehen!`;
     }
 
-    // =========================================================================
-    // TIMELINE & AUTO-BOOKING WALL-CLOCK TIMER (PC + Tablet Live-Synced!)
-    // =========================================================================
+    // Compatibility Stubs
+    function renderSummaryFolder() {
+      renderFolienLibrary();
+    }
+
+    function renderDailySummaries() {
+      // Replaced cleanly by 30-Folien-Skript-Bibliothek
+    }
+
+    function updateSummaryFolderHeaderCounts() {
+      renderFolienLibrary();
+    }
+
+    function checkAndNotifyReadySummaries() {
+      // Safe no-op
+    }
+
     function undoTimelineEntry(entryId) {
       state.timeline = state.timeline || [];
       const idx = state.timeline.findIndex(e => e.id === entryId);
@@ -7697,7 +8176,7 @@ Gegeben:
 
       addChatMessage(
         'kurama',
-        '🦊 KURAMA UPGRADE 2.0 AKTIV, Ahmad!\n• 📖 5-teilige ausführliche Lern-Skripte (mit Formeln/SQL/Code, Rechenbeispiel & Selbsttest) für jede Vorlesung\n• 📄 Echter Moodle-PDF-Analysator: Lade die heutige Vorlesungs-PDF direkt auf Tablet oder PC hoch für eine 100% folienbasierte Zusammenfassung!\n• 📁 Mein Zusammenfassungs-Ordner: Speichere gelesene Zusammenfassungen dauerhaft in Kurs-Unterordnern (live synchronisiert zwischen PC & Tablet)\n• ✅ Alle bisherigen Features (Auto-Timer, direkte Moodle-Links, Kalender, Benachrichtigungen) bleiben 100% erhalten!'
+        '🦊 KURAMA FOLIEN-BIBLIOTHEK AKTIV, Ahmad!\n• 📚 Alle 60 aktuellen Moodle-Folien aus „Desktop\\Vorlesungsfolien“ sind in 30 ausführlichen THA-Lernskripten (BuB, DBS, DIA, IMPIS, ITMR, KLR, PEM) zusammengefasst!\n• ❓ Interaktiver Skript-Tutor: Frag mich direkt in jeder Karte oder beim Vollbild-Lesen zu jedem Begriff, Rechenweg oder Klausurtipp!\n• 🗓️ Das ungenaue Tages-Schätz-Update ist entfernt – sobald du neue Folien herunterlädst, sag mir einfach Bescheid und ich ergänze den jeweiligen Kurs-Ordner!'
       );
 
       document.addEventListener('keydown', ev => {

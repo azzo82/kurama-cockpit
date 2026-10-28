@@ -1,7 +1,8 @@
-const CACHE_NAME = 'kurama-cockpit-v4';
+const CACHE_NAME = 'kurama-cockpit-v5';
 const ASSETS = [
   './',
   './index.html',
+  './folien_library.js',
   './manifest.json',
   './kurama.ico',
   './icon-192.png',
@@ -25,7 +26,7 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const targetSection = (event.notification.data && event.notification.data.section) || 'secSummaries';
+  const targetSection = (event.notification.data && event.notification.data.section) || 'secSummaryFolder';
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
       for (const client of clientList) {
