@@ -93,15 +93,19 @@ function mdToHtml(md) {
     // Lists (one nesting level)
     const li = line.match(/^(\s*)([-*]|\d+[.)])\s+(.*)$/);
     if (li) {
+      const baseIndent = li[1].length;
       const ordered = /\d/.test(li[2]);
       const items = [];
       while (i < lines.length) {
+        if (/^\s*```/.test(lines[i])) break;
+        if (lines[i].includes('|') && i + 1 < lines.length && isTableSep(lines[i + 1])) break;
         const m = lines[i].match(/^(\s*)([-*]|\d+[.)])\s+(.*)$/);
-        if (m && m[1].length < 2) { items.push({ text: m[3], sub: [], subOrdered: false }); i++; continue; }
-        if (m && m[1].length >= 2 && items.length) { items[items.length - 1].sub.push(m[3]); items[items.length - 1].subOrdered = /\d/.test(m[2]); i++; continue; }
+        if (m && m[1].length <= baseIndent) { items.push({ text: m[3], sub: [], subOrdered: false }); i++; continue; }
+        if (m && m[1].length > baseIndent && items.length) { items[items.length - 1].sub.push(m[3]); items[items.length - 1].subOrdered = /\d/.test(m[2]); i++; continue; }
         if (lines[i].trim() && /^\s{2,}\S/.test(lines[i]) && items.length) { items[items.length - 1].text += ' ' + lines[i].trim(); i++; continue; }
         break;
       }
+      if (!items.length) { i++; continue; }
       const tag = ordered ? 'ol' : 'ul';
       out.push(`<${tag} class="lib-list">${items.map(it => `<li>${inline(it.text)}${it.sub.length ? `<${it.subOrdered ? 'ol' : 'ul'}>${it.sub.map(s => `<li>${inline(s)}</li>`).join('')}</${it.subOrdered ? 'ol' : 'ul'}>` : ''}</li>`).join('')}</${tag}>`);
       continue;
