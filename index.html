@@ -2231,7 +2231,7 @@
           <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
         </div>
         <div style="display:flex; gap:6px; align-items:center;">
-          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Folien-Skript-Bibliothek (37 Skripte)">📚 <span id="mobileFolderCount">37</span></button>
+          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Folien-Skript-Bibliothek (40 Skripte)">📚 <span id="mobileFolderCount">40</span></button>
           <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
         </div>
       </div>
@@ -2243,8 +2243,8 @@
           <button class="btn-kurama-resume" onclick="scrollToSection('secCalendar')" title="Springt direkt zu deinem THA Vorlesungs-Kalender">
             🗓️ Kalender
           </button>
-          <button class="btn-kurama-resume" id="folienHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deine 37 THA Vorlesungs-Skripte aus Moodle">
-            📚 Folien-Skripte (<span id="headerFolienCount">0/37</span>)
+          <button class="btn-kurama-resume" id="folienHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deine 40 THA Vorlesungs-Skripte aus Moodle">
+            📚 Folien-Skripte (<span id="headerFolienCount">0/40</span>)
           </button>
           <button class="btn-kurama-resume" onclick="jumpToAufgabentutor()" title="Springt sofort direkt zum Aufgabentutor im Fragenblock">
             🎓 Aufgabentutor
@@ -2472,13 +2472,13 @@
       </div>
 
     <!-- NEW Dedicated Website Folder for Saved Read Summaries (PC & Tablet Live-Synced!) -->
-    <!-- Dedicated Folien-Skript-Bibliothek (37 echte Vorlesungsskripte aus deinen Moodle-Folien) -->
+    <!-- Dedicated Folien-Skript-Bibliothek (40 echte Vorlesungsskripte aus deinen Moodle-Folien) -->
     <div class="card" id="secSummaryFolder" style="margin-bottom: 24px; border-color: rgba(249, 115, 22, 0.45);">
       <div class="card-header">
         <div>
-          <h2 id="summaryFolderTitle">📚 Folien-Skript-Bibliothek — Alle 37 THA Vorlesungen (SPO 2025)</h2>
+          <h2 id="summaryFolderTitle">📚 Folien-Skript-Bibliothek — Alle 40 THA Vorlesungen (SPO 2025)</h2>
           <span style="font-size:0.82rem; color:var(--text-muted);">
-            100 % echte Zusammenfassungen direkt aus deinen <strong>67 Moodle-Vorlesungsfolien</strong> (Desktop/Vorlesungsfolien) — Kein Schätz-Update mehr, sondern dein vollständiges THA-Klausurarchiv inklusive interaktivem Kurama-Tutor!
+            100 % echte Zusammenfassungen direkt aus deinen <strong>70 Moodle-Vorlesungsfolien</strong> (Desktop/Vorlesungsfolien) — Kein Schätz-Update mehr, sondern dein vollständiges THA-Klausurarchiv inklusive interaktivem Kurama-Tutor!
           </span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
@@ -2498,11 +2498,11 @@
         <input
           type="text"
           id="summaryFolderSearch"
-          placeholder="🔍 In allen 37 Skripten suchen (z.B. 'GuV', 'Break-even', 'Data Lake', 'V-Modell', 'Lastenheft', 'UML', '3NF')..."
+          placeholder="🔍 In allen 40 Skripten suchen (z.B. 'GuV', 'Kapitalwert', 'Agentic AI', 'RAG', 'Change Projects', 'UML', '3NF')..."
           oninput="renderFolienLibrary()"
         />
         <select id="folienStatusFilter" onchange="renderFolienLibrary()">
-          <option value="all">📚 Alle Skripte anzeigen (37)</option>
+          <option value="all">📚 Alle Skripte anzeigen (40)</option>
           <option value="unread">⏳ Nur noch offene Skripte</option>
           <option value="read">✅ Nur bereits gelesene Skripte</option>
         </select>
