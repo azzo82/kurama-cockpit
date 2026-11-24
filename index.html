@@ -5048,6 +5048,36 @@ Gegeben:
     const STORAGE_KEY = 'tha_lernplan_state_v3';
     const DEVICE_NOTIFIED_KEY = 'tha_kurama_notified_v1';
     const CURRENT_SCHEDULE_VERSION = 2;
+    const DEFAULT_SEED_STATE = {
+      completedTopics: {},
+      studiedMinutes: { prowi: 248, bub: 80, klr: 40, dbs: 60, dia: 60 },
+      weeklyLogs: {
+        '2026-W45': { prowi: 38, bub: 20, klr: 40 },
+        '2026-W46': { prowi: 90 },
+        '2026-W47': { dbs: 60, bub: 60, dia: 60 },
+        '2026-W48': { prowi: 120 }
+      },
+      timeline: [
+        { id: 'timer-1795446565691-d3sc', ts: '2026-11-23T16:10:02.882Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1795439933671-y7nb', ts: '2026-11-23T14:19:02.898Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1794925702352-oudq', ts: '2026-11-18T10:59:03.679Z', dateISO: '2026-11-17', courseId: 'dia', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DIA — automatisch gebucht ✅)' },
+        { id: 'timer-1794845421732-n399', ts: '2026-11-16T17:19:51.753Z', dateISO: '2026-11-16', courseId: 'bub', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. BuB — automatisch gebucht ✅)' },
+        { id: 'timer-1794839840797-585i', ts: '2026-11-16T15:37:31.259Z', dateISO: '2026-11-16', courseId: 'dbs', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DBS — automatisch gebucht ✅)' },
+        { id: 'timer-1794223972720-lfee', ts: '2026-11-09T12:03:34.430Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 30, label: 'Fokus-Timer abgeschlossen (30 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1794220315091-kkv9', ts: '2026-11-09T11:32:34.457Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: '1793713249486-7eny', ts: '2026-11-03T13:40:49.486Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 2.1 Vollkostenrechnung: Kostenartenrechnung & Abgrenzung' },
+        { id: '1793707501552-mvqn', ts: '2026-11-03T12:05:01.552Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen der Kosten- und Leistungsrechnung' },
+        { id: 'timer-1793634475209-9d8a', ts: '2026-11-02T16:26:12.009Z', dateISO: '2026-11-02', courseId: 'prowi', minutes: 38, label: 'Fokus-Timer abgeschlossen (38 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: '1793635015973-fz8c', ts: '2026-11-02T15:56:55.973Z', dateISO: '2026-11-02', courseId: 'bub', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen, Inventur, Inventar & GoB' }
+      ],
+      readFolienScripts: {
+        'bub-01-grundlagen-gob': { readAt: '2026-11-02T15:56:55.973Z', minutes: 20 },
+        'klr-01-grundlagen': { readAt: '2026-11-03T12:05:01.551Z', minutes: 20 },
+        'klr-02-kostenartenrechnung': { readAt: '2026-11-03T13:40:49.485Z', minutes: 20 }
+      },
+      timerClearedAt: 1795450202929,
+      scheduleVersion: 2
+    };
     let state = loadState();
     let selectedDate = getTodayISO();
     let reportWeekOffset = 0; // 0 = current week, -1 = last week
@@ -5136,37 +5166,6 @@ Gegeben:
       }
     }
 
-    const DEFAULT_SEED_STATE = {
-      completedTopics: {},
-      studiedMinutes: { prowi: 248, bub: 80, klr: 40, dbs: 60, dia: 60 },
-      weeklyLogs: {
-        '2026-W45': { prowi: 38, bub: 20, klr: 40 },
-        '2026-W46': { prowi: 90 },
-        '2026-W47': { dbs: 60, bub: 60, dia: 60 },
-        '2026-W48': { prowi: 120 }
-      },
-      timeline: [
-        { id: 'timer-1795446565691-d3sc', ts: '2026-11-23T16:10:02.882Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
-        { id: 'timer-1795439933671-y7nb', ts: '2026-11-23T14:19:02.898Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
-        { id: 'timer-1794925702352-oudq', ts: '2026-11-18T10:59:03.679Z', dateISO: '2026-11-17', courseId: 'dia', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DIA — automatisch gebucht ✅)' },
-        { id: 'timer-1794845421732-n399', ts: '2026-11-16T17:19:51.753Z', dateISO: '2026-11-16', courseId: 'bub', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. BuB — automatisch gebucht ✅)' },
-        { id: 'timer-1794839840797-585i', ts: '2026-11-16T15:37:31.259Z', dateISO: '2026-11-16', courseId: 'dbs', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DBS — automatisch gebucht ✅)' },
-        { id: 'timer-1794223972720-lfee', ts: '2026-11-09T12:03:34.430Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 30, label: 'Fokus-Timer abgeschlossen (30 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
-        { id: 'timer-1794220315091-kkv9', ts: '2026-11-09T11:32:34.457Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
-        { id: '1793713249486-7eny', ts: '2026-11-03T13:40:49.486Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 2.1 Vollkostenrechnung: Kostenartenrechnung & Abgrenzung' },
-        { id: '1793707501552-mvqn', ts: '2026-11-03T12:05:01.552Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen der Kosten- und Leistungsrechnung' },
-        { id: 'timer-1793634475209-9d8a', ts: '2026-11-02T16:26:12.009Z', dateISO: '2026-11-02', courseId: 'prowi', minutes: 38, label: 'Fokus-Timer abgeschlossen (38 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
-        { id: '1793635015973-fz8c', ts: '2026-11-02T15:56:55.973Z', dateISO: '2026-11-02', courseId: 'bub', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen, Inventur, Inventar & GoB' }
-      ],
-      readFolienScripts: {
-        'bub-01-grundlagen-gob': { readAt: '2026-11-02T15:56:55.973Z', minutes: 20 },
-        'klr-01-grundlagen': { readAt: '2026-11-03T12:05:01.551Z', minutes: 20 },
-        'klr-02-kostenartenrechnung': { readAt: '2026-11-03T13:40:49.485Z', minutes: 20 }
-      },
-      timerClearedAt: 1795450202929,
-      scheduleVersion: 2
-    };
-
     function loadState() {
       const seed = ensureStateShape(JSON.parse(JSON.stringify(DEFAULT_SEED_STATE)));
       try {
@@ -5250,6 +5249,7 @@ Gegeben:
       merged.slideNotes = { ...remoteS.slideNotes, ...localS.slideNotes };
       merged.dailyTodos = { ...remoteS.dailyTodos, ...localS.dailyTodos };
       merged.readSummaries = { ...remoteS.readSummaries, ...localS.readSummaries };
+      merged.readFolienScripts = { ...(remoteS.readFolienScripts || {}), ...(localS.readFolienScripts || {}) };
       merged.customMoodleUrls = { ...remoteS.customMoodleUrls, ...localS.customMoodleUrls };
       merged.scheduleVersion = Math.max(localS.scheduleVersion || 0, remoteS.scheduleVersion || 0);
 
@@ -7920,10 +7920,26 @@ Gegeben:
     }
 
     // =========================================================================
-    // FOLIEN-SKRIPT-BIBLIOTHEK (30 ECHTE MOODLE-VORLESUNGEN & INTERAKTIVER TUTOR)
+    // FOLIEN-SKRIPT-BIBLIOTHEK (44 ECHTE MOODLE-VORLESUNGEN & INTERAKTIVER TUTOR)
     // =========================================================================
     let activeFolienTab = 'all';
     let currentFolienReaderId = null;
+
+    function escapeHtml(str) {
+      return String(str == null ? '' : str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function formatRichTextSafe(str) {
+      return escapeHtml(str)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\n/g, '<br>');
+    }
 
     function selectFolienTab(tabId) {
       activeFolienTab = tabId;
