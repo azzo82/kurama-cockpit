@@ -3277,7 +3277,37 @@
   </div>
 
   <script src="folien_library.js"></script>
+  <script src="file:///C:/Users/ahmad/Lernplan_WiSe26_27/folien_library.js"></script>
   <script src="custom_folien.js"></script>
+  <script src="file:///C:/Users/ahmad/Lernplan_WiSe26_27/custom_folien.js"></script>
+  <script>
+    // Fallback loader when opened via Desktop starter (C:\Users\ahmad\Desktop\THA_Lernplan_ToDo.html) or local bridge
+    (function ensureFolienLibraryLoaded() {
+      if (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY) && window.FOLIEN_LIBRARY.length >= 40) return;
+      const fallbackUrls = [
+        'file:///C:/Users/ahmad/Lernplan_WiSe26_27/folien_library.js',
+        'http://127.0.0.1:18765/folien_library.js',
+        'https://azzo82.github.io/kurama-cockpit/folien_library.js'
+      ];
+      let idx = 0;
+      function tryNext() {
+        if (window.FOLIEN_LIBRARY && Array.isArray(window.FOLIEN_LIBRARY) && window.FOLIEN_LIBRARY.length >= 40) {
+          if (typeof renderFolienLibrary === 'function') renderFolienLibrary();
+          return;
+        }
+        if (idx >= fallbackUrls.length) return;
+        const s = document.createElement('script');
+        s.src = fallbackUrls[idx++];
+        s.onload = function() {
+          if (typeof renderFolienLibrary === 'function') renderFolienLibrary();
+          if (!window.FOLIEN_LIBRARY || window.FOLIEN_LIBRARY.length < 40) tryNext();
+        };
+        s.onerror = tryNext;
+        document.head.appendChild(s);
+      }
+      tryNext();
+    })();
+  </script>
   <script>
     // 1. Official Course Data (THA Wirtschaftsinformatik B.Sc. - SPO 2025)
     const COURSES = [
@@ -5106,14 +5136,47 @@ Gegeben:
       }
     }
 
+    const DEFAULT_SEED_STATE = {
+      completedTopics: {},
+      studiedMinutes: { prowi: 248, bub: 80, klr: 40, dbs: 60, dia: 60 },
+      weeklyLogs: {
+        '2026-W45': { prowi: 38, bub: 20, klr: 40 },
+        '2026-W46': { prowi: 90 },
+        '2026-W47': { dbs: 60, bub: 60, dia: 60 },
+        '2026-W48': { prowi: 120 }
+      },
+      timeline: [
+        { id: 'timer-1795446565691-d3sc', ts: '2026-11-23T16:10:02.882Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1795439933671-y7nb', ts: '2026-11-23T14:19:02.898Z', dateISO: '2026-11-23', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1794925702352-oudq', ts: '2026-11-18T10:59:03.679Z', dateISO: '2026-11-17', courseId: 'dia', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DIA — automatisch gebucht ✅)' },
+        { id: 'timer-1794845421732-n399', ts: '2026-11-16T17:19:51.753Z', dateISO: '2026-11-16', courseId: 'bub', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. BuB — automatisch gebucht ✅)' },
+        { id: 'timer-1794839840797-585i', ts: '2026-11-16T15:37:31.259Z', dateISO: '2026-11-16', courseId: 'dbs', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. DBS — automatisch gebucht ✅)' },
+        { id: 'timer-1794223972720-lfee', ts: '2026-11-09T12:03:34.430Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 30, label: 'Fokus-Timer abgeschlossen (30 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: 'timer-1794220315091-kkv9', ts: '2026-11-09T11:32:34.457Z', dateISO: '2026-11-09', courseId: 'prowi', minutes: 60, label: 'Fokus-Timer abgeschlossen (60 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: '1793713249486-7eny', ts: '2026-11-03T13:40:49.486Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 2.1 Vollkostenrechnung: Kostenartenrechnung & Abgrenzung' },
+        { id: '1793707501552-mvqn', ts: '2026-11-03T12:05:01.552Z', dateISO: '2026-11-03', courseId: 'klr', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen der Kosten- und Leistungsrechnung' },
+        { id: 'timer-1793634475209-9d8a', ts: '2026-11-02T16:26:12.009Z', dateISO: '2026-11-02', courseId: 'prowi', minutes: 38, label: 'Fokus-Timer abgeschlossen (38 Min. ProWi (10 ECTS) — automatisch gebucht ✅)' },
+        { id: '1793635015973-fz8c', ts: '2026-11-02T15:56:55.973Z', dateISO: '2026-11-02', courseId: 'bub', minutes: 20, label: 'Folien-Skript durchgearbeitet: Kapitel 1 Grundlagen, Inventur, Inventar & GoB' }
+      ],
+      readFolienScripts: {
+        'bub-01-grundlagen-gob': { readAt: '2026-11-02T15:56:55.973Z', minutes: 20 },
+        'klr-01-grundlagen': { readAt: '2026-11-03T12:05:01.551Z', minutes: 20 },
+        'klr-02-kostenartenrechnung': { readAt: '2026-11-03T13:40:49.485Z', minutes: 20 }
+      },
+      timerClearedAt: 1795450202929,
+      scheduleVersion: 2
+    };
+
     function loadState() {
+      const seed = ensureStateShape(JSON.parse(JSON.stringify(DEFAULT_SEED_STATE)));
       try {
         const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('tha_lernplan_state_v2') || localStorage.getItem('tha_lernplan_state_v1');
         if (raw) {
-          return ensureStateShape(JSON.parse(raw));
+          const parsed = ensureStateShape(JSON.parse(raw));
+          return mergeTwoStates(seed, parsed);
         }
       } catch (e) {}
-      return ensureStateShape({});
+      return seed;
     }
 
     const CLOUD_SYNC_KEY = 'tha_kurama_cloud_sync_v1';
@@ -8821,20 +8884,17 @@ ${s.md}
       checkKuramaBridge().then(async online => {
         if (online) {
           await discoverSyncFromBridge();
-          const hasAnyProgress = Object.keys(state.studiedMinutes || {}).length > 0 || Object.keys(state.completedTopics || {}).length > 0;
-          if (!hasAnyProgress) {
-            try {
-              const res = await fetch(KURAMA_BRIDGE_URL + '/load-state');
-              const data = await res.json();
-              if (data && data.ok && data.state) {
-                state = ensureStateShape(data.state);
-                migrateScheduleIfNeeded();
-                saveState(true);
-                refreshAllViews();
-                return;
-              }
-            } catch (e) {}
-          }
+          try {
+            const res = await fetch(KURAMA_BRIDGE_URL + '/load-state');
+            const data = await res.json();
+            if (data && data.ok && data.state) {
+              state = mergeTwoStates(state, ensureStateShape(data.state));
+              migrateScheduleIfNeeded();
+              saveState(true);
+              refreshAllViews();
+              return;
+            }
+          } catch (e) {}
           saveState(true);
         }
       });
