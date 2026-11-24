@@ -2218,6 +2218,473 @@
       color: #fdba74;
     }
 
+  
+    /* ==========================================================
+       APPLE & SAMSUNG ONE UI CALENDAR STYLES (KURAMA UPGRADE)
+       ========================================================== */
+    .cal-segmented-control {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 3px;
+    }
+    .cal-seg-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cal-seg-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .cal-seg-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.35);
+    }
+
+    /* Countdown Milestone Banner */
+    .cal-milestone-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(249, 115, 22, 0.15));
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 16px;
+    }
+    .cal-milestone-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cal-milestone-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .cal-milestone-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fca5a5;
+    }
+    .cal-milestone-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Month View Grid */
+    .apple-month-wrapper {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .apple-month-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: rgba(30, 41, 59, 0.7);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+    .apple-month-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: var(--border);
+      gap: 1px;
+    }
+    .apple-month-cell {
+      background: var(--bg-card);
+      min-height: 96px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease;
+      position: relative;
+    }
+    .apple-month-cell:hover {
+      background: var(--bg-card-hover);
+    }
+    .apple-month-cell.is-other-month {
+      background: rgba(11, 17, 32, 0.7);
+      opacity: 0.45;
+    }
+    .apple-month-cell.is-selected {
+      background: rgba(56, 189, 248, 0.12);
+      box-shadow: inset 0 0 0 2px var(--accent);
+    }
+    .apple-cell-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .apple-day-num {
+      font-size: 0.84rem;
+      font-weight: 600;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      color: var(--text);
+    }
+    .apple-day-num.is-today {
+      background: #ef4444; /* Apple Red */
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4);
+    }
+    .apple-cell-events {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      overflow: hidden;
+      flex: 1;
+    }
+    .apple-event-chip {
+      font-size: 0.69rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .apple-event-chip.chip-lecture {
+      background: rgba(168, 85, 247, 0.2);
+      color: #d8b4fe;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+    }
+    .apple-event-chip.chip-study {
+      background: rgba(34, 197, 94, 0.2);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+    .apple-event-chip.chip-exam {
+      background: rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.5);
+      font-weight: 800;
+    }
+    .apple-event-chip.chip-work {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    /* Agenda View (Samsung / Apple Day Agenda) */
+    .apple-agenda-wrapper {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .apple-agenda-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .apple-agenda-date {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .apple-agenda-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .apple-agenda-card {
+      display: flex;
+      align-items: stretch;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .apple-agenda-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .apple-agenda-stripe {
+      width: 6px;
+      flex-shrink: 0;
+    }
+    .apple-agenda-body {
+      padding: 12px 16px;
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .apple-agenda-time {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 95px;
+    }
+    .apple-agenda-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .apple-agenda-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* 4-Hour Daily Plan Card Badges */
+    .block-power-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .block-power-1 { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .block-power-2 { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .block-power-3 { background: rgba(34, 197, 94, 0.15); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.3); }
+    .block-power-4 { background: rgba(249, 115, 22, 0.15); color: #fdba74; border: 1px solid rgba(249, 115, 22, 0.3); }
+
+  
+    /* Moodle Deadline & Exam Radar */
+    .moodle-radar-box {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+    .moodle-radar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .moodle-radar-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .moodle-radar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+    }
+    .radar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .radar-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+    .radar-card.urgent {
+      border-left-color: #ef4444;
+      background: rgba(239, 68, 68, 0.08);
+    }
+    .radar-card.sap {
+      border-left-color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .radar-card.dbs {
+      border-left-color: #a855f7;
+      background: rgba(168, 85, 247, 0.08);
+    }
+    .radar-date-badge {
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .badge-urgent { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
+    .badge-sap { background: rgba(16, 185, 129, 0.25); color: #86efac; }
+    .badge-dbs { background: rgba(168, 85, 247, 0.25); color: #d8b4fe; }
+    .badge-norm { background: rgba(56, 189, 248, 0.25); color: #7dd3fc; }
+
+  
+    /* ==========================================================
+       ALL 9 COURSES OVERVIEW GRID (KURAMA UPGRADE)
+       ========================================================== */
+    .course-overview-section {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+    .co-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .co-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 14px;
+    }
+    .co-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .co-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    .co-card-stripe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 5px;
+    }
+    .co-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding-left: 6px;
+    }
+    .co-card-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .co-card-prof {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .co-card-desc {
+      font-size: 0.79rem;
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      margin-left: 6px;
+    }
+    .co-card-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-left: 6px;
+    }
+    .co-btn {
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+    .co-btn-moodle {
+      background: rgba(56, 189, 248, 0.15);
+      color: #7dd3fc;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    .co-btn-moodle:hover {
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .co-btn-folien {
+      background: rgba(168, 85, 247, 0.15);
+      color: #d8b4fe;
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .co-btn-folien:hover {
+      background: #a855f7;
+      color: #ffffff;
+    }
+    .co-btn-extra {
+      background: rgba(34, 197, 94, 0.15);
+      color: #86efac;
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    .co-btn-extra:hover {
+      background: #22c55e;
+      color: #0f172a;
+    }
+
   </style>
 </head>
 <body>
@@ -2231,7 +2698,7 @@
           <p id="greetingSub">Dein ewiger Partner Kurama ist bereit — THA Wirtschaftsinformatik (SPO 2025 • 9 Prüfungen • 50 ECTS)</p>
         </div>
         <div style="display:flex; gap:6px; align-items:center;">
-          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Folien-Skript-Bibliothek (40 Skripte)">📚 <span id="mobileFolderCount">40</span></button>
+          <button class="mobile-only-sync" id="mobileFolderBtn" onclick="scrollToSection('secSummaryFolder')" title="Folien-Skript-Bibliothek (44 Skripte)">📚 <span id="mobileFolderCount">44</span></button>
           <button class="mobile-only-sync" id="mobileSyncBtn" onclick="openSyncModal()">📱 Sync</button>
         </div>
       </div>
@@ -2240,11 +2707,14 @@
           <button class="btn-kurama-launch desktop-only-btn" onclick="openKurama('start')" title="Öffnet Kurama sofort per 1-Klick (oder überall mit Strg+Alt+K)">
             🦊 Kurama starten <span class="kbd-hint">Strg+Alt+K</span>
           </button>
+          <button class="btn-kurama-resume highlight-tab" onclick="scrollToSection('secCourseOverview')" title="Öffnet den Gesamtüberblick aller 9 Module (50 ECTS)">
+            📚 Alle 9 Kurse (50 ECTS)
+          </button>
           <button class="btn-kurama-resume" onclick="scrollToSection('secCalendar')" title="Springt direkt zu deinem THA Vorlesungs-Kalender">
             🗓️ Kalender
           </button>
-          <button class="btn-kurama-resume" id="folienHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deine 40 THA Vorlesungs-Skripte aus Moodle">
-            📚 Folien-Skripte (<span id="headerFolienCount">0/40</span>)
+          <button class="btn-kurama-resume" id="folienHeaderBtn" onclick="scrollToSection('secSummaryFolder')" title="Öffnet deine 44 THA Vorlesungs-Skripte aus Moodle">
+            📚 Folien-Skripte (<span id="headerFolienCount">0/44</span>)
           </button>
           <button class="btn-kurama-resume" onclick="jumpToAufgabentutor()" title="Springt sofort direkt zum Aufgabentutor im Fragenblock">
             🎓 Aufgabentutor
@@ -2439,23 +2909,142 @@
     <!-- NEW Row 1.5: Kalender (THA Vorlesungstermine) + Tägliche Vorlesungs-Zusammenfassungen mit Benachrichtigung -->
     <!-- Row 1.5: Kalender (THA Vorlesungstermine Mo-Fr + Eigene Termine) - Full Width -->
     <div class="card" id="secCalendar" style="margin-bottom: 24px;">
-        <div class="card-header">
+        <div class="card-header" style="align-items:flex-start;">
           <div>
-            <h2 id="calendarHeaderTitle">🗓️ Kalender — Deine THA Vorlesungstermine</h2>
-            <span style="font-size:0.8rem; color:var(--text-muted);">Dein echter Stundenplan (Mo–Fr) mit Hörsälen – <strong>Klick auf jeden Kurs öffnet sofort THA Moodle ↗</strong></span>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px;">
+              <h2 id="calendarHeaderTitle" style="margin:0;">🗓️ Kalender — Apple & Samsung Style</h2>
+              <span class="auto-book-pill" style="background:rgba(56,189,248,0.2); color:#38bdf8; border:1px solid rgba(56,189,248,0.35);">⚡ 4h-Power-Lernplan aktiv</span>
+            </div>
+            <span style="font-size:0.82rem; color:var(--text-muted);">
+              Vorlesungen, 4h-Lernblöcke & Klausurfristen im Überblick · <strong>Klick auf jeden Tag öffnet sofort die Detail-Agenda</strong>
+            </span>
           </div>
-          <div class="date-nav">
-            <button onclick="changeDay(-7)">◀ Woche</button>
-            <button class="btn-accent" onclick="goToday()">Heute</button>
-            <button onclick="changeDay(7)">Woche ▶</button>
+
+          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+            <!-- Apple / Samsung Segmented Control: Month / Week / Agenda -->
+            <div class="cal-segmented-control">
+              <button class="cal-seg-btn active" id="calBtnMonth" onclick="setCalViewMode('month')">📅 Monat</button>
+              <button class="cal-seg-btn" id="calBtnWeek" onclick="setCalViewMode('week')">🗓️ Woche</button>
+              <button class="cal-seg-btn" id="calBtnAgenda" onclick="setCalViewMode('agenda')">📋 Agenda</button>
+            </div>
+
+            <!-- Date Navigation Chevrons -->
+            <div class="date-nav" id="calDateNav">
+              <button id="calNavPrevBtn" onclick="calNavigate(-1)">◀ Zurück</button>
+              <button class="btn-accent" onclick="goToday()">Heute</button>
+              <button id="calNavNextBtn" onclick="calNavigate(1)">Weiter ▶</button>
+            </div>
           </div>
         </div>
+
+        <!-- Königstermin-Countdown Banner (Strohmeier 21.12.2026) -->
+        <div class="cal-milestone-banner">
+          <div class="cal-milestone-content">
+            <span class="cal-milestone-icon">🔥</span>
+            <div>
+              <div class="cal-milestone-title" id="milestoneBannerTitle">Königstermin: 21. Dezember 2026 — Strohmeier 10-ECTS Prog-Zulassung</div>
+              <div class="cal-milestone-sub" id="milestoneCountdownText">Berechne verbleibende Tage...</div>
+            </div>
+          </div>
+          <button class="btn-accent" onclick="jumpToDate('2026-12-21')" style="padding:6px 14px; font-size:0.8rem; font-weight:700;">
+            👉 Zum 21.12. springen
+          </button>
+        </div>
+
+        <!-- Dynamic Container for Month, Week or Agenda View -->
+        <div id="appleMonthViewContainer" class="apple-month-wrapper"></div>
+        <div id="appleAgendaViewContainer" class="apple-agenda-wrapper" style="display:none;"></div>
 
         <div class="cal-live-banner" id="calendarLiveBanner">
           <span>🏫 Lade deinen aktuellen Vorlesungs-Status...</span>
         </div>
 
         <div class="cal-week-grid" id="calendarWeekGrid"></div>
+
+        
+        <!-- Scanned THA Moodle Deadlines & Termine Radar -->
+        <div class="moodle-radar-box" id="secMoodleRadar">
+          <div class="moodle-radar-header">
+            <div class="moodle-radar-title">
+              <span>🎯 Moodle Termin- & Fristen-Radar (Aus deinen 9 Kursen gescannt)</span>
+            </div>
+            <span style="font-size:0.78rem; color:var(--text-muted);">Alle offiziellen Termine, Klausuren & Gruppenabgaben synchron</span>
+          </div>
+
+          <div class="moodle-radar-grid">
+            <!-- 1. Königstermin Prog 10 ECTS -->
+            <div class="radar-card urgent">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#fca5a5;">🔥 ProWi 10-ECTS Zulassungstestat</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Prof. Strohmeier · Hörsaal M2.03 · Königsmeilenstein!</div>
+              </div>
+              <span class="radar-date-badge badge-urgent">21.12.2026 (09:00)</span>
+            </div>
+
+            <!-- 2. IMPIS Assignment 1 -->
+            <div class="radar-card sap">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#86efac;">📝 IMPIS Assignment 1 (15 Pkt.)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Gruppe 21 · ES Fundamentals PDF-Abgabe Moodle</div>
+              </div>
+              <span class="radar-date-badge badge-sap">Ende Nov. 2026</span>
+            </div>
+
+            <!-- 3. IMPIS SAP Fiori Case Studies -->
+            <div class="radar-card sap">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#86efac;">💻 IMPIS Fiori Case Studies (SD & MM)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Gruppe 21 · SAP Fiori s31.gb.ucc.cit.tum.de</div>
+              </div>
+              <span class="radar-date-badge badge-sap">Ende Nov. 2026</span>
+            </div>
+
+            <!-- 4. DBS Praxissemester-Abgabe -->
+            <div class="radar-card dbs">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#d8b4fe;">💾 DBS SQL-Praktikum (Gruppe 05)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Prof. Kolonko · db_setup.sql & dml_setup.sql fertig!</div>
+              </div>
+              <span class="radar-date-badge badge-dbs">Praktikum WS26</span>
+            </div>
+
+            <!-- 5. DIA Praktikum Fitnessstudio -->
+            <div class="radar-card">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#7dd3fc;">🏋️ DIA Praktikum Fitnessstudio</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Prof. Predeschly · KDM/LDM Datenmodellierung</div>
+              </div>
+              <span class="radar-date-badge badge-norm">Praktikum WS26</span>
+            </div>
+
+            <!-- 6. IMPIS Assignment 6 (15 Pkt.) -->
+            <div class="radar-card sap">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#86efac;">📊 IMPIS Assignment 6 (15 Pkt.)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Vorgehensmodelle (Agile, Waterfall, Activate)</div>
+              </div>
+              <span class="radar-date-badge badge-sap">Anfang Dez. 2026</span>
+            </div>
+
+            <!-- 7. IMPIS Assignment 7 (15 Pkt.) -->
+            <div class="radar-card sap">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#86efac;">📈 IMPIS Assignment 7 (15 Pkt.)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Projektplan-Präsentation als PDF in Moodle</div>
+              </div>
+              <span class="radar-date-badge badge-sap">Mitte Dez. 2026</span>
+            </div>
+
+            <!-- 8. IMPIS Customizing 8a/8b (20 Pkt.) -->
+            <div class="radar-card sap">
+              <div>
+                <div style="font-weight:800; font-size:0.88rem; color:#86efac;">⚙️ IMPIS Customizing FI & MM (20 Pkt.)</div>
+                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">SAP GUI Desktop-Client Konfiguration</div>
+              </div>
+              <span class="radar-date-badge badge-sap">Anfang Jan. 2027</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Optional Custom Calendar Appointments (Synced PC + Tablet) -->
         <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border);">
@@ -2472,13 +3061,13 @@
       </div>
 
     <!-- NEW Dedicated Website Folder for Saved Read Summaries (PC & Tablet Live-Synced!) -->
-    <!-- Dedicated Folien-Skript-Bibliothek (41 echte Vorlesungsskripte aus deinen Moodle-Folien) -->
+    <!-- Dedicated Folien-Skript-Bibliothek (44 echte Vorlesungsskripte aus deinen Moodle-Folien) -->
     <div class="card" id="secSummaryFolder" style="margin-bottom: 24px; border-color: rgba(249, 115, 22, 0.45);">
       <div class="card-header">
         <div>
-          <h2 id="summaryFolderTitle">📚 Folien-Skript-Bibliothek — Alle 41 THA Vorlesungen (SPO 2025)</h2>
+          <h2 id="summaryFolderTitle">📚 Folien-Skript-Bibliothek — Alle 44 THA Vorlesungen (SPO 2025)</h2>
           <span style="font-size:0.82rem; color:var(--text-muted);">
-            100 % echte Zusammenfassungen direkt aus deinen <strong>71 Moodle-Vorlesungsfolien</strong> (Desktop/Vorlesungsfolien) — Kein Schätz-Update mehr, sondern dein vollständiges THA-Klausurarchiv inklusive interaktivem Kurama-Tutor!
+            100 % echte Zusammenfassungen direkt aus deinen <strong>74 Moodle-Vorlesungsfolien</strong> (Desktop/Vorlesungsfolien) — Kein Schätz-Update mehr, sondern dein vollständiges THA-Klausurarchiv inklusive interaktivem Kurama-Tutor!
           </span>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
@@ -2498,11 +3087,11 @@
         <input
           type="text"
           id="summaryFolderSearch"
-          placeholder="🔍 In allen 41 Skripten suchen (z.B. 'GuV', 'Kapitalwert', 'Break-even', 'Agentic AI', 'RAG', 'Change Projects', '3NF')..."
+          placeholder="🔍 In allen 44 Skripten suchen (z.B. 'GuV', 'Plankostenrechnung', 'Make-or-Buy', 'Preisuntergrenze', 'Break-even', '3NF')..."
           oninput="renderFolienLibrary()"
         />
         <select id="folienStatusFilter" onchange="renderFolienLibrary()">
-          <option value="all">📚 Alle Skripte anzeigen (41)</option>
+          <option value="all">📚 Alle Skripte anzeigen (44)</option>
           <option value="unread">⏳ Nur noch offene Skripte</option>
           <option value="read">✅ Nur bereits gelesene Skripte</option>
         </select>
@@ -2676,6 +3265,7 @@
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
           <button id="readerModalReadBtn" class="btn-primary" style="padding:6px 12px; font-size:0.8rem; font-weight:700;">✅ Als gelesen markieren (+20 Min.)</button>
+          <a id="readerModalPdfBtn" href="#" target="_blank" class="btn-accent" style="display:none; padding:6px 11px; font-size:0.8rem; text-decoration:none; align-items:center; gap:4px; background:#0f766e; color:#fff; border-radius:6px; font-weight:600;">📄 PDF öffnen</a>
           <button id="readerModalDownloadBtn" class="btn-accent" style="padding:6px 11px; font-size:0.8rem;">⬇️ .md speichern</button>
           <button onclick="printCurrentReaderModal()" style="padding:6px 11px; font-size:0.8rem;">🖨️ Drucken / PDF</button>
           <button onclick="closeSummaryReaderModal()" style="padding:6px 11px; font-size:0.85rem;">✕ Schließen</button>
@@ -2687,6 +3277,7 @@
   </div>
 
   <script src="folien_library.js"></script>
+  <script src="custom_folien.js"></script>
   <script>
     // 1. Official Course Data (THA Wirtschaftsinformatik B.Sc. - SPO 2025)
     const COURSES = [
@@ -2794,9 +3385,10 @@
           'Kostenartenrechnung (kalk. Abschreibung, kalk. Zinsen)',
           'Kostenstellenrechnung (BAB & innerbetriebl. Leistungsverrechnung)',
           'Kostenträgerstückrechnung (Zuschlagskalkulation, Äquivalenzziffern)',
-          'Ein- & mehrstufige Deckungsbeitragsrechnung',
-          'Break-Even-Analyse & optimales Produktionsprogramm',
-          'Operatives & Strategisches Controlling'
+          'Break-Even-Analyse (Ein- & Mehrprodukt, Cash-Point, Sensitivität)',
+          'Mehrstufige Deckungsbeitragsrechnung & Sortimentsbereinigung (Kap. 3.3A)',
+          'Kurzfristige Entscheidungen: PUG, Zusatzauftrag, Engpass & Make-or-Buy (Kap. 3.3B)',
+          'Starre & Flexible Plankostenrechnung & Abweichungsanalyse (Kap. 3.4)'
         ]
       },
       {
@@ -3016,6 +3608,24 @@
           steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Stückdeckungsbeitrag & Quote):\n   • `db = p - kv = 250 € - 150 € = 100 € pro Stück`.\n   • `DB-Quote = db / p = 100 € / 250 € = 0,40 = 40 %` (von jedem Euro Umsatz bleiben 40 Cent zur Fixkostendeckung).\n2) Teil b (Break-Even-Menge -> Gewinn = 0 €):\n   • Wie viele Stücke à 100 € db brauchen wir für 80.000 € Fixkosten?\n   • `x_BEP = Kf / db = 80.000 € / 100 € = 800 Stück`.\n3) Teil c (Zielgewinn G = 25.000 €):\n   • Jetzt müssen die Stück-DBs sowohl die Fixkosten (80.000 €) ALS AUCH den Wunschgewinn (25.000 €) erwirtschaften:\n   • `x_Ziel = (Kf + G) / db = (80.000 + 25.000) / 100 = 105.000 / 100 = 1.050 Stück`.',
           why: '📐 Grundgleichung des Gewinns:\n`Gewinn G = db × x - Kf`.\nSetzt du `G = 0`, folgt sofort `x_BEP = Kf / db`. Setzt du `G = 25.000`, folgt `x = (Kf + 25.000) / db`!',
           trap: '⚠️ Typische Klausurfallen:\n1. Bei der DB-Quote durch `kv` (150 €) statt durch den Verkaufspreis `p` (250 €) teilen.\n2. Falls das Ergebnis Kommastellen hat (z.B. 800,3 Stück), im Antwortsatz bei ganzen Produkten immer auf die nächste ganze Zahl **aufrunden** (801 Stück), da bei 800 Stück noch Verlust bestünde!'
+        },
+        {
+          meta: 'Klausuraufgabe • 18 Punkte • Kap. 3.3 Mehrstufige DB, Engpass & Make-or-Buy',
+          q: 'a) Das Bistro im Experience Center hat Umsatz 210 T€, var. Kosten 95 T€ (DB I = +115 T€) und Erzeugnisfixkosten 125 T€ (DB II = -10 T€). Bei Schließung bleiben 25 T€ Fixkosten bestehen und das Café (DB I = 280 T€) verliert 10 % Absatz. Wie wirkt sich eine Schließung auf das Betriebsergebnis aus?\nb) Bei einem Zirbenholz-Engpass (Holzpreis 1.400 €/m³) ist das Sideboard (db = 600 €, Holzbedarf 0,25 m³) das Grenzprodukt. Wie hoch ist die Preisobergrenze für 1 zusätzlichen m³ Holz?',
+          a: 'a) ΔBE = -115 T€ (Wegfall DB I Bistro) + 100 T€ (abbaubare Fixkosten: 125 - 25) - 28 T€ (Verbundeffekt Café: 10 % von 280 T€) = -43 T€ (NICHT schließen!).\nb) Relativer DB Sideboard = 600 € / 0,25 m³ = 2.400 €/m³ (= max. Aufpreis). Absolute Preisobergrenze = 1.400 € + 2.400 € = 3.800 €/m³.',
+          hint: '💡 Tipp ohne Lösung:\n• Bei a): Fallen bei einer Schließung wirklich alle 125 T€ Fixkosten weg, oder nur der abbaubare Teil?\n• Bei b): Wie viele Sideboards kann man aus 1 m³ Holz bauen (1 / 0,25) und vergiss nicht, den normalen Holzpreis (1.400 €) zum relativen DB zu addieren!',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Sortimentsbereinigung Bistro):\n   • Formel: `ΔBE = -DB I + abbaubare Fixkosten ± Verbundeffekte`.\n   • Wegfallender DB I Bistro = `-115 T€`.\n   • Abbaubare Fixkosten = `125 T€ - 25 T€ (bleibende AfA/Fristen) = +100 T€` -> isolierter Effekt Bistro = `-15 T€`.\n   • Verbundeffekt Café = `-10 % × 280 T€ DB I = -28 T€`.\n   • Gesamtwirkung = `-115 + 100 - 28 = -43 T€` (DB IV des Experience Centers fällt von +20 T€ auf -23 T€!).\n2) Teil b (Engpass & Preisobergrenze Rohstoff):\n   • Relativer DB des Grenzprodukts Sideboard: `db_rel = 600 € / 0,25 m³ = 2.400 €/m³`.\n   • Da im Stück-DB von 600 € der normale Holzpreis (1.400 €/m³) bereits abgezogen ist, darf Zirbelnuss bis zu `2.400 €/m³` Aufpreis zahlen -> `POG = 1.400 € + 2.400 € = 3.800 €/m³`.',
+          why: '📐 Grundprinzip Entscheidungsrechnung:\nNur entscheidungsrelevante Größen zählen: Nicht abbaubare Fixkosten (25 T€) sind „Eh-da-Kosten“, und bei Engpässen entscheidet immer der relative Deckungsbeitrag je Engpasseinheit!',
+          trap: '⚠️ Typische Klausurfallen (Prof. Übelhör):\n1. Alle 125 T€ Erzeugnisfixkosten als Ersparnis ansetzen.\n2. Bei der Preisobergrenze nur 2.400 €/m³ hinschreiben und vergessen, den regulären Einkaufspreis (1.400 €/m³) dazuzurechnen!'
+        },
+        {
+          meta: 'Klausuraufgabe • 18 Punkte • Kap. 3.4 Flexible Plankostenrechnung',
+          q: 'Kostenstelle 3D-Druck (Q2/2027): Planbeschäftigung 500 h, Plankosten 44.800 € (davon 16.000 € variabel, 28.800 € fix). Ist-Beschäftigung: 560 h, Istkosten: 49.500 €.\na) Planverrechnungssatz (gesamt, variabel, fix)?\nb) Starre Gesamtabweichung?\nc) Sollkosten, Verbrauchs- und Beschäftigungsabweichung in der flexiblen PKR?',
+          a: 'a) k_plan = 89,60 €/h (k_var = 32,00 €/h + k_fix = 57,60 €/h).\nb) K_verr = 560 × 89,60 = 50.176 € -> Gesamtabweichung = 49.500 - 50.176 = -676 € (Überdeckung).\nc) K_Soll = 28.800 + 32 × 560 = 46.720 €. Verbrauchsabweichung ΔV = 49.500 - 46.720 = +2.780 € (Unwirtschaftlichkeit!); Beschäftigungsabweichung ΔB = 46.720 - 50.176 = -3.456 € (Fixkostenüberdeckung).',
+          hint: '💡 Tipp ohne Lösung:\n• Trenne zuerst die 44.800 € Plankosten durch 500 h in den variablen Satz (`16.000 / 500`) und den fixen Satz (`28.800 / 500`).\n• Für die Sollkosten bei 560 h gilt: Fixkosten bleiben 28.800 €, nur der variable Teil wächst mit 560 h!',
+          steps: '🪜 Schritt-für-Schritt-Erklärung:\n1) Teil a (Plansätze bei 500 h):\n   • `k_plan = 44.800 € / 500 h = 89,60 €/h`.\n   • `k_var,plan = 16.000 € / 500 h = 32,00 €/h` | `k_fix,plan = 28.800 € / 500 h = 57,60 €/h`.\n2) Teil b (Starre PKR bei 560 h):\n   • `K_verr = 560 h × 89,60 €/h = 50.176 €`.\n   • `ΔG = K_Ist - K_verr = 49.500 € - 50.176 € = -676 €` (scheinbare Ersparnis/Überdeckung).\n3) Teil c (Flexible PKR bei 560 h):\n   • `K_Soll = 28.800 € + 32,00 €/h × 560 h = 28.800 € + 17.920 € = 46.720 €`.\n   • `Verbrauchsabweichung ΔV = K_Ist - K_Soll = 49.500 € - 46.720 € = +2.780 €` (echte Kostenüberschreitung!).\n   • `Beschäftigungsabweichung ΔB = K_Soll - K_verr = 46.720 € - 50.176 € = -3.456 €` (weil 60 Überstunden × 57,60 €/h Fixkosten zu viel verrechnet wurden).',
+          why: '📐 Warum irrt sich die Kostenstellenleiterin („Wir liegen unter Plan“)?\nWeil bei Überbeschäftigung (`560 h > 500 h`) die Fixkostenüberdeckung (`-3.456 €`) in der starren Rechnung die echte Verbrauchsüberschreitung (`+2.780 €`) überdeckt! Fairer Maßstab sind immer nur die Sollkosten (`46.720 €`).',
+          trap: '⚠️ Typische Klausurfalle:\nBei Überbeschäftigung wegen einer negativen Gesamtabweichung (`-676 €`) behaupten, die Kostenstelle habe sparsam gearbeitet! Immer `ΔV = K_Ist - K_Soll` prüfen!'
         }
       ],
       pem: [
@@ -5937,12 +6547,353 @@ Gegeben:
       return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
     }
 
+    // Apple / Samsung Calendar View State
+    let calViewMode = localStorage.getItem('kurama_cal_view_mode') || 'week';
+
+    function setCalViewMode(mode) {
+      calViewMode = mode;
+      localStorage.setItem('kurama_cal_view_mode', mode);
+      document.querySelectorAll('.cal-seg-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(mode === 'month' ? 'calBtnMonth' : (mode === 'week' ? 'calBtnWeek' : 'calBtnAgenda'));
+      if (activeBtn) activeBtn.classList.add('active');
+      renderCalendar();
+    }
+
+    function calNavigate(dir) {
+      if (calViewMode === 'month') {
+        const d = new Date(selectedDate + 'T12:00:00');
+        d.setMonth(d.getMonth() + dir);
+        selectedDate = formatDateISO(d);
+      } else if (calViewMode === 'week') {
+        changeDay(dir * 7);
+        return;
+      } else {
+        changeDay(dir);
+        return;
+      }
+      renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
+      renderWeekGrid();
+      renderWeeklyReport();
+    }
+
+    function jumpToDate(dateISO) {
+      selectedDate = dateISO;
+      renderDailyPlan();
+      renderCalendar();
+      renderDailySummaries();
+      renderWeekGrid();
+      renderWeeklyReport();
+      scrollToSection('secCalendar');
+    }
+
+    function updateMilestoneCountdown() {
+      const target = new Date('2026-12-21T09:00:00');
+      const now = new Date();
+      const diffMs = target - now;
+      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      const el = document.getElementById('milestoneCountdownText');
+      if (el) {
+        if (days > 0) {
+          el.innerHTML = `⏳ Noch <strong>${days} Tage</strong> fokussierte Vorbereitung · Wir investieren täglich 4 Stunden!`;
+        } else if (days === 0) {
+          el.innerHTML = `🔥 <strong>HEUTE IST DER TAG!</strong> Strohmeier Zulassungstestat — Du bist bereit, Ahmad!`;
+        } else {
+          el.innerHTML = `✅ <strong>Meilenstein 21.12. gemeistert!</strong> Weiter geht's mit der Klausurphase.`;
+        }
+      }
+    }
+
+    function renderAppleMonthView() {
+      const container = document.getElementById('appleMonthViewContainer');
+      const weekGrid = document.getElementById('calendarWeekGrid');
+      const agendaContainer = document.getElementById('appleAgendaViewContainer');
+      if (!container) return;
+
+      container.style.display = 'block';
+      // In Apple / Samsung split view, the week courses remain clearly accessible below!
+      if (weekGrid) weekGrid.style.display = 'grid';
+      if (agendaContainer) agendaContainer.style.display = 'none';
+
+      const refDate = new Date(selectedDate + 'T12:00:00');
+      const year = refDate.getFullYear();
+      const month = refDate.getMonth(); // 0-based
+
+      const monthName = refDate.toLocaleDateString('de-DE', { month: 'long', year: 'numeric' });
+      const headerTitle = document.getElementById('calendarHeaderTitle');
+      if (headerTitle) {
+        headerTitle.textContent = `🗓️ Kalender — ${monthName} (Apple & Samsung Style)`;
+      }
+
+      const firstOfMonth = new Date(year, month, 1);
+      const lastOfMonth = new Date(year, month + 1, 0);
+      const totalDays = lastOfMonth.getDate();
+
+      // Monday is 1, Sunday is 7
+      let startDow = firstOfMonth.getDay();
+      if (startDow === 0) startDow = 7;
+      const leadingEmpty = startDow - 1;
+
+      let html = `
+        <div class="apple-month-weekdays">
+          <div>MO</div><div>DI</div><div>MI</div><div>DO</div><div>FR</div><div>SA</div><div>SO</div>
+        </div>
+        <div class="apple-month-grid">
+      `;
+
+      // Leading padding days from prev month
+      const prevMonthLast = new Date(year, month, 0).getDate();
+      for (let i = leadingEmpty - 1; i >= 0; i--) {
+        const prevDayNum = prevMonthLast - i;
+        const prevDate = new Date(year, month - 1, prevDayNum);
+        const prevISO = formatDateISO(prevDate);
+        html += `
+          <div class="apple-month-cell is-other-month" onclick="jumpToDate('${prevISO}')">
+            <div class="apple-cell-header">
+              <span class="apple-day-num">${prevDayNum}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // Current month days
+      const todayISO = getTodayISO();
+      for (let day = 1; day <= totalDays; day++) {
+        const curDate = new Date(year, month, day);
+        const curISO = formatDateISO(curDate);
+        const isToday = curISO === todayISO;
+        const isSelected = curISO === selectedDate;
+        const dow = curDate.getDay() || 7;
+
+        // Check events on this day
+        const lectures = LECTURE_SCHEDULE.filter(l => l.dow === (dow <= 5 ? dow : 0));
+        const customEvents = (state.customCalEvents || []).filter(e => e.dateISO === curISO);
+        const isProgExam = curISO === '2026-12-21';
+        const isWorkDay = dow === 6; // Saturday is job day
+
+        html += `
+          <div class="apple-month-cell ${isSelected ? 'is-selected' : ''}" onclick="jumpToDate('${curISO}')">
+            <div class="apple-cell-header">
+              <span class="apple-day-num ${isToday ? 'is-today' : ''}">${day}</span>
+              ${isToday ? '<span style="font-size:0.65rem; color:#ef4444; font-weight:800;">HEUTE</span>' : ''}
+            </div>
+            <div class="apple-cell-events">
+              ${isProgExam ? '<div class="apple-event-chip chip-exam">🔥 21.12. Prog-Testat</div>' : ''}
+              ${isWorkDay ? '<div class="apple-event-chip chip-work">💼 Arbeitstag (Job)</div>' : ''}
+              ${dow <= 5 && lectures.length > 0 ? `<div class="apple-event-chip chip-lecture">🏫 ${lectures.length} Vorlesung${lectures.length > 1 ? 'en' : ''}</div>` : ''}
+              ${!isWorkDay ? '<div class="apple-event-chip chip-study">⚡ 4h-Lernblock</div>' : ''}
+              ${customEvents.map(e => `<div class="apple-event-chip chip-exam" title="${escapeHtml(e.note)}">📌 ${escapeHtml(e.note)}</div>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      // Trailing padding days to fill 7 cols
+      const totalCells = leadingEmpty + totalDays;
+      const trailingEmpty = (7 - (totalCells % 7)) % 7;
+      for (let i = 1; i <= trailingEmpty; i++) {
+        const nextDate = new Date(year, month + 1, i);
+        const nextISO = formatDateISO(nextDate);
+        html += `
+          <div class="apple-month-cell is-other-month" onclick="jumpToDate('${nextISO}')">
+            <div class="apple-cell-header">
+              <span class="apple-day-num">${i}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function renderAppleAgendaView() {
+      const container = document.getElementById('appleAgendaViewContainer');
+      const monthContainer = document.getElementById('appleMonthViewContainer');
+      const weekGrid = document.getElementById('calendarWeekGrid');
+      if (!container) return;
+
+      container.style.display = 'block';
+      if (monthContainer) monthContainer.style.display = 'none';
+      if (weekGrid) weekGrid.style.display = 'none';
+
+      const refDate = new Date(selectedDate + 'T12:00:00');
+      const dow = refDate.getDay() || 7;
+      const todayISO = getTodayISO();
+      const isToday = selectedDate === todayISO;
+
+      const dateStr = refDate.toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' });
+      const headerTitle = document.getElementById('calendarHeaderTitle');
+      if (headerTitle) {
+        headerTitle.textContent = `📋 Agenda — ${dateStr}`;
+      }
+
+      const lectures = LECTURE_SCHEDULE.filter(l => l.dow === (dow <= 5 ? dow : 0));
+      const customEvents = (state.customCalEvents || []).filter(e => e.dateISO === selectedDate);
+      const isProgExam = selectedDate === '2026-12-21';
+      const isWorkDay = dow === 6;
+
+      let html = `
+        <div class="apple-agenda-header">
+          <div>
+            <div class="apple-agenda-date">${dateStr}</div>
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">
+              ${isWorkDay ? '💼 <strong>Samstag Arbeitstag:</strong> Fokus auf Job & Geld verdienen (0h Uni).' : '⚡ <strong>4-Stunden-Meistertag:</strong> 4 strukturierte Power-Blöcke.'}
+            </div>
+          </div>
+          ${isToday ? '<span class="auto-book-pill" style="background:#ef4444; color:#fff; font-weight:800;">HEUTE</span>' : ''}
+        </div>
+        <div class="apple-agenda-list">
+      `;
+
+      // 1. Königstermin
+      if (isProgExam) {
+        html += `
+          <div class="apple-agenda-card" style="border-color:#ef4444; background:rgba(239,68,68,0.1);">
+            <div class="apple-agenda-stripe" style="background:#ef4444;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title" style="color:#fca5a5;">🔥 10-ECTS ZULASSUNGSTERMIN — Programmierung (Prof. Strohmeier)</div>
+                <div class="apple-agenda-sub">09:00 Uhr · Hörsaal M2.03 · Königsmeilenstein des Semesters!</div>
+              </div>
+              <span class="block-power-badge block-power-1" style="background:#ef4444; color:#fff;">KLAUSUR-TERMIN</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. Vorlesungen
+      if (lectures.length > 0) {
+        lectures.forEach(lec => {
+          const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
+          html += `
+            <div class="apple-agenda-card">
+              <div class="apple-agenda-stripe" style="background:${c.color};"></div>
+              <div class="apple-agenda-body">
+                <div>
+                  <div class="apple-agenda-title">
+                    <span>${lec.title}</span>
+                    <span style="font-size:0.75rem; color:${c.color}; font-weight:700;">(${c.short})</span>
+                  </div>
+                  <div class="apple-agenda-sub">
+                    ⏰ ${lec.start} – ${lec.end} Uhr · 📍 Raum ${lec.room} · ${lec.kind}
+                  </div>
+                </div>
+                <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="btn-primary" style="padding:5px 12px; font-size:0.78rem; text-decoration:none;">
+                  Moodle ↗
+                </a>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      // 3. 4-Hour Study Blocks (If not pure work day)
+      if (!isWorkDay) {
+        html += `
+          <div class="apple-agenda-card">
+            <div class="apple-agenda-stripe" style="background:#38bdf8;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title">⚡ Block 1: Java / ProWi (Strohmeier 10 ECTS)</div>
+                <div class="apple-agenda-sub">90 Min. Deep Work · RASENGAN-Missionen für den 21.12.</div>
+              </div>
+              <span class="block-power-badge block-power-1">90 Min.</span>
+            </div>
+          </div>
+
+          <div class="apple-agenda-card">
+            <div class="apple-agenda-stripe" style="background:#a855f7;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title">⚡ Block 2: Pflicht-Abgaben (IMPIS / DBS / DIA)</div>
+                <div class="apple-agenda-sub">60 Min. Portfolio & Praktika · Punkte sichern mit Kurama</div>
+              </div>
+              <span class="block-power-badge block-power-2">60 Min.</span>
+            </div>
+          </div>
+
+          <div class="apple-agenda-card">
+            <div class="apple-agenda-stripe" style="background:#22c55e;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title">⚡ Block 3: Rechnen & Klausurfälle (BuB / KLR / SQL)</div>
+                <div class="apple-agenda-sub">60 Min. Praxis · Buchungssätze & Berechnungen festigen</div>
+              </div>
+              <span class="block-power-badge block-power-3">60 Min.</span>
+            </div>
+          </div>
+
+          <div class="apple-agenda-card">
+            <div class="apple-agenda-stripe" style="background:#f97316;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title">⚡ Block 4: Cockpit-Check & Feierabend</div>
+                <div class="apple-agenda-sub">30 Min. Stand sichern · Danach verdienter Feierabend!</div>
+              </div>
+              <span class="block-power-badge block-power-4">30 Min.</span>
+            </div>
+          </div>
+        `;
+      } else {
+        html += `
+          <div class="apple-agenda-card" style="border-color:#f59e0b; background:rgba(245,158,11,0.08);">
+            <div class="apple-agenda-stripe" style="background:#f59e0b;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title" style="color:#fcd34d;">💼 Ganztägiger Arbeitstag</div>
+                <div class="apple-agenda-sub">Voller Fokus auf die Arbeit & Geld verdienen · 0 Stunden Uni · Kopf komplett abschalten!</div>
+              </div>
+              <span class="block-power-badge" style="background:rgba(245,158,11,0.25); color:#fcd34d;">JOB-TAG</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // 4. Custom Events
+      customEvents.forEach(e => {
+        html += `
+          <div class="apple-agenda-card">
+            <div class="apple-agenda-stripe" style="background:#ef4444;"></div>
+            <div class="apple-agenda-body">
+              <div>
+                <div class="apple-agenda-title">📌 ${escapeHtml(e.note)}</div>
+                <div class="apple-agenda-sub">${e.time ? '⏰ ' + escapeHtml(e.time) + ' Uhr' : 'Ganztägig'}</div>
+              </div>
+              <button onclick="deleteCustomCalEvent('${e.id}')" style="background:transparent; border:none; color:#ef4444; font-size:1.1rem; cursor:pointer;" title="Termin löschen">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
     function renderCalendar() {
+      updateMilestoneCountdown();
+
+      if (calViewMode === 'month') {
+        renderAppleMonthView();
+        return;
+      }
+      if (calViewMode === 'agenda') {
+        renderAppleAgendaView();
+        return;
+      }
+
+      // WEEK VIEW
       const grid = document.getElementById('calendarWeekGrid');
+      const monthContainer = document.getElementById('appleMonthViewContainer');
+      const agendaContainer = document.getElementById('appleAgendaViewContainer');
       const banner = document.getElementById('calendarLiveBanner');
       const headerTitle = document.getElementById('calendarHeaderTitle');
-      const customListEl = document.getElementById('customCalEventsList');
-      if (!grid || !banner) return;
+      if (!grid) return;
+
+      grid.style.display = 'grid';
+      if (monthContainer) monthContainer.style.display = 'none';
+      if (agendaContainer) agendaContainer.style.display = 'none';
 
       const refDate = new Date(selectedDate + 'T12:00:00');
       const weekNum = getISOWeekNumber(refDate);
@@ -5950,380 +6901,71 @@ Gegeben:
       const dayOfWeek = refDate.getDay() || 7;
       const monday = new Date(refDate);
       monday.setDate(refDate.getDate() - dayOfWeek + 1);
-      const friday = new Date(monday);
-      friday.setDate(monday.getDate() + 4);
+      const sunday = new Date(monday);
+      sunday.setDate(monday.getDate() + 6);
 
       const fmtShort = d => d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' });
       if (headerTitle) {
-        headerTitle.textContent = `🗓️ Kalender — Vorlesungstermine KW ${weekNum} / VW ${vw} (${fmtShort(monday)} – ${fmtShort(friday)})`;
+        headerTitle.textContent = `🗓️ Kalender — Woche KW ${weekNum} / VW ${vw} (${fmtShort(monday)} – ${fmtShort(sunday)})`;
       }
 
-      // Live Campus Banner for TODAY
-      const todayISO = getTodayISO();
-      const todayDow = new Date().getDay();
-      const nowHHMM = getCurrentHHMM();
-      const todaysLectures = LECTURE_SCHEDULE.filter(l => l.dow === todayDow);
-
-      if (todaysLectures.length === 0) {
-        banner.innerHTML = `
-          <div>🏡 <strong>Heute vorlesungsfrei!</strong> Nutze deinen freien Tag entspannt für deine Fokus-Blöcke.</div>
-          <button onclick="scrollToSection('secWeekPlan')" style="padding:4px 10px; font-size:0.76rem;">Zum Wochenplan</button>
-        `;
-      } else {
-        const runningNow = todaysLectures.find(l => nowHHMM >= l.start && nowHHMM <= l.end);
-        const nextUp = todaysLectures.find(l => nowHHMM < l.start);
-        if (runningNow) {
-          const c = COURSES.find(x => x.id === runningNow.courseId) || COURSES[0];
-          banner.innerHTML = `
-            <div>🔴 <strong>LIVE JETZT (${runningNow.start}–${runningNow.end} Uhr, Raum ${runningNow.room}):</strong>
-              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:800;">${runningNow.title} ↗</a>
-            </div>
-            <span style="font-size:0.76rem; color:var(--accent); cursor:pointer;" onclick="selectFolienTab('${runningNow.courseId}'); scrollToSection('secSummaryFolder');">📚 Folien-Skripte öffnen ▼</span>
-          `;
-        } else if (nextUp) {
-          const c = COURSES.find(x => x.id === nextUp.courseId) || COURSES[0];
-          banner.innerHTML = `
-            <div>⏳ <strong>Nächste Vorlesung heute (${nextUp.start}–${nextUp.end} Uhr, Raum ${nextUp.room}):</strong>
-              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:800;">${nextUp.title} ↗</a>
-            </div>
-            <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" style="color:var(--accent); font-weight:700; font-size:0.78rem; text-decoration:none;">🔗 Moodle öffnen ↗</a>
-          `;
-        } else {
-          const lastLec = todaysLectures[todaysLectures.length - 1];
-          banner.innerHTML = `
-            <div>✅ <strong>Vorlesungsschluss heute seit ${lastLec.end} Uhr!</strong> Alle echten Moodle-Folien-Skripte liegen unten für dich bereit.</div>
-            <button class="btn-primary" onclick="scrollToSection('secSummaryFolder')" style="padding:4px 10px; font-size:0.76rem;">📚 Folien-Skripte öffnen</button>
-          `;
-        }
-      }
-
-      // Render Mo - Fr Grid
-      const dayLabels = ['MO', 'DI', 'MI', 'DO', 'FR'];
-      const fullDayNames = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'];
+      // Render 7-day Apple/Samsung Week Grid
+      const dayLabels = ['MO', 'DI', 'MI', 'DO', 'FR', 'SA', 'SO'];
+      const fullDayNames = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
       grid.innerHTML = '';
 
-      for (let i = 0; i < 5; i++) {
+      const todayISO = getTodayISO();
+      const nowHHMM = getCurrentHHMM();
+
+      for (let i = 0; i < 7; i++) {
         const cur = new Date(monday);
         cur.setDate(monday.getDate() + i);
         const curISO = formatDateISO(cur);
-        const dow = i + 1;
+        const dow = i + 1; // 1=Mo .. 7=So
         const isToday = curISO === todayISO;
         const isSelected = curISO === selectedDate;
+        const isWorkDay = dow === 6;
 
-        const lectures = LECTURE_SCHEDULE.filter(l => l.dow === dow);
+        const lectures = LECTURE_SCHEDULE.filter(l => l.dow === (dow <= 5 ? dow : 0));
         const customForDay = (state.customCalEvents || []).filter(ev => ev.dateISO === curISO);
 
         const col = document.createElement('div');
         col.className = 'cal-day-col' + (isToday ? ' is-today-cal' : '') + (isSelected ? ' is-selected-cal' : '');
+        col.onclick = () => {
+          selectedDate = curISO;
+          setCalViewMode('agenda');
+        };
 
         const eventsHtml = lectures.map(lec => {
           const c = COURSES.find(x => x.id === lec.courseId) || COURSES[0];
           const mUrl = getCourseMoodleUrl(c);
-          const isLive = isToday && nowHHMM >= lec.start && nowHHMM <= lec.end;
-          const isPast = (curISO < todayISO) || (isToday && nowHHMM > lec.end);
-          const statusTag = isLive ? '🔴 LIVE' : (isPast ? '✓' : '');
-
           return `
-            <div class="cal-event-card ${isLive ? 'live-now' : ''}" style="border-left-color:${c.color};">
-              <div class="cal-time-row">
-                <span>🕒 ${lec.start}–${lec.end} ${statusTag}</span>
-                <span class="cal-room-badge">📍 ${lec.room}</span>
-              </div>
-              <a href="${mUrl}" target="_blank" rel="noopener" class="moodle-direct-link" title="Klicken für direkte Weiterleitung zu THA Moodle (${c.name})" style="font-weight:800; color:${c.color}; line-height:1.25;">
-                ${lec.title} ↗
-              </a>
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
-                <span style="font-size:0.68rem; color:var(--text-muted);">${lec.kind}</span>
-                <span onclick="openLectureSummary('${curISO}', '${lec.id}')" style="font-size:0.68rem; color:var(--accent); font-weight:700; cursor:pointer;" title="Zu den Folien-Skripten dieses Kurses springen">📚 Skripte</span>
-              </div>
+            <div class="cal-event-card" style="border-left-color:${c.color}; margin-bottom:6px;">
+              <div style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">${lec.start}–${lec.end}</div>
+              <div style="font-weight:700; font-size:0.83rem; color:${c.color};">${lec.title}</div>
+              <div style="font-size:0.73rem; color:var(--text-muted);">📍 Raum ${lec.room}</div>
             </div>
           `;
         }).join('');
 
-        const customHtml = customForDay.map(ev => {
-          const c = COURSES.find(x => x.id === ev.courseId) || COURSES[0];
-          return `
-            <div class="cal-event-card" style="border-left-color:var(--accent); background:rgba(56,189,248,0.09);">
-              <div class="cal-time-row">
-                <span>📌 ${ev.time || 'Termin'}</span>
-                <span onclick="deleteCustomCalEvent('${ev.id}')" style="cursor:pointer; color:var(--danger);" title="Termin löschen">✕</span>
-              </div>
-              <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="font-weight:700; color:${c.color};">${c.short} ↗</a>
-              <div style="font-size:0.72rem; color:#e2e8f0;">${ev.note}</div>
-            </div>
-          `;
-        }).join('');
-
-        // Show free-window hint on Mo & Do!
-        let freeHint = '';
-        if (dow === 1) freeHint = `<div style="font-size:0.69rem; color:#86efac; padding:4px 6px; border-radius:6px; background:rgba(34,197,94,0.08);">🌟 Frei ab 11:15 (ProWi + BuB)</div>`;
-        if (dow === 4) freeHint = `<div style="font-size:0.69rem; color:#86efac; padding:4px 6px; border-radius:6px; background:rgba(34,197,94,0.08);">🌟 Frei bis 14:00 (ProWi + BuB)</div>`;
+        const studyBlockHtml = isWorkDay
+          ? `<div class="apple-event-chip chip-work" style="margin-top:6px;">💼 Ganztags Arbeit</div>`
+          : `<div class="apple-event-chip chip-study" style="margin-top:6px;">⚡ 4.0h Power-Block</div>`;
 
         col.innerHTML = `
-          <div class="cal-day-header" onclick="selectSpecificDate('${curISO}')" title="Tag im Cockpit auswählen">
-            <span class="cal-day-name">${dayLabels[i]} • ${fmtShort(cur)} ${isToday ? '🟢' : ''}</span>
-            <span style="font-size:0.68rem; color:var(--text-muted);">${fullDayNames[i]}</span>
+          <div class="cal-day-header" style="cursor:pointer;">
+            <div>
+              <span class="cal-day-name">${dayLabels[i]}</span>
+              <span class="cal-day-date" style="font-size:0.85rem; font-weight:700;">${fmtShort(cur)}</span>
+            </div>
+            ${isToday ? '<span class="apple-day-num is-today" style="width:22px; height:22px; font-size:0.75rem;">H</span>' : ''}
           </div>
-          ${dow === 4 ? freeHint : ''}
-          ${eventsHtml}
-          ${customHtml}
-          ${dow === 1 ? freeHint : ''}
+          ${studyBlockHtml}
+          <div style="margin-top:8px;">${eventsHtml}</div>
+          ${customForDay.map(ev => `<div class="apple-event-chip chip-exam" style="margin-top:4px;">📌 ${escapeHtml(ev.note)}</div>`).join('')}
         `;
         grid.appendChild(col);
       }
-
-      // Upcoming custom events list
-      if (customListEl) {
-        const upcoming = (state.customCalEvents || []).filter(ev => ev.dateISO >= todayISO).slice(0, 5);
-        if (upcoming.length === 0) {
-          customListEl.innerHTML = '';
-        } else {
-          customListEl.innerHTML = upcoming.map(ev => {
-            const c = COURSES.find(x => x.id === ev.courseId) || COURSES[0];
-            return `
-              <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; padding:5px 10px; border-radius:8px; background:var(--bg-muted); border:1px solid var(--border); font-size:0.78rem;">
-                <div>
-                  <strong style="color:var(--accent);">${ev.dateISO} ${ev.time ? '• ' + ev.time : ''}</strong> —
-                  <a href="${getCourseMoodleUrl(c)}" target="_blank" rel="noopener" class="moodle-direct-link" style="color:${c.color}; font-weight:700;">${c.short} ↗</a>:
-                  <span>${ev.note}</span>
-                </div>
-                <button onclick="deleteCustomCalEvent('${ev.id}')" style="padding:2px 7px; font-size:0.7rem;">✕</button>
-              </div>
-            `;
-          }).join('');
-        }
-      }
-
-      const dateInput = document.getElementById('newCalDate');
-      if (dateInput && !dateInput.value) dateInput.value = selectedDate;
-    }
-
-    function addCustomCalEvent() {
-      const dateISO = document.getElementById('newCalDate').value || selectedDate;
-      const time = (document.getElementById('newCalTime').value || '').trim();
-      const courseId = document.getElementById('newCalCourse').value || 'prowi';
-      const noteInput = document.getElementById('newCalNote');
-      const note = (noteInput.value || '').trim();
-      if (!note) return;
-
-      state.customCalEvents = state.customCalEvents || [];
-      state.customCalEvents.push({
-        id: 'cal-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
-        dateISO,
-        time,
-        courseId,
-        note
-      });
-      state.customCalEvents.sort((a, b) => (a.dateISO + (a.time || '')).localeCompare(b.dateISO + (b.time || '')));
-      noteInput.value = '';
-      document.getElementById('newCalTime').value = '';
-      saveState();
-      renderCalendar();
-    }
-
-    function deleteCustomCalEvent(evId) {
-      state.customCalEvents = (state.customCalEvents || []).filter(e => e.id !== evId);
-      saveState();
-      renderCalendar();
-    }
-
-    function openLectureSummary(dateISO, lecId) {
-      selectedDate = dateISO;
-      const lec = LECTURE_SCHEDULE.find(l => l.id === lecId);
-      if (lec && lec.courseId) {
-        activeFolienTab = lec.courseId;
-      }
-      renderDailyPlan();
-      renderCalendar();
-      renderFolienLibrary();
-      renderWeekGrid();
-      scrollToSection('secSummaryFolder');
-    }
-
-    // =========================================================================
-    // TÄGLICHE LANGE VORLESUNGS-ZUSAMMENFASSUNGEN + ECHTE MOODLE-PDF ANALYSE
-    // + MEIN ZUSAMMENFASSUNGS-ORDNER (PC & Tablet Live-Synced!)
-    // =========================================================================
-    let activeSummaryFolderTab = 'all';
-    let currentReaderRecord = null;
-    let recentPdfsCache = {};
-
-    function escapeHtml(str) {
-      return String(str == null ? '' : str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-
-    function formatRichTextSafe(str) {
-      return escapeHtml(str)
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/`([^`\n]+)`/g, '<code style="background:#090d16; padding:1px 5px; border-radius:4px; border:1px solid rgba(56,189,248,0.28); color:#bae6fd; font-size:0.79rem;">$1</code>');
-    }
-
-    function buildLongCurriculumHtml(lec, course, vw, entry) {
-      const pointsHtml = (entry.points || []).map(p => `<li>${formatRichTextSafe(p)}</li>`).join('');
-      const deepHtml = (entry.deepDive || []).map(para => `
-        <div class="script-deep-item">${formatRichTextSafe(para)}</div>
-      `).join('');
-      const schemaHtml = entry.schemaBox
-        ? `<div class="script-section">
-             <div class="script-sec-title">3. 📐 Wichtige Definitionen, Formeln, Schemata, Code oder Paragrafen</div>
-             <pre class="script-schema-pre">${escapeHtml(entry.schemaBox)}</pre>
-           </div>`
-        : '';
-      const exampleHtml = entry.workedExample
-        ? `<div class="script-section">
-             <div class="script-sec-title">4. 🧪 Durchgerechnetes Praxis- &amp; Klausurbeispiel</div>
-             <div class="script-example-box">${formatRichTextSafe(entry.workedExample)}</div>
-           </div>`
-        : '';
-      const selfCheckHtml = (entry.selfCheck && entry.selfCheck.length > 0)
-        ? `<div class="script-selfcheck-list">
-             ${entry.selfCheck.map((qa, idx) => `
-               <details class="script-selfcheck-item">
-                 <summary>❓ Kontrollfrage ${idx + 1}: ${formatRichTextSafe(qa.q)}</summary>
-                 <div class="script-selfcheck-ans">✅ <strong>Antwort:</strong> ${formatRichTextSafe(qa.a)}</div>
-               </details>
-             `).join('')}
-           </div>`
-        : '';
-
-      return `
-        <div class="long-summary-script">
-          <div class="script-section">
-            <div class="script-sec-title">1. 🎯 Überblick &amp; Roter Faden der heutigen Vorlesung (VW ${vw})</div>
-            <div class="script-sec-body">${formatRichTextSafe(entry.core)}</div>
-            <ul class="summary-points" style="margin-top:8px;">${pointsHtml}</ul>
-          </div>
-          ${deepHtml ? `
-          <div class="script-section">
-            <div class="script-sec-title">2. 📚 Ausführliche Erklärung aller Konzepte &amp; Zusammenhänge</div>
-            ${deepHtml}
-          </div>` : ''}
-          ${schemaHtml}
-          ${exampleHtml}
-          <div class="script-section">
-            <div class="script-sec-title">5. ⚠️ Typische Klausurfallen (${escapeHtml(course.prof)}) &amp; Selbsttest</div>
-            <div class="summary-exam-tip" style="margin-top:0;">
-              <strong>⚠️ Klausur-Merksatz:</strong> ${formatRichTextSafe(entry.examTip)}
-            </div>
-            ${selfCheckHtml}
-          </div>
-        </div>
-      `;
-    }
-
-    function buildLongCurriculumPlain(lec, course, vw, entry, dateISO) {
-      const parts = [
-        `# ${lec.title} (${course.short} • ${course.prof})`,
-        `Datum: ${dateISO} | Vorlesungswoche ${vw} | Raum ${lec.room} (${lec.start}–${lec.end} Uhr)`,
-        `Thema: ${entry.topic}`,
-        `Quelle: THA SPO-2025 Modulhandbuch-Lernskript (VW ${vw})`,
-        '',
-        `## 1. 🎯 Überblick & Roter Faden`,
-        entry.core,
-        ...(entry.points || []).map(p => `- ${p}`),
-        '',
-        `## 2. 📚 Ausführliche Erklärung der Konzepte`,
-        ...(entry.deepDive || []),
-        '',
-        `## 3. 📐 Definitionen, Formeln, Schemata, Code & Paragrafen`,
-        entry.schemaBox || '',
-        '',
-        `## 4. 🧪 Durchgerechnetes Praxis- & Klausurbeispiel`,
-        entry.workedExample || '',
-        '',
-        `## 5. ⚠️ Klausurfalle & Selbsttest-Kontrollfragen`,
-        `Klausur-Merksatz (${course.prof}): ${entry.examTip}`,
-        ...((entry.selfCheck || []).map((qa, i) => `Frage ${i + 1}: ${qa.q}\nAntwort: ${qa.a}`))
-      ];
-      return parts.filter(Boolean).join('\n\n');
-    }
-
-    function formatCustomSummaryHtml(customText, meta) {
-      const raw = String(customText || '').trim();
-      const blocks = raw.split(/\n(?=[1-5]\.\s)/);
-      if (blocks.length >= 2) {
-        return `<div class="long-summary-script">` + blocks.map(blk => {
-          const lines = blk.trim().split('\n');
-          const first = lines[0] || '';
-          const rest = lines.slice(1).join('\n').trim();
-          return `
-            <div class="script-section" style="border-color:rgba(34,197,94,0.35);">
-              <div class="script-sec-title" style="color:#86efac;">${formatRichTextSafe(first)}</div>
-              <div class="script-sec-body">${formatRichTextSafe(rest)}</div>
-            </div>
-          `;
-        }).join('') + `</div>`;
-      }
-      return `
-        <div class="long-summary-script">
-          <div class="script-section" style="border-color:rgba(34,197,94,0.38);">
-            <div class="script-sec-title" style="color:#86efac;">
-              🦊 Ausführliche Zusammenfassung deiner echten Vorlesungsunterlagen ${meta && meta.fileName ? '(' + escapeHtml(meta.fileName) + ')' : ''}
-            </div>
-            <div class="script-sec-body">${formatRichTextSafe(raw)}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function getSummaryDataForLecture(lec, dateISO) {
-      const vw = getCurrentVorlesungswoche(dateISO);
-      const bank = LECTURE_SUMMARIES_BANK[lec.subFocus] || LECTURE_SUMMARIES_BANK.impis;
-      const entry = bank[(vw - 1) % bank.length];
-      const summaryKey = `${dateISO}:${lec.id}`;
-      const customText = state.customSummaries && state.customSummaries[summaryKey];
-      const customMeta = (state.customSummaryMeta && state.customSummaryMeta[summaryKey]) || null;
-      const isRead = !!(state.readSummaries && state.readSummaries[summaryKey]);
-      const archivedItem = (state.savedSummaryArchive || []).find(a => a.summaryKey === summaryKey) || null;
-
-      const todayISO = getTodayISO();
-      const nowHHMM = getCurrentHHMM();
-      let isReady = false;
-      let statusLabel = '';
-      let statusClass = 'pending';
-
-      if (isRead) {
-        isReady = true;
-        statusLabel = archivedItem ? '✅ Gelesen & im Ordner' : '✅ Gelesen (+15m gebucht)';
-        statusClass = 'read';
-      } else if (customText) {
-        isReady = true;
-        statusLabel = '✅ Echte Folien ausgewertet!';
-        statusClass = 'ready';
-      } else if (dateISO < todayISO) {
-        isReady = true;
-        statusLabel = '🔔 Zusammenfassung bereit';
-        statusClass = 'ready';
-      } else if (dateISO === todayISO) {
-        if (nowHHMM >= lec.end) {
-          isReady = true;
-          statusLabel = '🔔 NEU — Zusammenfassung bereit!';
-          statusClass = 'ready';
-        } else if (nowHHMM >= lec.start) {
-          isReady = false;
-          statusLabel = `🔴 Vorlesung läuft (ab ${lec.end} bereit)`;
-          statusClass = 'pending';
-        } else {
-          isReady = false;
-          statusLabel = `⏳ Ab ${lec.end} Uhr bereit (Vorschau)`;
-          statusClass = 'pending';
-        }
-      } else {
-        isReady = false;
-        statusLabel = `📅 Geplant (${lec.start}–${lec.end})`;
-        statusClass = 'pending';
-      }
-
-      return { vw, entry, summaryKey, customText, customMeta, isRead, archivedItem, isReady, statusLabel, statusClass };
-    }
-
-    function countWordsApprox(str) {
-      return String(str || '').trim().split(/\s+/).filter(Boolean).length;
     }
 
     function renderDailySummaries() {
@@ -7384,6 +8026,11 @@ Gegeben:
               <button class="btn-accent" onclick="openFolienScriptReader('${item.id}')" style="padding:6px 12px; font-size:0.8rem;">
                 📖 Skript lesen
               </button>
+              ${item.pdfFile ? `
+                <a href="zusammenfassungen/${item.courseId}/${item.pdfFile}" target="_blank" class="btn-accent" style="padding:6px 10px; font-size:0.8rem; text-decoration:none; display:inline-flex; align-items:center; gap:3px; background:#0f766e; color:#fff;" title="Druckfertige A4-PDF direkt öffnen">
+                  📄 PDF
+                </a>
+              ` : ''}
               <button class="${isRead ? '' : 'btn-primary'}" onclick="toggleFolienScriptRead('${item.id}')" style="padding:6px 12px; font-size:0.8rem;">
                 ${isRead ? '↩ Offen' : '✅ Gelesen (+20 Min.)'}
               </button>
@@ -7486,6 +8133,16 @@ Gegeben:
       titleEl.textContent = currentReaderRecord.title;
       metaEl.textContent = currentReaderRecord.meta;
       updateReaderModalReadButton(scriptId);
+
+      const pdfBtn = document.getElementById('readerModalPdfBtn');
+      if (pdfBtn) {
+        if (script.pdfFile) {
+          pdfBtn.href = `zusammenfassungen/${script.courseId}/${script.pdfFile}`;
+          pdfBtn.style.display = 'inline-flex';
+        } else {
+          pdfBtn.style.display = 'none';
+        }
+      }
 
       // Embedded Interactive Tutor for Reader Modal
       if (tutorContainer) {
