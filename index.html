@@ -2734,6 +2734,10 @@
           <div class="label">Wochen-Lernzeit</div>
           <div class="value" id="weeklyHoursStat">0.0 h</div>
         </div>
+        <div class="stat-pill" onclick="scrollToSection('secTimer')" style="cursor:pointer; border-color:rgba(249,115,22,0.45);" title="Deine gebuchte Gesamt-Lernzeit im Verhältnis zum 363-Stunden-Semesterziel (Klick springt zum Zeitstrahl)">
+          <div class="label">Gebucht / 363h Arbeit</div>
+          <div class="value" id="totalBookedHoursStat" style="color:var(--primary);">8.1 / 363 h</div>
+        </div>
         <div class="stat-pill">
           <div class="label">Klausur-Countdown</div>
           <div class="value" id="countdownDays">-- Tage</div>
@@ -8536,6 +8540,10 @@ ${s.md}
       const totalMinutesAll = COURSES.reduce((acc, c) => acc + (state.studiedMinutes[c.id] || 0), 0);
       const totalTargetHours = COURSES.reduce((acc, c) => acc + c.targetStudyHours, 0);
       totalLbl.textContent = `Gesamt: ${(totalMinutesAll / 60).toFixed(1)} h / ${totalTargetHours} h Ziel`;
+      const headerTotalBookedEl = document.getElementById('totalBookedHoursStat');
+      if (headerTotalBookedEl) {
+        headerTotalBookedEl.textContent = `${(totalMinutesAll / 60).toFixed(1)} / ${totalTargetHours} h`;
+      }
 
       // Multi-color segmented progress bar across all 9 courses
       if (totalMinutesAll === 0) {
